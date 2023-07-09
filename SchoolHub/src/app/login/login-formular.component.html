@@ -1,6 +1,7 @@
+<!--To add more elements that disappear when pressing sign up, add [@fadeInOut]="loginInterract.authMode" to the element-->
 <form style="border-radius: 38px; padding: 50px; display: flex; flex-direction: column; align-items: center; margin-top: 30px;" class="glass">
     <input placeholder="E-mail" style="margin-bottom: 20px;">
-    <input placeholder="Password" style="margin-bottom: 20px;">
-    <input [@fadeInOut] *ngIf="loginInterract.authMode=='signup'" placeholder="Confirm password" style="margin-bottom: 40px;">
+    <input [@changeMargin]="loginInterract.authMode" placeholder="Password" style="margin-bottom: 20px;">
+    <input [@fadeInOut]="loginInterract.authMode" placeholder="Confirm password" style="margin-bottom: 40px;min-height: 0;">
     <button style="margin-top: 40px; border-radius: 38px; border: none; background-color: #342B66; padding: 1rem 2rem 1rem 2rem; color: #D9D9D9; font-size: 1.2rem;">{{loginInterract.authMode=='signup'?"Sign up":"Log in"}}</button>
 </form>

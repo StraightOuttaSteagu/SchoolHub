@@ -6,13 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  authType: boolean = false;
-
-  toLogin(){
-    this.authType = false;
-  }
-
-  toSignup(){
-    this.authType = true;
-  }
+  
 }

@@ -8,14 +8,30 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./login-formular.component.scss'],
   animations: [
     trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('300ms', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [
-        animate('300ms', style({ opacity: 0 })),
-      ]),
+      state('signup', style({
+        height: '0px',
+        fontSize: '0',
+        padding: '0',
+        margin: '0'
+      })),
+      state('login', style({
+        height: '*',
+        fontSize: '20px',
+        padding: '10px'
+      })),
+      transition('login <=> signup', [
+        animate('200ms linear')
+      ])
     ]),
+    trigger('changeMargin', [state('signup', style({
+      marginBottom: '0'
+    })),
+    state('login', style({
+      marginBottom: '20px'
+    })),
+    transition('login <=> signup', [
+      animate('300ms linear')
+    ])])
   ],
 })
 export class LoginFormularComponent {
