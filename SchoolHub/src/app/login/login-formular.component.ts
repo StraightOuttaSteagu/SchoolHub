@@ -35,5 +35,18 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ],
 })
 export class LoginFormularComponent {
-  constructor(public loginInterract: LoginInterractService) {}
+  constructor(public loginInterract: LoginInterractService) {
+  }
+
+  // TODO: good practices:
+  // services injcected into constructor should be private
+  // variables order: private first, public after
+  // functions order: public first, private after
+  // you should use reactive forms
+  // you can use ngSubmit
+  // always add the type to variables and also the returned type for functions
+
+  submit(): void {
+    alert('submited');
+  }
 }
