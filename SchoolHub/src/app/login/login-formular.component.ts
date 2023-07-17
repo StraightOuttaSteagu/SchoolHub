@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginInterractService } from './login-interract.service';
+import { FormBuilder, Validators  } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+
+import { LoginInterractService } from './login-interract.service';
 
 @Component({
   selector: 'app-login-formular',
@@ -35,18 +37,27 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ],
 })
 export class LoginFormularComponent {
-  constructor(public loginInterract: LoginInterractService) {
+
+  interract: LoginInterractService = this.loginInterract;
+
+  authForm = this.fb.group({
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required, Validators.minLength(8)],
+    repeatPassword: ['', Validators.required]
+  });
+
+  constructor(private loginInterract: LoginInterractService, private fb: FormBuilder) {
+  }
+
+  onSubmit(): void {
+    console.log(this.authForm.value);
   }
 
   // TODO: good practices:
-  // services injcected into constructor should be private
-  // variables order: private first, public after
-  // functions order: public first, private after
-  // you should use reactive forms
-  // you can use ngSubmit
-  // always add the type to variables and also the returned type for functions
-
-  submit(): void {
-    alert('submited');
-  }
+  // services injcected into constructor should be private _/
+  // variables order: private first, public after _/
+  // functions order: public first, private after _/
+  // you should use reactive forms _/
+  // you can use ngSubmit _/
+  // always add the type to variables and also the returned type for functions _/
 }

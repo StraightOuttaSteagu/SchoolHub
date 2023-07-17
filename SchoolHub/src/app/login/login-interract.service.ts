@@ -4,7 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginInterractService {
-  authMode: 'login' | 'signup' = 'login';
+  private authMode: 'login' | 'signup' = 'login';
+
+  public setAuthMode(mode: 'login' | 'signup'){
+    this.authMode = mode;
+  }
+
+  public getAuthMode(){
+    return this.authMode;
+  }
 
   constructor() { }
 }

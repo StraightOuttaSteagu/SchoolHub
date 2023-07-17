@@ -23,13 +23,15 @@ import { LoginInterractService } from '../login-interract.service';
   ]
 })
 export class AuthModeSwitchComponent {
-  constructor(public loginInterract: LoginInterractService) {}
+  interract: LoginInterractService = this.loginInterract;
+
+  constructor(private loginInterract: LoginInterractService) {}
 
   openLogin(){
-    this.loginInterract.authMode = 'login';
+    this.loginInterract.setAuthMode('login');
   }
 
   openSignup(){
-    this.loginInterract.authMode = 'signup';
+    this.loginInterract.setAuthMode('signup');
   }
 }
