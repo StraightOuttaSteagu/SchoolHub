@@ -1,0 +1,7 @@
+<!--To add more elements that disappear when pressing sign up, add [@fadeInOut]="loginInterract.authMode" to the element-->
+<form class="glass" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <input formControlName="email" placeholder="E-mail" required style="margin-bottom: 20px;">
+    <input type="password" formControlName="password" [@changeMargin]="interract.getAuthMode()" required placeholder="Password" style="margin-bottom: 20px;">
+    <input type="password" formControlName="repeatPassword" [@fadeInOut]="interract.getAuthMode()" required placeholder="Confirm password" style="min-height: 0;">
+    <button type="submit" [disabled]="!authForm.valid">{{interract.getAuthMode()=='signup'?"Log in":"Sign up"}}</button>
+</form>
