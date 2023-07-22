@@ -12,6 +12,7 @@ import { LoginFormularComponent } from './login/login-formular.component';
 import { AuthModeSwitchComponent } from './login/auth-mode-switch/auth-mode-switch.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     LoginFormularComponent,
     AuthModeSwitchComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
