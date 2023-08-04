@@ -1,1 +1,13 @@
-<p>announcements works!</p>
+<div class="announcement" *ngFor="let announcement of announcements">
+    <div class="announcement-data">
+        <h1>{{announcement.title}}</h1>
+        <h4>{{announcement.description}}</h4>
+    </div>
+    <div class="icon">
+        <div class="icon-elements">
+            <img src="../../../assets/leaf.png">
+            <h3>{{announcement.subject}}</h3>
+        </div>
+        <h5>Posted: {{announcement.date}}</h5>
+    </div>
+</div>
