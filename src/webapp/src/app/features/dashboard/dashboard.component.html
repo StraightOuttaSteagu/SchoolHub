@@ -1,12 +1,14 @@
 <div class="main">
     <app-sidebar></app-sidebar>
     <div class="main-bar">
-        <h1>Top text</h1>
-        <div class="nav">
-            <button>Assignments</button>
-            <button>Anouncements</button>
-            <button>Grades</button>
-            <button>Attendence</button>
+        <div class="top-bar">
+            <h1>Overall average: 10</h1>
+            <div class="nav">
+                <button onclick="window.location.href='../assignments'" [ngClass]="getHref().includes('assignments')?'highlight':''">Assignments</button>
+                <button onclick="window.location.href='../announcements'" [ngClass]="getHref().includes('announcements')?'highlight':''">Announcements</button>
+                <button onclick="window.location.href='../grades'" [ngClass]="getHref().includes('grades')?'highlight':''">Grades</button>
+                <button onclick="window.location.href='../attendance'" [ngClass]="getHref().includes('attendance')?'highlight':''">Attendance</button>
+            </div>
         </div>
         <router-outlet></router-outlet>
     </div>

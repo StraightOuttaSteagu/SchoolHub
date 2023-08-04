@@ -1,14 +1,17 @@
-<div class='card' *ngFor='let item of data'>
-    <div class='outer-card-title'>
-        <h2 class='card-title'>{{item.title}}</h2>
-    </div>
-    <div class='first-line'></div>
-    <div class='card-contents-all'>
-        <div class='card-contents' *ngFor='let grade of item?.grades'>
-            <div class='contents-grade'>{{grade.grade}}</div>
-            <div class='contents-date'>{{grade.date}}</div>
+<div class="outer">
+    <div class='card' *ngFor='let item of data'>
+        <div class='outer-card-title'>
+            <h2 class='card-title'>{{item.title}}</h2>
         </div>
+        <div class='first-line'></div>
+        <div class='card-contents-all'>
+            <div class='card-contents' *ngFor='let grade of item?.grades'>
+                <div class='contents-grade'>{{grade.grade}}</div>
+                <div class='contents-date'>{{grade.date}}</div>
+            </div>
+        </div>
+        <div class='second-line' *ngIf='item?.grades.length>1'></div>
+        <div class='average-grade'>{{ item?.grades.length>1?calculateAverage(item?.grades).toFixed(2):'' }}</div>
     </div>
-    <div class='second-line' *ngIf='item?.grades.length>1'></div>
-    <div class='average-grade'>{{ item?.grades.length>1?calculateAverage(item?.grades).toFixed(2):'' }}</div>
+    
 </div>

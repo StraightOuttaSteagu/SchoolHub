@@ -1,3 +1,10 @@
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10000;
+  margin-bottom: 30px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -32,8 +39,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
+  gap: 40px;
 }
 
 .card-contents-all {
@@ -42,6 +50,7 @@
   justify-content: flex-start;
   height: 73%;
   width: 100%;
+  overflow-y: auto;
 }
 
 .contents-date {
@@ -54,6 +63,8 @@
   font-weight: 500;
   font-size: 28px;
   color: #3D4756CC;
+  width: 30px;
+  text-align: right;
 }
 
 .first-line {
@@ -80,8 +91,9 @@
   margin-bottom: 8px;
 }
 
-:host {
+.outer {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  padding: 20px 0 20px 85px;
 }

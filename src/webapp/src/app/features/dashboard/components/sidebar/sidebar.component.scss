@@ -1,6 +1,6 @@
 :host {
     height: 100%;
-    width: 400px;
+    min-width: 400px;
     background-color: #ffffffbb;
     border-radius: 2vw 0 0 2vw;
     display: flex;
@@ -54,4 +54,8 @@ h3, label {
     label {
         font-size: 1.2em;
     }
+}
+
+img {
+    object-fit:contain;
 }
