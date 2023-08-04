@@ -21,11 +21,11 @@ $SchoolHub-warn: mat.define-palette(mat.$red-palette);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $SchoolHub-theme: mat.define-light-theme((
-  color: (
-    primary: $SchoolHub-primary,
-    accent: $SchoolHub-accent,
-    warn: $SchoolHub-warn,
-  )
+        color: (
+                primary: $SchoolHub-primary,
+                accent: $SchoolHub-accent,
+                warn: $SchoolHub-warn,
+        )
 ));
 
 // Include theme styles for core and each component used in your app.
@@ -36,23 +36,137 @@ $SchoolHub-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Nexa;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 
 }
 
 @font-face {
-    font-family: Nexa;
-    src: url(./assets/NexaRegular.otf);
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Thin.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-ThinItalic.ttf');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-ExtraLight.ttf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-ExtraLightItalic.ttf');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Light.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-LightItalic.ttf');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-MediumItalic.ttf');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-SemiBold.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-SemiBoldItalic.ttf');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-BoldItalic.ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-ExtraBold.ttf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-ExtraBoldItalic.ttf');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Black.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-BlackItalic.ttf');
+  font-weight: 900;
+  font-style: italic;
 }
 
 button {
-    font-family: Nexa;
+  font-family: 'Poppins', sans-serif;
 }
 
 .mat-mdc-text-field-wrapper {
-    border-radius: 30px !important;
+  border-radius: 30px !important;
 }
 
 ::-webkit-scrollbar {
