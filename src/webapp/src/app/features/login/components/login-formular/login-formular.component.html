@@ -2,10 +2,10 @@
 <form class='glass' [formGroup]='authForm' (ngSubmit)='onSubmit()'>
     <input type='text' formControlName='username' placeholder='Username' required>
     <input type='text' formControlName='name' placeholder='Name' [@fadeInOut]='getMode()' required>
-    <input type='text' formControlName='name' placeholder='Surname' [@fadeInOut]='getMode()' required>
+    <input type='text' formControlName='surname' placeholder='Surname' [@fadeInOut]='getMode()' required>
     <input formControlName='email' placeholder='E-mail' [@fadeInOut]='getMode()' required>
     <input type='password' formControlName='password' [@changeMargin]='getMode()' placeholder='Password' required>
-    <input type='password' formControlName='password' [@fadeInOut]='getMode()' required
+    <input type='password' formControlName='repeatPassword' [@fadeInOut]='getMode()' required
            placeholder='Confirm password'>
     <button type='submit' [disabled]='!authForm.valid'>{{getMode() == 'signup' ? "Log in" : "Sign up"}}</button>
 </form>

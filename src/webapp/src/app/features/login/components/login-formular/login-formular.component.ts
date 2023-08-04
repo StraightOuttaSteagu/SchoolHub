@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { LoginInterractService } from '../../login-interract.service';
 import { FormAnimationFade, FormAnimationMargin } from '../../login.animations';
-import { Subscription } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -15,13 +14,14 @@ import { AuthService } from './auth.service';
     FormAnimationMargin
   ],
 })
-export class LoginFormularComponent implements OnInit{
+export class LoginFormularComponent implements OnInit {
   authForm!: FormGroup;
 
-  constructor(private loginInterract: LoginInterractService, private authService: AuthService) {}
+  constructor(private loginInterract: LoginInterractService, private authService: AuthService) {
+  }
 
   getMode(): 'login' | 'signup' {
-    return this.loginInterract.getAuthMode()
+    return this.loginInterract.getAuthMode();
   }
 
   onSubmit(): void {
@@ -33,6 +33,6 @@ export class LoginFormularComponent implements OnInit{
 
     this.authForm.get('password')?.valueChanges.subscribe(() => {
       this.authForm.get(('repeatPassword'))?.updateValueAndValidity();
-    })
+    });
   }
 }
