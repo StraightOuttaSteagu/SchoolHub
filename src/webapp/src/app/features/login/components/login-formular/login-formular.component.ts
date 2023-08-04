@@ -14,16 +14,16 @@ import { FormAnimationFade, FormAnimationMargin } from '../../login.animations';
   ],
 })
 export class LoginFormularComponent {
-
-  interract: LoginInterractService = this.loginInterract;
-
   authForm = this.fb.group({
     email: ['', Validators.required, Validators.email],
     password: ['', Validators.required, Validators.minLength(8)],
     repeatPassword: ['', Validators.required]
   });
 
-  constructor(private loginInterract: LoginInterractService, private fb: FormBuilder) {
+  constructor(private loginInterract: LoginInterractService, private fb: FormBuilder) {}
+
+  getMode(): 'login' | 'signup' {
+    return this.loginInterract.getAuthMode()
   }
 
   onSubmit(): void {
