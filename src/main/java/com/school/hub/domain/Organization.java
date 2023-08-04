@@ -52,15 +52,4 @@ public class Organization {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Organization)) {
-            return false;
-        }
-        return id != null && id.equals(((Organization) o).id);
-    }
 }
