@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardPagesRoutingModule } from './components/pages/dashboard-pages-routing.module';
+import { DashboardPagesModule } from './components/pages/dashboard-pages.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DashboardPagesRoutingModule } from './components/pages/dashboard-pages-
   ],
   imports: [
     BrowserModule,
-    DashboardPagesRoutingModule
+    DashboardPagesRoutingModule,
+    DashboardPagesModule
   ]
 })
 export class DashboardModule { }
