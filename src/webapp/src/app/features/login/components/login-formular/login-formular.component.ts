@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators  } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginInterractService } from '../../login-interract.service';
 import { FormAnimationFade, FormAnimationMargin } from '../../login.animations';
+import { Subscription } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login-formular',
@@ -13,14 +15,10 @@ import { FormAnimationFade, FormAnimationMargin } from '../../login.animations';
     FormAnimationMargin
   ],
 })
-export class LoginFormularComponent {
-  authForm = this.fb.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required, Validators.minLength(8)],
-    repeatPassword: ['', Validators.required]
-  });
+export class LoginFormularComponent implements OnInit{
+  authForm!: FormGroup;
 
-  constructor(private loginInterract: LoginInterractService, private fb: FormBuilder) {}
+  constructor(private loginInterract: LoginInterractService, private authService: AuthService) {}
 
   getMode(): 'login' | 'signup' {
     return this.loginInterract.getAuthMode()
@@ -28,5 +26,13 @@ export class LoginFormularComponent {
 
   onSubmit(): void {
     console.log(this.authForm.value);
+  }
+
+  ngOnInit() {
+    this.authForm = this.authService.initForm();
+
+    this.authForm.get('password')?.valueChanges.subscribe(() => {
+      this.authForm.get(('repeatPassword'))?.updateValueAndValidity();
+    })
   }
 }

@@ -1,7 +1,11 @@
 <!--To add more elements that disappear when pressing sign up, add [@fadeInOut]="getMode()" to the element-->
-<form class="glass" [formGroup]="authForm" (ngSubmit)="onSubmit()">
-    <input formControlName="email" placeholder="E-mail" required style="margin-bottom: 20px;">
-    <input type="password" formControlName="password" [@changeMargin]="getMode()" required placeholder="Password" style="margin-bottom: 20px;">
-    <input type="password" formControlName="repeatPassword" [@fadeInOut]="getMode()" required placeholder="Confirm password" style="min-height: 0;">
-    <button type="submit" [disabled]="!authForm.valid">{{getMode()=='signup'?"Log in":"Sign up"}}</button>
+<form class='glass' [formGroup]='authForm' (ngSubmit)='onSubmit()'>
+    <input type='text' formControlName='username' placeholder='Username' required>
+    <input type='text' formControlName='name' placeholder='Name' [@fadeInOut]='getMode()' required>
+    <input type='text' formControlName='name' placeholder='Surname' [@fadeInOut]='getMode()' required>
+    <input formControlName='email' placeholder='E-mail' [@fadeInOut]='getMode()' required>
+    <input type='password' formControlName='password' [@changeMargin]='getMode()' placeholder='Password' required>
+    <input type='password' formControlName='password' [@fadeInOut]='getMode()' required
+           placeholder='Confirm password'>
+    <button type='submit' [disabled]='!authForm.valid'>{{getMode() == 'signup' ? "Log in" : "Sign up"}}</button>
 </form>
