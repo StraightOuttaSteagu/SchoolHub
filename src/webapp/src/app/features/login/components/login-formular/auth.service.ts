@@ -20,7 +20,7 @@ export class AuthService {
       email: ['', this.emailValidator()],
       password: ['', this.passwordValidator()],
       repeatPassword: ['', [Validators.required]]
-    }, {validator: this.RepeatPasswordValidator()});
+    });
 
     return this.authForm;
   }
