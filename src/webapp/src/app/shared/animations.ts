@@ -27,7 +27,7 @@ export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
   transition('true <=> false', animate('300ms linear')),
 ]);
 
-export const FormAnimationFade: AnimationTriggerMetadata = trigger(
+export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
   'fadeInOut',
   [
     state(
@@ -48,24 +48,5 @@ export const FormAnimationFade: AnimationTriggerMetadata = trigger(
       })
     ),
     transition('false <=> true', [animate('200ms linear')]),
-  ]
-);
-
-export const FormAnimationMargin: AnimationTriggerMetadata = trigger(
-  'changeMargin',
-  [
-    state(
-      'true',
-      style({
-        marginBottom: '0',
-      })
-    ),
-    state(
-      'false',
-      style({
-        marginBottom: '20px',
-      })
-    ),
-    transition('false <=> true', [animate('300ms linear')]),
   ]
 );

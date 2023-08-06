@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 
 import { LoginInterractService } from '../../login-interract.service';
-import { FormAnimationFade, FormAnimationMargin } from '../../../../shared/expand.animation';
+import { CollapseAnimationFade } from '../../../../shared/animations';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -11,8 +11,7 @@ import { AuthService } from './auth.service';
   templateUrl: './login-formular.component.html',
   styleUrls: ['./login-formular.component.scss'],
   animations: [
-    FormAnimationFade,
-    FormAnimationMargin
+    CollapseAnimationFade,
   ],
 }) 
 export class LoginFormularComponent implements OnInit {
