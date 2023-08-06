@@ -2,26 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 
-import { LoginInterractService } from '../../login-interract.service';
+import { LoginInteractService } from '../../login-interact.service';
 import { CollapseAnimationFade } from '../../../../shared/animations';
 import { AuthService } from './auth.service';
 
 @Component({
-  selector: 'app-login-formular',
-  templateUrl: './login-formular.component.html',
-  styleUrls: ['./login-formular.component.scss'],
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss'],
   animations: [
     CollapseAnimationFade,
   ],
 }) 
-export class LoginFormularComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
   authForm!: FormGroup;
 
-  constructor(private loginInterract: LoginInterractService, private authService: AuthService, private http: HttpClient) {
+  constructor(private loginInteract: LoginInteractService, private authService: AuthService, private http: HttpClient) {
   }
 
   getMode(): 'true' | 'false' {
-    return this.loginInterract.getAuthMode() == 'signup' ? 'true' : 'false';
+    return this.loginInteract.getAuthMode() == 'signup' ? 'true' : 'false';
   }
 
   onSubmit(): void {

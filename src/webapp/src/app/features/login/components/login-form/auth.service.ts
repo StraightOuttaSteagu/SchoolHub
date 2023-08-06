@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { LoginInterractService } from '../../login-interract.service';
+import { LoginInteractService } from '../../login-interact.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class AuthService {
   authForm!: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private loginInteract: LoginInterractService) {
+  constructor(private fb: FormBuilder, private loginInteract: LoginInteractService) {
   }
 
   initForm() {

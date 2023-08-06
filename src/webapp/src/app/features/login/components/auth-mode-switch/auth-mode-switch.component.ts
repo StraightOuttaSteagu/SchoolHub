@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginInterractService } from '../../login-interract.service';
+import { LoginInteractService } from '../../login-interact.service';
 
 import { SwitchAnimation } from '../../../../shared/animations';
 
@@ -12,17 +12,17 @@ import { SwitchAnimation } from '../../../../shared/animations';
   ]
 })
 export class AuthModeSwitchComponent {
-  constructor(private loginInterract: LoginInterractService) {}
+  constructor(private loginInteract: LoginInteractService) {}
 
   openLogin(){
-    this.loginInterract.setAuthMode('login');
+    this.loginInteract.setAuthMode('login');
   }
 
   openSignup(){
-    this.loginInterract.setAuthMode('signup');
+    this.loginInteract.setAuthMode('signup');
   }
 
   getMode(){
-    return this.loginInterract.getAuthMode();
+    return this.loginInteract.getAuthMode();
   }
 }

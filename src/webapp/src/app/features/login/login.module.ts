@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login.component';
 import { AuthModeSwitchComponent } from './components/auth-mode-switch/auth-mode-switch.component';
-import { LoginFormularComponent } from './components/login-formular/login-formular.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 import { LineLogoComponent } from 'src/app/shared/line-logo/line-logo.component';
 
@@ -16,7 +16,7 @@ import { LineLogoComponent } from 'src/app/shared/line-logo/line-logo.component'
   declarations: [
     LoginComponent,
     AuthModeSwitchComponent,
-    LoginFormularComponent,
+    LoginFormComponent,
     LineLogoComponent
   ],
   imports: [

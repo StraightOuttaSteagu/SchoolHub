@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 
 import { LoginModule } from './features/login/login.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
