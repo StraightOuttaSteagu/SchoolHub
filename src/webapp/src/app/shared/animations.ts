@@ -9,7 +9,7 @@ import {
 
 export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
   state(
-    'false',
+    'true',
     style({
       color: '#D9D9D9',
       backgroundColor: '#292251',
@@ -17,21 +17,21 @@ export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
     })
   ),
   state(
-    'true',
+    'false',
     style({
       color: '#292251',
       backgroundColor: 'rgb(255, 255, 255, 00.3)',
       border: '2px solid rgba(255, 255, 255, 0.55)',
     })
   ),
-  transition('true <=> false', animate('300ms linear')),
+  transition('false <=> true', animate('300ms linear')),
 ]);
 
 export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
   'fadeInOut',
   [
     state(
-      'true',
+      'false',
       style({
         height: '0px',
         fontSize: '0',
@@ -40,13 +40,13 @@ export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
       })
     ),
     state(
-      'false',
+      'true',
       style({
         height: '*',
         fontSize: '20px',
         padding: '10px',
       })
     ),
-    transition('false <=> true', [animate('200ms linear')]),
+    transition('true <=> false', [animate('200ms linear')]),
   ]
 );

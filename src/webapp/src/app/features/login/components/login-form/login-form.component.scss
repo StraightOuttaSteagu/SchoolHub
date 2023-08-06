@@ -59,6 +59,12 @@ form {
     margin-top: 30px;
 }
 
+.names {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
 @media (height < 650px){
     form {
         padding-bottom: 20px;
