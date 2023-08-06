@@ -14,7 +14,7 @@ import { AuthService } from './auth.service';
     FormAnimationFade,
     FormAnimationMargin
   ],
-})
+}) 
 export class LoginFormularComponent implements OnInit {
   authForm!: FormGroup;
 
