@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
   classes = [
-    {subject: "Biologie", teacher: "Oteleanu lia"},
-    {subject: "Biologie", teacher: "Oteleanu lia"},
-    {subject: "Biologie", teacher: "Oteleanu lia"},
+    {subject: "Limba si literatura romana", teacher: "Oteleanu lia"},
+    {subject: "Arte Vizuale si activitati practice extracuriculare", teacher: "Oteleanu lia"},
+    {subject: "Biologie", teacher: "Oteleanu lia maximus superbus extremus susus amugus"},
     {subject: "Biologie", teacher: "Oteleanu lia"},
     {subject: "Biologie", teacher: "Oteleanu lia"},
     {subject: "Biologie", teacher: "Oteleanu lia"},
