@@ -9,30 +9,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 30px;
-    width: 310px;
-    height: 310px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+    width: 280px;
+    height: 280px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   }
   
   .card-title {
-    font-weight: normal;
-    font-size: 26px;
+    padding-top: 5px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 23px;
     color: #3D4756;
     width: 100%;
-    line-height: 100%;
+    line-height: 120%;
+    overflow: hidden;
+    line-clamp: 2;
   }
   
   .outer-card-title {
-    padding-left: 50px;
-    height: 27%;
+    min-height: 28%;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 100%;
+    width: 80%;
   }
   
   .card-contents {
@@ -55,7 +58,7 @@
   
   .contents-date {
     font-weight: 200;
-    font-size: 24px;
+    font-size: 22px;
     color: #3D4756CC;
     margin-left: 45px;
   }
@@ -72,5 +75,5 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    padding: 20px 0 20px 85px;
+    padding: 20px 0 20px 56px;
   }

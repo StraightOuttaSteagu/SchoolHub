@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class GradesComponent implements OnInit{
   data: any = [
     {
-      title: 'Limba si Literatura Romana',
+      title: 'Limba si Literatura Romana a pogorului afgan',
       grades: [
         {
           grade: 2,
@@ -29,7 +29,7 @@ export class GradesComponent implements OnInit{
       ]
     },
     {
-      title: 'Biologie',
+      title: 'Bioloiie',
       grades: [
         {
           grade: 10,
