@@ -7,5 +7,5 @@
     <input type='password' formControlName='password' [@changeMargin]='getMode()' placeholder='Password' required>
     <input type='password' formControlName='repeatPassword' [@fadeInOut]='getMode()' required
            placeholder='Confirm password'>
-    <button type='submit' [disabled]='!authForm.valid'>{{getMode() == 'signup' ? "Log in" : "Sign up"}}</button>
+    <button type='submit' [disabled]='!authForm.valid'>{{getMode() == 'true' ? "Log in" : "Sign up"}}</button>
 </form>

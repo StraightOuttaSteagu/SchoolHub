@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 
 import { LoginInterractService } from '../../login-interract.service';
-import { FormAnimationFade, FormAnimationMargin } from '../../login.animations';
+import { FormAnimationFade, FormAnimationMargin } from '../../../../shared/expand.animation';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -21,8 +21,8 @@ export class LoginFormularComponent implements OnInit {
   constructor(private loginInterract: LoginInterractService, private authService: AuthService, private http: HttpClient) {
   }
 
-  getMode(): 'login' | 'signup' {
-    return this.loginInterract.getAuthMode();
+  getMode(): 'true' | 'false' {
+    return this.loginInterract.getAuthMode() == 'signup' ? 'true' : 'false';
   }
 
   onSubmit(): void {

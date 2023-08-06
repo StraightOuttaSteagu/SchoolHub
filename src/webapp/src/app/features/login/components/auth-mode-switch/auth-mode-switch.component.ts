@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginInterractService } from '../../login-interract.service';
 
-import { SwitchAnimation } from '../../login.animations';
+import { SwitchAnimation } from '../../../../shared/expand.animation';
 
 @Component({
   selector: 'app-auth-mode-switch',

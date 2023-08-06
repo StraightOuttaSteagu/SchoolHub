@@ -31,7 +31,7 @@ export const FormAnimationFade: AnimationTriggerMetadata = trigger(
   'fadeInOut',
   [
     state(
-      'signup',
+      'true',
       style({
         height: '0px',
         fontSize: '0',
@@ -40,14 +40,14 @@ export const FormAnimationFade: AnimationTriggerMetadata = trigger(
       })
     ),
     state(
-      'login',
+      'false',
       style({
         height: '*',
         fontSize: '20px',
         padding: '10px',
       })
     ),
-    transition('login <=> signup', [animate('200ms linear')]),
+    transition('false <=> true', [animate('200ms linear')]),
   ]
 );
 
@@ -55,17 +55,17 @@ export const FormAnimationMargin: AnimationTriggerMetadata = trigger(
   'changeMargin',
   [
     state(
-      'signup',
+      'true',
       style({
         marginBottom: '0',
       })
     ),
     state(
-      'login',
+      'false',
       style({
         marginBottom: '20px',
       })
     ),
-    transition('login <=> signup', [animate('300ms linear')]),
+    transition('false <=> true', [animate('300ms linear')]),
   ]
 );
