@@ -6,7 +6,6 @@ import { DashboardPagesRoutingModule } from './features/dashboard/components/pag
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];
 

@@ -4,7 +4,8 @@
         <div class='slider-thumb' [class.active-thumb]='activeFilter === "assigned"' (click)='activeFilter = "assigned"'>Assigned</div>
         <div class='slider-thumb' [class.active-thumb]='activeFilter === "done"' (click)='activeFilter = "done"'>Done</div>
     </div>
-    <div class='containers'>
+    <router-outlet></router-outlet>
+    <!--<div class='containers'>
         <div class='container' [class.shadow]='thisWeekCollapsed' (click)='thisWeekCollapsed = !thisWeekCollapsed'>
             <div class='category-title'>
                 <h3>This week: </h3>
@@ -81,5 +82,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
