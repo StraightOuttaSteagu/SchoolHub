@@ -43,3 +43,22 @@ export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
     transition('true <=> false', [animate('200ms linear')]),
   ]
 );
+
+export const removeText: AnimationTriggerMetadata = trigger(
+  'removeText',
+  [
+    state(
+      'false',
+      style({
+        fontSize: '0',
+      })
+    ),
+    state(
+      'true',
+      style({
+        fontSize: '*',
+      })
+    ),
+    transition('true <=> false', [animate('200ms linear')]),
+  ]
+);

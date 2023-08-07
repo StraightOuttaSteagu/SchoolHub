@@ -9,6 +9,7 @@ import { MissingComponent } from './assignments/missing/missing.component';
 import { AssignedComponent } from './assignments/assigned/assigned.component';
 import { DoneComponent } from './assignments/done/done.component';
 import { AssignmentsRoutingModule } from './assignments/assignments-routing.module';
+import { AssignmentsCardComponent } from 'src/app/assignments-card/assignments-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AssignmentsRoutingModule } from './assignments/assignments-routing.modu
     GradesComponent,
     MissingComponent,
     AssignedComponent,
-    DoneComponent
+    DoneComponent,
+    AssignmentsCardComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,6 @@ import { AssignmentsComponent } from './assignments.component';
 import { MissingComponent } from './missing/missing.component';
 import { DoneComponent } from './done/done.component';
 import { AssignedComponent } from './assigned/assigned.component';
-import { DashboardComponent } from '../../../dashboard.component';
 
 const routes: Routes = [
   { path: 'assignments', component: AssignmentsComponent, children: [
