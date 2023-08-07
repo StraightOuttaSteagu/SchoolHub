@@ -9,7 +9,7 @@ import { MissingComponent } from './assignments/missing/missing.component';
 import { AssignedComponent } from './assignments/assigned/assigned.component';
 import { DoneComponent } from './assignments/done/done.component';
 import { AssignmentsRoutingModule } from './assignments/assignments-routing.module';
-import { AssignmentsCardComponent } from 'src/app/assignments-card/assignments-card.component';
+import { AssignmentsCardComponent } from 'src/app/features/dashboard/components/pages/assignments/assignments-card/assignments-card.component';
 
 @NgModule({
   declarations: [

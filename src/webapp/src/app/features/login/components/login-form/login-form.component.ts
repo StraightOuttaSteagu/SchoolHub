@@ -25,10 +25,20 @@ export class LoginFormComponent implements OnInit {
   onSubmit(): void {
     if (this.getMode()){
       if (this.authForm.valid){
-        this.authService.register(this.authForm);
+        this.authService.register({
+          login: this.authForm.value?.username,
+          firstName: this.authForm.value?.firstName,
+          lastName: this.authForm.value?.lastName,
+          email: this.authForm.value?.email,
+          password: this.authForm.value?.password
+        });
       }
     } else if (this.authForm.get('username')?.valid && this.authForm.get('password')?.valid){
-      this.authService.login(this.authForm);
+      this.authService.login({
+        username: this.authForm.value?.username,
+        password: this.authForm.value?.password,
+        rememberMe: true
+      });
     }
   }
 

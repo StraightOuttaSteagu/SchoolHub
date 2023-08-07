@@ -55,14 +55,10 @@ export class AuthService {
     };
   }
 
-  login(form: FormGroup) {
-    this.http.post('http://localhost:8080/api/authenticate', {
-      username: form.value?.username,
-      password: form.value?.password,
-      rememberMe: true
-    }).subscribe({
+  login(form: object) {
+    this.http.post('http://localhost:8080/api/authenticate', form).subscribe({
       "next": val => {
-        
+        console.log(val)
       },
       "error": err => {
         console.log(err)
@@ -70,19 +66,13 @@ export class AuthService {
     });
   }
 
-  register(form: FormGroup) {
-    this.http.post('http://localhost:8080/api/register', {
-      login: form.value?.username,
-      firstName: form.value?.firstName,
-      lastName: form.value?.lastName,
-      email: form.value?.email,
-      password: form.value?.password
-    }).subscribe({
-      "next": val => {
-        
+  register(form: object) {
+    this.http.post('http://localhost:8080/api/register', form).subscribe({
+      next: val => {
+        console.log(val)
       },
-      "error": err => {
-        
+      error: err => {
+        console.log(err)
       }
     });
   }
