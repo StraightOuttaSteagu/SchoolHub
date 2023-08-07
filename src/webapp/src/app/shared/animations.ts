@@ -1,11 +1,4 @@
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-  AnimationTriggerMetadata,
-} from '@angular/animations';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger, } from '@angular/animations';
 
 export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
   state(
@@ -43,8 +36,8 @@ export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
       'true',
       style({
         height: '*',
-        fontSize: '20px',
-        padding: '10px',
+        fontSize: '*',
+        padding: '*',
       })
     ),
     transition('true <=> false', [animate('200ms linear')]),

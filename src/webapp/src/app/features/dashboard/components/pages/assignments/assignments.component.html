@@ -1,1 +1,85 @@
-<p>assignments works!</p>
+<div class='contents'>
+    <div class='slider'>
+        <div class='slider-thumb' [class.active-thumb]='activeFilter === "missing"' (click)='activeFilter = "missing"'>Missing</div>
+        <div class='slider-thumb' [class.active-thumb]='activeFilter === "assigned"' (click)='activeFilter = "assigned"'>Assigned</div>
+        <div class='slider-thumb' [class.active-thumb]='activeFilter === "done"' (click)='activeFilter = "done"'>Done</div>
+    </div>
+    <div class='containers'>
+        <div class='container' [class.shadow]='thisWeekCollapsed' (click)='thisWeekCollapsed = !thisWeekCollapsed'>
+            <div class='category-title'>
+                <h3>This week: </h3>
+                <img src='assets/arrow.svg' alt='arrow' class='arrow'>
+            </div>
+            <div class='assignment' [@fadeInOut]='thisWeekCollapsed' *ngFor='let item of data'>
+                <div class='left'>
+                    <h3 class='title' [@fadeInOut]='thisWeekCollapsed'>{{item.title}}</h3>
+                    <p class='due-date' [@fadeInOut]='thisWeekCollapsed'>Due date: {{item.dueDate}}</p>
+                </div>
+                <div class='right'>
+                    <div class='class-label'>
+                        <img src='assets/leaf.png' alt='leaf' [@fadeInOut]='thisWeekCollapsed'>
+                        <h3 class='class-name' [@fadeInOut]='thisWeekCollapsed'>{{item.class}}</h3>
+                    </div>
+                    <p class='create-date' [@fadeInOut]='thisWeekCollapsed'>Posted: {{item.createDate}}</p>
+                </div>
+            </div>
+        </div>
+        <div class='container' [class.shadow]='nextWeekCollapsed' (click)='nextWeekCollapsed = !nextWeekCollapsed'>
+            <div class='category-title'>
+                <h3>Next week: </h3>
+                <img src='assets/arrow.svg' alt='arrow' class='arrow'>
+            </div>
+            <div class='assignment' [@fadeInOut]='nextWeekCollapsed' *ngFor='let item of data'>
+                <div class='left'>
+                    <h3 class='title' [@fadeInOut]='nextWeekCollapsed'>{{item.title}}</h3>
+                    <p class='due-date' [@fadeInOut]='nextWeekCollapsed'>Due date: {{item.dueDate}}</p>
+                </div>
+                <div class='right'>
+                    <div class='class-label'>
+                        <img src='assets/leaf.png' alt='leaf' [@fadeInOut]='nextWeekCollapsed'>
+                        <h3 class='class-name' [@fadeInOut]='nextWeekCollapsed'>{{item.class}}</h3>
+                    </div>
+                    <p class='create-date' [@fadeInOut]='nextWeekCollapsed'>Posted: {{item.createDate}}</p>
+                </div>
+            </div>
+        </div>
+        <div class='container' [class.shadow]='laterCollapsed' (click)='laterCollapsed = !laterCollapsed'>
+            <div class='category-title'>
+                <h3>Later: </h3>
+                <img src='assets/arrow.svg' alt='arrow' class='arrow'>
+            </div>
+            <div class='assignment' [@fadeInOut]='laterCollapsed' *ngFor='let item of data'>
+                <div class='left'>
+                    <h3 class='title' [@fadeInOut]='laterCollapsed'>{{item.title}}</h3>
+                    <p class='due-date' [@fadeInOut]='laterCollapsed'>Due date: {{item.dueDate}}</p>
+                </div>
+                <div class='right'>
+                    <div class='class-label'>
+                        <img src='assets/leaf.png' alt='leaf' [@fadeInOut]='laterCollapsed'>
+                        <h3 class='class-name' [@fadeInOut]='laterCollapsed'>{{item.class}}</h3>
+                    </div>
+                    <p class='create-date' [@fadeInOut]='laterCollapsed'>Posted: {{item.createDate}}</p>
+                </div>
+            </div>
+        </div>
+        <div class='container' [class.shadow]='noDueDateCollapsed' (click)='noDueDateCollapsed = !noDueDateCollapsed'>
+            <div class='category-title'>
+                <h3>No due date: </h3>
+                <img src='assets/arrow.svg' alt='arrow' class='arrow'>
+            </div>
+            <div class='assignment' [@fadeInOut]='noDueDateCollapsed' *ngFor='let item of data'>
+                <div class='left'>
+                    <h3 class='title' [@fadeInOut]='noDueDateCollapsed'>{{item.title}}</h3>
+                    <p class='due-date' [@fadeInOut]='noDueDateCollapsed'>Due date: {{item.dueDate}}</p>
+                </div>
+                <div class='right'>
+                    <div class='class-label'>
+                        <img src='assets/leaf.png' alt='leaf' [@fadeInOut]='noDueDateCollapsed'>
+                        <h3 class='class-name' [@fadeInOut]='noDueDateCollapsed'>{{item.class}}</h3>
+                    </div>
+                    <p class='create-date' [@fadeInOut]='noDueDateCollapsed'>Posted: {{item.createDate}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
