@@ -1,8 +1,8 @@
 <div class='contents'>
     <div class='slider'>
-        <div class='slider-thumb' [class.active-thumb]='getHref().includes("missing")' onclick="window.location.href='assignments/missing'">Missing</div>
-        <div class='slider-thumb' [class.active-thumb]='getHref().includes("assigned")' onclick="window.location.href='assignments/assigned'">Assigned</div>
-        <div class='slider-thumb' [class.active-thumb]='getHref().includes("done")' onclick="window.location.href='assignments/done'">Done</div>
+        <div class='slider-thumb' [class.active-thumb]='getHref().includes("missing")' routerLink='missing'>Missing</div>
+        <div class='slider-thumb' [class.active-thumb]='getHref().includes("assigned")' routerLink='assigned'>Assigned</div>
+        <div class='slider-thumb' [class.active-thumb]='getHref().includes("done")' routerLink='done'>Done</div>
     </div>
     <router-outlet></router-outlet>
 </div>
