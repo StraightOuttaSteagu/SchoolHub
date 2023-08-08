@@ -35,14 +35,15 @@
     </linearGradient>
     </defs>
 </svg>
-<div class='org-dropdown dropdown' [class.expanded]='orgDropdownCollapsed' (click)='orgDropdownCollapsed = !orgDropdownCollapsed'>
-    <div class='current-org'>
-        <p class='text-overflow'>Colegiul National de Informatica "Grigore Moisil"</p>
-        <img src='assets/arrow.svg'>
-    </div>
-    <div class='create-btn' [@fadeInOut]='orgDropdownCollapsed'>
-        <p>+</p>
-        <p>Create organization</p>
+<div class="outer-org-dropdown">
+    <div class='org-dropdown dropdown' [class.expanded]='orgDropdownCollapsed' (click)='orgDropdownCollapsed = !orgDropdownCollapsed'>
+        <div class='current-org'>
+            <p class='text-overflow'>Colegiul National de Informatica "Grigore Moisil"</p>
+            <img [ngStyle]="{'transform': orgDropdownCollapsed?'':'rotate(180deg)'}" src='assets/arrow.svg'>
+        </div>
+        <div class='create-btn' [@fadeInOut]='orgDropdownCollapsed'>
+            <p>+ Create organization</p>
+        </div>
     </div>
 </div>
 <!--<div class='dropdown-placeholder' style='height: 50px' *ngIf='orgDropdownCollapsed'></div>-->

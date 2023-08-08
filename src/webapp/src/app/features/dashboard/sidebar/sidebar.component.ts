@@ -8,7 +8,7 @@ import { CollapseAnimationFade } from '../../../shared/animations';
   animations: [CollapseAnimationFade]
 })
 export class SidebarComponent {
-  orgDropdownCollapsed: boolean = true;
+  orgDropdownCollapsed: boolean = false;
   userDropDownCollapsed: boolean = true;
 
   organizations = [

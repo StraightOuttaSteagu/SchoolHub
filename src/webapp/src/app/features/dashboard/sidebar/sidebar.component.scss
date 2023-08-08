@@ -46,6 +46,7 @@
   gap: 10px;
   width: 100%;
   overflow: auto;
+  margin-top: 50px;
 }
 
 h3, label {
@@ -95,11 +96,14 @@ img {
 }
 
 .org-dropdown {
+  right: 10%;
   line-height: 18px;
   margin-bottom: 20px;
   backdrop-filter: blur(30px);
+  position: absolute;
   .current-org {
     display: flex;
+    justify-content: space-between;
     p {
       font-size: 0.9rem;
       margin: 0;
@@ -114,6 +118,5 @@ img {
 
 .expanded {
   //top: 10%;
-  position: absolute;
   z-index: 1000;
 }
