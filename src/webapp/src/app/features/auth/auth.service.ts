@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http'
 
 @Injectable({
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http'
 export class AuthService {
   private authMode: 'login' | 'signup' = 'signup';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
 
   public setAuthMode(mode: 'login' | 'signup'){
     this.authMode = mode;
@@ -20,60 +21,45 @@ export class AuthService {
 
   initForm(): FormGroup {
     return this.fb.group({
-      name: ['', this.nameValidator()],
-      surname: ['', this.nameValidator()],
-      username: ['', this.usernameValidator()],
-      email: ['', this.emailValidator()],
-      password: ['', this.passwordValidator()],
-      repeatPassword: ['', this.RepeatPasswordValidator()]
+      name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+      surname: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+      repeatPassword: ['']
     });
-  }
-
-  nameValidator(): ValidatorFn | null {
-    return this.authMode === 'signup' ?
-      Validators.compose([Validators.required, Validators.minLength(1)]) : Validators.nullValidator;
-  }
-
-  usernameValidator(): ValidatorFn | null {
-    return Validators.compose([Validators.required, Validators.minLength(3)]);
-  }
-
-  emailValidator(): ValidatorFn | null {
-    return this.authMode === 'signup' ? Validators.compose([Validators.required, Validators.email]) : Validators.nullValidator;
-  }
-
-  passwordValidator(): ValidatorFn | null {
-    return Validators.compose([Validators.required, Validators.minLength(8)]);
-  }
-
-  RepeatPasswordValidator(): ValidatorFn | null {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const password = control.get('password')?.value;
-      const repeatPassword = control.get('repeatPassword')?.value;
-
-      return password === repeatPassword ? null : {notSame: true};
-    };
   }
 
   login(form: object) {
     this.http.post('http://localhost:8080/api/authenticate', form).subscribe({
-      "next": val => {
-        console.log(val)
+      next: (val: any) => {
+        localStorage.setItem('token', val.id_token);
+        this.displayMessage("Login succesful");
+        this.router.navigate(['announcements']);
       },
-      "error": err => {
-        console.log(err)
+      error: err => {
+        if (err.statusText == "Unauthorized"){
+          this.displayMessage("Invalid email or password");
+        } else {
+          this.displayMessage(err.statusText);
+        }
       }
     });
   }
 
   register(form: object) {
     this.http.post('http://localhost:8080/api/register', form).subscribe({
-      next: val => {
-        console.log(val)
+      next: () => {
+        this.displayMessage("Account created successfully");
+        this.login(form);
       },
       error: err => {
-        console.log(err)
+        this.displayMessage(err.statusText);
       }
     });
+  }
+
+  displayMessage(message: string) {
+    console.log(message)
   }
 }
