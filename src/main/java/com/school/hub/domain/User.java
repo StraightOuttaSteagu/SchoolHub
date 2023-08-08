@@ -2,6 +2,7 @@ package com.school.hub.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.school.hub.config.Constants;
+import com.school.hub.domain.organization.UserOrganization;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -88,6 +89,12 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
     )
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
+
+    @OneToMany(
+        mappedBy = "user",
+        cascade = CascadeType.REMOVE
+    )
+    private Set<UserOrganization> organizations = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -192,6 +199,14 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public Set<UserOrganization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(Set<UserOrganization> organizations) {
+        this.organizations = organizations;
     }
 
     @Override

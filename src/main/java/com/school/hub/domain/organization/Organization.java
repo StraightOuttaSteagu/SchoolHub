@@ -1,13 +1,13 @@
-package com.school.hub.domain;
+package com.school.hub.domain.organization;
 
+import com.school.hub.domain.AbstractAuditingEntity;
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "organization")
-public class Organization {
+public class Organization extends AbstractAuditingEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,14 +18,18 @@ public class Organization {
     @Column(nullable = false)
     private String description;
 
-    @ManyToMany
-    private Set<User> users;
+    @OneToMany(
+        cascade = CascadeType.REMOVE,
+        mappedBy = "organization"
+    )
+    private Set<UserOrganization> users;
 
-    public long getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,11 +49,11 @@ public class Organization {
         this.description = description;
     }
 
-    public Set<User> getUsers() {
+    public Set<UserOrganization> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Set<UserOrganization> users) {
         this.users = users;
     }
 }
