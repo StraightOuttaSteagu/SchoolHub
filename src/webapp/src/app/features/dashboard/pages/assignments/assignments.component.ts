@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { CollapseAnimationFade } from '../../../../../shared/animations';
 
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
-  styleUrls: ['./assignments.component.scss'],
-  animations: [CollapseAnimationFade]
+  styleUrls: ['./assignments.component.scss']
 })
 export class AssignmentsComponent {
   getHref(){

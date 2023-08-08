@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { CollapseAnimationFade } from '../../../../shared/animations';
-import { AuthService } from '../../auth.service';
+import { CollapseAnimationFade } from '../../../shared/animations';
+import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss'],
+  selector: 'app-auth-form',
+  templateUrl: './auth-form.component.html',
+  styleUrls: ['./auth-form.component.scss'],
   animations: [
     CollapseAnimationFade,
   ],
 }) 
-export class LoginFormComponent implements OnInit {
+export class AuthFormComponent implements OnInit {
   authForm!: FormGroup;
 
   constructor(private authService: AuthService) {
@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
     if (this.getMode()){
       if (this.authForm.valid){
         this.authService.register({
-          login: this.authForm.value?.username,
+          auth: this.authForm.value?.username,
           firstName: this.authForm.value?.firstName,
           lastName: this.authForm.value?.lastName,
           email: this.authForm.value?.email,

@@ -2,7 +2,7 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger, }
 
 export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
   state(
-    'true',
+    'false',
     style({
       color: '#D9D9D9',
       backgroundColor: '#292251',
@@ -10,7 +10,7 @@ export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
     })
   ),
   state(
-    'false',
+    'true',
     style({
       color: '#292251',
       backgroundColor: 'rgb(255, 255, 255, 00.3)',
