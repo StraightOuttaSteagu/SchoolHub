@@ -197,9 +197,13 @@ button {
 }
 
 .hover-scrollbar {
-  overflow-y: hidden;
+  overflow-y: scroll;
 
-  &:hover {
-    overflow-y: auto;
+  &::-webkit-scrollbar-thumb {
+    background-color: #c2c2c255;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
   }
 }
