@@ -30,6 +30,5 @@ export class SidebarComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
-    {subject: 'Biologie', teacher: 'Oteleanu lia'}
   ];
 }

@@ -40,12 +40,13 @@
 }
 
 .side-classes {
+  scrollbar-gutter: stable;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
   margin-top: 50px;
 }
 
@@ -95,12 +96,21 @@ img {
 
 }
 
+.stable-gutter {
+  overflow-y: hidden;
+  scrollbar-gutter: stable;
+}
+
 .org-dropdown {
+  width: calc(80% - 10px) !important;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
   right: 10%;
   line-height: 18px;
   margin-bottom: 20px;
   backdrop-filter: blur(30px);
-  position: absolute;
   .current-org {
     display: flex;
     justify-content: space-between;
