@@ -1,6 +1,7 @@
 package com.school.hub.domain.organization;
 
 import com.school.hub.domain.AbstractAuditingEntity;
+import com.school.hub.domain.Class;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -23,6 +24,15 @@ public class Organization extends AbstractAuditingEntity<Long> {
         mappedBy = "organization"
     )
     private Set<UserOrganization> users;
+
+    @OneToMany(
+        cascade = CascadeType.REMOVE,
+        mappedBy = "class"
+    )
+    private Set<Class> classes;
+
+    public Organization() {
+    }
 
     @Override
     public Long getId() {
@@ -55,5 +65,13 @@ public class Organization extends AbstractAuditingEntity<Long> {
 
     public void setUsers(Set<UserOrganization> users) {
         this.users = users;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
     }
 }
