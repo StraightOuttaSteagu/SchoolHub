@@ -3,7 +3,7 @@
     <div class="main-bar">
         <div class="top-bar">
             <h1>Overall average: 10</h1>
-            <div class="nav">
+            <div class="nav" *ngIf="showNav">
                 <button [ngClass]="getHref().includes('assignments')?'highlight':''" routerLink="assignments/assigned">Assignments</button>
                 <button [ngClass]="getHref().includes('announcements')?'highlight':''" routerLink="announcements">Announcements</button>
                 <button [ngClass]="getHref().includes('grades')?'highlight':''" routerLink="grades">Grades</button>
