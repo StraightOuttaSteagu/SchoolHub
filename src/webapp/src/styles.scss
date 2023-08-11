@@ -1,25 +1,11 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $SchoolHub-primary: mat.define-palette(mat.$indigo-palette);
 $SchoolHub-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
 $SchoolHub-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $SchoolHub-theme: mat.define-light-theme((
         color: (
                 primary: $SchoolHub-primary,
@@ -28,12 +14,9 @@ $SchoolHub-theme: mat.define-light-theme((
         )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($SchoolHub-theme);
 
-/* You can add global styles to this file, and also import other style files */
+@import "./app/shared/variables.scss";
 
 body, html {
   margin: 0;
@@ -194,6 +177,7 @@ button {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hover-scrollbar {
@@ -206,4 +190,71 @@ button {
   &:hover::-webkit-scrollbar-thumb {
     background-color: #c2c2c2;
   }
+}
+
+.glass {
+  background: var(--glassColor);
+  border-color: var(--glassBorderColor);
+}
+
+.content-container {
+  border-radius: 30px;
+  background: rgba(var(--bgColor), .7);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.grid-alignment {
+
+}
+
+.vertical-alignment {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  width: 950px;
+  padding-left: 56px;
+  overflow-x: hidden;
+  z-index: 10000;
+  margin-bottom: 30px;
+}
+
+h5 {
+  color: rgba(var(--textColor), 0.70);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 0 12px;
+}
+
+h1 {
+  color: rgb(var(--textColor));
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+h4 {
+  color: rgba(var(--textColor), 0.90);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+h3 {
+  color: rgba(var(--textColor), 0.85);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+  white-space: nowrap;
+}
+
+img {
+  object-fit:contain;
 }

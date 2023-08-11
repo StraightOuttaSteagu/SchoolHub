@@ -1,0 +1,42 @@
+$bgImageLight: linear-gradient(50deg, #EEEFEF 0%, #76B7FF 63.02%, #7484E3 99.48%);
+$bgImageDark: linear-gradient(50deg, #004f9e 40%, #583ca6 100%);
+
+$white: 255, 255, 255;
+$black: 58, 58, 58;
+
+$textLight: #3D4756;
+$textDark: #F5F9FF;
+
+$blueLight: #76B7FF;
+$blueDark: #004F9E;
+
+$glassColorLight: rgba(231, 231, 231, .25);
+$glassColorDark: rgba(0, 0, 0, .7);
+
+$glassBorderLight: rgba(250, 250, 250, 0.5);
+$glassBorderDark: rgba(165, 165, 165, .5);
+
+
+@mixin dark() {
+  --bgImage: #{$bgImageDark};
+  --bgColor: #{$black};
+  --textColor: #{$textDark};
+  --glassColor: #{$glassColorDark};
+  --glassBorderColor: #{$glassBorderDark};
+}
+
+@mixin light() {
+  --bgImage: #{$bgImageLight};
+  --bgColor: #{$white};
+  --textColor: #{$textLight};
+  --glassColor: #{$glassColorLight};
+  --glassBorderColor: #{$glassBorderLight};
+}
+
+body.dark {
+  @include dark();
+}
+
+body.light {
+  @include light();
+}

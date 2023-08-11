@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http'
 export class AuthService {
   private authMode: 'login' | 'signup' = 'signup';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {}
 
   public setAuthMode(mode: 'login' | 'signup'){
     this.authMode = mode;
@@ -60,6 +61,12 @@ export class AuthService {
   }
 
   displayMessage(message: string) {
-    console.log(message)
+    this.openSnackBar(message);
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, undefined, {
+      duration: 3000, // Duration in milliseconds
+    });
   }
 }
