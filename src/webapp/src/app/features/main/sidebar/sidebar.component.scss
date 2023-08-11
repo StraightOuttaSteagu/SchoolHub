@@ -78,7 +78,6 @@ img {
   object-fit: contain;
   margin-left: 8px;
   margin-right: 8px;
-  //z-index: 100000;
   width: 12%;
 }
 
@@ -93,18 +92,23 @@ img {
 
 }
 
-.outer-org-dropdown {
+.position-org-dropdown {
   width: 100%;
-  height: 10px;
   margin-bottom: 50px;
 }
 
-.org-dropdown {
-  width: calc(80% - 19.5px);
+.outer-org-dropdown {
+  width: 100%;
   display: flex;
-  right: calc(20% - 22px);
-  justify-content: center;
   position: absolute;
+  justify-content: center;
+  scrollbar-gutter: stable both-edges;
+  overflow-y: scroll;
+}
+
+.org-dropdown {
+  width: 80%;
+  justify-content: center;
   line-height: 18px;
   margin-bottom: 20px;
   backdrop-filter: blur(8px);
@@ -124,7 +128,79 @@ img {
   }
 }
 
+.position-account-dropdown {
+  width: 100%;
+  margin-top: 80px;
+}
+
+.outer-account-dropdown {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  scrollbar-gutter: stable both-edges;
+  overflow-y: scroll;
+  bottom: 10px;
+}
+
+.account-dropdown {
+  padding: 4px;
+  width: 80%;
+  justify-content: center;
+  line-height: 18px;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+
+  p {
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 1px 0 1px 15px;
+    color: rgba(61, 71, 86, 0.6);
+  }
+
+  img {
+    width: 17%;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    -webkit-line-clamp: 2;
+    padding-bottom: 2px;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 300;
+    -webkit-line-clamp: 1;
+  }
+}
+
+.account {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-top: #00000046;
+  border-top-width: 1px;
+  
+  width: 90%;
+  align-self: center;
+}
+
 .expanded {
-  //top: 10%;
   z-index: 1000;
+}
+
+.account-action {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 20px;
+}
+
+.account-settings {
+  margin-top: 12px;
 }

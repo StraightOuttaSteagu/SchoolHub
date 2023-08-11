@@ -9,7 +9,7 @@ import { CollapseAnimationFade } from '../../../shared/animations';
 })
 export class SidebarComponent {
   orgDropdownCollapsed: boolean = false;
-  userDropDownCollapsed: boolean = true;
+  userDropDownCollapsed: boolean = false;
 
   organizations = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
@@ -31,4 +31,8 @@ export class SidebarComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
   ];
+
+  deleteToken(){
+    localStorage.clear();
+  }
 }
