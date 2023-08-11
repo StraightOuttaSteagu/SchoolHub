@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
+import { AnnouncementsComponent } from './announcements/announcements.component';
+import { AssignedComponent } from './assignments/assigned/assigned.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { DoneComponent } from './assignments/done/done.component';
+import { MissingComponent } from './assignments/missing/missing.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { GradesComponent } from './grades/grades.component';
 import { DashboardComponent } from './dashboard.component';
-import { AnnouncementsComponent } from './pages/announcements/announcements.component';
-import { AssignedComponent } from './pages/assignments/assigned/assigned.component';
-import { AssignmentsComponent } from './pages/assignments/assignments.component';
-import { DoneComponent } from './pages/assignments/done/done.component';
-import { MissingComponent } from './pages/assignments/missing/missing.component';
-import { AttendanceComponent } from './pages/attendance/attendance.component';
-import { GradesComponent } from './pages/grades/grades.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children: [
