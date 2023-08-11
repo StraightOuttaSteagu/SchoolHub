@@ -1,0 +1,2 @@
+<button class="sign" [@status]="getMode()=='signup'" (click)="setMode('signup')">Sign Up</button>
+<button class="log" [@status]="!(getMode()=='signup')" (click)="setMode('login')">Log In</button>

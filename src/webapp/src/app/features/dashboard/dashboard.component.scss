@@ -1,7 +1,7 @@
 :host {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(50deg, #E0E0E0 0%, #ACDDFD 63.02%, #A89AFF 99.48%);
+    background: linear-gradient(50deg, #EEEFEF 0%, #76B7FF 63.02%, #7484E3 99.48%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,10 +14,10 @@ body, html {
 
 .main {
     width: calc(100vw - 40px);
-    height: calc(100vh - 40px);;
+    height: calc(100vh - 40px);
     border-radius: 2vw;
     border-color: #fafafa7f;
-    background: #e7e7e746;
+    background: #e7e7e780;
     border-style: solid;
     border-width: 2px;
     display: flex;
@@ -26,52 +26,52 @@ body, html {
 }
 
 button:hover {
-    filter: brightness(0.8);
+    background: rgb(167, 188, 215);
     cursor: pointer;
 }
 
 button {
-    border-radius: 20px;
+    border-radius: 16px;
     border: none;
     background-color: #ffffff6a;
-    padding: 1rem 2rem 1rem 2rem;
-    color: rgba(163, 163, 163, 0.851);
-    font-size: 1.2rem;
+    padding: 10px 16px 10px 16px;
+    color: rgba(61, 71, 86, 0.5);
+    font-size: 16px;
 }
 
 .nav {
     display: flex;
     gap: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .main-bar {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     height: 100%;
-    margin-left: 20px;
+    margin-left: 13px;
 }
 
 h1 {
-    color: #424242;
-    font-size: 4em;
+    color: #3D4756;
+    font-size: 52px;
     font-weight: 600;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    margin-bottom: 6px;
+    margin-top: 40px;
 }
 
 router-outlet {
-    margin-top: 20px;
+    margin-top: 13px;
 }
 
 .top-bar {
-    margin-left: 85px;
+    margin-left: 56px;
 }
 
 .highlight {
     background-color: rgba(255, 255, 255, 0.7) !important;
     color: #3D4756 !important;
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
 }

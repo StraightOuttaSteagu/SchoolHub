@@ -4,10 +4,10 @@
         <div class="top-bar">
             <h1>Overall average: 10</h1>
             <div class="nav">
-                <button onclick="window.location.href='../assignments'" [ngClass]="getHref().includes('assignments')?'highlight':''">Assignments</button>
-                <button onclick="window.location.href='../announcements'" [ngClass]="getHref().includes('announcements')?'highlight':''">Announcements</button>
-                <button onclick="window.location.href='../grades'" [ngClass]="getHref().includes('grades')?'highlight':''">Grades</button>
-                <button onclick="window.location.href='../attendance'" [ngClass]="getHref().includes('attendance')?'highlight':''">Attendance</button>
+                <button [ngClass]="getHref().includes('assignments')?'highlight':''" routerLink="assignments/assigned">Assignments</button>
+                <button [ngClass]="getHref().includes('announcements')?'highlight':''" routerLink="announcements">Announcements</button>
+                <button [ngClass]="getHref().includes('grades')?'highlight':''" routerLink="grades">Grades</button>
+                <button [ngClass]="getHref().includes('attendance')?'highlight':''" routerLink="attendance">Attendance</button>
             </div>
         </div>
         <router-outlet></router-outlet>

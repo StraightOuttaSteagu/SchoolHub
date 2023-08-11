@@ -1,11 +1,4 @@
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-  AnimationTriggerMetadata,
-} from '@angular/animations';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger, } from '@angular/animations';
 
 export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
   state(
@@ -24,14 +17,14 @@ export const SwitchAnimation: AnimationTriggerMetadata = trigger('status', [
       border: '2px solid rgba(255, 255, 255, 0.55)',
     })
   ),
-  transition('true <=> false', animate('300ms linear')),
+  transition('false <=> true', animate('300ms linear')),
 ]);
 
 export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
   'fadeInOut',
   [
     state(
-      'true',
+      'false',
       style({
         height: '0px',
         fontSize: '0',
@@ -40,13 +33,32 @@ export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
       })
     ),
     state(
-      'false',
+      'true',
       style({
         height: '*',
-        fontSize: '20px',
-        padding: '10px',
+        fontSize: '*',
+        padding: '*',
       })
     ),
-    transition('false <=> true', [animate('200ms linear')]),
+    transition('true <=> false', [animate('200ms linear')]),
+  ]
+);
+
+export const removeText: AnimationTriggerMetadata = trigger(
+  'removeText',
+  [
+    state(
+      'false',
+      style({
+        fontSize: '0',
+      })
+    ),
+    state(
+      'true',
+      style({
+        fontSize: '*',
+      })
+    ),
+    transition('true <=> false', [animate('200ms linear')]),
   ]
 );
