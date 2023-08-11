@@ -13,5 +13,4 @@
         <div class='second-line' *ngIf='item?.grades.length>1'></div>
         <div class='average-grade'>{{ item?.grades.length>1?calculateAverage(item?.grades).toFixed(2):'' }}</div>
     </div>
-    
 </div>

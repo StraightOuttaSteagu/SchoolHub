@@ -1,5 +1,11 @@
+:host {
+  width: 100%;
+}
+
 .containers {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+}

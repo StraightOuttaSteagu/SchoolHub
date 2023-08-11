@@ -47,11 +47,13 @@ button {
 
 .main-bar {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
     height: 100%;
     margin-left: 13px;
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 h1 {

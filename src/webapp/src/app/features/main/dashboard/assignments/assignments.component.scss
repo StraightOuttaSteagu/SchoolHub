@@ -1,8 +1,17 @@
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10000;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
 .contents {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .slider {
@@ -12,6 +21,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   margin-bottom: 30px;
+  margin-left: 30px;
 }
 
 .slider-thumb {
@@ -37,11 +47,13 @@
   gap: 30px;
 }
 
-.container {
-  width: 950px;
-  padding: 10px 0 10px 0;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 35px;
+.outer {
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px 0 20px 0px;
+  align-items: center;
 }
 
 .category-title {
@@ -58,14 +70,6 @@
 
 .arrow {
   margin-right: 20px;
-}
-
-:host {
-  padding-left: 26px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 10000;
-  margin-bottom: 30px;
 }
 
 .assignment {

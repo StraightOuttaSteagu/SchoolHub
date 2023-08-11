@@ -1,5 +1,5 @@
-<div class='container' [class.shadow]='collapsed' (click)='collapsed = !collapsed'>
-    <div class='category-title'>
+<div class='container' [class.shadow]='collapsed'>
+    <div class='category-title' (click)='collapsed = !collapsed'>
         <h3 style="font-size: 30px;">{{ title }}</h3>
         <img src='assets/arrow.svg' alt='arrow' class='arrow' [ngStyle]="{'transform': !collapsed?'rotate(180deg)':''}">
     </div>

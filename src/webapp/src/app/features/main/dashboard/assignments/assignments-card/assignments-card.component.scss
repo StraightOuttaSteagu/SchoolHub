@@ -1,20 +1,14 @@
-.containers {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
 :host {
   overflow-y: hidden;
+  width: 80%;
 }
 
 .container {
   overflow-y: hidden;
-  width: 950px;
   padding: 10px 0 10px 0;
   background: rgba(255, 255, 255, 0.35);
   border-radius: 35px;
-  margin: 25px 30px 25px 30px;
+  margin: 25px 30px 25px 56px;
 }
 
 .category-title {
@@ -23,7 +17,6 @@
   margin-left: 35px;
   h3 {
     margin: 0;
-    //font-size: 30px;
     font-weight: 400;
     color: rgba(61, 71, 86, 0.9);
   }
@@ -43,13 +36,11 @@
 }
 
 .title {
-  //font-size: 22px;
   font-weight: 300;
   margin: 0;
 }
 
 .due-date {
-  //font-size: 16px;
   font-weight: 300;
   margin: 0;
   color: rgba(61, 71, 86, 0.7);
@@ -58,7 +49,6 @@
 .class-label {
   display: flex;
   img {
-    //width: 30px;
     object-fit: contain;
   }
   height: 30px;
@@ -66,7 +56,6 @@
 
 .class-name {
   margin: 0;
-  //font-size: 20px;
   font-weight: 300;
   color: rgba(61, 71, 86, 0.85);
 }
@@ -77,7 +66,6 @@
 }
 
 .create-date {
-  //font-size: 16px;
   font-weight: 200;
   margin: 0;
 }
