@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  showNav: boolean = true;
+
   getHref(): string {
     return window.location.href;
   }
