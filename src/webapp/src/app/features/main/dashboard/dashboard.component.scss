@@ -5,18 +5,18 @@
   width: 100%;
 }
 
-button:hover {
-  background: rgb(167, 188, 215);
-  cursor: pointer;
-}
-
-button {
+.nav-option {
   border-radius: 16px;
   border: none;
   background-color: #ffffff6a;
   padding: 10px 16px 10px 16px;
   color: rgba(61, 71, 86, 0.5);
   font-size: 16px;
+
+  &:hover {
+    background: rgb(167, 188, 215);
+    cursor: pointer;
+  }
 }
 
 .nav {
@@ -25,7 +25,7 @@ button {
   margin-bottom: 30px;
 }
 
-h1 {
+.main-title {
   color: #3D4756;
   font-size: 52px;
   font-weight: 600;

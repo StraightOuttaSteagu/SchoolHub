@@ -1,10 +1,9 @@
-<div class="outer">
+<div class='outer'>
     <div class='card' *ngFor='let item of data'>
-        <div class='outer-card-title'>
+        <div class='outer-card-title bottom-line'>
             <h2 class='card-title text-overflow'>{{item.title}}</h2>
         </div>
-        <div class='first-line'></div>
-        <div class='card-contents-all'>
+        <div class='card-contents-all hover-scrollbar'>
             <div class='card-contents' *ngFor='let attendance of item?.attendance'>
                 <div class='contents-date' [ngStyle]='{"text-decoration-line": attendance.excused?"line-through": "none"}'>{{attendance.date}}</div>
             </div>

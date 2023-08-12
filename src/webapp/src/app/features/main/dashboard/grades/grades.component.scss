@@ -70,28 +70,19 @@
   text-align: right;
 }
 
-.first-line {
-  height: 1px;
-  width: 80%;
-  border-radius: 250px;
-  background: #3D475640;
-  margin-bottom: 20px;
-}
-
-.second-line {
-  height: 1px;
-  width: 80%;
-  border-radius: 250px;
-  background: #3D475640;
-  margin-top: 20px;
-}
-
 .average-grade {
+  display: flex;
+  flex-direction: column;
   font-weight: 500;
   font-size: 25px;
   color: #3D4756;
-  margin-top: 8px;
+  margin-top: 20px;
   margin-bottom: 8px;
+  width: 80%;
+  text-align: center;
+  height: 60px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .outer {

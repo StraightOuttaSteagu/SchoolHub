@@ -1,16 +1,14 @@
-<div class="outer">
+<div class='outer'>
     <div class='card' *ngFor='let item of data'>
-        <div class='outer-card-title'>
-            <h2 class='card-title text-overflow'>{{item.title}}</h2>
+        <div class='outer-card-title bottom-line'>
+            <h3 class='card-title text-overflow'>{{item.title}}</h3>
         </div>
-        <div class='first-line'></div>
-        <div class='card-contents-all'>
+        <div class='card-contents-all hover-scrollbar'>
             <div class='card-contents' *ngFor='let grade of item?.grades'>
                 <div class='contents-grade'>{{grade.grade}}</div>
                 <div class='contents-date'>{{grade.date}}</div>
             </div>
         </div>
-        <div class='second-line' *ngIf='item?.grades.length>1'></div>
-        <div class='average-grade'>{{ item?.grades.length>1?calculateAverage(item?.grades).toFixed(2):'' }}</div>
+        <h3 [class.top-line]="item?.grades.length > 1" class='average-grade'>{{ item?.grades.length>1?calculateAverage(item?.grades).toFixed(2):'' }}</h3>
     </div>
 </div>

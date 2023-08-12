@@ -25,18 +25,14 @@
   display: flex;
   min-height: 67px;
 
-}
-
-.side-class:hover {
-  cursor: pointer;
-
-  img {
-    transform: scale(1.3) translateY(-8px);
-    transition-duration: 0.5s;
-    overflow: visible;
+  &:hover {
+    cursor: pointer;
+  
+    img {
+      transform: scale(1.3) translateY(-8px);
+      transition-duration: 0.5s;
+    }
   }
-
-  overflow: visible;
 }
 
 .side-classes {
@@ -94,7 +90,7 @@ img {
 
 .position-org-dropdown {
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 
 .outer-org-dropdown {
@@ -144,7 +140,6 @@ img {
 }
 
 .account-dropdown {
-  padding: 4px;
   width: 80%;
   justify-content: center;
   line-height: 18px;
@@ -161,6 +156,7 @@ img {
 
   img {
     width: 17%;
+    margin: 4px;
   }
 
   h3 {
@@ -185,7 +181,7 @@ img {
   border-top: #00000046;
   border-top-width: 1px;
   
-  width: 90%;
+  width: 100%;
   align-self: center;
 }
 
@@ -203,4 +199,10 @@ img {
 
 .account-settings {
   margin-top: 12px;
+}
+
+.top-sidebar {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
 }

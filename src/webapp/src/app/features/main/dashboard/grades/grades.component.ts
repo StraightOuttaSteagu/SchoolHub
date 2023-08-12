@@ -25,6 +25,38 @@ export class GradesComponent implements OnInit{
         {
           grade: 3,
           date: '17.05.2023'
+        },
+        {
+          grade: 2,
+          date: '17.05.2023'
+        },
+        {
+          grade: 10,
+          date: '17.05.2023'
+        },
+        {
+          grade: 4,
+          date: '17.05.2023'
+        },
+        {
+          grade: 3,
+          date: '17.05.2023'
+        },
+        {
+          grade: 2,
+          date: '17.05.2023'
+        },
+        {
+          grade: 10,
+          date: '17.05.2023'
+        },
+        {
+          grade: 4,
+          date: '17.05.2023'
+        },
+        {
+          grade: 3,
+          date: '17.05.2023'
         }
       ]
     },
