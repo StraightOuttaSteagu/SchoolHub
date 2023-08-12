@@ -8,13 +8,13 @@
 .nav-option {
   border-radius: 16px;
   border: none;
-  background-color: #ffffff6a;
+  background-color: var(--optionNotSelectedColor);
   padding: 10px 16px 10px 16px;
-  color: rgba(61, 71, 86, 0.5);
+  color: rgba(var(--textColor), 0.5);
   font-size: 16px;
 
   &:hover {
-    background: rgb(167, 188, 215);
+    background-color: var(--navButtonHover);
     cursor: pointer;
   }
 }
@@ -26,7 +26,7 @@
 }
 
 .main-title {
-  color: #3D4756;
+  color: rgb(var(--textColor));
   font-size: 52px;
   font-weight: 600;
   margin-bottom: 6px;
@@ -43,7 +43,7 @@ router-outlet {
 }
 
 .highlight {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  color: #3D4756 !important;
+  background: var(--optionSelectedColor) !important;
+  color: rgb(var(--textColor)) !important;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
 }

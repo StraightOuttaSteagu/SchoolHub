@@ -4,33 +4,74 @@ $bgImageDark: linear-gradient(50deg, #004f9e 40%, #583ca6 100%);
 $white: 255, 255, 255;
 $black: 58, 58, 58;
 
-$textLight: #3D4756;
-$textDark: #F5F9FF;
+$textLight: 61, 71, 86;
+$textDark: 245, 249, 255;
 
-$blueLight: #76B7FF;
+$blueLight: #76b7ff;
 $blueDark: #004F9E;
 
-$glassColorLight: rgba(231, 231, 231, .25);
+$glassColorLight: rgba(231, 231, 231, .5);
 $glassColorDark: rgba(0, 0, 0, .7);
 
-$glassBorderLight: rgba(250, 250, 250, 0.5);
+$glassBorderLight: rgba(250, 250, 250, .5);
 $glassBorderDark: rgba(165, 165, 165, .5);
 
+$sideBarLight: rgba(255, 255, 255, 0.7);
+$sideBarDark: rgba(35, 35, 35, 0.7);
+
+$boxLight: rgba(255, 255, 255, .7);
+$boxDark: rgba(58, 58, 58, .8);
+
+$boxBorderLight: rgba(61, 71, 86, 0.25);
+$boxBorderDark: rgba(255, 255, 255, .2);
+
+$cardBoxLight: rgba(255, 255, 255, .7);
+$cardBoxDark: rgb(58, 58, 58, .8);
+
+$optionNotSelectedLight: rgba(255, 255, 255, .35);
+$optionNotSelectedDark: rgba(52, 52, 52, .6);
+
+$optionSelectedLight: rgba(255, 255, 255, .7);
+$optionSelectedDark: linear-gradient(169deg, #9E008E 0%, rgba(81, 38, 150, 0.52) 56.34%, rgba(0, 79, 158, 0.00) 100%), rgba(0, 79, 158, 0.80);
+
+$navButtonHoverLight: #a7bcd7;
+$navButtonHoverDark: rgba(75, 75, 75, 0.6);
+
+$assignmentsCardLight: rgba(255, 255, 255, 0.35);
+$assignmentsCardDark: rgba(0, 0, 0, 0.35);
 
 @mixin dark() {
+  --blue: #{$blueDark};
   --bgImage: #{$bgImageDark};
   --bgColor: #{$black};
   --textColor: #{$textDark};
   --glassColor: #{$glassColorDark};
   --glassBorderColor: #{$glassBorderDark};
+  --sideBarColor: #{$sideBarDark};
+  --boxColor: #{$boxDark};
+  --boxBorderColor: #{$boxBorderDark};
+  --cardBoxColor: #{$cardBoxDark};
+  --optionNotSelectedColor: #{$optionNotSelectedDark};
+  --optionSelectedColor: #{$optionSelectedDark};
+  --navButtonHover: #{$navButtonHoverDark};
+  --assignmentsCard: #{$assignmentsCardDark};
 }
 
 @mixin light() {
+  --blue: #{$blueLight};
   --bgImage: #{$bgImageLight};
   --bgColor: #{$white};
   --textColor: #{$textLight};
   --glassColor: #{$glassColorLight};
   --glassBorderColor: #{$glassBorderLight};
+  --sideBarColor: #{$sideBarLight};
+  --boxColor: #{$boxLight};
+  --boxBorderColor: #{$boxBorderLight};
+  --cardBoxColor: #{$cardBoxLight};
+  --optionNotSelectedColor: #{$optionNotSelectedLight};
+  --optionSelectedColor: #{$optionNotSelectedLight};
+  --navButtonHover: #{$navButtonHoverLight};
+  --assignmentsCard: #{$assignmentsCardLight};
 }
 
 body.dark {

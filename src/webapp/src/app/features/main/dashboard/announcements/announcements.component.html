@@ -1,17 +1,15 @@
-<div class="outer">
-    <div class='announcement' *ngFor='let announcement of announcements'>
-        <div class='container'>
-            <div>
-                <h1 class="announcement-title">{{announcement.title}}</h1>
-                <h4 class="announcement-description">{{announcement.description}}</h4>
+<div class='outer'>
+    <div class='card' *ngFor='let announcement of announcements'>
+        <div>
+            <h3 class="card-title">{{announcement.title}}</h3>
+            <h3 class="announcement-description">{{announcement.description}}</h3>
+        </div>
+        <div class='icon'>
+            <div class='icon-elements'>
+                <img class="announcement-icon" src='../../../../../assets/leaf.png'>
+                <h3 class="announcement-subject">{{announcement.subject}}</h3>
             </div>
-            <div class='icon'>
-                <div class='icon-elements'>
-                    <img class="announcement-icon" src='../../../../../assets/leaf.png'>
-                    <h3 class="announcement-subject">{{announcement.subject}}</h3>
-                </div>
-                <h5 class="announcement-date">Posted: {{announcement.date}}</h5>
-            </div>
+            <h3 class="announcement-date">Posted: {{announcement.date}}</h3>
         </div>
     </div>
 </div>

@@ -33,6 +33,6 @@ export class SidebarComponent {
   ];
 
   deleteToken(){
-    localStorage.clear();
+    localStorage.removeItem('token');
   }
 }

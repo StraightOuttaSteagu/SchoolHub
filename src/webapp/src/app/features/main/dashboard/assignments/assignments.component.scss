@@ -1,16 +1,16 @@
 :host {
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 10000;
   margin-bottom: 30px;
   width: 100%;
+  scrollbar-gutter: stable;
 }
 
 .slider {
   display: flex;
   height: 55px;
   width: 330px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--optionNotSelectedColor);
   border-radius: 20px;
   margin-bottom: 30px;
   margin-left: 30px;
@@ -23,12 +23,12 @@
   width: 110px;
   height: 55px;
   text-align: center;
-  color: rgba(61, 71, 86, 0.6);
+  color: rgba(var(--textColor), 0.6);
 }
 
 .active-thumb {
-  background-color: #FFFFFF;
-  color: #3D4756;
+  background: var(--optionSelectedColor);
+  color: rgb(var(--textColor));
   border-radius: 20px;
   box-shadow: 0 0 25px 1px rgba(0, 0, 0, 25%);
 }

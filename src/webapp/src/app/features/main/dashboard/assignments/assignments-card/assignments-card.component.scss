@@ -6,7 +6,7 @@
 .container {
   overflow-y: hidden;
   padding: 10px 0 10px 0;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--assignmentsCard);
   border-radius: 35px;
   margin: 25px 30px 25px 56px;
 }
@@ -15,12 +15,12 @@
   display: flex;
   justify-content: space-between;
   margin-left: 35px;
+}
 
-  h3 {
-    margin: 0;
-    font-weight: 400;
-    color: rgba(61, 71, 86, 0.9);
-  }
+h3 {
+  margin: 0;
+  font-weight: 400;
+  color: rgba(var(--textColor), .9);
 }
 
 .arrow {
@@ -30,7 +30,7 @@
 .assignment {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--boxColor);
   margin: 5px 20px 20px 20px;
   padding: 10px 30px 10px 30px;
   border-radius: 25px;
@@ -44,7 +44,7 @@
 .due-date {
   font-weight: 300;
   margin: 0;
-  color: rgba(61, 71, 86, 0.7);
+  color: rgba(var(--textColor), .7);
 }
 
 .class-label {
@@ -59,7 +59,7 @@
 .class-name {
   margin: 0;
   font-weight: 300;
-  color: rgba(61, 71, 86, 0.85);
+  color: rgba(var(--textColor), .85);
 }
 
 .shadow {
@@ -70,4 +70,5 @@
 .create-date {
   font-weight: 200;
   margin: 0;
+  color: rgb(var(--textColor));
 }

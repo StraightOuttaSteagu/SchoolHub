@@ -1,7 +1,7 @@
 :host {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(50deg, #EEEFEF 0%, #76B7FF 63.02%, #7484E3 99.48%);
+    background: var(--bgImage);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,8 +16,8 @@ body, html {
     width: calc(100vw - 40px);
     height: calc(100vh - 40px);
     border-radius: 2vw;
-    border-color: #fafafa7f;
-    background: #e7e7e780;
+    border-color: var(--glassBorderColor);
+    background: var(--glassColor);
     border-style: solid;
     border-width: 2px;
     display: flex;

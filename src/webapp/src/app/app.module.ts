@@ -33,5 +33,4 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

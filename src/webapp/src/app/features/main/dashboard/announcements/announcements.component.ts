@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AnnouncementsComponent {
   announcements: any = [{
-    title: "MC e naspa",
+    title: "MC e naspa MC e naspaMC e naspaMC e naspaMC e naspaMC e naspa",
     description: "Drama si soc la moisil",
     subject: "Drama si jsjsjjsjjsjjsjjjsjjsjsj",
     date: "10.10.2010"
