@@ -1,18 +1,18 @@
 :host {
   overflow-y: auto;
   overflow-x: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 1.9rem;
 }
 
 .card {
   flex-direction: column;
-  width: 280px;
-  height: 280px;
+  width: 17.5rem;
+  height: 17.5rem;
 }
 
 .card-title {
-  padding-top: 5px;
-  font-size: 23px;
+  padding-top: 0.3rem;
+  font-size: 1.4rem;
   width: 100%;
   line-height: 120%;
   overflow: hidden;
@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .card-contents-all {
@@ -48,24 +48,24 @@
 }
 
 .contents-date {
-  font-size: 22px;
+  font-size: 1.4rem;
 }
 
 .contents-grade {
-  font-size: 23px;
-  width: 30px;
+  font-size: 1.5rem;
+  width: 1.9rem;
   text-align: right;
 }
 
 .average-grade {
   display: flex;
   flex-direction: column;
-  font-size: 25px;
-  margin-top: 20px;
-  margin-bottom: 8px;
+  font-size: 1.6rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
   width: 80%;
   text-align: center;
-  height: 60px;
+  height: 3.75rem;
   align-items: center;
   justify-content: flex-end;
 }
@@ -73,6 +73,6 @@
 .outer {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px 0 20px 56px;
+  gap: 1.9rem;
+  padding: 1.25rem 0 1.25rem 3.5rem;
 }

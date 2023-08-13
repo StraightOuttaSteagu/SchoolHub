@@ -1,17 +1,17 @@
 :host {
   overflow-y: auto;
   overflow-x: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 1.9rem;
   width: 100%;
   scrollbar-gutter: stable;
 }
 
 .slider {
   display: flex;
-  height: 55px;
-  width: 330px;
-  border-radius: 20px;
-  margin: 0 0 30px 30px;
+  height: 3.4rem;
+  width: 20.6rem;
+  border-radius: 1.25rem;
+  margin-bottom: 2rem;
   background-color: var(--optionNotSelectedColor);
 }
 
@@ -19,20 +19,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110px;
-  height: 55px;
+  width: 6.9rem;
+  height: 3.4rem;
   text-align: center;
 }
 
 .active-thumb {
   background: var(--optionSelectedColor);
-  border-radius: 20px;
-  box-shadow: 0 0 25px 1px rgba(0, 0, 0, 25%);
+  border-radius: 1.25rem;
+  box-shadow: 0 0 1.6rem 1px rgba(0, 0, 0, 25%);
 }
 
 .scrollbar-outer {
-  gap: 30px;
-  padding: 20px 0 20px 0;
+  gap: 1.9rem;
+  padding: 1.25rem 0 1.25rem 0;
   align-items: flex-start;
   display: flex;
 }
