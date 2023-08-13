@@ -79,14 +79,14 @@ img {
 
 // Adds a bottom line to an element
 .bottom-line {
-  border-bottom-color: #3d47564d;
+  border-bottom-color: var(--lineSeparatorColor);
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
 
 // Adds a top line to an element
 .top-line {
-  border-top-color: #3d47564d;
+  border-top-color: var(--lineSeparatorColor);
   border-top-width: 1px;
   border-top-style: solid;
 }
@@ -98,6 +98,7 @@ img {
   display: flex;
   align-items: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-  background: var(--boxColor);
+  background: var(--cardColor);
+  border: 1px solid var(--cardBorder);
   border-radius: 25px;
 }
