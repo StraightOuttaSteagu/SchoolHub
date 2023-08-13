@@ -20,22 +20,31 @@ $sideBarLight: rgba(255, 255, 255, 0.7);
 $sideBarDark: rgba(35, 35, 35, 0.7);
 
 $boxLight: rgba(255, 255, 255, .7);
-$boxDark: rgba(75, 75, 75, 0.5);
+$boxDark: rgba(79, 79, 79, 0.7);
+
+$cardLight: rgba(255, 255, 255, 0.7);
+$cardDark: rgba(55, 55, 55, 0.6);
+
+$cardBorderLight: rgba(0, 0, 0, 0);
+$cardBorderDark: rgba(255, 255, 255, 0.2);
 
 $boxBorderLight: rgba(61, 71, 86, 0.25);
 $boxBorderDark: rgba(255, 255, 255, .2);
 
 $optionNotSelectedLight: rgba(255, 255, 255, .35);
-$optionNotSelectedDark: rgba(75, 75, 75, .5);
+$optionNotSelectedDark: rgba(75, 75, 75, 0.4);
 
 $optionSelectedLight: rgba(255, 255, 255, .7);
-$optionSelectedDark: linear-gradient(169deg, #9E008E 0%, rgba(81, 38, 150, 0.52) 56.34%, rgba(0, 79, 158, 0.00) 100%), rgba(0, 79, 158, 0.80);
+$optionSelectedDark: linear-gradient(140deg, #583CA6 39.21%, #004F9E 99.48%);
 
 $navButtonHoverLight: #a7bcd7;
 $navButtonHoverDark: rgba(75, 75, 75, 0.6);
 
-$cardLight: rgba(255, 255, 255, 0.35);
-$cardDark: rgba(52, 52, 52, 0.6);
+$secondaryCardLight: rgba(255, 255, 255, 0.35);
+$secondaryCardDark: rgba(75, 75, 75, 0.35);
+
+$lineLight: rgba(61, 71, 86, 0.3);
+$lineDark: rgb(245, 249, 255, 0.3);
 
 @mixin dark() {
   --blue: #{$blueDark};
@@ -46,11 +55,14 @@ $cardDark: rgba(52, 52, 52, 0.6);
   --glassBorderColor: #{$glassBorderDark};
   --sideBarColor: #{$sideBarDark};
   --boxColor: #{$boxDark};
+  --cardColor: #{$cardDark};
+  --cardBorder: #{$cardBorderDark};
   --boxBorderColor: #{$boxBorderDark};
   --optionNotSelectedColor: #{$optionNotSelectedDark};
   --optionSelectedColor: #{$optionSelectedDark};
   --navButtonHover: #{$navButtonHoverDark};
-  --secondaryCard: #{$cardDark};
+  --secondaryCard: #{$secondaryCardDark};
+  --lineSeparatorColor: #{$lineDark};
 }
 
 @mixin light() {
@@ -62,11 +74,14 @@ $cardDark: rgba(52, 52, 52, 0.6);
   --glassBorderColor: #{$glassBorderLight};
   --sideBarColor: #{$sideBarLight};
   --boxColor: #{$boxLight};
+  --cardColor: #{$cardLight};
+  --cardBorder: #{$cardBorderLight};
   --boxBorderColor: #{$boxBorderLight};
   --optionNotSelectedColor: #{$optionNotSelectedLight};
   --optionSelectedColor: #{$optionSelectedLight};
   --navButtonHover: #{$navButtonHoverLight};
-  --secondaryCard: #{$cardLight};
+  --secondaryCard: #{$secondaryCardLight};
+  --lineSeparatorColor: #{$lineLight};
 }
 
 body.dark {
