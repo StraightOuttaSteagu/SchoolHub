@@ -40,7 +40,7 @@ export const CollapseAnimationFade: AnimationTriggerMetadata = trigger(
         padding: '*',
       })
     ),
-    transition('true <=> false', [animate('200ms linear')]),
+    transition('true <=> false', [animate('175ms ease-in-out')]),
   ]
 );
 

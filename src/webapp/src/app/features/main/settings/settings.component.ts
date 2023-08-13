@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['settings.component.scss']
 })
 export class SettingsComponent {
-
+  editable: boolean = false;
+  profileData = {
+    username: 'irena',
+    name: 'Irena',
+    surname: 'Olteanu',
+    email: 'irena@olteanu.ro',
+  };
 }

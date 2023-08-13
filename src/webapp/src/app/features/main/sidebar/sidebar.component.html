@@ -74,6 +74,10 @@
                 </svg>
                 <label [@fadeInOut]='userDropDownCollapsed'>Log out</label>
             </div>
+            <div class='account-action' [@fadeInOut]='userDropDownCollapsed' (click)='toggleTheme()'>
+                <img [@fadeInOut]='userDropDownCollapsed' src='assets/theme.svg'>
+                <label [@fadeInOut]='userDropDownCollapsed'>{{getOutputTheme()}} mode</label>
+            </div>
             <div class="account" (click)='userDropDownCollapsed = !userDropDownCollapsed' [ngStyle]="{ 'border-top-style': userDropDownCollapsed?'solid':'' }">
                 <img src="../../../../assets/account.png">
                 <div class='current-org'>

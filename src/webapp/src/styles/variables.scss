@@ -20,16 +20,13 @@ $sideBarLight: rgba(255, 255, 255, 0.7);
 $sideBarDark: rgba(35, 35, 35, 0.7);
 
 $boxLight: rgba(255, 255, 255, .7);
-$boxDark: rgba(58, 58, 58, .8);
+$boxDark: rgba(75, 75, 75, 0.5);
 
 $boxBorderLight: rgba(61, 71, 86, 0.25);
 $boxBorderDark: rgba(255, 255, 255, .2);
 
-$cardBoxLight: rgba(255, 255, 255, .7);
-$cardBoxDark: rgb(58, 58, 58, .8);
-
 $optionNotSelectedLight: rgba(255, 255, 255, .35);
-$optionNotSelectedDark: rgba(52, 52, 52, .6);
+$optionNotSelectedDark: rgba(75, 75, 75, .5);
 
 $optionSelectedLight: rgba(255, 255, 255, .7);
 $optionSelectedDark: linear-gradient(169deg, #9E008E 0%, rgba(81, 38, 150, 0.52) 56.34%, rgba(0, 79, 158, 0.00) 100%), rgba(0, 79, 158, 0.80);
@@ -37,8 +34,8 @@ $optionSelectedDark: linear-gradient(169deg, #9E008E 0%, rgba(81, 38, 150, 0.52)
 $navButtonHoverLight: #a7bcd7;
 $navButtonHoverDark: rgba(75, 75, 75, 0.6);
 
-$assignmentsCardLight: rgba(255, 255, 255, 0.35);
-$assignmentsCardDark: rgba(0, 0, 0, 0.35);
+$cardLight: rgba(255, 255, 255, 0.35);
+$cardDark: rgba(52, 52, 52, 0.6);
 
 @mixin dark() {
   --blue: #{$blueDark};
@@ -50,11 +47,10 @@ $assignmentsCardDark: rgba(0, 0, 0, 0.35);
   --sideBarColor: #{$sideBarDark};
   --boxColor: #{$boxDark};
   --boxBorderColor: #{$boxBorderDark};
-  --cardBoxColor: #{$cardBoxDark};
   --optionNotSelectedColor: #{$optionNotSelectedDark};
   --optionSelectedColor: #{$optionSelectedDark};
   --navButtonHover: #{$navButtonHoverDark};
-  --assignmentsCard: #{$assignmentsCardDark};
+  --secondaryCard: #{$cardDark};
 }
 
 @mixin light() {
@@ -67,11 +63,10 @@ $assignmentsCardDark: rgba(0, 0, 0, 0.35);
   --sideBarColor: #{$sideBarLight};
   --boxColor: #{$boxLight};
   --boxBorderColor: #{$boxBorderLight};
-  --cardBoxColor: #{$cardBoxLight};
   --optionNotSelectedColor: #{$optionNotSelectedLight};
-  --optionSelectedColor: #{$optionNotSelectedLight};
+  --optionSelectedColor: #{$optionSelectedLight};
   --navButtonHover: #{$navButtonHoverLight};
-  --assignmentsCard: #{$assignmentsCardLight};
+  --secondaryCard: #{$cardLight};
 }
 
 body.dark {
