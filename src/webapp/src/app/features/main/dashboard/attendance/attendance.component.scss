@@ -1,18 +1,18 @@
 :host {
   overflow-y: auto;
   overflow-x: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 1.9rem;
 }
 
 .card {
   flex-direction: column;
-  width: 280px;
-  height: 280px;
+  width: 17.5rem;
+  height: 17.5rem;
 }
 
 .card-title {
-  padding-top: 5px;
-  font-size: 23px;
+  padding-top: 0.3rem;
+  font-size: 1.4rem;
   width: 100%;
   line-height: 120%;
   overflow: hidden;
@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: left;
   width: 100%;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .card-contents-all {
@@ -45,17 +45,16 @@
   height: 73%;
   width: 100%;
   overflow-y: auto;
-  margin-bottom: 20px;
 }
 
 .contents-date {
-  font-size: 22px;
-  margin-left: 45px;
+  font-size: 1.4rem;
+  margin-left: 2.8rem;
 }
 
 .outer {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px 0 20px 56px;
+  gap: 1.9rem;
+  padding: 1.25rem 0 1.25rem 3.5rem;
 }
