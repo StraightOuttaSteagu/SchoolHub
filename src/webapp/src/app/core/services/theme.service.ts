@@ -19,6 +19,7 @@ export class ThemeService {
       default:
         this.theme = 'system';
     }
+    localStorage.setItem('theme', this.theme);
     this.updateTheme();
   }
 

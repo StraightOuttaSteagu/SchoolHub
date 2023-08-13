@@ -20,6 +20,7 @@
 
 .arrow {
   margin-right: 20px;
+  align-self: center;
 }
 
 .assignment {
@@ -43,4 +44,8 @@
 .shadow {
   box-shadow: 0 0 40px -9px rgba(0, 0, 0, 0.25);
   position:relative;
+}
+
+.theme-icon {
+  fill: rgba(var(--textColor), .7);
 }

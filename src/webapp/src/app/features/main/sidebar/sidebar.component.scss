@@ -93,7 +93,7 @@ img {
   position: absolute;
   justify-content: center;
   scrollbar-gutter: stable both-edges;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .org-dropdown {
@@ -107,14 +107,18 @@ img {
     display: flex;
     justify-content: space-between;
 
-    p {
-      font-size: 0.9rem;
-      padding: 1px 0 1px 15px;
-    }
-
     img {
       width: 7%;
     }
+  }
+
+  .organization {
+    margin: 2px 0;
+  }
+
+  p {
+    font-size: 0.9rem;
+    padding: 1px 0 1px 15px;
   }
 }
 
@@ -129,7 +133,7 @@ img {
   position: absolute;
   justify-content: center;
   scrollbar-gutter: stable both-edges;
-  overflow-y: scroll;
+  overflow-y: hidden;
   bottom: 10px;
 }
 
@@ -167,7 +171,6 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  border-top: var(--boxBorderColor);
   border-top-width: 1px;
 
   width: 100%;
@@ -195,4 +198,14 @@ img {
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+}
+
+.theme-icon {
+  fill: rgba(var(--textColor), .7);
+}
+
+.create-btn {
+  display: flex;
+  margin-bottom: 8px;
+  margin-left: 12px;
 }
