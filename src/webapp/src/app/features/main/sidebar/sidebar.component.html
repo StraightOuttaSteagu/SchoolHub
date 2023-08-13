@@ -1,5 +1,5 @@
 <div class="top-sidebar">
-    <svg style="margin-top: 40px; min-height: 50px; max-height: 50px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1162 378" fill="none">
+    <svg style="margin-top: 2.5rem; min-height: 3.1rem; max-height: 3.1rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1162 378" fill="none">
         <g filter="url(#filter0_d_21_15)">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M240.5 71.2886V304.243H248.354C275.964 286.824 352.889 258.407 439.716 284.095L444 56.1781C439.954 52.1906 427.149 43.8378 408.298 42.3268V1.40242C376.643 -3.84429 298.765 2.78756 240.5 71.2886ZM425.435 63.7334L408.298 56.1781V224.912C337.466 227.934 290.244 258.072 275.488 272.762C325.185 254.63 396.16 259.751 425.435 264.577V63.7334Z" fill="url(#paint0_linear_21_15)"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M240.5 71.2886V304.243H248.354C275.964 286.824 352.889 258.407 439.716 284.095L444 56.1781C439.954 52.1906 427.149 43.8378 408.298 42.3268V1.40242C376.643 -3.84429 298.765 2.78756 240.5 71.2886ZM425.435 63.7334L408.298 56.1781V224.912C337.466 227.934 290.244 258.072 275.488 272.762C325.185 254.63 396.16 259.751 425.435 264.577V63.7334Z" fill="url(#paint1_linear_21_15)"/>
@@ -41,15 +41,15 @@
             <div class='org-dropdown dropdown' [class.expanded]='orgDropdownCollapsed'>
                 <div class='current-org' (click)='orgDropdownCollapsed = !orgDropdownCollapsed'>
                     <p class='text-overflow' [ngClass]="orgDropdownCollapsed?'medium-90':'regular-60'">Prestigiosul colegiu National de Informatica "Grigore Moisil"</p>
-                    <svg style="margin-right: 8px;" [ngStyle]="{'transform': orgDropdownCollapsed?'':'rotate(180deg)'}" width="17%" viewBox="0 0 22 13" xmlns="http://www.w3.org/2000/svg">
+                    <svg style="margin-right: .5rem;" [ngStyle]="{'transform': orgDropdownCollapsed?'':'rotate(180deg)'}" width="17%" viewBox="0 0 22 13" xmlns="http://www.w3.org/2000/svg">
                         <path class="theme-icon" d="M1.28398 13C0.412228 13 -0.0421132 11.9623 0.549182 11.3217L10.2652 0.796037C10.6612 0.367077 11.3388 0.367077 11.7348 0.796037L21.4508 11.3217C22.0421 11.9623 21.5878 13 20.716 13H1.28398Z" />
                     </svg>
                 </div>
-                <div class="top-line" style="width: 90%; margin: 12px 0; align-self: center;" *ngIf='orgDropdownCollapsed && organizations.length > 1'></div>
+                <div class="top-line" style="width: 90%; margin: .75rem 0; align-self: center;" *ngIf='orgDropdownCollapsed && organizations.length > 1'></div>
                 <p [@fadeInOut]='orgDropdownCollapsed' class='regular-60 organization' *ngFor="let organization of organizations">
                     {{ organization.name }}
                 </p>
-                <div class="top-line" style="width: 90%; margin: 12px 0; align-self: center;" *ngIf='orgDropdownCollapsed'></div>
+                <div class="top-line" style="width: 90%; margin: .75rem 0; align-self: center;" *ngIf='orgDropdownCollapsed'></div>
                 <div class='create-btn' [@fadeInOut]='orgDropdownCollapsed'>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf='orgDropdownCollapsed'>
                         <path class="theme-icon" d="M10.5 11V16.5C10.5 17.3284 9.82843 18 9 18C8.17157 18 7.5 17.3284 7.5 16.5V11C7.5 10.7239 7.27614 10.5 7 10.5H1.5C0.671573 10.5 0 9.82843 0 9C0 8.17157 0.671573 7.5 1.5 7.5H7C7.27614 7.5 7.5 7.27614 7.5 7V1.5C7.5 0.671573 8.17157 0 9 0C9.82843 0 10.5 0.671573 10.5 1.5V7C10.5 7.27614 10.7239 7.5 11 7.5H16.5C17.3284 7.5 18 8.17157 18 9C18 9.82843 17.3284 10.5 16.5 10.5H11C10.7239 10.5 10.5 10.7239 10.5 11Z" />
@@ -90,7 +90,7 @@
                 </svg>                
                 <label class="regular-90" [@fadeInOut]='userDropDownCollapsed'>{{getTheme()}} mode</label>
             </div>
-            <div class="top-line" style="width: 90%; margin: 12px 0; align-self: center;" *ngIf='userDropDownCollapsed'></div>
+            <div class="top-line" style="width: 90%; margin: .75rem 0; align-self: center;" *ngIf='userDropDownCollapsed'></div>
             <div class="account" (click)='userDropDownCollapsed = !userDropDownCollapsed'>
                 <img src="../../../../assets/account.png">
                 <div class='current-org'>
