@@ -40,11 +40,11 @@
         <div class='outer-org-dropdown'>
             <div class='org-dropdown dropdown' [class.expanded]='orgDropdownCollapsed'>
                 <div class='current-org' (click)='orgDropdownCollapsed = !orgDropdownCollapsed'>
-                    <p class='text-overflow'>Prestigiosul colegiu National de Informatica "Grigore Moisil"</p>
+                    <p class='text-overflow' [ngClass]="orgDropdownCollapsed?'medium-90':'regular-60'">Prestigiosul colegiu National de Informatica "Grigore Moisil"</p>
                     <img [ngStyle]="{'transform': orgDropdownCollapsed?'':'rotate(180deg)'}" src='assets/arrow.svg'>
                 </div>
                 <div class='create-btn' [@fadeInOut]='orgDropdownCollapsed'>
-                    <p>+ Create organization</p>
+                    <p class="regular-90">+ Create organization</p>
                 </div>
             </div>
         </div>
@@ -53,8 +53,8 @@
         <div class="side-class" *ngFor="let class of classes">
             <img src="../../../../assets/leaf.png">
             <div class="class-data">
-                <h3 class='text-overflow'>{{ class.subject }}</h3>
-                <label class='text-overflow'>{{ class.teacher }}</label>
+                <h3 class='text-overflow regular-90'>{{ class.subject }}</h3>
+                <label class='text-overflow light-90'>{{ class.teacher }}</label>
             </div>
         </div>
     </div>
@@ -66,23 +66,23 @@
                 <svg [@fadeInOut]='userDropDownCollapsed' xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                     <path d="M7.60417 20.8333L7.1875 17.5C6.96181 17.4132 6.74913 17.309 6.54948 17.1875C6.34983 17.066 6.15452 16.9358 5.96354 16.7969L2.86458 18.099L0 13.151L2.68229 11.1198C2.66493 10.9983 2.65625 10.8811 2.65625 10.7682V10.0651C2.65625 9.95226 2.66493 9.83507 2.68229 9.71354L0 7.68229L2.86458 2.73438L5.96354 4.03646C6.15452 3.89757 6.35417 3.76736 6.5625 3.64583C6.77084 3.52431 6.97917 3.42014 7.1875 3.33333L7.60417 0H13.3333L13.75 3.33333C13.9757 3.42014 14.1884 3.52431 14.388 3.64583C14.5877 3.76736 14.783 3.89757 14.974 4.03646L18.0729 2.73438L20.9375 7.68229L18.2552 9.71354C18.2726 9.83507 18.2813 9.95226 18.2813 10.0651V10.7682C18.2813 10.8811 18.2639 10.9983 18.2292 11.1198L20.9115 13.151L18.0469 18.099L14.974 16.7969C14.783 16.9358 14.5833 17.066 14.375 17.1875C14.1667 17.309 13.9583 17.4132 13.75 17.5L13.3333 20.8333H7.60417ZM10.5208 14.0625C11.5278 14.0625 12.3872 13.7066 13.099 12.9948C13.8108 12.283 14.1667 11.4236 14.1667 10.4167C14.1667 9.40972 13.8108 8.55035 13.099 7.83854C12.3872 7.12674 11.5278 6.77083 10.5208 6.77083C9.49653 6.77083 8.63282 7.12674 7.92969 7.83854C7.22656 8.55035 6.875 9.40972 6.875 10.4167C6.875 11.4236 7.22656 12.283 7.92969 12.9948C8.63282 13.7066 9.49653 14.0625 10.5208 14.0625ZM10.5208 11.9792C10.0868 11.9792 9.71789 11.8273 9.41407 11.5234C9.11025 11.2196 8.95834 10.8507 8.95834 10.4167C8.95834 9.98264 9.11025 9.61372 9.41407 9.3099C9.71789 9.00608 10.0868 8.85417 10.5208 8.85417C10.9549 8.85417 11.3238 9.00608 11.6276 9.3099C11.9314 9.61372 12.0833 9.98264 12.0833 10.4167C12.0833 10.8507 11.9314 11.2196 11.6276 11.5234C11.3238 11.8273 10.9549 11.9792 10.5208 11.9792ZM9.42709 18.75H11.4844L11.849 15.9896C12.3872 15.8507 12.8863 15.6467 13.3464 15.3776C13.8064 15.1085 14.2274 14.783 14.6094 14.401L17.1875 15.4688L18.2031 13.6979L15.9635 12.0052C16.0504 11.7622 16.1111 11.5061 16.1458 11.237C16.1806 10.9679 16.1979 10.6944 16.1979 10.4167C16.1979 10.1389 16.1806 9.86545 16.1458 9.59636C16.1111 9.32726 16.0504 9.07118 15.9635 8.82813L18.2031 7.13542L17.1875 5.36458L14.6094 6.45833C14.2274 6.05903 13.8064 5.72483 13.3464 5.45573C12.8863 5.18663 12.3872 4.98264 11.849 4.84375L11.5104 2.08333H9.45313L9.08854 4.84375C8.55035 4.98264 8.05122 5.18663 7.59115 5.45573C7.13108 5.72483 6.71007 6.05035 6.32813 6.43229L3.75 5.36458L2.73438 7.13542L4.97396 8.80208C4.88715 9.0625 4.82639 9.32292 4.79167 9.58333C4.75695 9.84375 4.73958 10.1215 4.73958 10.4167C4.73958 10.6944 4.75695 10.9635 4.79167 11.224C4.82639 11.4844 4.88715 11.7448 4.97396 12.0052L2.73438 13.6979L3.75 15.4688L6.32813 14.375C6.71007 14.7743 7.13108 15.1085 7.59115 15.3776C8.05122 15.6467 8.55035 15.8507 9.08854 15.9896L9.42709 18.75Z" fill="#1C1B1F" fill-opacity="0.7"/>
                 </svg>
-                <label [@fadeInOut]='userDropDownCollapsed'>Settings</label>
+                <label class="regular-90" [@fadeInOut]='userDropDownCollapsed'>Settings</label>
             </div>
             <div class="account-logout account-action" [@fadeInOut]='userDropDownCollapsed' routerLink="auth" (click)="deleteToken()">
                 <svg [@fadeInOut]='userDropDownCollapsed' xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                     <path d="M2.62004 20.6038C2.00185 20.6038 1.47264 20.3837 1.03241 19.9434C0.592184 19.5032 0.37207 18.974 0.37207 18.3558V2.62004C0.37207 2.00185 0.592184 1.47264 1.03241 1.03241C1.47264 0.592184 2.00185 0.37207 2.62004 0.37207H10.4879V2.62004H2.62004V18.3558H10.4879V20.6038H2.62004ZM14.9839 16.1078L13.4384 14.4781L16.3045 11.6119H7.11597V9.36394H16.3045L13.4384 6.49778L14.9839 4.86801L20.6038 10.4879L14.9839 16.1078Z" fill="#1C1B1F" fill-opacity="0.7"/>
                 </svg>
-                <label [@fadeInOut]='userDropDownCollapsed'>Log out</label>
+                <label class="regular-90" [@fadeInOut]='userDropDownCollapsed'>Log out</label>
             </div>
             <div class='account-action' [@fadeInOut]='userDropDownCollapsed' (click)='toggleTheme()'>
                 <img [@fadeInOut]='userDropDownCollapsed' src='assets/theme.svg'>
-                <label [@fadeInOut]='userDropDownCollapsed'>{{getOutputTheme()}} mode</label>
+                <label [@fadeInOut]='userDropDownCollapsed'>{{getTheme()}} mode</label>
             </div>
             <div class="account" (click)='userDropDownCollapsed = !userDropDownCollapsed' [ngStyle]="{ 'border-top-style': userDropDownCollapsed?'solid':'' }">
                 <img src="../../../../assets/account.png">
                 <div class='current-org'>
-                    <h3 class='text-overflow'>Irena Olteanu</h3>
-                    <label class='text-overflow'>Student</label>
+                    <h3 class='text-overflow regular-90'>Irena Olteanu</h3>
+                    <label class='text-overflow light-90'>Student</label>
                 </div>
             </div>
         </div>

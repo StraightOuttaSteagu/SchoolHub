@@ -1,19 +1,19 @@
 <div class='container' [class.shadow]='collapsed'>
     <div class='category-title' (click)='collapsed = !collapsed'>
-        <h3 style="font-size: 30px;">{{ title }}</h3>
+        <h3 class="regular-90" style="font-size: 30px;">{{ title }}</h3>
         <img src='assets/arrow.svg' alt='arrow' class='arrow' [ngStyle]="{'transform': !collapsed?'rotate(180deg)':''}">
     </div>
     <div class='assignment' [@fadeInOut]='collapsed' *ngFor='let item of data'>
         <div class='left'>
-            <h3 class='title' [@fadeInOut]='collapsed'>{{item.title}}</h3>
-            <p class='due-date' [@fadeInOut]='collapsed'>Due date: {{item.dueDate}}</p>
+            <h3 class='title light-90' [@fadeInOut]='collapsed'>{{item.title}}</h3>
+            <p class='light-80' [@fadeInOut]='collapsed'>Due date: {{item.dueDate}}</p>
         </div>
         <div class='right'>
             <div class='class-label'>
                 <img src='assets/leaf.png' alt='leaf' [@fadeInOut]='collapsed'>
-                <h3 class='class-name' [@fadeInOut]='collapsed'>{{item.class}}</h3>
+                <h3 class='regular-90' [@fadeInOut]='collapsed'>{{item.class}}</h3>
             </div>
-            <p class='create-date' [@fadeInOut]='collapsed'>Posted: {{item.createDate}}</p>
+            <p class='light-80' [@fadeInOut]='collapsed'>Posted: {{item.createDate}}</p>
         </div>
     </div>
 </div>

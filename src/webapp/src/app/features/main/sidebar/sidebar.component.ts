@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CollapseAnimationFade } from '../../../shared/animations';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,7 @@ export class SidebarComponent {
   orgDropdownCollapsed: boolean = false;
   userDropDownCollapsed: boolean = false;
 
-  theme: string | null = window.localStorage.getItem('theme');
+  constructor (private theme: ThemeService) { }
 
   organizations = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
@@ -40,19 +41,10 @@ export class SidebarComponent {
   }
 
   toggleTheme() {
-    if (this.theme === 'light') {
-      this.theme = 'dark';
-    } else {
-      this.theme = 'light';
-    }
-    window.localStorage.setItem('theme', this.theme);
-    window.location.reload();
+    this.theme.toggleTheme();
   }
 
-  getOutputTheme() {
-    if (this.theme === 'light') {
-      return 'Dark';
-    }
-    return 'Light';
+  getTheme() {
+    return this.theme.getTheme();
   }
 }

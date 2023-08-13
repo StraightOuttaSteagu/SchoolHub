@@ -16,10 +16,7 @@
 }
 
 .card-title {
-  color: rgb(var(--textColor));
   font-size: 32px;
-  font-weight: 400;
-  margin: 0;
 }
 
 .icon-elements {
@@ -31,7 +28,6 @@
 
 .announcement-icon { 
   width: 30px;
-  object-fit:contain;
 }
 
 .icon {
@@ -42,17 +38,11 @@
 }
 
 .announcement-description {
-  color: rgba(var(--textColor), .9);
   font-size: 18px;
-  font-weight: 400;
-  margin: 0;
 }
 
 .announcement-subject {
-  color: rgba(var(--textColor), .85);
   font-size: 20px;
-  font-weight: 400;
-  margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 160px;
@@ -60,10 +50,7 @@
 }
 
 .announcement-date {
-  color: rgba(var(--textColor), .7);
   font-size: 16px;
-  font-weight: 400;
-  margin: 0;
   width: 100%;
   text-align: right;
 }

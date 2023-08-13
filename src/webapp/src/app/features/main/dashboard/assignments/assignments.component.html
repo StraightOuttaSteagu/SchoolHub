@@ -1,8 +1,10 @@
-<div class='outer'>
-    <div class='slider'>
-        <div class='slider-thumb' [class.active-thumb]='getHref().includes("missing")' routerLink='missing'>Missing</div>
-        <div class='slider-thumb' [class.active-thumb]='getHref().includes("assigned")' routerLink='assigned'>Assigned</div>
-        <div class='slider-thumb' [class.active-thumb]='getHref().includes("done")' routerLink='done'>Done</div>
+<div class='scrollbar-outer'>
+    <div class="outer">
+        <div class='slider'>
+            <div class='slider-thumb' [ngClass]='getHref().includes("missing")?"active-thumb regular-90":"regular-60"' routerLink='missing'>Missing</div>
+            <div class='slider-thumb' [ngClass]='getHref().includes("assigned")?"active-thumb regular-90":"regular-60"' routerLink='assigned'>Assigned</div>
+            <div class='slider-thumb' [ngClass]='getHref().includes("done")?"active-thumb regular-90":"regular-60"' routerLink='done'>Done</div>
+        </div>
+        <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
 </div>

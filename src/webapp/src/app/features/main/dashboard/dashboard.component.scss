@@ -10,7 +10,6 @@
   border: none;
   background-color: var(--optionNotSelectedColor);
   padding: 10px 16px 10px 16px;
-  color: rgba(var(--textColor), 0.5);
   font-size: 16px;
 
   &:hover {
@@ -26,9 +25,7 @@
 }
 
 .main-title {
-  color: rgb(var(--textColor));
   font-size: 52px;
-  font-weight: 600;
   margin-bottom: 6px;
   margin-top: 40px;
 }

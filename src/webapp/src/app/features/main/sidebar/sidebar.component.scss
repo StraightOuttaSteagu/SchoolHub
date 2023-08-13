@@ -43,8 +43,6 @@
 }
 
 h3, label {
-  margin: 0;
-  color: rgba(var(--textColor), .85);
   overflow: hidden;
 }
 
@@ -55,7 +53,6 @@ h3, label {
 
   h3 {
     font-size: 20px;
-    font-weight: 400;
     line-height: 22px;
     -webkit-line-clamp: 2;
     padding-bottom: 2px;
@@ -63,13 +60,11 @@ h3, label {
 
   label {
     font-size: 15px;
-    font-weight: 300;
     -webkit-line-clamp: 1;
   }
 }
 
 img {
-  object-fit: contain;
   margin-left: 8px;
   margin-right: 8px;
   width: 12%;
@@ -114,9 +109,7 @@ img {
 
     p {
       font-size: 0.9rem;
-      margin: 0;
       padding: 1px 0 1px 15px;
-      color: rgba(var(--textColor), 0.6);
     }
 
     img {
@@ -149,9 +142,7 @@ img {
 
   p {
     font-size: 0.9rem;
-    margin: 0;
     padding: 1px 0 1px 15px;
-    color: rgba(var(--textColor), 0.6);
   }
 
   img {
@@ -161,7 +152,6 @@ img {
 
   h3 {
     font-size: 16px;
-    font-weight: 400;
     line-height: 22px;
     -webkit-line-clamp: 2;
     padding-bottom: 2px;
@@ -169,7 +159,6 @@ img {
 
   label {
     font-size: 12px;
-    font-weight: 300;
     -webkit-line-clamp: 1;
   }
 }
@@ -195,7 +184,6 @@ img {
   img {
     width: 21px;
     height: 21px;
-    margin: 0;
   }
 }
 

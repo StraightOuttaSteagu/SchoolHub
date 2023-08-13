@@ -1,6 +1,6 @@
 :host {
   overflow-y: hidden;
-  width: 80%;
+  width: 100%;
 }
 
 .container {
@@ -17,12 +17,6 @@
   margin-left: 35px;
 }
 
-h3 {
-  margin: 0;
-  font-weight: 400;
-  color: rgba(var(--textColor), .9);
-}
-
 .arrow {
   margin-right: 20px;
 }
@@ -37,38 +31,15 @@ h3 {
 }
 
 .title {
-  font-weight: 300;
-  margin: 0;
-}
-
-.due-date {
-  font-weight: 300;
-  margin: 0;
-  color: rgba(var(--textColor), .7);
+  font-size: 24px;
 }
 
 .class-label {
   display: flex;
   height: 30px;
-
-  img {
-    object-fit: contain;
-  }
-}
-
-.class-name {
-  margin: 0;
-  font-weight: 300;
-  color: rgba(var(--textColor), .85);
 }
 
 .shadow {
   box-shadow: 0 0 40px -9px rgba(0, 0, 0, 0.25);
   position:relative;
-}
-
-.create-date {
-  font-weight: 200;
-  margin: 0;
-  color: rgb(var(--textColor));
 }

@@ -12,10 +12,7 @@
 
 .card-title {
   padding-top: 5px;
-  margin: 0;
-  font-weight: 400;
   font-size: 23px;
-  color: rgb(var(--textColor));
   width: 100%;
   line-height: 120%;
   overflow: hidden;
@@ -51,15 +48,11 @@
 }
 
 .contents-date {
-  font-weight: 200;
   font-size: 22px;
-  color: rgba(var(--textColor), .8);
 }
 
 .contents-grade {
-  font-weight: 500;
   font-size: 23px;
-  color: rgba(var(--textColor), .8);
   width: 30px;
   text-align: right;
 }
@@ -67,9 +60,7 @@
 .average-grade {
   display: flex;
   flex-direction: column;
-  font-weight: 500;
   font-size: 25px;
-  color: rgb(var(--textColor));
   margin-top: 20px;
   margin-bottom: 8px;
   width: 80%;
