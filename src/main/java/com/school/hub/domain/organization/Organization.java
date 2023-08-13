@@ -26,8 +26,7 @@ public class Organization extends AbstractAuditingEntity<Long> {
     private Set<UserOrganization> users;
 
     @OneToMany(
-        cascade = CascadeType.REMOVE,
-        mappedBy = "class"
+        cascade = CascadeType.REMOVE
     )
     private Set<Class> classes;
 
