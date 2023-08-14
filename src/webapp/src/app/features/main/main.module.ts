@@ -5,6 +5,8 @@ import { MainComponent } from './main.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainRoutingModule } from './main-routing.module';
 
+import { IonicModule } from '@ionic/angular';
+
 @NgModule({
   declarations: [
     MainComponent,
@@ -12,7 +14,8 @@ import { MainRoutingModule } from './main-routing.module';
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    IonicModule
   ]
 })
 export class MainModule {
