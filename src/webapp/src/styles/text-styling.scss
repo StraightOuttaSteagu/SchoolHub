@@ -1,0 +1,36 @@
+@import "./variables.scss";
+
+.main-title {
+    color: rgb(var(--textColor));
+    font-weight: 600;
+}
+
+.medium-80 {
+    color: rgba(var(--textColor), .8);
+    font-weight: 500;
+}
+
+.medium-90 {
+    color: rgba(var(--textColor), .9);
+    font-weight: 500;
+}
+
+.regular-60 {
+    color: rgba(var(--textColor), .6);
+    font-weight: 400;
+}
+
+.regular-90 {
+    color: rgba(var(--textColor), .9);
+    font-weight: 400;
+}
+
+.light-80 {
+    color: rgba(var(--textColor), .8);
+    font-weight: 300;
+}
+
+.light-90 {
+    color: rgba(var(--textColor), .9);
+    font-weight: 300;
+}

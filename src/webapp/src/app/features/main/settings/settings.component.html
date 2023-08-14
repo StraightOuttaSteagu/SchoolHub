@@ -1,0 +1,26 @@
+<div class='top-bar' routerLink='/grades'>
+    <img src='assets/back-arrow.svg' alt='back'>
+    <h1>Profile Settings</h1>
+</div>
+<div class="outer">
+    <div class='settings-body'>
+        <div class='profile-picture'>
+            <img src='assets/account.png' alt='account'>
+            <p>Change...</p>
+        </div>
+        <button class='edit-save' [textContent]='editable ? "Save" : "Edit"' (click)='editable = !editable'>Save</button>
+        <form class='profile-details-form'>
+            <label for='username'>Username</label>
+    <!--        Make @ stay there-->
+            <input type='text' name='username' id='username' value='@{{profileData.username}}' [readOnly]='!editable'>
+            <label for='name'>Name</label>
+            <input type='text' name='name' id='name' value='{{profileData.name}}' [readOnly]='!editable'>
+            <label for='email'>Email</label>
+            <input type='email' name='email' id='email' value='{{profileData.email}}' [readOnly]='!editable'>
+        </form>
+        <div class='reset-pass'>
+            <button>Reset Password</button>
+            <p>We will send you an email to {{profileData.email}} with instructions on how to reset your password.</p>
+        </div>
+    </div>
+</div>

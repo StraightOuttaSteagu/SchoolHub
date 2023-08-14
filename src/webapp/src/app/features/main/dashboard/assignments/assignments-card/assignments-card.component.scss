@@ -1,0 +1,50 @@
+:host {
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.container {
+  overflow-y: hidden;
+  padding: .6rem 0 .6rem 0;
+  background: var(--secondaryCard);
+  border-radius: 2.2rem;
+  margin: 1.6rem 1.9rem .6rem 3.5rem;
+}
+
+.category-title {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2.2rem;
+}
+
+.arrow {
+  margin-right: 1.25rem;
+  align-self: center;
+}
+
+.assignment {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--boxColor);
+  margin: .3rem 1.253rem 1.253rem 1.23rem;
+  padding: .63rem 1.93rem .63rem 1.93rem;
+  border-radius: 1.63rem;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.class-label {
+  display: flex;
+  height: 1.9rem;
+}
+
+.shadow {
+  box-shadow: 0 0 2.5rem -.6rem rgba(0, 0, 0, 0.25);
+  position:relative;
+}
+
+.theme-icon {
+  fill: rgba(var(--textColor), .7);
+}

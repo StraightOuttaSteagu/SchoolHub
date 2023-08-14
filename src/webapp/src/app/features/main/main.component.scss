@@ -1,0 +1,37 @@
+:host {
+  width: 100vw;
+  height: 100vh;
+  background: var(--bgImage);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body, html {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main {
+  width: calc(100vw - 1.9rem);
+  height: calc(100vh - 1.9rem);
+  border-radius: 2vw;
+  border-color: var(--glassBorderColor);
+  background: var(--glassColor);
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.main-bar {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  margin-left: 0.8rem;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}

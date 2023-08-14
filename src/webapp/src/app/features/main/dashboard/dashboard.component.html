@@ -1,0 +1,10 @@
+<div class="top-bar">
+    <h1 class="main-title">Overall average: 10</h1>
+    <div class='nav'>
+        <button class="nav-option" [ngClass]="getHref().includes('assignments')?'highlight medium-90':'regular-60'" routerLink="assignments/assigned">Assignments</button>
+        <button class="nav-option" [ngClass]="getHref().includes('announcements')?'highlight medium-90':'regular-60'" routerLink="announcements">Announcements</button>
+        <button class="nav-option" [ngClass]="getHref().includes('grades')?'highlight medium-90':'regular-60'" routerLink="grades">Grades</button>
+        <button class="nav-option" [ngClass]="getHref().includes('attendance')?'highlight medium-90':'regular-60'" routerLink="attendance">Attendance</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

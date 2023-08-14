@@ -1,0 +1,46 @@
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 1.9rem;
+  width: 100%;
+  scrollbar-gutter: stable;
+}
+
+.slider {
+  display: flex;
+  height: 3.4rem;
+  width: 20.6rem;
+  border-radius: 1.25rem;
+  margin-bottom: 2rem;
+  background-color: var(--optionNotSelectedColor);
+}
+
+.slider-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.9rem;
+  height: 3.4rem;
+  text-align: center;
+}
+
+.active-thumb {
+  background: var(--optionSelectedColor);
+  border-radius: 1.25rem;
+  box-shadow: 0 0 1.6rem 1px rgba(0, 0, 0, 25%);
+}
+
+.scrollbar-outer {
+  gap: 1.9rem;
+  padding: 1.25rem 0 1.25rem 0;
+  align-items: flex-start;
+  display: flex;
+}
+
+.outer {
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  align-items: center;
+}

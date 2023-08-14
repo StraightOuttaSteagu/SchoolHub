@@ -1,0 +1,14 @@
+<div class='outer'>
+    <div class='card' *ngFor='let item of data'>
+        <div class='outer-card-title bottom-line'>
+            <h3 class='card-title text-overflow regular-90'>{{item.title}}</h3>
+        </div>
+        <div class='card-contents-all hover-scrollbar'>
+            <div class='card-contents' *ngFor='let grade of item?.grades'>
+                <div class='contents-grade medium-80'>{{grade.grade}}</div>
+                <div class='contents-date light-80'>{{grade.date}}</div>
+            </div>
+        </div>
+        <h3 [class.top-line]="item?.grades.length > 1" class='average-grade medium-90'>{{ item?.grades.length>1?calculateAverage(item?.grades).toFixed(2):'' }}</h3>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 1.9rem;
+}
+
+.card {
+  flex-direction: column;
+  width: 17.5rem;
+  height: 17.5rem;
+}
+
+.card-title {
+  padding-top: 0.3rem;
+  font-size: 1.4rem;
+  width: 100%;
+  line-height: 120%;
+  overflow: hidden;
+  line-clamp: 2;
+}
+
+.outer-card-title {
+  min-height: 28%;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80%;
+}
+
+.card-contents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  gap: 2.5rem;
+}
+
+.card-contents-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 73%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.contents-date {
+  font-size: 1.4rem;
+  margin-left: 2.8rem;
+}
+
+.outer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.9rem;
+  padding: 1.25rem 0 1.25rem 3.5rem;
+}

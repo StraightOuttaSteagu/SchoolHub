@@ -1,0 +1,114 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  margin: 2.5rem 0 1.9rem 3.5rem;
+  gap: 0.6rem;
+  cursor: pointer;
+
+  h1 {
+    color: rgb(var(--textColor));
+    font-size: 3.25rem;
+  }
+
+  img {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+}
+
+.settings-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 3.5rem;
+  background-color: var(--secondaryCard);
+  border-radius: 1.6rem;
+  padding: 1.25rem 3.1rem;
+  width: 70%;
+}
+
+.edit-save {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 1.25rem;
+  padding: 0.5rem 1.25rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.profile-picture {
+  position: relative;
+  width: 25%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  p {
+    position: absolute;
+    bottom: 10%;
+    text-shadow: 0 0 1.25rem rgba(0, 0, 0, 1);
+    color: white;
+    font-size: 1rem;
+  }
+}
+
+.profile-details-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1.25rem 0;
+
+  label {
+    color: rgb(var(--textColor), 0.7);
+    font-size: 0.9rem;
+    margin: 0.6rem 0 0.3rem 1rem;
+  }
+
+  input {
+    background-color: var(--boxColor);
+    border: none;
+    border-radius: 1.9rem;
+    padding: 0.6rem 1.25rem;
+    color: rgba(var(--textColor), 0.8);
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.reset-pass {
+  button {
+    background-color: var(--boxColor);
+    border: none;
+    border-radius: 1.9rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    color: rgb(var(--textColor), 0.7);
+  }
+
+  p {
+    margin-top: 1rem;
+    margin-left: 0.3rem;
+    width: 70%;
+    color: rgba(var(--textColor), 0.7);
+    font-size: 0.9rem;
+  }
+}
+
+.outer {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
