@@ -15,7 +15,7 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     CommonModule,
     MainRoutingModule,
-    IonicModule
+    IonicModule,
   ]
 })
 export class MainModule {

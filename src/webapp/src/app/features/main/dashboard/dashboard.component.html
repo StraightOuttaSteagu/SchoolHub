@@ -1,10 +1,26 @@
-<div class="top-bar">
-    <h1 class="main-title">Overall average: 10</h1>
-    <div class='nav'>
-        <button class="nav-option" [ngClass]="getHref().includes('assignments')?'highlight medium-90':'regular-60'" routerLink="assignments/assigned">Assignments</button>
-        <button class="nav-option" [ngClass]="getHref().includes('announcements')?'highlight medium-90':'regular-60'" routerLink="announcements">Announcements</button>
-        <button class="nav-option" [ngClass]="getHref().includes('grades')?'highlight medium-90':'regular-60'" routerLink="grades">Grades</button>
-        <button class="nav-option" [ngClass]="getHref().includes('attendance')?'highlight medium-90':'regular-60'" routerLink="attendance">Attendance</button>
-    </div>
-</div>
+<!--<div class='top-bar'>-->
+<!--    <ion-buttons slot='start'>-->
+<!--        <ion-menu-button></ion-menu-button>-->
+<!--    </ion-buttons>-->
+<!--    <h1 class='main-title'>Overall average: 10</h1>-->
+<!--    <div class='nav'>-->
+<!--        <button class='nav-option' [ngClass]="getHref().includes('assignments')?'highlight medium-90':'regular-60'"-->
+<!--                routerLink='assignments/assigned'>Assignments-->
+<!--        </button>-->
+<!--        <button class='nav-option' [ngClass]="getHref().includes('announcements')?'highlight medium-90':'regular-60'"-->
+<!--                routerLink='announcements'>Announcements-->
+<!--        </button>-->
+<!--        <button class='nav-option' [ngClass]="getHref().includes('grades')?'highlight medium-90':'regular-60'"-->
+<!--                routerLink='grades'>Grades-->
+<!--        </button>-->
+<!--        <button class='nav-option' [ngClass]="getHref().includes('attendance')?'highlight medium-90':'regular-60'"-->
+<!--                routerLink='attendance'>Attendance-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<ion-button [routerLink]='["/grades"]' routerLinkActive='selected'>Grades</ion-button>-->
+<!--<ion-button [routerLink]='["/assignments"]'>assignments</ion-button>-->
+<!--<ion-button [routerLink]='["/attendance"]'>attendance</ion-button>-->
+<!--<ion-button [routerLink]='["/announcements"]'>announcements</ion-button>-->
+
 <router-outlet></router-outlet>

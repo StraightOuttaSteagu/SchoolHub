@@ -9,6 +9,7 @@ import { DoneComponent } from './assignments/done/done.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { GradesComponent } from './grades/grades.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -25,7 +26,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    IonicModule
   ]
 })
 export class DashboardModule { }
