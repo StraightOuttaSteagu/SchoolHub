@@ -52,6 +52,8 @@ export class ThemeService {
     prefersDark.addEventListener('change', () => {
       this.updateTheme();
     });
+
+    this.updateTheme();
   }
 
   getTheme() {
