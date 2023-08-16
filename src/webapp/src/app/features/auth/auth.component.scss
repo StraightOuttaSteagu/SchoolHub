@@ -6,13 +6,13 @@
     background-repeat: repeat;
     background-attachment: fixed;
     filter: blur(4.20rem);
-    transform: scale(1.2);
+    transform: scaleX(2) scaleY(1.2);
 }
 
 .form-card {
-    padding: 1.5rem;
+    padding: 1rem;
     --background: rgba(255, 255, 255, .3);
-    border-radius: 1rem;
+    border-radius: 2rem;
     margin-top: 2rem;
     border-color: rgb(255, 255, 255, .55);
     border-style: solid;
@@ -20,10 +20,9 @@
 }
 
 .action-button {
-    --background: #342B66;
-    --ion-font-family: 'Poppins', sans-serif;
     text-transform: none;
     font-weight: 300;
+    -webkit-tap-highlight-color:transparent;
 }
 
 .action-button-focus {
@@ -33,11 +32,17 @@
     --border-width: 2px;
     text-transform: none;
     font-weight: 300;
+    -webkit-tap-highlight-color:transparent;
 }
 
 .form-input {
     margin-bottom: 1rem;
-    --background: #FFFFFF;
-    --border-radius: 1rem;
-    font-size: 1.6rem;
+    --background: rgba(255, 255, 255, .7);
+    font-size: 1rem;
+    --highlight-color-focused: #342B66;
+    --padding-start: 1.5rem;
 }
+
+.input-fill-outline {
+    --border-radius: 1.5rem;
+  }

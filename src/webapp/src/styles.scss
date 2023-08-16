@@ -13,9 +13,25 @@ $SchoolHub-theme: mat.define-light-theme((
 
 @include mat.all-component-themes($SchoolHub-theme);
 
-@import "./styles/variables.scss";
-@import "./styles/fonts.scss";
-@import "./styles/text-styling.scss";
+@import "./theme/variables.scss";
+@import "./theme/fonts.scss";
+@import "./theme/text-styling.scss";
+
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
 
 body, html {
   margin: 0;

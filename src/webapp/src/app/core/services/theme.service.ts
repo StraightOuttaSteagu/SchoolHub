@@ -46,6 +46,14 @@ export class ThemeService {
     }
   }
 
+  initTheme(){
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    prefersDark.addEventListener('change', () => {
+      this.updateTheme();
+    });
+  }
+
   getTheme() {
     return this.theme;
   }
