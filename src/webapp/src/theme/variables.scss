@@ -189,6 +189,13 @@ body.light {
   --ion-color-text-shade: #363e4c;
   --ion-color-text-tint: #505967;
 
+  --ion-color-selected: #ffffff;
+  --ion-color-selected-rgb: 255,255,255;
+  --ion-color-selected-contrast: #000000;
+  --ion-color-selected-contrast-rgb: 0,0,0;
+  --ion-color-selected-shade: #e0e0e0;
+  --ion-color-selected-tint: #ffffff;
+
   --ion-font-family: 'Poppins';
 }
 
@@ -284,4 +291,10 @@ body.light {
   --ion-color-text-shade: #d8dbe0;
   --ion-color-text-tint: #f6faff;
 
+  --ion-color-selected: #004F9E;
+  --ion-color-selected-rgb: 0,79,158;
+  --ion-color-selected-contrast: #ffffff;
+  --ion-color-selected-contrast-rgb: 255,255,255;
+  --ion-color-selected-shade: #00468b;
+  --ion-color-selected-tint: #1a61a8;
 }
