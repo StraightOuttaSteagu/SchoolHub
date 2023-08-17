@@ -1,10 +1,3 @@
-<!--<div class="main">-->
-<!--    <app-sidebar></app-sidebar>-->
-<!--    <div class="main-bar">-->
-<!--        <router-outlet></router-outlet>-->
-<!--    </div>-->
-<!--</div>-->
-
 <ion-split-pane contentId='main-content'>
     <ion-menu contentId='main-content' type='push'>
         <ion-header>
@@ -51,7 +44,7 @@
                 </ion-label>
             </ion-item>
             <ion-popover trigger='profile-trigger' trigger-action='click' size='cover' show-backdrop='false'
-                         keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
+                         keep-contents-mounted='true' dismiss-on-select='true'>
                 <ng-template>
                     <ion-list class='popover-options'>
                         <ion-item [routerLink]='["auth"]' (click)='deleteToken()' detail='false'>
@@ -62,10 +55,30 @@
                             <ion-icon name='settings' color='text'></ion-icon>
                             <ion-label>Settings</ion-label>
                         </ion-item>
-                        <ion-item lines='none' detail='false'>
-                            <ion-icon name='contrast' color='text'></ion-icon>
+                        <ion-item button='true' lines='none' detail='false' id='theme-trigger'>
+                            <ion-icon name='color-palette' color='text'></ion-icon>
                             <ion-label>Theme</ion-label>
                         </ion-item>
+                        <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side="right" alignment="end">
+                            <ng-template>
+                                <ion-content>
+                                    <ion-list class='popover-options'>
+                                        <ion-item [button]="true" [detail]="false" (click)='setTheme("light")'>
+                                            <ion-icon name="sunny"></ion-icon>
+                                            <ion-label>Light</ion-label>
+                                        </ion-item>
+                                        <ion-item [button]="true" [detail]="false" (click)='setTheme("dark")'>
+                                            <ion-icon name="moon"></ion-icon>
+                                            <ion-label>Dark</ion-label>
+                                        </ion-item>
+                                        <ion-item [button]="true" [detail]="false" (click)='setTheme("system")' lines='none'>
+                                            <ion-icon name="contrast"></ion-icon>
+                                            <ion-label>System</ion-label>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-content>
+                            </ng-template>
+                        </ion-popover>
                     </ion-list>
                 </ng-template>
             </ion-popover>
@@ -74,31 +87,3 @@
     <ion-router-outlet id='main-content'></ion-router-outlet>
 </ion-split-pane>
 <div class='back'></div>
-
-<!--<ion-split-pane contentId="main-content" style='margin: 20px'>-->
-<!--    <ion-menu contentId="main-content" type="overlay">-->
-<!--        <ion-content>-->
-<!--            <ion-list id="inbox-list">-->
-<!--                <ion-list-header>Inbox</ion-list-header>-->
-<!--                <ion-note>hi@ionicframework.com</ion-note>-->
-
-<!--                <ion-menu-toggle auto-hide="false">-->
-<!--&lt;!&ndash;                    <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <ion-label>{{ p.title }}</ion-label>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </ion-item>&ndash;&gt;-->
-<!--                </ion-menu-toggle>-->
-<!--            </ion-list>-->
-
-<!--            <ion-list id="labels-list">-->
-<!--                <ion-list-header>Labels</ion-list-header>-->
-
-<!--                <ion-item lines="none">-->
-<!--                    <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>-->
-<!--                    <ion-label></ion-label>-->
-<!--                </ion-item>-->
-<!--            </ion-list>-->
-<!--        </ion-content>-->
-<!--    </ion-menu>-->
-<!--    <ion-router-outlet id="main-content"></ion-router-outlet>-->
-<!--</ion-split-pane>-->

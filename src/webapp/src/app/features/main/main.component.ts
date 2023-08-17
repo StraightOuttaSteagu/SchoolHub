@@ -44,8 +44,8 @@ export class MainComponent {
     localStorage.removeItem('token');
   }
 
-  toggleTheme() {
-    this.theme.toggleTheme();
+  setTheme(theme: string) {
+    this.theme.setTheme(theme);
   }
 
   getTheme() {
