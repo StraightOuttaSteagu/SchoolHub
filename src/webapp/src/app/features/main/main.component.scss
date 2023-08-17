@@ -54,7 +54,8 @@ ion-split-pane {
     color: var(--ion-color-text);
 
     p {
-      color: var(--ion-color-text);
+      color: rgba(var(--ion-color-text-rgb), 0.8);
+      font-weight: 300;
     }
   }
 
@@ -105,6 +106,18 @@ ion-footer {
   margin: 1rem 1.2rem 0.5rem 1.2rem;
   border: rgba(100, 100, 100, 0.25) solid 1px;
   border-radius: 1.6rem;
+  cursor: pointer;
+
+  ion-label {
+    p {
+      color: rgba(var(--ion-color-text-rgb), 0.7);
+    }
+  }
+
+  ion-icon {
+    color: rgba(var(--ion-color-text-rgb), 0.3);
+    height: 45%;
+  }
 }
 
 .profile, .org {
@@ -113,6 +126,14 @@ ion-footer {
   h2, p {
     color: var(--ion-color-text);
   }
+}
+
+ion-item {
+  --detail-icon-color: var(--ion-color-text);
+}
+
+ion-radio {
+  --color: var(--ion-color-text);
 }
 
 .back {

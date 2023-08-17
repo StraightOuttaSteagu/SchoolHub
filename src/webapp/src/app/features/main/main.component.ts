@@ -51,5 +51,7 @@ export class MainComponent {
   getTheme() {
     return this.theme.getTheme();
   }
+
+  protected readonly localStorage = localStorage;
 }
 

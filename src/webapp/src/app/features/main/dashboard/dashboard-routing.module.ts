@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: 'assigned', component: AssignedComponent },
       { path: 'missing', component: MissingComponent },
       { path: 'done', component: DoneComponent },
-      { path: '', redirectTo: 'assignments/assigned', pathMatch: 'full' }
+      { path: '', redirectTo: '/assignments/assigned', pathMatch: 'full' }
     ]},
     { path: 'announcements', component: AnnouncementsComponent },
     { path: 'attendance', component: AttendanceComponent },
