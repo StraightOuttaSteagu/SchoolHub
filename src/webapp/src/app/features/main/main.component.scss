@@ -167,6 +167,6 @@ ion-content {
   }
 
   .back {
-    background-image: linear-gradient(0deg, #ffffff 0%, #00000000 99%),linear-gradient(0deg, #ffffff 0%, #00000000 99%),linear-gradient(0deg, #ffffff 0%, #00000000 99%),linear-gradient(0deg, #ffffff 0%, #00000000 99%),linear-gradient(0deg, #ffffff 0%, #00000000 99%),linear-gradient(90deg, #76B7FF 0%, #A89AFF 100%);
+    background-image: var(--ion-color-back-gradient);
   }
 }

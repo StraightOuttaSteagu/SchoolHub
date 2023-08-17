@@ -169,16 +169,16 @@ body.light {
   --ion-color-back-tint: #ffffff;
 
   --ion-color-back-secondary: #ffffff;
-  --ion-color-back-secondary-rgb: 255,255,255;
+  --ion-color-back-secondary-rgb: 255, 255, 255;
   --ion-color-back-secondary-contrast: #000000;
-  --ion-color-back-secondary-contrast-rgb: 0,0,0;
+  --ion-color-back-secondary-contrast-rgb: 0, 0, 0;
   --ion-color-back-secondary-shade: #e0e0e0;
   --ion-color-back-secondary-tint: #ffffff;
 
   --ion-color-back-tertiary: #ffffff;
-  --ion-color-back-tertiary-rgb: 255,255,255;
+  --ion-color-back-tertiary-rgb: 255, 255, 255;
   --ion-color-back-tertiary-contrast: #000000;
-  --ion-color-back-tertiary-contrast-rgb: 0,0,0;
+  --ion-color-back-tertiary-contrast-rgb: 0, 0, 0;
   --ion-color-back-tertiary-shade: #e0e0e0;
   --ion-color-back-tertiary-tint: #ffffff;
 
@@ -190,11 +190,13 @@ body.light {
   --ion-color-text-tint: #505967;
 
   --ion-color-selected: #ffffff;
-  --ion-color-selected-rgb: 255,255,255;
+  --ion-color-selected-rgb: 255, 255, 255;
   --ion-color-selected-contrast: #000000;
-  --ion-color-selected-contrast-rgb: 0,0,0;
+  --ion-color-selected-contrast-rgb: 0, 0, 0;
   --ion-color-selected-shade: #e0e0e0;
   --ion-color-selected-tint: #ffffff;
+
+  --ion-color-back-gradient: linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(90deg, #278EFF 0%, #886ACE 99%);
 
   --ion-font-family: 'Poppins';
 }
@@ -278,9 +280,9 @@ body.light {
   --ion-color-back-secondary-tint: #4e4e4e;
 
   --ion-color-back-tertiary: #232323;
-  --ion-color-back-tertiary-rgb: 35,35,35;
+  --ion-color-back-tertiary-rgb: 35, 35, 35;
   --ion-color-back-tertiary-contrast: #ffffff;
-  --ion-color-back-tertiary-contrast-rgb: 255,255,255;
+  --ion-color-back-tertiary-contrast-rgb: 255, 255, 255;
   --ion-color-back-tertiary-shade: #1f1f1f;
   --ion-color-back-tertiary-tint: #393939;
 
@@ -292,9 +294,11 @@ body.light {
   --ion-color-text-tint: #f6faff;
 
   --ion-color-selected: #004F9E;
-  --ion-color-selected-rgb: 0,79,158;
+  --ion-color-selected-rgb: 0, 79, 158;
   --ion-color-selected-contrast: #ffffff;
-  --ion-color-selected-contrast-rgb: 255,255,255;
+  --ion-color-selected-contrast-rgb: 255, 255, 255;
   --ion-color-selected-shade: #00468b;
   --ion-color-selected-tint: #1a61a8;
+
+  --ion-color-back-gradient: linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(90deg, #004F9E 0%, #583CA6 100%);
 }
