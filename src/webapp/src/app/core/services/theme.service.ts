@@ -6,21 +6,27 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
   theme: string | null = localStorage.getItem('theme');
 
-  toggleTheme(){
-    switch (this.theme){
-      case 'light':
-        this.theme = 'dark';
-        break;
+  // toggleTheme(){
+  //   switch (this.theme){
+  //     case 'light':
+  //       this.theme = 'dark';
+  //       break;
+  //
+  //     case 'system':
+  //       this.theme = 'light';
+  //       break;
+  //
+  //     default:
+  //       this.theme = 'system';
+  //   }
+  //   localStorage.setItem('theme', this.theme);
+  //   this.updateTheme();
+  // }
 
-      case 'system':
-        this.theme = 'light';
-        break;
-
-      default:
-        this.theme = 'system';
-    }
+  setTheme(theme: string) {
+    this.theme = theme;
     localStorage.setItem('theme', this.theme);
-    this.updateTheme();
+    this.updateTheme()
   }
 
   updateTheme(){

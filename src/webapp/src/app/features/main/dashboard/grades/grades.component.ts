@@ -113,7 +113,61 @@ export class GradesComponent implements OnInit{
           date: '17.05.2023'
         }
       ]
-    }
+    },
+    {
+      title: 'Biologie',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Biologie',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Biologie',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Biologie',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Biologie',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Biologie',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
   ];
 
   average: number = 10;

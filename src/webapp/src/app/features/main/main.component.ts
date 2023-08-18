@@ -44,12 +44,14 @@ export class MainComponent {
     localStorage.removeItem('token');
   }
 
-  toggleTheme() {
-    this.theme.toggleTheme();
+  setTheme(theme: string) {
+    this.theme.setTheme(theme);
   }
 
   getTheme() {
     return this.theme.getTheme();
   }
+
+  protected readonly localStorage = localStorage;
 }
 
