@@ -23,6 +23,12 @@ ion-menu {
   --background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
 }
 
+@supports (height: 100svh) {
+  :host {
+    height: 100svh;
+  }
+}
+
 ion-split-pane {
   --side-width: 19%;
   --border: none;
@@ -34,6 +40,8 @@ ion-split-pane {
 .side-classes {
   --ion-background-color: transparent !important;
   margin: 0 10%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .side-class {
