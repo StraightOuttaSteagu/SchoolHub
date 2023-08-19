@@ -146,3 +146,7 @@ img {
 ion-content::-webkit-scrollbar-thumb {
   background: transparent;
 }
+
+.scroll-y {
+  overflow: hidden;
+}

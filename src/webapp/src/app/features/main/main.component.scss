@@ -32,7 +32,7 @@ ion-menu {
 ion-split-pane {
   --side-width: 19%;
   --border: none;
-  background-color: rgba(var(--ion-color-back-rgb), 0.7);
+  background-color: rgba(var(--ion-color-back-rgb), 0.35);
   border-radius: 1.6rem;
   margin: 1rem
 }
@@ -165,9 +165,13 @@ ion-popover::part(content) {
   -webkit-box-orient: vertical;
 }
 
+#main-content {
+  background: transparent;
+}
+
 ion-content {
-  --offset-bottom: auto !important;
-  --overflow: auto;
+  --offset-bottom: hidden !important;
+  --overflow: hidden;
   overflow: auto;
 
   &::-webkit-scrollbar {

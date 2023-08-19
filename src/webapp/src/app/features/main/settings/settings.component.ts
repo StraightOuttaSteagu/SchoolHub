@@ -13,4 +13,6 @@ export class SettingsComponent {
     surname: 'Olteanu',
     email: 'irena@olteanu.ro',
   };
+
+  
 }
