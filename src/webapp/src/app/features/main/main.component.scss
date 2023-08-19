@@ -21,6 +21,7 @@ ion-img {
 
 ion-menu {
   --background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
+  --border: none;
 }
 
 @supports (height: 100svh) {
@@ -31,7 +32,7 @@ ion-menu {
 
 ion-split-pane {
   --side-width: 19%;
-  --border: none;
+  border: 1px solid rgba(white, 0.4);
   background-color: rgba(var(--ion-color-back-rgb), 0.35);
   border-radius: 1.6rem;
   margin: 1rem
@@ -45,12 +46,11 @@ ion-split-pane {
 }
 
 .side-class {
-  background-color: var(--ion-color-back-secondary);
+  background-color: rgba(var(--ion-color-back-secondary-rgb), 0.7);
   margin: 0.6rem 0;
   border-radius: 1.25rem;
-  border: rgba(100, 100, 100, 0.25) solid 1px;
+  border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
   padding: 0.3rem 0;
-  //height: 3.5rem;
 
   ion-img {
     width: 12%;
@@ -114,7 +114,6 @@ ion-footer {
   margin: 1rem 1.2rem 0.5rem 1.2rem;
   border: rgba(100, 100, 100, 0.25) solid 1px;
   border-radius: 1.6rem;
-  cursor: pointer;
 
   ion-label {
     p {
@@ -129,7 +128,9 @@ ion-footer {
 }
 
 .profile, .org {
-  background: var(--ion-color-back-secondary);
+  background: rgba(var(--ion-color-back-secondary-rgb), 0.7);
+  border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
+  cursor: pointer;
 
   h2, p {
     color: var(--ion-color-text);
