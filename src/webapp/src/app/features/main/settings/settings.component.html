@@ -27,8 +27,8 @@
 <ion-header style='--background: transparent' mode='md'>
     <ion-toolbar style='--background: transparent'>
         <ion-title>
-            <div style='display: flex; align-items: center; gap: 2rem;'>
-                <ion-img routerLink="/grades" src='../../../../assets/back-arrow.svg'></ion-img>
+            <div style='display: flex; align-items: center; gap: 2rem;' routerLink="/grades">
+                <ion-img src='../../../../assets/back-arrow.svg'></ion-img>
                 Profile Settings
             </div>
         </ion-title>
@@ -45,10 +45,10 @@
         <ion-card>
             <ion-button class="save-button" color="primary" shape="round" (click)='editable = !editable'>{{ editable ? "Save" : "Edit" }}</ion-button>
             <form class='profile-details-form'>
-                <ion-input size="64" shape="round" fill="outline" label="@" type='text' name='username' id='username' value='{{profileData.username}}'><label>Username</label></ion-input>
-                <ion-input shape="round" fill="outline" label="" type='text' name='name' id='name' value='{{profileData.name}}'><label>Name</label></ion-input>
-                <ion-input shape="round" fill="outline" label="" type='text' name='surname' id='surname' value='{{profileData.surname}}'><label>Surname</label></ion-input>
-                <ion-input shape="round" fill="outline" label="" type='email' name='email' id='email' value='{{profileData.email}}'><label>Email</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" size="64" fill="outline" label="@" type='text' name='username' id='username' value='{{profileData.username}}'><label>Username</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" fill="outline" label="" type='text' name='name' id='name' value='{{profileData.name}}'><label>Name</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" fill="outline" label="" type='text' name='surname' id='surname' value='{{profileData.surname}}'><label>Surname</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" fill="outline" label="" type='email' name='email' id='email' value='{{profileData.email}}'><label>Email</label></ion-input>
             </form>
             <div class='reset-pass'>
                 <ion-button class="reset-button" shape="round">Reset password</ion-button>

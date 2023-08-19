@@ -18,8 +18,11 @@ ion-header {
 }
 
 .profile-picture {
+  transform: translateY(-5rem);
   justify-content: center;
   margin-left: 6rem;
+  position: relative;
+  z-index: 2;
 
   ion-img {
     position: absolute;
@@ -40,7 +43,6 @@ ion-header {
 
 ion-card {
   margin-left: 6rem;
-  transform: translateY(5rem);
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -84,7 +86,7 @@ ion-item {
 
 .outer {
   max-width: 46rem;
-  margin-top: 2rem;
+  margin-top: 6rem;
   --background: transparent;
   width: 100%;
 }
@@ -95,6 +97,10 @@ ion-input {
   --highlight-color-focused: var(--ion-color-text);
   --border-style: none;
   margin-top: .75rem;
+
+  .input-fill-outline {
+    --border-radius: 2rem !important;
+  }
 }
 
 .profile-details-form {
@@ -130,6 +136,12 @@ ion-content {
   .inner-scroll {
     scrollbar-width: thin;
   }
+}
+
+.ios ion-input {
+  --padding-start: rem;
+  --padding-top: .8rem;
+  --padding-bottom: .8rem;
 }
 
 @media (max-width: 992px) {
