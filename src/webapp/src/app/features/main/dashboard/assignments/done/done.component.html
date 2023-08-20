@@ -1,5 +1,30 @@
-<div class='containers'>
+<!-- <div class='containers'>
     <app-assignments-card [title]="'This week: ' + data.length" [data]="data"></app-assignments-card>
     <app-assignments-card [title]="'Last week: ' + data.length" [data]="data"></app-assignments-card>
     <app-assignments-card [title]="'Earlier: ' + data.length" [data]="data"></app-assignments-card>
-</div>
+</div> -->
+
+<ion-content>
+    <ion-accordion-group multiple="true">
+        <ion-accordion *ngFor="let title of titles" [value]="title">
+            <ion-item slot="header" color="light">
+              <ion-label>{{ title }}</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <ion-card class="assignment" *ngFor="let assignment of data">
+                  <div>
+                      <h3 class='title light-90'>{{assignment.title}}</h3>
+                      <p class='light-80'>Due date: {{assignment.dueDate}}</p>
+                  </div>
+                  <div class='right'>
+                      <div class='class-label'>
+                          <ion-img src='assets/leaf.png' alt='leaf'></ion-img>
+                          <h3 class='regular-90 subject'>{{assignment.class}}</h3>
+                      </div>
+                      <p class='light-80'>Posted: {{assignment.createDate}}</p>
+                  </div>
+              </ion-card>
+            </div>
+          </ion-accordion>
+    </ion-accordion-group>
+</ion-content>

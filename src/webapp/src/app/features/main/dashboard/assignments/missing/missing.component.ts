@@ -8,11 +8,6 @@ import { CollapseAnimationFade } from 'src/app/shared/animations';
   animations: [CollapseAnimationFade]
 })
 export class MissingComponent {
-  thisWeekCollapsed: boolean = true;
-  nextWeekCollapsed: boolean = false;
-  laterCollapsed: boolean = false;
-  noDueDateCollapsed: boolean = false;
-
   data = [
     {
       title: 'Lorem Ipsum',
@@ -36,4 +31,6 @@ export class MissingComponent {
       assigned: 'done'
     }
   ];
+
+  titles = ["This week", "Next week", "Later"];
 }
