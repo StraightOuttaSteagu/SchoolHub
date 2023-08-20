@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
-import { AssignmentsCardComponent } from './assignments/assignments-card/assignments-card.component';
 import { AssignedComponent } from './assignments/assigned/assigned.component';
 import { MissingComponent } from './assignments/missing/missing.component';
 import { DoneComponent } from './assignments/done/done.component';
@@ -17,7 +16,6 @@ import { IonicModule } from '@ionic/angular';
   declarations: [
     AnnouncementsComponent,
     AssignmentsComponent,
-    AssignmentsCardComponent,
     AssignedComponent,
     MissingComponent,
     DoneComponent,

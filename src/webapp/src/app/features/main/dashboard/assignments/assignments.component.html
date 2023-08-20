@@ -1,10 +1,18 @@
-<div class='scrollbar-outer'>
-    <div class="outer">
-        <div class='slider'>
-            <div class='slider-thumb' [ngClass]='getHref().includes("missing")?"active-thumb regular-90":"regular-60"' routerLink='missing'>Missing</div>
-            <div class='slider-thumb' [ngClass]='getHref().includes("assigned")?"active-thumb regular-90":"regular-60"' routerLink='assigned'>Assigned</div>
-            <div class='slider-thumb' [ngClass]='getHref().includes("done")?"active-thumb regular-90":"regular-60"' routerLink='done'>Done</div>
-        </div>
-        <router-outlet></router-outlet>
-    </div>
+<div class="outer">
+    <ion-row>
+        <ion-segment mode="ios" [value]="getHref().includes('missing')?'missing':getHref().includes('assigned')?'assigned':'done'">
+            <ion-segment-button routerLink="missing" value="missing">
+              <ion-label>Missing</ion-label>
+            </ion-segment-button>
+            <ion-segment-button routerLink="assigned" value="assigned">
+              <ion-label>Assigned</ion-label>
+            </ion-segment-button>
+            <ion-segment-button routerLink="done" value="done">
+                <ion-label>Done</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-row>
 </div>
+<ion-content>
+    <ion-router-outlet [animated]="false" style="position: static;"></ion-router-outlet>
+</ion-content>
