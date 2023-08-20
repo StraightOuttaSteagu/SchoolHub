@@ -1,33 +1,13 @@
-<!--<div class='top-bar'>-->
-<!--    <ion-buttons slot='start'>-->
-<!--        <ion-menu-button></ion-menu-button>-->
-<!--    </ion-buttons>-->
-<!--    <h1 class='main-title'>Overall average: 10</h1>-->
-<!--    <div class='nav'>-->
-<!--        <button class='nav-option' [ngClass]="getHref().includes('assignments')?'highlight medium-90':'regular-60'"-->
-<!--                routerLink='assignments/assigned'>Assignments-->
-<!--        </button>-->
-<!--        <button class='nav-option' [ngClass]="getHref().includes('announcements')?'highlight medium-90':'regular-60'"-->
-<!--                routerLink='announcements'>Announcements-->
-<!--        </button>-->
-<!--        <button class='nav-option' [ngClass]="getHref().includes('grades')?'highlight medium-90':'regular-60'"-->
-<!--                routerLink='grades'>Grades-->
-<!--        </button>-->
-<!--        <button class='nav-option' [ngClass]="getHref().includes('attendance')?'highlight medium-90':'regular-60'"-->
-<!--                routerLink='attendance'>Attendance-->
-<!--        </button>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<ion-button [routerLink]='["/grades"]' routerLinkActive='selected'>Grades</ion-button>-->
-<!--<ion-button [routerLink]='["/assignments"]'>assignments</ion-button>-->
-<!--<ion-button [routerLink]='["/attendance"]'>attendance</ion-button>-->
-<!--<ion-button [routerLink]='["/announcements"]'>announcements</ion-button>-->
-
 <ion-header style='--background: transparent' mode='md'>
-
     <ion-toolbar style='--background: transparent'>
-
-        <ion-title><div style='display: flex; align-items: center'><ion-menu-toggle style='width: 2.2rem; margin-right: 0.5rem'><ion-img src='assets/account.png'></ion-img></ion-menu-toggle>Save the turtles</div></ion-title>
+        <ion-title>
+            <div style='display: flex; align-items: center'>
+                <ion-menu-toggle style='width: 2.2rem; margin-right: 0.5rem'>
+                    <ion-img src='assets/account.png'></ion-img>
+                </ion-menu-toggle>
+                Save the turtles
+            </div>
+        </ion-title>
         <ion-buttons class='chips'>
             <ion-chip [routerLink]='["/announcements"]' [class.active]='getHref().includes("announcements")'>
                 Announcements
@@ -39,14 +19,6 @@
             </ion-chip>
         </ion-buttons>
     </ion-toolbar>
-
-    <!--    <ion-item lines='none'>-->
-    <!--        <ion-img src='assets/account.png'></ion-img>-->
-    <!--        <ion-label>-->
-    <!--            <h1>Overall average: 10</h1>-->
-    <!--        </ion-label>-->
-    <!--    </ion-item>-->
-
 </ion-header>
 <ion-content style='--background: transparent; margin-left: 3rem'><ion-router-outlet [animation]="pageAnimation"></ion-router-outlet></ion-content>
 
