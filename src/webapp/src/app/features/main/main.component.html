@@ -67,22 +67,6 @@
                         <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right' alignment='end'
                                      arrow='false'>
                             <ng-template>
-                                <!--                                <ion-content>-->
-                                <!--                                    <ion-list class='popover-options'>-->
-                                <!--                                        <ion-item [button]='true' [detail]='false' (click)='setTheme("light")'>-->
-                                <!--                                            <ion-icon name='sunny'></ion-icon>-->
-                                <!--                                            <ion-label>Light</ion-label>-->
-                                <!--                                        </ion-item>-->
-                                <!--                                        <ion-item [button]='true' [detail]='false' (click)='setTheme("dark")'>-->
-                                <!--                                            <ion-icon name='moon'></ion-icon>-->
-                                <!--                                            <ion-label>Dark</ion-label>-->
-                                <!--                                        </ion-item>-->
-                                <!--                                        <ion-item [button]='true' [detail]='false' (click)='setTheme("system")'-->
-                                <!--                                                  lines='none'>-->
-                                <!--                                            <ion-icon name='contrast'></ion-icon>-->
-                                <!--                                            <ion-label>System</ion-label>-->
-                                <!--                                        </ion-item>-->
-                                <!--                                    </ion-list>-->
                                 <ion-list class='popover-options'>
                                     <ion-radio-group [value]='localStorage.getItem("theme")'>
                                         <ion-item [button]='true' [detail]='false' (click)='setTheme("light")'>
@@ -106,7 +90,6 @@
                                         </ion-item>
                                     </ion-radio-group>
                                 </ion-list>
-                                <!--                                </ion-content>-->
                             </ng-template>
                         </ion-popover>
                     </ion-list>
