@@ -138,13 +138,9 @@ img {
   --ion-color-tint: var(--ion-color-text-tint);
 }
 
-* {
+body {
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
-}
-
-ion-content::-webkit-scrollbar-thumb {
-  background: transparent;
 }
 
 .scroll-y {

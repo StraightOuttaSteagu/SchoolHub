@@ -168,6 +168,51 @@ export class GradesComponent {
         }
       ]
     },
+    {
+      title: 'Educatie plastica',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Educatie plastica',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },{
+      title: 'Educatie plastica',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },{
+      title: 'Educatie plastica',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+    {
+      title: 'Educatie plastica',
+      grades: [
+        {
+          grade: 10,
+          date: '17.05.2023'
+        }
+      ]
+    },
+
+
   ];
 
   calculateAverage(item: any): number {

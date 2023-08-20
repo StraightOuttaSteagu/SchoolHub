@@ -180,40 +180,34 @@ ion-accordion-group {
   * {
     background: transparent;
     --background: transparent;
-    //background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
   }
   .cards-grid {
     display: none;
   }
   ion-accordion-group {
-    background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);;
+    background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
     display: block;
-    margin: 1rem;
+    margin: 1.7rem 1rem 1rem 1rem;
     border-radius: 1.25rem;
+    box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
   }
   p {
     color: var(--ion-color-text);
     font-size: 1rem;
   }
-  //.ion-accordion-toggle-icon {
-  //  color: var(--ion-color-text);
-  //}
-  ion-accordion {
-    ion-icon {
-      color: rgba(var(--ion-color-text), 0.9);
-    }
-
-    .ion-accordion-toggle-icon {
-      color: white
-    }
+  .ion-accordion-toggle-icon {
+    color: var(--ion-color-text);
   }
-  ion-accordion:first-child {
-    border-radius: 1.25rem 1.25rem 0 0;
+  ion-item.header:first-child {
+    //border-radius: 1.25rem 1.25rem 0 0;
   }
   ion-accordion:last-child {
-    border-radius: 0 0 1.25rem 1.25rem;
+    //border-radius: 0 0 1.25rem 1.25rem;
   }
   ion-content {
     --background: transparent;
+  }
+  .grade-item:last-child {
+    --border-color: transparent;
   }
 }

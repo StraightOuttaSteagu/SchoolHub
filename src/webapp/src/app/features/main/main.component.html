@@ -48,14 +48,18 @@
                          keep-contents-mounted='true' dismiss-on-select='true'>
                 <ng-template>
                     <ion-list class='popover-options'>
-                        <ion-item [routerLink]='["auth"]' (click)='deleteToken()' detail='false'>
-                            <ion-icon name='log-out' color='text'></ion-icon>
-                            <ion-label>Logout</ion-label>
-                        </ion-item>
-                        <ion-item [routerLink]='["settings"]' detail='false'>
-                            <ion-icon name='settings' color='text'></ion-icon>
-                            <ion-label>Settings</ion-label>
-                        </ion-item>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item [routerLink]='["auth"]' (click)='deleteToken()' detail='false'>
+                                <ion-icon name='log-out' color='text'></ion-icon>
+                                <ion-label>Logout</ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item [routerLink]='["settings"]' detail='false'>
+                                <ion-icon name='settings' color='text'></ion-icon>
+                                <ion-label>Settings</ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
                         <ion-item button='true' lines='none' detail='false' id='theme-trigger'>
                             <ion-icon name='color-palette' color='text'></ion-icon>
                             <ion-label>Theme</ion-label>
