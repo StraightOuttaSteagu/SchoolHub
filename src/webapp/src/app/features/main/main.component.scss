@@ -178,23 +178,6 @@ ion-content {
   --offset-bottom: hidden !important;
   --overflow: hidden;
   overflow: auto;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(var(--ion-color-medium-rgb), 0.7);
-  }
-
-  .inner-scroll {
-    scrollbar-width: thin;
-  }
 }
 
 @media (max-width: 992px) {

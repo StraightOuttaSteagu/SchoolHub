@@ -4,6 +4,10 @@
   gap: 2rem;
   padding: 3rem 0 2rem 3rem;
   overflow-x: auto;
+
+  &::-webkit-scrollbar-track {
+    margin-bottom: 1.4rem !important;
+  }
 }
 
 ion-content {
@@ -34,23 +38,6 @@ ion-list {
   --offset-bottom: hidden !important;
   --overflow: hidden;
   overflow: auto;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(var(--ion-color-medium-rgb), 0.7);
-  }
-
-  .inner-scroll {
-    scrollbar-width: thin;
-  }
 }
 
 ion-item {
@@ -91,10 +78,6 @@ ion-item {
   }
 }
 
-p {
-  //font-size: 1.3rem;
-}
-
 ion-accordion-group {
   display: none;
 }
@@ -120,12 +103,6 @@ ion-accordion-group {
   }
   .ion-accordion-toggle-icon {
     color: var(--ion-color-text);
-  }
-  ion-item.header:first-child {
-    //border-radius: 1.25rem 1.25rem 0 0;
-  }
-  ion-accordion:last-child {
-    //border-radius: 0 0 1.25rem 1.25rem;
   }
   ion-content {
     --background: transparent;

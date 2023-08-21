@@ -1,7 +1,6 @@
 :host {
   justify-content: flex-start;
   background: #00000000;
-  padding-bottom: 2rem;
 }
 
 ion-header {
@@ -38,6 +37,7 @@ ion-header {
     text-anchor:start;
     top: 7rem;
     color: var(--ion-color-text-contrast);
+    text-shadow: 0px 0px 23px #000;;
   }
 }
 
@@ -47,9 +47,10 @@ ion-card {
   display: flex;
   flex-direction: column;
   border-radius: 2rem;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem 1rem 3rem;
   background-color: rgba(var(--ion-color-back-rgb), 0.35);
   margin-bottom: 1rem;
+  box-shadow: none;
 }
 
 ion-item {
@@ -75,12 +76,21 @@ ion-item {
 .save-button {
   align-self: flex-end;
   margin-bottom: 2rem;
+  --box-shadow: none;
+  text-transform: none;
+  font-size: 1rem;
 }
 
 .reset-button {
+  text-transform: none;
   --background: rgba(var(--ion-color-back-rgb), .7);
   color: rgba(var(--ion-color-text), .7);
   margin-top: 1rem;
+  --box-shadow: none;
+  height: 3.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  --background-activated: var(--ion-color-back-shade);
   
 }
 
@@ -93,7 +103,7 @@ ion-item {
 
 ion-input {
   font-size: 1.25rem;
-  --background: rgba(var(--ion-color-back-rgb), .5);
+  --background: rgba(var(--ion-color-back-rgb), .7);
   --highlight-color-focused: var(--ion-color-text);
   --border-style: none;
   margin-top: .75rem;
@@ -106,6 +116,7 @@ ion-input {
 .profile-details-form {
   display: flex;
   flex-direction: column;
+  padding-right: 2rem;
 }
 
 label {
@@ -120,21 +131,8 @@ ion-content {
   --overflow: hidden;
   overflow: auto;
 
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
   &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(var(--ion-color-medium-rgb), 0.7);
-  }
-
-  .inner-scroll {
-    scrollbar-width: thin;
+    margin-bottom: 1.4rem;
   }
 }
 

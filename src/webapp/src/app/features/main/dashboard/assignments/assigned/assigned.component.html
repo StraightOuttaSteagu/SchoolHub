@@ -10,21 +10,19 @@
             <ion-item slot="header" color="light">
               <ion-label>{{ title }}</ion-label>
             </ion-item>
-            <div class="ion-padding" slot="content">
-              <ion-card class="assignment" *ngFor="let assignment of data">
-                  <div>
-                      <h3 class='title light-90'>{{assignment.title}}</h3>
-                      <p class='light-80'>Due date: {{assignment.dueDate}}</p>
-                  </div>
-                  <div class='right'>
-                      <div class='class-label'>
-                          <ion-img src='assets/leaf.png' alt='leaf'></ion-img>
-                          <h3 class='regular-90 subject'>{{assignment.class}}</h3>
-                      </div>
-                      <p class='light-80'>Posted: {{assignment.createDate}}</p>
-                  </div>
-              </ion-card>
-            </div>
+            <ion-card slot="content" class="assignment ion-padding" *ngFor="let assignment of data">
+                <ion-col>
+                    <h3 class='title light-90'>{{assignment.title}}</h3>
+                    <p class='light-80'>Due date: {{assignment.dueDate}}</p>
+                </ion-col>
+                <div>
+                    <ion-row class='class-label'>
+                        <ion-img src='assets/leaf.png' alt='leaf'></ion-img>
+                        <h3 class='regular-90 subject'>{{assignment.class}}</h3>
+                    </ion-row>
+                    <p class='light-80' style="text-align: end;">Posted: {{assignment.createDate}}</p>
+                </div>
+            </ion-card>
           </ion-accordion>
     </ion-accordion-group>
 </ion-content>

@@ -44,6 +44,7 @@ body, html {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   //--overflow: hidden;
+  transition: 300ms all ease-in-out !important;
 }
 
 button {
@@ -59,20 +60,37 @@ img {
 }
 
 // Global scroll bar
+// ::-webkit-scrollbar {
+//   width: 0.75rem;
+// }
+
+// ::-webkit-scrollbar-track {
+//   border-radius: 0.5rem;
+//   background-color: transparent;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 0.5rem;
+//   border: 3px solid transparent;
+//   background-clip: content-box;
+//   background-color: #c2c2c2;
+// }
+
 ::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 0.5rem;
-  background-color: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0.5rem;
-  border: 3px solid transparent;
-  background-clip: content-box;
-  background-color: #c2c2c2;
+  background: rgba(var(--ion-color-medium-rgb), 0.7) !important;
+}
+
+.inner-scroll {
+  scrollbar-width: thin;
 }
 
 .text-overflow {

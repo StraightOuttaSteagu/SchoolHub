@@ -41,6 +41,46 @@ export class AttendanceComponent {
         {
           date: '17.05.2023',
           excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: true,
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: true,
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: false
         }
       ]
     },

@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { CollapseAnimationFade } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-done',
   templateUrl: './done.component.html',
-  styleUrls: ['./done.component.scss'],
-  animations: [CollapseAnimationFade]
+  styleUrls: ['../assignment-type.scss']
 })
 export class DoneComponent {
   data = [

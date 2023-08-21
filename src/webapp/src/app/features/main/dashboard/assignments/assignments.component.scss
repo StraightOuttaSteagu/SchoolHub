@@ -1,8 +1,6 @@
 :host {
   width: 100%;
   align-items: flex-start;
-  //margin-left: 3rem;
-  padding-left: 3rem;
   overflow: hidden;
 }
 
@@ -11,6 +9,12 @@ ion-segment {
   margin-bottom: 3rem;
   margin-top: 3rem;
   height: 3rem;
+
+  color: rgba(var(--ion-color-text-rgb), .9);
+
+  .segment-button-checked {
+    --indicator-color: rgba(var(--ion-color-selected-rgb), 0.7);
+  }
 }
 
 ion-content {
@@ -30,10 +34,4 @@ ion-content {
 
 ion-row {
   justify-content: center;
-}
-
-@media (max-width: 992px) {
-  :host {
-    padding-left: 0;
-  }
 }
