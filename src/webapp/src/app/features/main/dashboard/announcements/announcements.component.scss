@@ -89,10 +89,6 @@ ion-card-title {
   color: var(--ion-color-text);
 }
 
-.mobile {
-  display: none;
-}
-
 @media(max-width: 768px) {
   .mobile {
     display: block;

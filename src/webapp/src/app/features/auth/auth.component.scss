@@ -42,7 +42,7 @@
 .action-button {
     text-transform: none;
     font-weight: 300;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: transparent;
     --background: #342B66;
 }
 
@@ -66,4 +66,8 @@
     justify-content: space-between;
     display: flex;
     gap: 1rem;
+}
+
+* {
+    transition: none !important;
 }

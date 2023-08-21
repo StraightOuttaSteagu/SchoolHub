@@ -12,11 +12,11 @@ export class AuthService {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {}
 
-  public setAuthMode(mode: 'login' | 'signup'){
+  setAuthMode(mode: 'login' | 'signup'){
     this.authMode = mode;
   }
 
-  public getAuthMode(){
+  getAuthMode(){
     return this.authMode;
   }
 
