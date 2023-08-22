@@ -44,7 +44,8 @@ body, html {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   //--overflow: hidden;
-  transition: 300ms all ease-in-out !important;
+  transition: 300ms color ease-in-out !important;
+  transition: 300ms background-color ease-in-out !important;
 }
 
 button {

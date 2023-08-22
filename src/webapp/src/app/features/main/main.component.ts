@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
+import { pageAnimation } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-main',
@@ -9,6 +10,9 @@ import { ThemeService } from '../../core/services/theme.service';
 export class MainComponent {
   orgDropdownCollapsed: boolean = false;
   userDropDownCollapsed: boolean = false;
+
+  pageAnimation = pageAnimation;
+
   organizations = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
     {name: 'Colegiul National "Andrei Saguna"'},
