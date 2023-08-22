@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 
 import { CollapseAnimationFade } from 'src/app/shared/animations';
@@ -12,10 +12,10 @@ import { CollapseAnimationFade } from 'src/app/shared/animations';
   styleUrls: ['./auth.component.scss'],
   animations: [CollapseAnimationFade]
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   authForm!: FormGroup;
 
-  constructor (private _auth: AuthService, private route: ActivatedRoute) {}
+  constructor (private _auth: AuthService, private _route: ActivatedRoute, private _router: Router) {}
 
   getMode(){
     return this._auth.getAuthMode();
@@ -66,6 +66,12 @@ export class AuthComponent {
 
   ngOnInit() {
     this.authForm = this._auth.initForm();
-    this._auth.setAuthMode(this.route.snapshot.paramMap.get('mode')=='login'?'login':'signup');
+    let mode: string | null = this._route.snapshot.paramMap.get('mode');
+    if (mode == 'login' || mode == 'signup') {
+      this._auth.setAuthMode(mode);
+      return;
+    }
+    this._router.navigate(['auth/signup']);
+    this._auth.setAuthMode('signup');
   }
 }

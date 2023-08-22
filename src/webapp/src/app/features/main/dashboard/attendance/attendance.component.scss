@@ -38,6 +38,10 @@ ion-list {
   --offset-bottom: hidden !important;
   --overflow: hidden;
   overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    margin-bottom: 1.4rem !important;
+  }
 }
 
 ion-item {

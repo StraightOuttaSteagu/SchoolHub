@@ -43,21 +43,9 @@ ion-list {
   --overflow: hidden;
   overflow: auto;
 
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
 
   &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(var(--ion-color-text-rgb), 0.7) !important;
-  }
-
-  .inner-scroll {
-    scrollbar-width: thin;
+    margin-bottom: 1.4rem;
   }
 }
 
@@ -87,6 +75,10 @@ ion-card-title {
   font-size: 2rem;
   font-weight: 400;
   color: var(--ion-color-text);
+}
+
+.mobile {
+  display: none;
 }
 
 @media(max-width: 768px) {

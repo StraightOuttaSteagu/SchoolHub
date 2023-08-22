@@ -1,6 +1,6 @@
 <div class="outer">
     <ion-row>
-        <ion-segment mode="ios" [value]="getHref().includes('missing')?'missing':getHref().includes('assigned')?'assigned':'done'">
+        <ion-segment id="segment" (ionChange)="updateMode()" mode="ios" [value]="getHref().includes('missing')?'missing':getHref().includes('assigned')?'assigned':'done'">
             <ion-segment-button routerLink="../missing" value="missing">
               <ion-label>Missing</ion-label>
             </ion-segment-button>
@@ -15,11 +15,11 @@
 </div>
 <ion-content>
     <ion-accordion-group multiple="true">
-        <ion-accordion *ngFor="let title of titles" [value]="title">
+        <ion-accordion *ngFor="let category of data[mode]" [value]="category.title">
             <ion-item slot="header" color="light">
-              <ion-label>{{ title }}</ion-label>
+              <ion-label>{{ category.title }}</ion-label>
             </ion-item>
-            <ion-card slot="content" class="assignment ion-padding desktop" *ngFor="let item of data">
+            <ion-card slot="content" class="assignment ion-padding desktop" *ngFor="let item of category.data">
                 <ion-col>
                     <h3 class='title light-90'>{{item.title}}</h3>
                     <p class='light-80'>Due date: {{item.dueDate}}</p>
@@ -32,7 +32,7 @@
                     <p class='light-80' style="text-align: end;">Posted: {{item.createDate}}</p>
                 </div>
             </ion-card>
-            <ion-card slot="content" class="assignment ion-padding mobile" *ngFor="let item of data">
+            <ion-card slot="content" class="assignment ion-padding mobile" *ngFor="let item of category.data">
                 <div style="display: flex; align-items: center;">
                     <ion-img src='assets/leaf.png'></ion-img>
                     <ion-card-header>
