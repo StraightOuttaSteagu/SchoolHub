@@ -26,7 +26,7 @@ export class AuthService {
       surname: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       repeatPassword: ['']
     });
   }
@@ -48,11 +48,15 @@ export class AuthService {
     });
   }
 
-  register(form: object) {
+  register(form: {login: string, password: string, firstName: string, lastName: string, email: string}) {
     this.http.post('http://localhost:8080/api/register', form).subscribe({
       next: () => {
         this.displayMessage("Account created successfully");
-        this.login(form);
+        this.login({
+          username: form.email,
+          password: form.password,
+          rememberMe: true
+        });
       },
       error: err => {
         this.displayMessage(err.statusText);

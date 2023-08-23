@@ -49,9 +49,9 @@ export class AuthComponent implements OnInit {
         return;
       }
       this._auth.register({
-        auth: this.authForm.value?.username,
-        firstName: this.authForm.value?.firstName,
-        lastName: this.authForm.value?.lastName,
+        login: this.authForm.value?.username,
+        firstName: this.authForm.value?.name,
+        lastName: this.authForm.value?.surname,
         email: this.authForm.value?.email,
         password: this.authForm.value?.password
       });
