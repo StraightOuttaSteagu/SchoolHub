@@ -49,7 +49,7 @@
                 <ng-template>
                     <ion-list class='popover-options'>
                         <ion-menu-toggle auto-hide='false'>
-                            <ion-item [routerLink]='["auth"]' (click)='deleteToken()' detail='false'>
+                            <ion-item [routerLink]='["auth"]' (click)='logOut()' detail='false'>
                                 <ion-icon name='log-out' color='text'></ion-icon>
                                 <ion-label>Logout</ion-label>
                             </ion-item>
@@ -68,7 +68,7 @@
                                      arrow='false'>
                             <ng-template>
                                 <ion-list class='popover-options'>
-                                    <ion-radio-group [value]='localStorage.getItem("theme")'>
+                                    <ion-radio-group [value]='getTheme()'>
                                         <ion-item [button]='true' [detail]='false' (click)='setTheme("light")'>
                                             <ion-icon name='sunny'></ion-icon>
                                             <ion-radio value='light'>

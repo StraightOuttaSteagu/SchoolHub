@@ -10,20 +10,7 @@ export class AssignmentsComponent implements OnInit {
 
   mode: 'assigned' | 'missing' | 'done' = 'assigned';
 
-  constructor (private _route: ActivatedRoute, private _router: Router) { }
-
-  getHref(){
-    return window.location.href;
-  }
-
-  updateMode(){
-    let value: string = (<HTMLInputElement>document.getElementById('segment')).value;
-    if (value == 'assigned' || value == 'missing' || value == 'done'){
-      this.mode = value;
-    }
-  }
-
-  data = {
+  data: any = {
     missing: [
       {
         title: "This week",
@@ -222,7 +209,9 @@ export class AssignmentsComponent implements OnInit {
     ]
   }
 
-  ngOnInit(){
+  constructor (private _route: ActivatedRoute, private _router: Router) { }
+
+  ngOnInit(): void {
     let mode: string | null = this._route.snapshot.paramMap.get('mode');
     if (mode == 'assigned' || mode == 'missing' || mode == 'done'){
       this.mode = mode;
@@ -230,5 +219,16 @@ export class AssignmentsComponent implements OnInit {
     }
     this._router.navigate(['assignments/assigned']);
     this.mode = 'assigned';
+  }
+
+  getHref(): string {
+    return window.location.href;
+  }
+
+  updateMode(): void{
+    let value: string = (<HTMLInputElement>document.getElementById('segment')).value;
+    if (value == 'assigned' || value == 'missing' || value == 'done'){
+      this.mode = value;
+    }
   }
 }

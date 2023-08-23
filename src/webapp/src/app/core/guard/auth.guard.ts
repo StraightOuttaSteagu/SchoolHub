@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard {
-  constructor (private _router: Router) { }
+  constructor (private _router: Router, private _auth: AuthService) { }
 
   canActivate() {
-    if (localStorage.getItem('token') != undefined){
+    if (this._auth.isLoggedIn()){
       return true;
     }
 

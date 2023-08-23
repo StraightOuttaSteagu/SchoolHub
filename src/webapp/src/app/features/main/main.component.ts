@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -13,12 +14,12 @@ export class MainComponent {
 
   pageAnimation = pageAnimation;
 
-  organizations = [
+  organizations: any = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
     {name: 'Colegiul National "Andrei Saguna"'},
     {name: 'Colegiul National "Dr. Ioan Mesota'}
   ];
-  classes = [
+  classes: any = [
     {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia'},
     {subject: 'Arte Vizuale si activitati practice extracuriculare', teacher: 'Oteleanu lia'},
     {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus'},
@@ -39,23 +40,20 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
   ];
-  protected readonly window = window;
 
-  constructor(private theme: ThemeService) {
+  constructor(private _theme: ThemeService, private _auth: AuthService) {
   }
 
-  deleteToken() {
-    localStorage.removeItem('token');
+  logOut(): void {
+    this._auth.logOut();
   }
 
-  setTheme(theme: string) {
-    this.theme.setTheme(theme);
+  setTheme(theme: string): void {
+    this._theme.setTheme(theme);
   }
 
-  getTheme() {
-    return this.theme.getTheme();
+  getTheme(): string | null {
+    return this._theme.getTheme();
   }
-
-  protected readonly localStorage = localStorage;
 }
 

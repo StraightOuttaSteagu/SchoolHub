@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { pageAnimation } from 'src/app/shared/animations';
 
 @Component({
-  selector: 'app-dasboard',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
