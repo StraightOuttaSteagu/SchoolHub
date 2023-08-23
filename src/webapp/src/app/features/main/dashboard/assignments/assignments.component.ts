@@ -169,7 +169,7 @@ export class AssignmentsComponent implements OnInit {
         ]
       },
       {
-        title: "This week",
+        title: "Last week",
         data: [
           {
             title: 'Lorem Ipsum',
