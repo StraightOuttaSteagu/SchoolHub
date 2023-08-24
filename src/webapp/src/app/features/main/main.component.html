@@ -14,7 +14,7 @@
             <ng-template>
                 <ion-list class='popover-options'>
                     <ion-item *ngFor='let item of organizations'>
-                        <ion-label>{{item.name}}</ion-label>
+                        <ion-label>{{ item.name }}</ion-label>
                     </ion-item>
                     <ion-item lines='none'>
                         <ion-icon name='add-circle-outline' color='text'></ion-icon>
@@ -26,11 +26,11 @@
         <ion-content class='side-classes'>
             <ion-list lines='none' class='side-classes'>
                 <ion-menu-toggle auto-hide='false'>
-                    <ion-item class='side-class' *ngFor='let item of classes'>
+                    <ion-item [routerLink]="'class/' + item.id + '/general'" [ngClass]='getClassID()==item.id?"side-class-focus":"side-class"' *ngFor='let item of classes'>
                         <ion-img src='assets/leaf.png'></ion-img>
                         <ion-label>
-                            <h2>{{item.subject}}</h2>
-                            <p>{{item.teacher}}</p>
+                            <h2>{{ item.subject }}</h2>
+                            <p>{{ item.teacher }}</p>
                         </ion-label>
                     </ion-item>
                 </ion-menu-toggle>

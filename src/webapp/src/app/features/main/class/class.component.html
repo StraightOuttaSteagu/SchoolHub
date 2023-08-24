@@ -1,1 +1,40 @@
-<p>classes works!</p>
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title>
+            <div style='display: flex; align-items: center'>
+                <ion-img routerLink='' (click)="deleteClassID()" src='assets/back-arrow.svg'></ion-img>
+                <ion-img src='assets/leaf.png'></ion-img>
+                Save the turtles
+            </div>
+        </ion-title>
+        <ion-row>
+            <ion-col>Assignments stat</ion-col>
+            <ion-col>Attendance stat</ion-col>
+            <ion-col>Grades stat</ion-col>
+        </ion-row>
+        <ion-buttons class='chips'>
+            <ion-chip routerLink='announcements' [class.active]='getHref().includes("announcements")'>
+                Announcements
+            </ion-chip>
+            <ion-chip routerLink='grades' [class.active]='getHref().includes("grades")'>Grades</ion-chip>
+            <ion-chip routerLink='assignments' [class.active]='getHref().includes("assignments")'>Assignments
+            </ion-chip>
+            <ion-chip routerLink='attendance' [class.active]='getHref().includes("attendance")'>Attendance
+            </ion-chip>
+        </ion-buttons>
+    </ion-toolbar>
+    <div *ngFor="let item of data" [ngSwitch]="item.type">
+        <ion-card *ngSwitchCase="'announcement'">
+            Announcement
+        </ion-card>
+        <ion-card *ngSwitchCase="'assignment'">
+            Assignment
+        </ion-card>
+        <ion-card *ngSwitchCase="'grade'">
+            Grade
+        </ion-card>
+        <ion-card *ngSwitchCase="'absence'">
+            Absence
+        </ion-card>
+    </div>
+</ion-header>

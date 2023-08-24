@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClassComponent } from './class.component';
 
 const routes: Routes = [
-  { path: ':id', component: ClassComponent }
+  { path: ':id/:mode', component: ClassComponent }
 ];
 
 @NgModule({

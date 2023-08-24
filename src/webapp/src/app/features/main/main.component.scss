@@ -77,6 +77,39 @@ ion-split-pane {
       //transform: scale(1.4) translateY(-0.5rem);
       transition-duration: 0.3s;
     }
+    cursor: pointer;
+  }
+}
+
+.side-class-focus {
+  background-color: red;
+  margin: 0.6rem 0;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
+  padding: 0.3rem 0;
+
+  ion-img {
+    width: 12%;
+    margin-right: 0.3rem;
+    z-index: 100;
+  }
+
+  ion-label {
+    color: var(--ion-color-text);
+
+    p {
+      color: rgba(var(--ion-color-text-rgb), 0.8);
+      font-weight: 300;
+    }
+  }
+
+  &:hover {
+    ion-img {
+      width: 15%;
+      //transform: scale(1.4) translateY(-0.5rem);
+      transition-duration: 0.3s;
+    }
+    cursor: pointer;
   }
 }
 

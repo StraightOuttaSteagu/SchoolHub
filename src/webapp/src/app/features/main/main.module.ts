@@ -8,12 +8,12 @@ import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
-    MainComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
-    IonicModule,
+    IonicModule
   ]
 })
 export class MainModule {
