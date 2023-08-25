@@ -13,28 +13,34 @@
             <ion-col>Grades stat</ion-col>
         </ion-row>
         <ion-buttons class='chips'>
-            <ion-chip routerLink='announcements' [class.active]='getHref().includes("announcements")'>
+            <ion-chip [routerLink]='["../../" + getClassID() + "/announcements"]' [class.active]='getHref().includes("announcements")'>
                 Announcements
             </ion-chip>
-            <ion-chip routerLink='grades' [class.active]='getHref().includes("grades")'>Grades</ion-chip>
-            <ion-chip routerLink='assignments' [class.active]='getHref().includes("assignments")'>Assignments
+            <ion-chip [routerLink]='["../../" + getClassID() + "/grades"]' [class.active]='getHref().includes("grades")'>
+                Grades
             </ion-chip>
-            <ion-chip routerLink='attendance' [class.active]='getHref().includes("attendance")'>Attendance
+            <ion-chip [routerLink]='["../../" + getClassID() + "/assignments"]' [class.active]='getHref().includes("assignments")'>
+                Assignments
+            </ion-chip>
+            <ion-chip [routerLink]='["../../" + getClassID() + "/attendance"]' [class.active]='getHref().includes("attendance")'>
+                Attendance
             </ion-chip>
         </ion-buttons>
     </ion-toolbar>
+</ion-header>
+<ion-content>
     <div *ngFor="let item of data" [ngSwitch]="item.type">
         <ion-card *ngSwitchCase="'announcement'">
-            Announcement
+            <p>Announcement</p> <!--Code for announcement card-->
         </ion-card>
         <ion-card *ngSwitchCase="'assignment'">
-            Assignment
+            <p>Assignment</p> <!--Code for assignment card-->
         </ion-card>
         <ion-card *ngSwitchCase="'grade'">
-            Grade
+            <p>Grade</p> <!--Code for grade card-->
         </ion-card>
         <ion-card *ngSwitchCase="'absence'">
-            Absence
+            <p>Absence</p> <!--Code for absence card-->
         </ion-card>
     </div>
-</ion-header>
+</ion-content>

@@ -10,34 +10,38 @@ import { ClassService } from 'src/app/core/services/class.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  private _secondaryTheme!: string | null;
+
   pageAnimation = pageAnimation;
+
+   Object = Object;
 
   organizations: any = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
     {name: 'Colegiul National "Andrei Saguna"'},
     {name: 'Colegiul National "Dr. Ioan Mesota'}
   ];
-  classes: any = [
-    {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', id: "1"},
-    {subject: 'Arte Vizuale si activitati practice extracuriculare', teacher: 'Oteleanu lia', id: "2"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus', id: "690"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "4200"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "msg"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "seg"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "sdggsd"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dsgd"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dsbh"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "ghmhg"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "wtre"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dfhw"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "erhj"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "rheje"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "werh"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "erhy"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "ethe5"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "wwth"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "hjjhh"},
-  ];
+  classes: any = {
+    "1": {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', theme: "green"},
+    "2": {subject: 'Arte Vizuale si activitati practice extracuriculare', teacher: 'Oteleanu lia', theme: "red"},
+    "69": {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus', theme: "blue"},
+    "420": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "msg": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "seg": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "sdggsd": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "dsgd": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "dsbh": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "ghmhg": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "wtre": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "dfhw": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "erhj": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "rheje": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "werh": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "erhy": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "ethe5": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "wwth": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+    "hjjhh": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
+  };
 
   constructor(private _theme: ThemeService, private _auth: AuthService, private _class: ClassService) { }
 
@@ -55,6 +59,15 @@ export class MainComponent {
 
   getClassID(): string | null {
     return this._class.getClassID();
+  }
+
+  getSecondaryTheme(): string | null {
+    return this._secondaryTheme;
+  }
+
+  setSecondaryTheme(theme: string): 'side-class-focus' {
+    this._secondaryTheme = theme;
+    return 'side-class-focus';
   }
 }
 
