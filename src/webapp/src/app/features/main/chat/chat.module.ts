@@ -3,20 +3,16 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
-import { ClassComponent } from './class.component';
-
-
+import { ChatComponent } from './chat.component';
 
 @NgModule({
-  declarations: [
-    ClassComponent
-  ],
+  declarations: [ChatComponent],
   imports: [
     CommonModule,
     IonicModule,
     RouterModule.forChild([
-      { path: ':id/:mode', component: ClassComponent }
+      { path: ':user', component: ChatComponent }
     ])
   ]
 })
-export class ClassModule { }
+export class ChatModule { }
