@@ -132,4 +132,8 @@ ion-card-title {
   .date {
     font-weight: 400;
   }
+
+  ion-card {
+    --background: rgba(var(--ion-color-back-secondary-rgb), 0.5);
+  }
 }
