@@ -1,11 +1,27 @@
-.green {
-    --icon-color: #00ff00;
+:root {
+    .green {
+        --icon-color: #007200;
+    }
+    
+    .blue {
+        --icon-color: #0000ff;
+    }
+    
+    .red {
+        --icon-color: #ff0000;
+    }
 }
 
-.blue {
-    --icon-color: #0000ff;
-}
-
-.red {
-    --icon-color: #ff0000;
+.dark {
+    .green {
+        --icon-color: #997d01;
+    }
+    
+    .blue {
+        --icon-color: #0000ff;
+    }
+    
+    .red {
+        --icon-color: #ff0000;
+    }
 }

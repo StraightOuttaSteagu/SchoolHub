@@ -13,8 +13,6 @@ export class ClassComponent implements OnInit {
 
   private _RouteSubscription: Subscription | undefined;
 
-  private _type: string = '';
-
   data = [
     { content: 'Lorem Ipsum', type: 'announcement'},
     { content: 'Lorem Ipsum', type: 'announcement'},
@@ -27,7 +25,6 @@ export class ClassComponent implements OnInit {
   constructor (private _route: ActivatedRoute, private _class: ClassService) { }
 
   ngOnInit(): void {
-    console.log("subbed")
     this._RouteSubscription = this._route.paramMap
       .subscribe((params: ParamMap) => {
         this._class.setClassID(params.get('id'));
@@ -48,7 +45,6 @@ export class ClassComponent implements OnInit {
 
   ngOnDestroy(): void {
     // Unsubscribe from the route parameter subscription to avoid memory leaks
-    console.log("Unsubbed")
     if (this._RouteSubscription) {
       this._RouteSubscription.unsubscribe();
     }

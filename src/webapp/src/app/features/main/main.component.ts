@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -9,41 +9,43 @@ import { ClassService } from 'src/app/core/services/class.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
-  private _secondaryTheme!: string | null;
+export class MainComponent implements OnInit {
+  private _secondaryTheme: string | null = 'theme-default';
 
   pageAnimation = pageAnimation;
-
-   Object = Object;
 
   organizations: any = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
     {name: 'Colegiul National "Andrei Saguna"'},
     {name: 'Colegiul National "Dr. Ioan Mesota'}
   ];
-  classes: any = {
-    "1": {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', theme: "green"},
-    "2": {subject: 'Arte Vizuale si activitati practice extracuriculare', teacher: 'Oteleanu lia', theme: "red"},
-    "69": {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus', theme: "blue"},
-    "420": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "msg": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "seg": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "sdggsd": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "dsgd": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "dsbh": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "ghmhg": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "wtre": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "dfhw": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "erhj": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "rheje": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "werh": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "erhy": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "ethe5": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "wwth": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-    "hjjhh": {subject: 'Biologie', teacher: 'Oteleanu lia', theme: "blue"},
-  };
+  classes: any[] = [
+    {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', id: "1", theme: "red"},
+    {subject: 'Arte Vizuale si activitati practice extracuriculare', teacher: 'Oteleanu lia', id: "2", theme: "green"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus', id: "690", theme: "default-theme"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "4200", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "msg", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "seg", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "sdggsd", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dsgd", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dsbh", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "ghmhg", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "wtre", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dfhw", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "erhj", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "rheje", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "werh", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "erhy", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "ethe5", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "wwth", theme: "blue"},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "hjjhh", theme: "blue"},
+  ];
 
   constructor(private _theme: ThemeService, private _auth: AuthService, private _class: ClassService) { }
+
+  ngOnInit(): void {
+    this._secondaryTheme = this.classes.find(item => item.id == this.getClassID());
+  }
 
   logOut(): void {
     this._auth.logOut();
@@ -65,9 +67,8 @@ export class MainComponent {
     return this._secondaryTheme;
   }
 
-  setSecondaryTheme(theme: string): 'side-class-focus' {
+  setSecondaryTheme(theme: string): void {
     this._secondaryTheme = theme;
-    return 'side-class-focus';
   }
 }
 

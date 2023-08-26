@@ -1,4 +1,4 @@
-<div [ngClass]="classes['1'].theme">
+<div [ngClass]="getSecondaryTheme()">
     <ion-split-pane contentId='main-content' when='lg'>
         <ion-menu contentId='main-content' type='push'>
             <ion-header>
@@ -27,11 +27,11 @@
             <ion-content class='side-classes'>
                 <ion-list lines='none' class='side-classes'>
                     <ion-menu-toggle auto-hide='false'>
-                        <ion-item [routerLink]="'class/' + item + '/general'" [ngClass]='getClassID()==item?"side-class-focus":"side-class"' *ngFor='let item of Object.keys(classes)'>
+                        <ion-item [routerLink]="'class/' + item.id + '/general'" [ngClass]='getClassID()==item.id?"side-class-focus":"side-class"' *ngFor='let item of classes' (click)="setSecondaryTheme(item.theme)">
                             <ion-img src='assets/leaf.png'></ion-img>
                             <ion-label>
-                                <h2>{{ classes[item].subject }}</h2>
-                                <p>{{ classes[item].teacher }}</p>
+                                <h2>{{ item.subject }}</h2>
+                                <p>{{ item.teacher }}</p>
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
