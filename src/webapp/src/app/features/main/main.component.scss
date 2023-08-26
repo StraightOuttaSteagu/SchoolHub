@@ -105,8 +105,7 @@ ion-split-pane {
   &:hover {
     ion-img {
       width: 15%;
-      //transform: scale(1.4) translateY(-0.5rem);
-      transition-duration: 0.3s;
+      transition: 300ms all ease-in-out !important;
     }
     cursor: pointer;
   }
@@ -182,7 +181,7 @@ ion-radio {
 }
 
 .back {
-  background: var(--bgImage);
+  background-image: var(--bgImage);
   z-index: -1;
   width: 100vw;
   height: 100vh;
