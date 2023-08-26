@@ -69,6 +69,7 @@ ion-item {
   ion-chip {
     height: 2.2rem;
     font-size: 0.75rem;
+    --background: rgba(var(--ion-color-back-secondary-rgb), 0.45);
   }
   ion-img {
     display: block;
