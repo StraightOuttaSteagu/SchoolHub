@@ -17,9 +17,15 @@
                         <ion-item *ngFor='let item of organizations'>
                             <ion-label>{{ item.name }}</ion-label>
                         </ion-item>
-                        <ion-item lines='none'>
+                        <ion-item id="present-alert" [button]="true" lines='none'>
+                            <ion-alert
+                                trigger="present-alert"
+                                header="Add Organization"
+                                [buttons]="alertButtons"
+                                [inputs]="alertInputs"
+                            ></ion-alert>
                             <ion-icon name='add-circle-outline' color='text'></ion-icon>
-                            <ion-label>Add organization</ion-label>
+                            <ion-label id="">Add organization</ion-label>
                         </ion-item>
                     </ion-list>
                 </ng-template>

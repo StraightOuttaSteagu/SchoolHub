@@ -13,7 +13,12 @@ export class MainComponent implements OnInit {
   private _secondaryTheme: string | null = 'theme-default';
 
   pageAnimation = pageAnimation;
-
+  public alertButtons = ['OK'];
+  public alertInputs = [
+    {
+      placeholder: 'Enter organization ID',
+    }
+    ];
   organizations: any = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
     {name: 'Colegiul National "Andrei Saguna"'},
