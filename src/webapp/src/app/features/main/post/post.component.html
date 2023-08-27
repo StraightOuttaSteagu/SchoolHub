@@ -1,1 +1,22 @@
-<p>post works!</p>
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title>
+            <div style='display: flex; align-items: center; font-size: 0.5em; white-space: break-spaces;'>
+                <ion-back-button defaultHref='/' icon='chevron-back-outline'
+                                 color='text'></ion-back-button>
+                Anunt important: Salvati testoasele! Acestea ard pe strazile Greciei! Aceasta nu este o gluma!
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        Main body
+    </ion-card>
+    <ion-card>
+        Chat
+    </ion-card>
+    <ion-card *ngIf="data.assignment">
+        Upload area
+    </ion-card>
+</ion-content>
