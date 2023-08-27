@@ -12,37 +12,42 @@ export class MainComponent {
   private _secondaryTheme: string | null = 'theme-default';
 
   pageAnimation = pageAnimation;
-  public alertButtons = ['OK'];
+  public alertButtons = ['Add class'];
   public alertInputs = [
     {
       placeholder: 'Enter organization ID',
     }
-    ];
+  ];
   organizations: any = [
     {name: 'Colegiul National de Informatica "Girgore Moisil"'},
     {name: 'Colegiul National "Andrei Saguna"'},
     {name: 'Colegiul National "Dr. Ioan Mesota'}
   ];
   classes: any[] = [
-    {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', id: "1", theme: "red"},
-    {subject: 'Arte Vizuale si activitati practice extracuriculare', teacher: 'Oteleanu lia', id: "2", theme: "green"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus', id: "690", theme: "default-theme"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "4200", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "msg", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "seg", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "sdggsd", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dsgd", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dsbh", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "ghmhg", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "wtre", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "dfhw", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "erhj", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "rheje", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "werh", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "erhy", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "ethe5", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "wwth", theme: "blue"},
-    {subject: 'Biologie', teacher: 'Oteleanu lia', id: "hjjhh", theme: "blue"},
+    {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', id: '1', theme: 'red'},
+    {
+      subject: 'Arte Vizuale si activitati practice extracuriculare',
+      teacher: 'Oteleanu lia',
+      id: '2',
+      theme: 'default-theme'
+    },
+    {subject: 'Biologie', teacher: 'Oteleanu lia maximus superbus extremus susus amugus', id: '690', theme: 'green'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: '4200', theme: 'light-blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'msg', theme: 'orange'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'seg', theme: 'yellow'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'sdggsd', theme: 'pink'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'dsgd', theme: 'purple'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'dsbh', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'ghmhg', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'wtre', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'dfhw', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'erhj', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'rheje', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'werh', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'erhy', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'ethe5', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'wwth', theme: 'blue'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue'},
   ];
 
   constructor(private _theme: ThemeService, private _auth: AuthService) { }

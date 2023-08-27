@@ -19,7 +19,7 @@
         <ion-accordion *ngFor='let category of data[mode]' [value]='category.title'>
             <ion-item slot='header' color='light'>
                 <ion-label class='category-title'>{{ category.title }}</ion-label>
-                <ion-icon class='ion-accordion-toggle-icon' name='caret-down' slot='end' color='text'></ion-icon>
+                <ion-icon class='ion-accordion-toggle-icon' name='caret-down' slot='end'></ion-icon>
             </ion-item>
             <ion-card slot='content' class='assignment ion-padding desktop-card' *ngFor='let item of category.data'>
                 <ion-col>

@@ -11,8 +11,9 @@ ion-segment {
 
   color: rgba(var(--ion-color-text-rgb), .9);
   border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-  --background: rgba(var(--ion-color-back-secondary-rgb), 0.35);
+  --background: rgba(var(--ion-color-back-tertiary-rgb), 0.35);
 
   .segment-button-checked {
     --indicator-color: rgba(var(--ion-color-selected-rgb), 0.7);
@@ -52,6 +53,7 @@ ion-accordion {
   margin-bottom: 3rem;
   border-radius: 1.5rem;
   background: rgba(var(--ion-color-back-tertiary-rgb), 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   ion-item {
     --ion-color-base: transparent !important;
@@ -132,6 +134,10 @@ ion-card-content {
 
 .category-title {
   font-size: 1.5rem;
+}
+
+ion-icon {
+  color: var(--ion-color-text);
 }
 
 @media (max-width: 992px) {
@@ -216,6 +222,7 @@ ion-card-content {
 
   ion-segment {
     margin: 1rem 16px 0 16px;
+    --background: rgba(var(--ion-color-back-secondary-rgb), 0.35);
   }
 
   ion-accordion {

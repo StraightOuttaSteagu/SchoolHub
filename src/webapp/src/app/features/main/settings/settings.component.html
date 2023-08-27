@@ -1,8 +1,8 @@
 <ion-header style='--background: transparent' mode='md'>
     <ion-toolbar style='--background: transparent'>
         <ion-title>
-            <div style='display: flex; align-items: center; gap: 2rem;' routerLink="/grades">
-                <ion-icon color="text" name="chevron-back-outline"></ion-icon>
+            <div style='display: flex; align-items: center; gap: 2rem;'>
+                <ion-back-button defaultHref='/' icon='chevron-back-outline' color='text'></ion-back-button>
                 Profile Settings
             </div>
         </ion-title>
@@ -13,7 +13,7 @@
         <ion-row class='profile-picture'>
             <ion-img src='assets/account.png' alt='account'></ion-img>
             <div style="position: absolute; width: 8rem; justify-content: center; display: flex;">
-                <p>Change...</p>
+                <p style='filter: drop-shadow(0 0 5px rgb(0, 0, 0)); color: white'>Change...</p>
             </div>
         </ion-row>
         <ion-card>

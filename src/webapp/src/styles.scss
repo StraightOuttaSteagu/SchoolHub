@@ -141,24 +141,6 @@ img {
   border-radius: 1.6rem;
 }
 
-:root {
-  --ion-color-text: #3D4756;
-  --ion-color-text-rgb: 61,71,86;
-  --ion-color-text-contrast: #ffffff;
-  --ion-color-text-contrast-rgb: 255,255,255;
-  --ion-color-text-shade: #363e4c;
-  --ion-color-text-tint: #505967;
-}
-
-.ion-color-text {
-  --ion-color-base: var(--ion-color-text);
-  --ion-color-base-rgb: var(--ion-color-text-rgb);
-  --ion-color-contrast: var(--ion-color-text-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-text-contrast-rgb);
-  --ion-color-shade: var(--ion-color-text-shade);
-  --ion-color-tint: var(--ion-color-text-tint);
-}
-
 body {
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
@@ -166,4 +148,31 @@ body {
 
 .scroll-y {
   overflow: hidden;
+}
+
+div.sc-ion-alert-md {
+  border-radius: 1.25rem !important;
+
+
+  div.alert-input-group {
+    div.alert-input-wrapper {
+      input.alert-input {
+        color: var(--ion-color-text);
+      }
+    }
+  }
+
+  div.alert-button-group {
+    button {
+      background: var(--ion-color-primary);
+      border-radius: .5rem;
+      color: var(--ion-color-text);
+    }
+  }
+
+  div.alert-head {
+    h2.alert-title {
+      color: var(--ion-color-text);
+    }
+  }
 }

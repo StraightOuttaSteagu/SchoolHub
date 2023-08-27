@@ -1,4 +1,4 @@
-<div [ngClass]="getSecondaryTheme()">
+<div [ngClass]='getSecondaryTheme()'>
     <ion-split-pane contentId='main-content' when='lg'>
         <ion-menu contentId='main-content' type='push' maxEdgeStart='350'>
             <ion-header>
@@ -17,15 +17,16 @@
                         <ion-item *ngFor='let item of organizations'>
                             <ion-label>{{ item.name }}</ion-label>
                         </ion-item>
-                        <ion-item id="present-alert" [button]="true" lines='none'>
+                        <ion-item id='present-alert' [button]='true' lines='none'>
                             <ion-alert
-                                trigger="present-alert"
-                                header="Add Organization"
-                                [buttons]="alertButtons"
-                                [inputs]="alertInputs"
+                                    trigger='present-alert'
+                                    header='Add Organization'
+                                    [buttons]='alertButtons'
+                                    [inputs]='alertInputs'
+                                    translucent='true'
                             ></ion-alert>
-                            <ion-icon name='add-circle-outline' color='text'></ion-icon>
-                            <ion-label id="">Add organization</ion-label>
+                            <ion-icon name='add-circle-outline'></ion-icon>
+                            <ion-label id=''>Add organization</ion-label>
                         </ion-item>
                     </ion-list>
                 </ng-template>
@@ -57,21 +58,22 @@
                         <ion-list class='popover-options'>
                             <ion-menu-toggle auto-hide='false'>
                                 <ion-item [routerLink]='["auth"]' (click)='logOut()' detail='false'>
-                                    <ion-icon name='log-out' color='text'></ion-icon>
+                                    <ion-icon name='log-out'></ion-icon>
                                     <ion-label>Logout</ion-label>
                                 </ion-item>
                             </ion-menu-toggle>
                             <ion-menu-toggle auto-hide='false'>
                                 <ion-item [routerLink]='["settings"]' detail='false'>
-                                    <ion-icon name='settings' color='text'></ion-icon>
+                                    <ion-icon name='settings'></ion-icon>
                                     <ion-label>Settings</ion-label>
                                 </ion-item>
                             </ion-menu-toggle>
                             <ion-item button='true' lines='none' detail='false' id='theme-trigger'>
-                                <ion-icon name='color-palette' color='text'></ion-icon>
+                                <ion-icon name='color-palette'></ion-icon>
                                 <ion-label>Theme</ion-label>
                             </ion-item>
-                            <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right' alignment='end'
+                            <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right'
+                                         alignment='end'
                                          arrow='false'>
                                 <ng-template>
                                     <ion-list class='popover-options'>
@@ -104,7 +106,7 @@
                 </ion-popover>
             </ion-footer>
         </ion-menu>
-        <ion-router-outlet id='main-content' [animation]="pageAnimation"></ion-router-outlet>
+        <ion-router-outlet id='main-content' [animation]='pageAnimation'></ion-router-outlet>
     </ion-split-pane>
-    <div class='back'></div>    
+    <div class='back'></div>
 </div>
