@@ -23,8 +23,9 @@
                                     header='Add Organization'
                                     [buttons]='alertButtons'
                                     [inputs]='alertInputs'
+                                    translucent='true'
                             ></ion-alert>
-                            <ion-icon name='add-circle-outline' color='text'></ion-icon>
+                            <ion-icon name='add-circle-outline'></ion-icon>
                             <ion-label id=''>Add organization</ion-label>
                         </ion-item>
                     </ion-list>
@@ -36,11 +37,11 @@
                         <ion-item [routerLink]="'class/' + item.id + '/general'"
                                   [ngClass]='getClassID()==item.id?"side-class-focus":"side-class"'
                                   *ngFor='let item of classes' (click)='setSecondaryTheme(item.theme)' detail='false'>
-                                <ion-img src='assets/leaf.png'></ion-img>
-                                <ion-label>
-                                    <h2>{{ item.subject }}</h2>
-                                    <p>{{ item.teacher }}</p>
-                                </ion-label>
+                            <ion-img src='assets/leaf.png'></ion-img>
+                            <ion-label>
+                                <h2>{{ item.subject }}</h2>
+                                <p>{{ item.teacher }}</p>
+                            </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
                 </ion-list>

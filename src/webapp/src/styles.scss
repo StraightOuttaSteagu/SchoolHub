@@ -149,3 +149,30 @@ body {
 .scroll-y {
   overflow: hidden;
 }
+
+div.sc-ion-alert-md {
+  border-radius: 1.25rem !important;
+
+
+  div.alert-input-group {
+    div.alert-input-wrapper {
+      input.alert-input {
+        color: var(--ion-color-text);
+      }
+    }
+  }
+
+  div.alert-button-group {
+    button {
+      background: var(--ion-color-primary);
+      border-radius: .5rem;
+      color: var(--ion-color-text);
+    }
+  }
+
+  div.alert-head {
+    h2.alert-title {
+      color: var(--ion-color-text);
+    }
+  }
+}

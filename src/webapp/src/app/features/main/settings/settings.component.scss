@@ -37,7 +37,7 @@ ion-header {
     text-anchor:start;
     top: 7rem;
     color: var(--ion-color-text-contrast);
-    text-shadow: 0px 0px 23px #000;;
+    text-shadow: 0 0 23px #000;;
   }
 }
 
@@ -83,7 +83,7 @@ ion-item {
 
 .reset-button {
   text-transform: none;
-  --background: rgba(var(--ion-color-back-rgb), .7);
+  --background: rgba(var(--ion-color-back-secondary-rgb), .5);
   color: rgba(var(--ion-color-text), .7);
   margin-top: 1rem;
   --box-shadow: none;
@@ -103,7 +103,7 @@ ion-item {
 
 ion-input {
   font-size: 1.25rem;
-  --background: rgba(var(--ion-color-back-rgb), .7);
+  --background: rgba(var(--ion-color-back-secondary-rgb), .5);
   --highlight-color-focused: var(--ion-color-text);
   --border-style: none;
   margin-top: .75rem;
@@ -164,9 +164,10 @@ ion-content {
   }
 
   ion-card {
-    margin-left: 0;
+    margin: 0 16px;
     padding-left: 1rem;
     padding-right: 1rem;
+    background: rgba(var(--ion-color-back-tertiary-rgb), 0.5);
   }
 
   .profile-picture {

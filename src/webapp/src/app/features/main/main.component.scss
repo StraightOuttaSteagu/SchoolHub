@@ -215,7 +215,11 @@ ion-content {
 }
 
 ion-alert{
-  --background: #ffffff;
+  --background: var(--ion-color-back-secondary);
+}
+
+ion-icon {
+  color: var(--ion-color-text);
 }
 
 @media (max-width: 992px) {
