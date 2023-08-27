@@ -2,7 +2,7 @@
     <ion-toolbar style='--background: transparent'>
         <ion-title>
             <div style='display: flex; align-items: center'>
-                <ion-img routerLink='' (click)="deleteClassID()" src='assets/back-arrow.svg'></ion-img>
+                <ion-img routerLink='' src='assets/back-arrow.svg'></ion-img>
                 <ion-img src='assets/leaf.png'></ion-img>
                 Save the turtles
             </div>
@@ -13,16 +13,16 @@
             <ion-col>Grades stat</ion-col>
         </ion-row>
         <ion-buttons class='chips'>
-            <ion-chip [routerLink]='["../../" + getClassID() + "/announcements"]' [class.active]='getHref().includes("announcements")'>
+            <ion-chip [routerLink]='["../../" + getClassThemeID() + "/announcements"]' [class.active]='getHref().includes("announcements")'>
                 Announcements
             </ion-chip>
-            <ion-chip [routerLink]='["../../" + getClassID() + "/grades"]' [class.active]='getHref().includes("grades")'>
+            <ion-chip [routerLink]='["../../" + getClassThemeID() + "/grades"]' [class.active]='getHref().includes("grades")'>
                 Grades
             </ion-chip>
-            <ion-chip [routerLink]='["../../" + getClassID() + "/assignments"]' [class.active]='getHref().includes("assignments")'>
+            <ion-chip [routerLink]='["../../" + getClassThemeID() + "/assignments"]' [class.active]='getHref().includes("assignments")'>
                 Assignments
             </ion-chip>
-            <ion-chip [routerLink]='["../../" + getClassID() + "/attendance"]' [class.active]='getHref().includes("attendance")'>
+            <ion-chip [routerLink]='["../../" + getClassThemeID() + "/attendance"]' [class.active]='getHref().includes("attendance")'>
                 Attendance
             </ion-chip>
         </ion-buttons>

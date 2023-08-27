@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ClassService } from 'src/app/core/services/class.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   private _secondaryTheme: string | null = 'theme-default';
 
   pageAnimation = pageAnimation;
@@ -46,11 +45,7 @@ export class MainComponent implements OnInit {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: "hjjhh", theme: "blue"},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _class: ClassService) { }
-
-  ngOnInit(): void {
-    this._secondaryTheme = this.classes.find(item => item.id == this.getClassID());
-  }
+  constructor(private _theme: ThemeService, private _auth: AuthService) { }
 
   logOut(): void {
     this._auth.logOut();
@@ -64,16 +59,12 @@ export class MainComponent implements OnInit {
     return this._theme.getTheme();
   }
 
-  getClassID(): string | null {
-    return this._class.getClassID();
-  }
-
   getSecondaryTheme(): string | null {
     return this._secondaryTheme;
   }
 
-  setSecondaryTheme(theme: string): void {
-    this._secondaryTheme = theme;
+  getSecondaryThemeID(): string | null {
+    return this._theme.getClassThemeID();
   }
 }
 

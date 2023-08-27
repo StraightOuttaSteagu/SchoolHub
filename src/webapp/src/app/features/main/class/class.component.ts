@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { ClassService } from 'src/app/core/services/class.service';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-class',
   templateUrl: './class.component.html',
   styleUrls: ['./class.component.scss']
 })
-export class ClassComponent implements OnInit {
+export class ClassComponent implements ViewWillEnter, ViewWillLeave {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
-  private _RouteSubscription: Subscription | undefined;
+  private _routerSubscription!: Subscription;
 
   data = [
     { content: 'Lorem Ipsum', type: 'announcement'},
@@ -22,35 +23,28 @@ export class ClassComponent implements OnInit {
     { content: 'Lorem Ipsum', type: 'announcement'}
   ]
 
-  constructor (private _route: ActivatedRoute, private _class: ClassService) { }
+  constructor (private _route: ActivatedRoute, private _theme: ThemeService) { }
 
-  ngOnInit(): void {
-    this._RouteSubscription = this._route.paramMap
-      .subscribe((params: ParamMap) => {
-        this._class.setClassID(params.get('id'));
-      });
+  ionViewWillEnter(): void {
+    this._route.paramMap.subscribe(params => {
+      console.log(params.get('id'))
+      this._theme.setClassThemeID(params.get('id'));
+    });
   }
 
-  getType() { 
-    console.log(this._route.snapshot.paramMap.get('mode'));
-  }
-
-  getClassID(): string | null {
-    return this._class.getClassID();
-  }
-
-  deleteClassID(): void {
-    this._class.setClassID(null);
-  }
-
-  ngOnDestroy(): void {
-    // Unsubscribe from the route parameter subscription to avoid memory leaks
-    if (this._RouteSubscription) {
-      this._RouteSubscription.unsubscribe();
+  ionViewWillLeave(): void {
+    if (this._routerSubscription) {
+      this._routerSubscription.unsubscribe();
     }
+
+    this._theme.setClassThemeID(null);
   }
 
   getHref(): string {
     return window.location.href;
+  }
+
+  getClassThemeID(): string | null {
+    return this._theme.getClassThemeID();
   }
 }

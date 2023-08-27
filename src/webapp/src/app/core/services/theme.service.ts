@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
   private _theme: string | null = localStorage.getItem('theme');
 
+  private _classThemeID: string | null = null;
+
   setTheme(theme: string): void {
     this._theme = theme;
     localStorage.setItem('theme', this._theme);
@@ -47,5 +49,13 @@ export class ThemeService {
     });
 
     this.updateTheme();
+  }
+
+  setClassThemeID(id: string | null): void {
+    this._classThemeID = id;
+  }
+
+  getClassThemeID(): string | null {
+    return this._classThemeID;
   }
 }
