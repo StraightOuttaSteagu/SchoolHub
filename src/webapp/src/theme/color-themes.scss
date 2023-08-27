@@ -30,6 +30,7 @@
 
     --ion-color-highlight-gradient: linear-gradient(90deg, rgba(93, 216, 127, 0.70) 0%, rgba(0, 180, 144, 0.70) 100%);
 
+    --ion-color-back-gradient: linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(90deg, #5DD87F 0%, #00B490 99%);
     --ion-color-back-gradient-desktop: linear-gradient(48deg, #F4FCED 0%, #5DD87F 55.06%, #00B490 99.48%);
   }
 
@@ -88,6 +89,7 @@
     --ion-color-text-shade: #d6e0d4;
     --ion-color-text-tint: #e3fce1;
 
+    --ion-color-back-gradient: linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(48deg, #2C7740 0%, #008167 94.79%);
     --ion-color-back-gradient-desktop: linear-gradient(48deg, #2C7740 0%, #008167 94.79%);
   }
 

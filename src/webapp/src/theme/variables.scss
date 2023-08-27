@@ -196,7 +196,7 @@
   --ion-color-selected-shade: #e0e0e0;
   --ion-color-selected-tint: #ffffff;
 
-  --ion-color-highlight-gradient: linear-gradient(90deg, #76B7FF 0%, #7484E3 100%);
+  --ion-color-highlight-gradient: linear-gradient(90deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
 
   --ion-color-back-gradient: linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(90deg, #278EFF 0%, #886ACE 99%);
   --ion-color-back-gradient-desktop: linear-gradient(50deg, #EEEFEF 0%, #76B7FF 63.02%, #7484E3 99.48%);
@@ -302,6 +302,8 @@
   --ion-color-selected-contrast-rgb: 255, 255, 255;
   --ion-color-selected-shade: #00468b;
   --ion-color-selected-tint: #1a61a8;
+
+  --ion-color-highlight-gradient: linear-gradient(90deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
 
   --ion-color-back-gradient: linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(90deg, #004F9E 0%, #583CA6 100%);
   --ion-color-back-gradient-desktop: linear-gradient(50deg, #004f9e 40%, #583ca6 100%);
