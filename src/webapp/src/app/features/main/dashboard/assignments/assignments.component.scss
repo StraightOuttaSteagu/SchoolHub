@@ -52,6 +52,7 @@ ion-accordion {
   margin-bottom: 3rem;
   border-radius: 1.5rem;
   background: rgba(var(--ion-color-back-tertiary-rgb), 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   ion-item {
     --ion-color-base: transparent !important;

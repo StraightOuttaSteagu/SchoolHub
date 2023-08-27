@@ -20,7 +20,7 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
     DashboardComponent
   ],
   imports: [
-    IonicModule.forRoot(),
+    IonicModule.forRoot({mode: 'md'}),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

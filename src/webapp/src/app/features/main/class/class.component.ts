@@ -13,13 +13,13 @@ export class ClassComponent implements OnInit {
 
   private _RouteSubscription: Subscription | undefined;
 
-  data = [
-    { content: 'Lorem Ipsum', type: 'announcement'},
-    { content: 'Lorem Ipsum', type: 'announcement'},
-    { content: 'Lorem Ipsum', type: 'announcement'},
-    { content: 'Lorem Ipsum', type: 'announcement'},
-    { content: 'Lorem Ipsum', type: 'announcement'},
-    { content: 'Lorem Ipsum', type: 'announcement'}
+  data: any[] = [
+    { title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ', attachments_num: 3, comments_num: 1, date: '16.09.2023, 12:09', type: 'announcement'},
+    { title: 'Lorem ipsum dolor sit amet', content: 'Lorem Ipsum', attachments_num: 3, comments_num: 1, date: '16.09.2023, 21:30', due_date: '17.09.2023, 21:20', type: 'assignment'},
+    { grade: '10', date: '6.09.2023', type: 'grade'},
+    { date: '6.09.2023', excused: false, type: 'absence'},
+    { title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ', attachments_num: 3, comments_num: 1, date: '16.09.2023, 12:09', type: 'announcement'},
+    { title: 'Lorem ipsum dolor sit amet', content: 'Lorem Ipsum', attachments_num: 3, comments_num: 1, date: '16.09.2023, 21:30', due_date: '17.09.2023, 21:20', type: 'assignment'},
   ]
 
   constructor (private _route: ActivatedRoute, private _class: ClassService) { }
