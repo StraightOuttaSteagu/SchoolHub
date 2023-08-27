@@ -98,6 +98,14 @@
                     <p class='date'>Posted: {{item?.date}}</p>
                 </ion-col>
             </ion-row>
+            <ion-row style='margin-top: .8rem'>
+                <ion-chip class='card-chip'
+                          *ngIf='item?.comments_num'>
+                    <ion-icon name='chatbubbles'></ion-icon>
+                    {{item?.comments_num}} {{item?.comments_num === 1 ? 'comment' : 'comments'}}</ion-chip>
+                <ion-chip class='card-chip'
+                          *ngIf='item?.attachments_num'><ion-icon name='document'></ion-icon>{{item?.attachments_num}} {{item?.attachments_num === 1 ? 'attachment' : 'attachments'}}</ion-chip>
+            </ion-row>
         </ion-card>
         <ion-card class='mobile' *ngSwitchCase="'announcement'">
             <div style='display: flex; align-items: center'>

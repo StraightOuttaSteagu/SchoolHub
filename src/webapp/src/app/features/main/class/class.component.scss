@@ -183,6 +183,18 @@ ion-card {
   display: none;
 }
 
+.card-chip {
+  height: 2.2rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(var(--ion-color-text-rgb), 0.1);
+  font-size: 0.8rem;
+
+  ion-icon {
+    color: var(--ion-color-tertiary);
+    margin-right: 0.5rem;
+  }
+}
+
 @media (max-width: 992px) {
   ion-header {
     ion-title {
