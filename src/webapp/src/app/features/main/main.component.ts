@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  private _secondaryTheme: string | null = 'theme-default';
 
   pageAnimation = pageAnimation;
   public alertButtons = ['Add class'];
@@ -65,7 +64,8 @@ export class MainComponent {
   }
 
   getSecondaryTheme(): string | null {
-    return this._secondaryTheme;
+    let themeClass = this.classes.filter(el => el.id == this.getSecondaryThemeID())[0];
+    return themeClass?themeClass.theme:'default-theme';
   }
 
   getSecondaryThemeID(): string | null {

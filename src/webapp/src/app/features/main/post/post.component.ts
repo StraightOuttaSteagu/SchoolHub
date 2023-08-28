@@ -9,7 +9,8 @@ import { ThemeService } from 'src/app/core/services/theme.service';
 export class PostComponent {
   data = {
     assignment: true,
-    classID: "690"
+    classID: "690",
+    postID: "myFirstPost"
   }
 
   constructor (private _theme: ThemeService) { }
