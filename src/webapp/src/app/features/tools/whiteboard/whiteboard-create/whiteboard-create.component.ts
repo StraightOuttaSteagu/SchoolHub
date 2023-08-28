@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class WhiteboardCreateComponent {
   makerMode: 'canvas' | 'text' = 'canvas';
+  private _color: string | null = null;
+
+  getColor(): string | null {
+    return this._color;
+  }
+
+  setColor(color: string | null): void {
+    this._color = color;
+  }
 }

@@ -29,4 +29,81 @@ ion-row {
 
 .board {
     width: 86vw;
+    flex: 1;
+    flex-direction: column;
+}
+
+ion-split-pane {
+    --side-width: 14%;
+    justify-content: space-between;
+}
+
+.blue {
+	background-color: #0086ff;
+}
+
+.lightblue {
+	background-color: #617fe8;
+}
+
+.gray {
+	background-color: #808080;
+}
+
+.purple {
+	background-color: #8025db;
+}
+
+.green {
+	background-color: #07a807;
+}
+
+.red {
+	background-color: #de110d;
+}
+
+.orange {
+	background-color: #ff8a05;
+}
+
+.brown {
+	background-color: #8a4b15;
+}
+
+.switchMaker {
+	background: rgb(0,134,255); 
+	background: linear-gradient(90deg, rgba(0,134,255,1) 0%, rgba(222,17,13,1) 33%, rgba(7,168,7,1) 66%, rgba(255,138,5,1) 100%);
+}
+
+button:hover {
+	cursor: pointer;
+	filter: brightness(0.8);
+}
+
+.sideB {
+	width: 50%;
+	border-radius: 0px;
+	margin-top: 0;
+	height: 5vh;
+	overflow: hidden;
+	font-size: 1.4vw;
+	border-color: black;
+	border-width: 0.08vw;
+	padding: 0;
+	padding-top: 0.5vh;
+	padding-bottom: 1vh;
+}
+
+.colorTable {
+	width: 100%;
+	display: block;
+	width:168;
+	background-color:#0086ff;
+	padding: 0px;
+}
+
+.action {
+	margin:5%;
+	width: 30%;
+	border-radius: 5px;
 }

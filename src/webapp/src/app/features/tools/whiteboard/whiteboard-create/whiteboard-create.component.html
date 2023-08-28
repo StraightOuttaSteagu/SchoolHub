@@ -1,141 +1,82 @@
 <div #measure class="measure"></div>
-<ion-split-pane>
-    <ion-col class="board">
-        <ion-row class="canvas">
-            <svg #canvas style="width:100%; height:100%" viewBox="0 0 2048 1024">
-                <rect #rectSelect x="100" y="100" rx="5" width="0" height="0" stroke="black" stroke-width="3" fill="#00000000" />
-                <circle #rotCircle cx="-100" cy="-100" r="60" stroke="#000000a0" stroke-width="3" fill="#00000000" />
-                <circle #moveCircle cx="-100" cy="-100" r="10" stroke="#303030" stroke-width="3" fill="#303030" />
-                <circle #colorCircle cx="-100" cy="-100" r="10" stroke="#000000" stroke-width="2" fill="#ff0000" />
-                <rect #rectScale x="-100" y="-100" width="20" height="20" stroke="#000000" stroke-width="2" fill="#98fb98" />
-                <circle #originScaleCircle cx="-100" cy="-100" r="5" stroke="#000000" stroke-width="2" fill="#000000" />
-            </svg>
+<ion-col class="board">
+    <ion-row class="canvas">
+        <svg #canvas style="width:100%; height:100%" viewBox="0 0 2048 1024">
+            <rect #rectSelect x="100" y="100" rx="5" width="0" height="0" stroke="black" stroke-width="3" fill="#00000000" />
+            <circle #rotCircle cx="-100" cy="-100" r="60" stroke="#000000a0" stroke-width="3" fill="#00000000" />
+            <circle #moveCircle cx="-100" cy="-100" r="10" stroke="#303030" stroke-width="3" fill="#303030" />
+            <circle #colorCircle cx="-100" cy="-100" r="10" stroke="#000000" stroke-width="2" fill="#ff0000" />
+            <rect #rectScale x="-100" y="-100" width="20" height="20" stroke="#000000" stroke-width="2" fill="#98fb98" />
+            <circle #originScaleCircle cx="-100" cy="-100" r="5" stroke="#000000" stroke-width="2" fill="#000000" />
+        </svg>
+    </ion-row>
+    <ion-row #canvasBox class="textBox" *ngIf="makerMode=='canvas'">
+        canvasBox
+    </ion-row>
+    <ion-row #makerBox class="textBox" *ngIf="makerMode=='text'">
+        makerBox
+    </ion-row>
+</ion-col>
+<ion-col class="sidebar">
+    <ion-button>Save lesson</ion-button>
+    <div *ngIf="makerMode=='canvas'">
+        <ion-grid>
+            <ion-button (click)="setColor('#0086ff')" class="clr sideB blue">Noun</ion-button>
+            <ion-button (click)="setColor('#617fe8')" class="clr sideB lightblue">Pronoun</ion-button>
+            <ion-button (click)="setColor('#808080')" class="clr sideB gray">Determiner</ion-button>
+            <ion-button (click)="setColor('#8025db')" class="clr sideB purple">Preposition</ion-button>
+            <ion-button (click)="setColor('#07a807')" class="clr sideB green">Adjective</ion-button>
+            <ion-button (click)="setColor('#de110d')" class="clr sideB red">Verb</ion-button>
+            <ion-button (click)="setColor('#ff8a05')" class="clr sideB orange">Adverb</ion-button>
+            <ion-button (click)="setColor('#8a4b15')" class="clr sideB brown">Connective</ion-button>
+            <ion-button (click)="setColor('#000000')" class="clr sideB" style="background-color: #000000; width: 100%; color: white; font-size: 1.8vw;"></ion-button>
+            <input id="color" type="color" style="width:50%; height: 3vh;">
+        </ion-grid>
+        <ion-button id="double" style="display:flex; flex-wrap: wrap; margin-top: 2%; justify-content: center; width: 7vw; font-size: 3vh; border-width: 0.04vw;">Double color: Off</ion-button>
+        <ion-button id="scale" class="sideB action" style="width: 70%;">Stretch</ion-button>
+        <ion-row>
+            <ion-button id="s1" class="def sideB size">1</ion-button>
+            <ion-button id="s2" class="def sideB size">2</ion-button>
+            <ion-button id="s3" class="def sideB size" style="background-color: #aaaaaa">3</ion-button>
+            <ion-button id="s4" class="def sideB size">4</ion-button>
         </ion-row>
-        <ion-row #canvasBox class="textBox" *ngIf="makerMode=='canvas'">
-            canvasBox
-        </ion-row>
-        <ion-row #makerBox class="textBox" *ngIf="makerMode=='text'">
-            makerBox
-        </ion-row>
-    </ion-col>
-    <ion-menu class="sidebar">
-        <ion-button>Save lesson</ion-button>
-    </ion-menu>
-</ion-split-pane>
-<!-- <!DOCTYPE html>
-<html>
-	<head>
-		<title>Sentensi</title>
-		<link rel="icon" href="icon.ico">
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body style="font-family:Font;">
-		<div id="mes" style="font-size:64px;"></div>
-		<div id="main" style="width:86%;">
-			<div id="canvas">
-				<svg id="cnv" style="width:100%; height:100%" viewBox="0 0 2048 1024">
-					<rect id="rectSelect" x="100" y="100" rx="5" width="0" height="0" stroke="black" stroke-width="3" fill="#00000000" />
-					<circle id="rotCircle" cx="-100" cy="-100" r="60" stroke="#000000a0" stroke-width="3" fill="#00000000" />
-					<circle id="moveCircle" cx="-100" cy="-100" r="10" stroke="#303030" stroke-width="3" fill="#303030" />
-					<circle id="colorCircle" cx="-100" cy="-100" r="10" stroke="#000000" stroke-width="2" fill="#ff0000" />
-					<rect id="rectScale" x="-100" y="-100" width="20" height="20" stroke="#000000" stroke-width="2" fill="#98fb98" />
-					<circle id="originScaleCircle" cx="-100" cy="-100" r="5" stroke="#000000" stroke-width="2" fill="#000000" />
-				</svg>
-			</div>
-			<div id="canvasBox">
-					
-			</div>
-			
-			<div id="makerBox" style="display:none;">
-					
-			</div>
-		</div>
-		<div id="canvasSide" style="background-color: #0086ff; width: 14%; display:flex; flex-direction: column; justify-content: space-between;">
-			<div>
-				<div style="display:flex; flex-wrap: wrap; margin-top: 0px; justify-content: center;">
-					<button id="addLesson1" class="sideB" style="width:50%; font-size: 2.5vh; margin-bottom: 1.2vh; margin-top: 1.2vh; border-radius: 5px; height: 6vh !important;">Save lesson</button>
-				</div>
-				<div style="display:flex; flex-wrap: wrap;">
-					<button onclick="document.getElementById('color').value = '#0086ff';" class="clr sideB blue">Noun</button>
-					<button onclick="document.getElementById('color').value = '#617fe8';" class="clr sideB lightblue">Pronoun</button>
-					<button onclick="document.getElementById('color').value = '#808080';" class="clr sideB gray">Determiner</button>
-					<button onclick="document.getElementById('color').value = '#8025db';" class="clr sideB purple">Preposition</button>
-					<button onclick="document.getElementById('color').value = '#07a807';" class="clr sideB green">Adjective</button>
-					<button onclick="document.getElementById('color').value = '#de110d';" class="clr sideB red">Verb</button>
-					<button onclick="document.getElementById('color').value = '#ff8a05';" class="clr sideB orange">Adverb</button>
-					<button onclick="document.getElementById('color').value = '#8a4b15';" class="clr sideB brown">Connective</button>
-					<button onclick="document.getElementById('color').value = '#000000';" class="clr sideB" style="background-color: #000000; width: 100%; color: white; font-size: 1.8vw;"></button>
-					<input id="color" type="color" style="width:50%; height: 3vh;">
-				</div>
-				<button id="double" style="display:flex; flex-wrap: wrap; margin-top: 2%; justify-content: center; width: 7vw; font-size: 3vh; border-width: 0.04vw;">Double color: Off</button>
-				<div style="display:flex; flex-wrap: wrap; margin-top: 2%; justify-content: center;">
-					<button id="scale" class="sideB action" style="width: 70%;">Stretch</button>
-				</div>
-				<div style="display:flex; flex-wrap: wrap; margin-top: 0%; justify-content: center;">
-					<button id="s1" class="def sideB size">1</button>
-					<button id="s2" class="def sideB size">2</button>
-					<button id="s3" class="def sideB size" style="background-color: #aaaaaa">3</button>
-					<button id="s4" class="def sideB size">4</button>
-				</div>
-				<div style="display: flex; justify-content: center; margin-top: 8%;">
-					<img src="bin.png" id="bin" style="width:4vw; height: 4wv;">
-				</div>
-			</div>
-			<div style="display:flex; flex-wrap: wrap; margin-top: 0px; justify-content: center;">
-				<button id="sttm" class="sideB" style="width:70%; font-size: 2vw; margin-bottom: 3vh; border-radius: 5px; background-color: #b6b6b6; height: 12vh !important;">Switch to text maker</button>
-			</div>
-		</div>
-		<div id="makerSide" style="background-color: #0086ff; width: 14%; display:flex; flex-direction: column; justify-content: space-between; display: none;">
-			<div>
-				<div style="display:flex; flex-wrap: wrap; margin-top: 0px; justify-content: center;">
-					<button id="addLesson2" class="sideB" style="width: 50%; font-size: 2.5vh; margin-bottom: 1.2vh; margin-top: 1.2vh; border-radius: 5px; height: 6vh !important;">Save lesson</button>
-				</div>
-				<div style="display:flex; flex-wrap: wrap;">
-					<button id="." class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">.</button>
-					<button id="," class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">,</button>
-					<button id="?" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">?</button>
-					<button id="!" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">!</button>
-					<button id='"' class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">"</button>
-					<button id="-" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">-</button>
-					<button id=";" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">;</button>
-					<button id=":" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">:</button>
-					<button id="'" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff; width: 100%;">'</button>
-					<div style="display:flex; justify-content: center; width: 100%;">
-						<button id="glue" class="sideB action" style="padding:0; height:4vh !important; margin-bottom: 0; width: 50%; font-size: 1.8vw;"><b>Glue</b></button>
-						<button id="capitalise" class="sideB action" style="padding:0; height:4vh !important; margin-bottom: 0; width: 20%; font-size: 1.8vw;"><b>Aa</b></button>
-					</div>
-					<div style="display:flex; justify-content: center; width: 100%;">
-						<select id="activityType" class="sideB" style="width: 80%; text-align: center; margin-top: 1vh; font-size: 2vh; height: 4vh;">
-							<option>Remember & write</option>
-							<option>Right & wrong</option>
-							<option>Listen & write</option>
-						</select>
-					</div>
-					<div id="right&wrong" style="display:flex; justify-content: center; width: 100%; display: none;">
-						<button id="yes" class="sideB action" style="font-size: 5vh !important; padding:0; height:7vh !important; margin-bottom: 3vh; color:#07a807"><b>✓</b></button>
-						<button id="no" class="sideB action" style="font-size: 5vh !important; padding:0; height:7vh !important; margin-bottom: 3vh; color:#de110d"><b>✘</b></button>
-					</div>
-					<div id="listen&Write" style="display: none; justify-content: center; width: 100%;">
-						<input id="audioUrl" type="text" style="font-size: 2vh; width: 12vw;" placeholder="audio link">
-					</div>
-				</div>
-			</div>
-			<div style="display:flex; flex-wrap: wrap; margin-top: 0px; justify-content: center; flex-direction: column;">
-				<button id="nextPage" style="width: 70%; margin-top: 1vh; margin-bottom: 1vh;">New page</button>
-				<button id="deletePage" style="width: 70%; margin-top: 1vh; margin-bottom: 1vh; color: red;">Delete page</button>
-				<input id="canvasSelector" type="number" min="1" max="1" value="1" onkeydown="return false" style="width: 70%; margin-bottom: 2vh; text-align: center; font-size: 7vh;">
-				<button id="stcm" class="sideB switchMaker" style="width:70%; font-size: 1.7vw; margin-bottom: 3vh; border-radius: 5px; height: 12vh !important;">Switch to canvas maker</button>
-			</div>
-		</div>
-		</div>
-		<div id="addLesson">
-			<div class="save">
-				<p id="cancel" onclick="document.getElementById('addLesson').style.display = 'none';" style="text-align: right; margin: 0;">✖</p>
-				<h1>Save lesson</h1>
-				<input id="lessonName" placeholder="Lesson name" maxlength = "32">
-				<button id="save" style="border-radius: 15px; width:100px;">Save</button>
-			</div>
-		</div>
-		<script type="module" src="main.js"></script>
-	</body>
-</html> -->
+    </div>
+    <div *ngIf="makerMode=='text'">
+        <ion-grid>
+            <button id="." class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">.</button>
+            <button id="," class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">,</button>
+            <button id="?" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">?</button>
+            <button id="!" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">!</button>
+            <button id='"' class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">"</button>
+            <button id="-" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">-</button>
+            <button id=";" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">;</button>
+            <button id=":" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff;">:</button>
+            <button id="'" class="sideB punctuation" style="font-size: 3vh; background-color: #0086ff; width: 100%;">'</button>
+            <div style="display:flex; justify-content: center; width: 100%;">
+                <button id="glue" class="sideB action" style="padding:0; height:4vh !important; margin-bottom: 0; width: 50%; font-size: 1.8vw;"><b>Glue</b></button>
+                <button id="capitalise" class="sideB action" style="padding:0; height:4vh !important; margin-bottom: 0; width: 20%; font-size: 1.8vw;"><b>Aa</b></button>
+            </div>
+        </ion-grid>
+        <div style="display:flex; justify-content: center; width: 100%;">
+            <select id="activityType" class="sideB" style="width: 80%; text-align: center; margin-top: 1vh; font-size: 2vh; height: 4vh;">
+                <option>Remember & write</option>
+                <option>Right & wrong</option>
+                <option>Listen & write</option>
+            </select>
+        </div>
+        <div id="right&wrong" style="display:flex; justify-content: center; width: 100%; display: none;">
+            <button id="yes" class="sideB action" style="font-size: 5vh !important; padding:0; height:7vh !important; margin-bottom: 3vh; color:#07a807"><b>✓</b></button>
+            <button id="no" class="sideB action" style="font-size: 5vh !important; padding:0; height:7vh !important; margin-bottom: 3vh; color:#de110d"><b>✘</b></button>
+        </div>
+        <div id="listen&Write" style="display: none; justify-content: center; width: 100%;">
+            <input id="audioUrl" type="text" style="font-size: 2vh; width: 12vw;" placeholder="audio link">
+        </div>
+        <div style="display:flex; flex-wrap: wrap; margin-top: 0px; justify-content: center; flex-direction: column;">
+            <button id="nextPage" style="width: 70%; margin-top: 1vh; margin-bottom: 1vh;">New page</button>
+            <button id="deletePage" style="width: 70%; margin-top: 1vh; margin-bottom: 1vh; color: red;">Delete page</button>
+            <input id="canvasSelector" type="number" min="1" max="1" value="1" onkeydown="return false" style="width: 70%; margin-bottom: 2vh; text-align: center; font-size: 7vh;">
+            <button id="stcm" class="sideB switchMaker" style="width:70%; font-size: 1.7vw; margin-bottom: 3vh; border-radius: 5px; height: 12vh !important;">Switch to canvas maker</button>
+        </div>
+    </div>
+    <button id="sttm" class="sideB" style="width:70%; font-size: 2vw; margin-bottom: 3vh; border-radius: 5px; background-color: #b6b6b6; height: 12vh !important;">Switch to text maker</button>
+</ion-col>
