@@ -195,6 +195,16 @@ ion-card {
   }
 }
 
+ion-content {
+  --offset-bottom: hidden !important;
+  --overflow: hidden;
+  overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    margin-bottom: 1.4rem;
+  }
+}
+
 @media (max-width: 992px) {
   ion-header {
     ion-title {

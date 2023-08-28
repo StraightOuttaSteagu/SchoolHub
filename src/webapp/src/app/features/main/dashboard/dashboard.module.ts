@@ -6,6 +6,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { GradesComponent } from './grades/grades.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { IonicModule } from '@ionic/angular';
+import { DashboardComponent } from './dashboard.component';
 
 
 
@@ -14,7 +15,8 @@ import { IonicModule } from '@ionic/angular';
     AnnouncementsComponent,
     AssignmentsComponent,
     AttendanceComponent,
-    GradesComponent
+    GradesComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

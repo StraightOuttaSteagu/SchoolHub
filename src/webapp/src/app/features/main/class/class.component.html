@@ -9,8 +9,6 @@
             </div>
         </ion-title>
     </ion-toolbar>
-</ion-header>
-<ion-content>
     <ion-row class='stats stats-desktop'>
         <ion-col>
             <div class='post-icon'>
@@ -72,6 +70,8 @@
             Attendance
         </ion-chip>
     </ion-buttons>
+</ion-header>
+<ion-content>
     <div *ngFor='let item of filteredData' [ngSwitch]='item.type'>
         <ion-card class='desktop' *ngSwitchCase="'announcements'">
             <ion-row>

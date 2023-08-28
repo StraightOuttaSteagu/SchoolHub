@@ -1,0 +1,32 @@
+:host {
+    flex-direction: row;
+}
+
+.measure {
+	position: absolute;
+	visibility: hidden;
+	height: auto;
+	width: auto;
+	white-space: nowrap;
+	font-family:Font;
+}
+
+ion-col {
+    padding: 0;
+}
+
+ion-row {
+    width: 86vw;
+}
+
+.canvas {
+    height: 80vh;
+}
+
+.textBox {
+    height: 20vh;
+}
+
+.board {
+    width: 86vw;
+}

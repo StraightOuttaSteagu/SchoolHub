@@ -11,13 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { DashboardComponent } from './features/main/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    DashboardComponent
+    PageNotFoundComponent
   ],
   imports: [
     IonicModule.forRoot(),
@@ -36,5 +34,4 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
