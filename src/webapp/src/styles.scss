@@ -1,72 +1,168 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $SchoolHub-primary: mat.define-palette(mat.$indigo-palette);
 $SchoolHub-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
 $SchoolHub-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $SchoolHub-theme: mat.define-light-theme((
-  color: (
-    primary: $SchoolHub-primary,
-    accent: $SchoolHub-accent,
-    warn: $SchoolHub-warn,
-  )
+        color: (primary: $SchoolHub-primary, accent: $SchoolHub-accent, warn: $SchoolHub-warn)
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($SchoolHub-theme);
 
-/* You can add global styles to this file, and also import other style files */
+@import "./theme/variables.scss";
+@import "./theme/fonts.scss";
+@import "./theme/text-styling.scss";
+
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
 
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Nexa;
-
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
-@font-face {
-    font-family: Nexa;
-    src: url(./assets/NexaRegular.otf);
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  //--overflow: hidden;
+  transition: 300ms color ease-in-out !important;
+  transition: 300ms background-color ease-in-out !important;
 }
 
 button {
-    font-family: Nexa;
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  object-fit: contain;
 }
 
 .mat-mdc-text-field-wrapper {
-    border-radius: 30px !important;
+  border-radius: 1.9rem !important;
 }
 
+// Global scroll bar
+// ::-webkit-scrollbar {
+//   width: 0.75rem;
+// }
+
+// ::-webkit-scrollbar-track {
+//   border-radius: 0.5rem;
+//   background-color: transparent;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 0.5rem;
+//   border: 3px solid transparent;
+//   background-clip: content-box;
+//   background-color: #c2c2c2;
+// }
+
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 8px;
-  background-color: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border: 3px solid transparent;
-  background-clip: content-box;
-  background-color: #c2c2c2;
+  background: rgba(var(--ion-color-medium-rgb), 0.7) !important;
+}
+
+.inner-scroll {
+  scrollbar-width: thin;
+}
+
+.text-overflow {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hover-scrollbar {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c2c2c255;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
+  }
+}
+
+// Adds a bottom line to an element
+.bottom-line {
+  border-bottom-color: var(--lineSeparatorColor);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+// Adds a top line to an element
+.top-line {
+  border-top-color: var(--lineSeparatorColor);
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+// Element styles
+
+// The card for announcements, attendance and grades
+.card {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.25);
+  background: var(--cardColor);
+  border: 1px solid var(--cardBorder);
+  border-radius: 1.6rem;
+}
+
+:root {
+  --ion-color-text: #3D4756;
+  --ion-color-text-rgb: 61,71,86;
+  --ion-color-text-contrast: #ffffff;
+  --ion-color-text-contrast-rgb: 255,255,255;
+  --ion-color-text-shade: #363e4c;
+  --ion-color-text-tint: #505967;
+}
+
+.ion-color-text {
+  --ion-color-base: var(--ion-color-text);
+  --ion-color-base-rgb: var(--ion-color-text-rgb);
+  --ion-color-contrast: var(--ion-color-text-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-text-contrast-rgb);
+  --ion-color-shade: var(--ion-color-text-shade);
+  --ion-color-tint: var(--ion-color-text-tint);
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.scroll-y {
+  overflow: hidden;
 }
