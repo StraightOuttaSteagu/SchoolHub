@@ -1,4 +1,4 @@
-<div class='top-bar' routerLink='/grades'>
+<!-- <div class='top-bar' routerLink='/grades'>
     <img src='assets/back-arrow.svg' alt='back'>
     <h1>Profile Settings</h1>
 </div>
@@ -11,16 +11,49 @@
         <button class='edit-save' [textContent]='editable ? "Save" : "Edit"' (click)='editable = !editable'>Save</button>
         <form class='profile-details-form'>
             <label for='username'>Username</label>
-    <!--        Make @ stay there-->
-            <input type='text' name='username' id='username' value='@{{profileData.username}}' [readOnly]='!editable'>
+            Make @ stay there
+            <ion-input type='text' name='username' id='username' value='@{{profileData.username}}' [readOnly]='!editable'>
             <label for='name'>Name</label>
-            <input type='text' name='name' id='name' value='{{profileData.name}}' [readOnly]='!editable'>
+            <ion-input type='text' name='name' id='name' value='{{profileData.name}}' [readOnly]='!editable'>
             <label for='email'>Email</label>
-            <input type='email' name='email' id='email' value='{{profileData.email}}' [readOnly]='!editable'>
+            <ion-input type='email' name='email' id='email' value='{{profileData.email}}' [readOnly]='!editable'>
         </form>
         <div class='reset-pass'>
             <button>Reset Password</button>
             <p>We will send you an email to {{profileData.email}} with instructions on how to reset your password.</p>
         </div>
     </div>
-</div>
+</div> -->
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title>
+            <div style='display: flex; align-items: center; gap: 2rem;' routerLink="/grades">
+                <ion-icon color="text" name="chevron-back-outline"></ion-icon>
+                Profile Settings
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content style="--background: transparent;">
+    <div class="outer">
+        <ion-row class='profile-picture'>
+            <ion-img src='assets/account.png' alt='account'></ion-img>
+            <div style="position: absolute; width: 8rem; justify-content: center; display: flex;">
+                <p>Change...</p>
+            </div>
+        </ion-row>
+        <ion-card>
+            <ion-button class="save-button" color="primary" shape="round" (click)='editable = !editable'>{{ editable ? "Save" : "Edit" }}</ion-button>
+            <form class='profile-details-form'>
+                <ion-input style="--border-radius: 2rem;" size="64" fill="outline" label="@" type='text' name='username' id='username' value='{{profileData.username}}'><label>Username</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" fill="outline" label="" type='text' name='name' id='name' value='{{profileData.name}}'><label>Name</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" fill="outline" label="" type='text' name='surname' id='surname' value='{{profileData.surname}}'><label>Surname</label></ion-input>
+                <ion-input style="--border-radius: 2rem;" fill="outline" label="" type='email' name='email' id='email' value='{{profileData.email}}'><label>Email</label></ion-input>
+            </form>
+            <div class='reset-pass'>
+                <ion-button class="reset-button" shape="round">Reset password</ion-button>
+                <p>We will send you an email to {{profileData.email}} with instructions on how to reset your password.</p>
+            </div>
+        </ion-card>
+    </div>
+</ion-content>

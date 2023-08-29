@@ -1,7 +1,9 @@
+import { IonicModule } from '@ionic/angular';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AuthInterceptor } from './core/interceptor/interceptor';
@@ -18,6 +20,7 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
     DashboardComponent
   ],
   imports: [
+    IonicModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -33,4 +36,5 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

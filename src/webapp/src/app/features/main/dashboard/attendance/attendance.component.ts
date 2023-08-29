@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
   styleUrls: ['./attendance.component.scss']
 })
-export class AttendanceComponent implements OnInit{
+export class AttendanceComponent {
   data: any = [
     {
       title: 'Limba si Literatura Romana',
@@ -21,6 +21,46 @@ export class AttendanceComponent implements OnInit{
         {
           date: '17.05.2023',
           excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: true,
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: false
+        },
+        {
+          date: '17.05.2023',
+          excused: true,
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: true
+        },
+        {
+          date: '17.05.2023',
+          excused: false
         },
         {
           date: '17.05.2023',
@@ -99,8 +139,4 @@ export class AttendanceComponent implements OnInit{
       ]
     }
   ];
-
-  ngOnInit() {
-
-  }
 }

@@ -13,9 +13,25 @@ $SchoolHub-theme: mat.define-light-theme((
 
 @include mat.all-component-themes($SchoolHub-theme);
 
-@import "./styles/variables.scss";
-@import "./styles/fonts.scss";
-@import "./styles/text-styling.scss";
+@import "./theme/variables.scss";
+@import "./theme/fonts.scss";
+@import "./theme/text-styling.scss";
+
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
 
 body, html {
   margin: 0;
@@ -27,6 +43,9 @@ body, html {
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;
+  //--overflow: hidden;
+  transition: 300ms color ease-in-out !important;
+  transition: 300ms background-color ease-in-out !important;
 }
 
 button {
@@ -42,20 +61,37 @@ img {
 }
 
 // Global scroll bar
+// ::-webkit-scrollbar {
+//   width: 0.75rem;
+// }
+
+// ::-webkit-scrollbar-track {
+//   border-radius: 0.5rem;
+//   background-color: transparent;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 0.5rem;
+//   border: 3px solid transparent;
+//   background-clip: content-box;
+//   background-color: #c2c2c2;
+// }
+
 ::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 0.5rem;
-  background-color: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0.5rem;
-  border: 3px solid transparent;
-  background-clip: content-box;
-  background-color: #c2c2c2;
+  background: rgba(var(--ion-color-medium-rgb), 0.7) !important;
+}
+
+.inner-scroll {
+  scrollbar-width: thin;
 }
 
 .text-overflow {
@@ -102,4 +138,31 @@ img {
   background: var(--cardColor);
   border: 1px solid var(--cardBorder);
   border-radius: 1.6rem;
+}
+
+:root {
+  --ion-color-text: #3D4756;
+  --ion-color-text-rgb: 61,71,86;
+  --ion-color-text-contrast: #ffffff;
+  --ion-color-text-contrast-rgb: 255,255,255;
+  --ion-color-text-shade: #363e4c;
+  --ion-color-text-tint: #505967;
+}
+
+.ion-color-text {
+  --ion-color-base: var(--ion-color-text);
+  --ion-color-base-rgb: var(--ion-color-text-rgb);
+  --ion-color-contrast: var(--ion-color-text-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-text-contrast-rgb);
+  --ion-color-shade: var(--ion-color-text-shade);
+  --ion-color-tint: var(--ion-color-text-tint);
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.scroll-y {
+  overflow: hidden;
 }

@@ -4,27 +4,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
-  theme: string | null = localStorage.getItem('theme');
+  private _theme: string | null = localStorage.getItem('theme');
 
-  toggleTheme(){
-    switch (this.theme){
-      case 'light':
-        this.theme = 'dark';
-        break;
-
-      case 'system':
-        this.theme = 'light';
-        break;
-
-      default:
-        this.theme = 'system';
-    }
-    localStorage.setItem('theme', this.theme);
-    this.updateTheme();
+  setTheme(theme: string): void {
+    this._theme = theme;
+    localStorage.setItem('theme', this._theme);
+    this.updateTheme()
   }
 
-  updateTheme(){
-    switch (this.theme){
+  getTheme(): string | null {
+    return this._theme;
+  }
+
+  updateTheme(): void {
+    switch (this._theme){
       case 'light':
         document.body.classList.add('light');
         document.body.classList.remove('dark');
@@ -46,7 +39,13 @@ export class ThemeService {
     }
   }
 
-  getTheme() {
-    return this.theme;
+  initTheme(): void {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    prefersDark.addEventListener('change', () => {
+      this.updateTheme();
+    });
+
+    this.updateTheme();
   }
 }
