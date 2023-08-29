@@ -9,45 +9,50 @@
             </div>
         </ion-title>
     </ion-toolbar>
+</ion-header>
+<ion-content>
     <ion-row class='stats stats-desktop'>
         <ion-col>
             <div class='post-icon'>
                 <ion-icon name='document-attach-outline'></ion-icon>
             </div>
-            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>2</span> assignments to be
+            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>2</span> assignments to
+                be
                 done</p>
         </ion-col>
         <ion-col>
             <div class='post-icon'>
                 <ion-icon name='calendar-outline'></ion-icon>
             </div>
-            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>3</span> unexcused absences
+            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>3</span> unexcused
+                absences
             </p>
         </ion-col>
         <ion-col>
             <div class='post-icon'>
                 <ion-icon name='trending-up-outline'></ion-icon>
             </div>
-            <p style='font-size: 0.9rem'>Overall average: <span style='font-weight: 600; font-size: 1.1rem'>10</span>
+            <p style='font-size: 0.9rem'>Overall average: <span
+                    style='font-weight: 600; font-size: 1.1rem'>10</span>
             </p>
         </ion-col>
     </ion-row>
     <ion-row class='stats-mobile stats'>
         <ion-col size='4'>
             <div class='stat-mobile'>
-                <p style='font-weight: 600; font-size: 1rem'>2</p>
+                <p style='font-weight: 700; font-size: 1.3rem'>2</p>
                 <p style='font-size: 0.75rem; text-align: center'>assignments</p>
             </div>
         </ion-col>
         <ion-col size='4'>
             <div class='stat-mobile'>
-                <p style='font-weight: 600; font-size: 1rem'>3</p>
+                <p style='font-weight: 700; font-size: 1.3rem'>3</p>
                 <p style='font-size: 0.75rem'>unexcused absences</p>
             </div>
         </ion-col>
         <ion-col size='4'>
             <div class='stat-mobile'>
-                <p style='font-weight: 600; font-size: 1rem'>10</p>
+                <p style='font-weight: 700; font-size: 1.3rem'>10</p>
                 <p style='font-size: 0.75rem'>overall average</p>
             </div>
         </ion-col>
@@ -70,8 +75,6 @@
             Attendance
         </ion-chip>
     </ion-buttons>
-</ion-header>
-<ion-content>
     <div *ngFor='let item of filteredData' [ngSwitch]='item.type'>
         <ion-card class='desktop' *ngSwitchCase="'announcements'">
             <ion-row>
@@ -104,7 +107,9 @@
                     <ion-icon name='chatbubbles'></ion-icon>
                     {{item?.comments_num}} {{item?.comments_num === 1 ? 'comment' : 'comments'}}</ion-chip>
                 <ion-chip class='card-chip'
-                          *ngIf='item?.attachments_num'><ion-icon name='document'></ion-icon>{{item?.attachments_num}} {{item?.attachments_num === 1 ? 'attachment' : 'attachments'}}</ion-chip>
+                          *ngIf='item?.attachments_num'>
+                    <ion-icon name='document'></ion-icon>
+                    {{item?.attachments_num}} {{item?.attachments_num === 1 ? 'attachment' : 'attachments'}}</ion-chip>
             </ion-row>
         </ion-card>
         <ion-card class='mobile' *ngSwitchCase="'announcements'">
