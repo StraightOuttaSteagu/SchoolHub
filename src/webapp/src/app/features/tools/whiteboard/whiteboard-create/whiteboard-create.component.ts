@@ -40,11 +40,15 @@ export class WhiteboardCreateComponent {
 
   defaultFontSize: 0 | 1 | 2 | 3 = 2;
 
+  selectedWord: number | null = null;
+
   words: wordObject[] = [];
 
   canvasBoxWords: string[] = [""];
 
   textBoxWords: string[] = [];
+
+  glues: string[] = [];
 
   getPathLength = this._calculations.getPathLength;
 
@@ -55,15 +59,27 @@ export class WhiteboardCreateComponent {
   }
 
   addPunctuation(char: string): void {
-    console.log(char);
+    let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+    this.textBoxWords[target] += char;
   }
 
   glue(): void {
-    
+    let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+    if (target) {
+      let relation = this.textBoxWords[target - 1] + ' ' + this.textBoxWords[target];
+      if (this.glues.includes(relation)){
+        this.glues.splice(this.glues.indexOf(relation), 1);
+      } else {
+        this.glues.push(relation);
+      }
+    }
+    this.selectedWord = null;
   }
 
   capitalise(): void {
-    
+    let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+    this.textBoxWords[target] = (this.textBoxWords[target][0].toUpperCase()==this.textBoxWords[target][0]?this.textBoxWords[target][0].toLowerCase():this.textBoxWords[target][0].toUpperCase()) + this.textBoxWords[target].slice(1);
+    this.selectedWord = null;
   }
 
   newPage(): void {
@@ -76,6 +92,7 @@ export class WhiteboardCreateComponent {
 
   clearPage(): void {
     this.words = [];
+    this.textBoxWords = [];
   }
 
   saveLesson(): void {
@@ -171,18 +188,6 @@ export class WhiteboardCreateComponent {
     }
   }
 
-  textMouseDown(): void {
-    
-  }
-
-  textMouseUp(): void {
-    
-  }
-
-  textMouseMove(): void {
-    
-  }
-
   canvasBoxMouseUp(): void {
     if (this._action == 'move') {
       this.canvasBoxWords.push(this.words[this._actionDetails.target].content);
@@ -199,6 +204,12 @@ export class WhiteboardCreateComponent {
         this.words.splice(this.words.indexOf(word), 1);
       }
       this._ref.detectChanges();
+    }
+  }
+
+  makerBoxMouseDown(e: any): void {
+    if (e.target.id == 'makerBox') {
+      this.selectedWord = null;
     }
   }
 
@@ -222,7 +233,9 @@ export class WhiteboardCreateComponent {
 
   textKeydown(e: any): void {
     if (e.key == 'Backspace' && this.textBoxWords.length) {
-      this.textBoxWords.pop();
+      let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+      this.textBoxWords.splice(target, 1);
+      this.selectedWord = null;
     }
   }
   
@@ -379,7 +392,7 @@ export class WhiteboardCreateComponent {
   }
 
   TextTextBoxMouseDown(index: number): void {
-
+    this.selectedWord = index;
   }
 
   updatePt(e: any): any {

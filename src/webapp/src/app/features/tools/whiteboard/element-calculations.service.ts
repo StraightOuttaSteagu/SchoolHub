@@ -12,7 +12,7 @@ export class ElementCalculationsService {
   getSize(text: string, modifier: number = 64): number {
     let measure = document.getElementById('measure') as HTMLElement;
 		measure.innerHTML = text;
-		return + (measure.clientWidth + 1) * modifier / 8; //To get Y value, use +(measure.clientHeight + 1)*modifier/64
+		return + (measure.clientWidth + 1) * modifier / 32; //To get Y value, use +(measure.clientHeight + 1)*modifier/64 (or 25, idk)
 	}
 
   getPathLength(index: number): number {

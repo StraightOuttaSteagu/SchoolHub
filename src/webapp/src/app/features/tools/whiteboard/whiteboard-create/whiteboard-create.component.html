@@ -1,6 +1,6 @@
-<div id="measure" class="measure"></div>
+<p id="measure" class="measure"></p>
 <ion-col class="board">
-    <svg id="canvas" (mousedown)="(canvasMode?canvasMouseDown:textMouseDown).bind(this)($event)" (mouseup)="(canvasMode?canvasMouseUp:textMouseUp).bind(this)()" (mousemove)="(canvasMode?canvasMouseMove:textMouseMove).bind(this)($event)" #canvas style="width:86vw; height:80vh;" viewBox="0 0 512 1024" preserveAspectRatio="xMinYMin meet">
+    <svg id="canvas" (mousedown)="canvasMode?canvasMouseDown.bind(this)($event):(selectedWord=null)" (mouseup)="canvasMouseUp.bind(this)()" (mousemove)="canvasMouseMove.bind(this)($event)" #canvas style="width:86vw; height:80vh;" viewBox="0 0 512 1024" preserveAspectRatio="xMinYMin meet">
         <g *ngFor="let word of words; let i = index">
             <path [id]="'p' + i" attr.d='M {{word.startX}} {{word.startY}} q {{word.focusX}} {{word.focusY}} {{word.endX}} {{word.endY}}' fill="none"></path>
             <text (mousedown)="(canvasMode?canvasWordMouseDown:textWordMouseDown).bind(this)($event)" [id]="'t' + i" [attr.font-size]="word.fontSize">
@@ -23,8 +23,8 @@
     <ion-row (mouseup)="canvasBoxMouseUp()" id="canvasBox" class="textBox" *ngIf="canvasMode">
         <span (mousedown)="canvasTextBoxMouseDown($event, i)" class="textBoxContentWord" [ngStyle]="{ 'font-size': [2.1, 3.045, 4.2, 8.4][defaultFontSize] + 'vw', 'padding-left': [2.1, 3.045, 4.2, 8.4][defaultFontSize] / 2 + 'vw' }" *ngFor="let word of canvasBoxWords; let i = index">{{ word }}</span>
     </ion-row>
-    <ion-row #makerBox class="textBox" *ngIf="!canvasMode">
-        <span (mousedown)="TextTextBoxMouseDown(i)" class="textBoxContentWord" [ngStyle]="{ 'font-size': [2.1, 3.045, 4.2, 8.4][defaultFontSize] + 'vw', 'padding-left': [2.1, 3.045, 4.2, 8.4][defaultFontSize] / 2 + 'vw' }" *ngFor="let word of textBoxWords; let i = index">{{ word }}</span>
+    <ion-row id="makerBox" (mousedown)="makerBoxMouseDown($event)" #makerBox class="textBox" *ngIf="!canvasMode">
+        <span (mousedown)="TextTextBoxMouseDown(i)" class="textBoxContentWord" [ngStyle]="{ 'font-size': [2.1, 3.045, 4.2, 8.4][defaultFontSize] + 'vw', 'padding-left': this.glues.includes(textBoxWords[i-1] + ' ' + word)?'0':([2.1, 3.045, 4.2, 8.4][defaultFontSize] / 2 + 'vw'), 'color': selectedWord==null||selectedWord==i?'#000000':'#4F4F4F' }" *ngFor="let word of textBoxWords; let i = index">{{ word }}</span>
     </ion-row>
 </ion-col>
 <ion-col class="sidebar">
@@ -134,11 +134,11 @@
             <ion-button (click)="addPunctuation('\'')">'</ion-button>
             <ion-button (click)="addPunctuation('-')">-</ion-button>
         </ion-row>
-        <ion-button>
+        <ion-button (click)="glue()">
             <ion-icon name="" slot="start"></ion-icon>
             Glue
         </ion-button>
-        <ion-button>
+        <ion-button (click)="capitalise()">
             <ion-icon name="text-outline" slot="start"></ion-icon>
             Capitalise
         </ion-button>
