@@ -1,20 +1,30 @@
-<div #measure class="measure"></div>
+<div id="measure" class="measure"></div>
 <ion-col class="board">
-    <ion-row class="canvas">
-        <svg (mousedown)="(canvasMode?canvasMouseDown:textMouseDown)()" (mouseup)="(canvasMode?canvasMouseUp:textMouseUp)()" (mousemove)="(canvasMode?canvasMouseMove:textMouseMove)()" #canvas style="width:100%; height:100%" viewBox="0 0 2048 1024">
-            <rect #rectSelect x="100" y="100" rx="5" width="0" height="0" stroke="black" stroke-width="3" fill="#00000000" />
-            <circle #rotCircle cx="-100" cy="-100" r="60" stroke="#000000a0" stroke-width="3" fill="#00000000" />
-            <circle #moveCircle cx="-100" cy="-100" r="10" stroke="#303030" stroke-width="3" fill="#303030" />
-            <circle #colorCircle cx="-100" cy="-100" r="10" stroke="#000000" stroke-width="2" fill="#ff0000" />
-            <rect #rectScale x="-100" y="-100" width="20" height="20" stroke="#000000" stroke-width="2" fill="#98fb98" />
-            <circle #originScaleCircle cx="-100" cy="-100" r="5" stroke="#000000" stroke-width="2" fill="#000000" />
-        </svg>
-    </ion-row>
-    <ion-row #canvasBox class="textBox" *ngIf="canvasMode">
-        canvasBox
+    <svg id="canvas" (mousedown)="(canvasMode?canvasMouseDown:textMouseDown).bind(this)($event)" (mouseup)="(canvasMode?canvasMouseUp:textMouseUp).bind(this)()" (mousemove)="(canvasMode?canvasMouseMove:textMouseMove).bind(this)($event)" #canvas style="width:86vw; height:80vh;" viewBox="0 0 512 1024" preserveAspectRatio="xMinYMin meet">
+        <g *ngFor="let word of words; let i = index">
+            <path [id]="'p' + i" attr.d='M {{word.startX}} {{word.startY}} q {{word.focusX}} {{word.focusY}} {{word.endX}} {{word.endY}}' fill="none"></path>
+            <text (mousedown)="(canvasMode?canvasWordMouseDown:textWordMouseDown).bind(this)($event)" [id]="'t' + i" [attr.font-size]="word.fontSize">
+				<textPath [attr.index]="i" [id]="'tp' + i" [attr.textLength]="getPathLength(i)" class="pathText" [ngStyle]="{'font-size': word.fontSize + 'px'}" alignment-baseline="middle" [attr.href]="'#p' + i" startOffset="0%">{{ word.content }}</textPath>
+			</text>
+            <path [id]="'dp' + i" attr.d="M {{word.startX}} {{word.startY}} q {{word.focusX}} {{word.focusY}} {{word.endX}} {{word.endY}} L {{word.temp.clipLine0X}} {{word.temp.clipLine0Y}} L {{word.temp.clipLine1X}} {{word.temp.clipLine1Y}} L {{word.temp.clipLine2X}} {{word.temp.clipLine2Y}}" fill="none"></path>
+			<clipPath [id]="'cp' + i">
+				<use [attr.href]="'#dp' + i" />
+			</clipPath>
+			<use [id]="'c1' + i" [attr.href]="'#t' + i" [attr.fill]="word.topColor" />
+			<use [id]="'c2' + i" [attr.href]="'#t' + i" [attr.fill]="word.bottomColor" [attr.clip-path]="'url(#cp' + i + ')'" />
+        </g>
+        <rect (mousedown)="selectBoxMouseDown($event)" [attr.x]="selectBox.x" [attr.y]="selectBox.y" [attr.width]="selectBox.width" [attr.height]="selectBox.height" stroke="black" stroke-width="3" fill="#00000000" />
+        <circle [attr.cx]="rotationCircleTrack.x" [attr.cy]="rotationCircleTrack.y" r="60" stroke="#000000a0" stroke-width="3" fill="#00000000" />
+        <circle (mousedown)="rotationCircleThumbMouseDown()" [attr.cx]="rotationCircleThumb.x" [attr.cy]="rotationCircleThumb.y" r="10" stroke="#303030" stroke-width="3" fill="#303030" />
+        <circle [attr.cx]="colorCircle.x" [attr.cy]="colorCircle.y" r="10" stroke="#000000" stroke-width="2" fill="#ff0000" />
+        <rect (mousedown)="scaleThumbMouseDown()" [attr.x]="scaleThumb.x" [attr.y]="scaleThumb.y" width="20" height="20" stroke="#000000" stroke-width="2" fill="#98fb98" />
+        <circle [attr.cx]="scaleOrigin.x" [attr.cy]="scaleOrigin.y" r="5" stroke="#000000" stroke-width="2" fill="#000000" />
+    </svg>
+    <ion-row (mouseup)="canvasBoxMouseUp()" id="canvasBox" class="textBox" *ngIf="canvasMode">
+        <span (mousedown)="canvasTextBoxMouseDown($event, i)" class="textBoxContentWord" [ngStyle]="{ 'font-size': [2.1, 3.045, 4.2, 8.4][defaultFontSize] + 'vw', 'padding-left': [2.1, 3.045, 4.2, 8.4][defaultFontSize] / 2 + 'vw' }" *ngFor="let word of canvasBoxWords; let i = index">{{ word }}</span>
     </ion-row>
     <ion-row #makerBox class="textBox" *ngIf="!canvasMode">
-        makerBox
+        <span (mousedown)="TextTextBoxMouseDown(i)" class="textBoxContentWord" [ngStyle]="{ 'font-size': [2.1, 3.045, 4.2, 8.4][defaultFontSize] + 'vw', 'padding-left': [2.1, 3.045, 4.2, 8.4][defaultFontSize] / 2 + 'vw' }" *ngFor="let word of textBoxWords; let i = index">{{ word }}</span>
     </ion-row>
 </ion-col>
 <ion-col class="sidebar">
@@ -23,47 +33,47 @@
             <mask id="path-1-inside-1_824_18" fill="white">
                 <path d="M268.585 157.085C268.585 183.296 259.351 208.67 242.504 228.75L157.085 157.085H268.585Z" />
             </mask>
-            <path (click)="color = '#8025DB'" class="color-option" d="M268.585 157.085C268.585 183.296 259.351 208.67 242.504 228.75L157.085 157.085H268.585Z" fill="#8025DB"
+            <path (click)="selectColor('#8025DB')" class="color-option" d="M268.585 157.085C268.585 183.296 259.351 208.67 242.504 228.75L157.085 157.085H268.585Z" fill="#8025DB"
                 stroke="#1261A0" stroke-width="2" mask="url(#path-1-inside-1_824_18)" />
             <mask id="path-2-inside-2_824_18" fill="white">
                 <path d="M242.499 228.756C225.651 248.835 202.267 262.336 176.454 266.89L157.085 157.085L242.499 228.756Z" />
             </mask>
-            <path (click)="color = '#07A807'" class="color-option" d="M242.499 228.756C225.651 248.835 202.267 262.336 176.454 266.89L157.085 157.085L242.499 228.756Z"
+            <path (click)="selectColor('#07A807')" class="color-option" d="M242.499 228.756C225.651 248.835 202.267 262.336 176.454 266.89L157.085 157.085L242.499 228.756Z"
                 fill="#07A807" stroke="#1261A0" stroke-width="2" mask="url(#path-2-inside-2_824_18)" />
             <mask id="path-3-inside-3_824_18" fill="white">
                 <path d="M176.446 266.891C150.633 271.442 124.041 266.755 101.341 253.651L157.084 157.085L176.446 266.891Z" />
             </mask>
-            <path (click)="color = '#DE110D'" class="color-option" d="M176.446 266.891C150.633 271.442 124.041 266.755 101.341 253.651L157.084 157.085L176.446 266.891Z"
+            <path (click)="selectColor('#DE110D')" class="color-option" d="M176.446 266.891C150.633 271.442 124.041 266.755 101.341 253.651L157.084 157.085L176.446 266.891Z"
                 fill="#DE110D" stroke="#1261A0" stroke-width="2" mask="url(#path-3-inside-3_824_18)" />
             <mask id="path-4-inside-4_824_18" fill="white">
                 <path d="M101.336 253.647C78.636 240.541 61.2791 219.858 52.3126 195.228L157.086 157.085L101.336 253.647Z" />
             </mask>
-            <path (click)="color = '#FF8A05'" class="color-option" d="M101.336 253.647C78.636 240.541 61.2791 219.858 52.3126 195.228L157.086 157.085L101.336 253.647Z"
+            <path (click)="selectColor('#FF8A05')" class="color-option" d="M101.336 253.647C78.636 240.541 61.2791 219.858 52.3126 195.228L157.086 157.085L101.336 253.647Z"
                 fill="#FF8A05" stroke="#1261A0" stroke-width="2" mask="url(#path-4-inside-4_824_18)" />
             <mask id="path-5-inside-5_824_18" fill="white">
                 <path d="M52.3084 118.95C61.2732 94.3193 78.6287 73.6344 101.327 60.5272L157.084 157.085L52.3084 118.95Z" />
             </mask>
-            <path (click)="color = '#000000'" class="color-option" d="M52.3084 118.95C61.2732 94.3193 78.6287 73.6344 101.327 60.5272L157.084 157.085L52.3084 118.95Z"
+            <path (click)="selectColor('#000000')" class="color-option" d="M52.3084 118.95C61.2732 94.3193 78.6287 73.6344 101.327 60.5272L157.084 157.085L52.3084 118.95Z"
                 fill="black" stroke="#1261A0" stroke-width="2" mask="url(#path-5-inside-5_824_18)" />
             <mask id="path-6-inside-6_824_18" fill="white">
                 <path d="M52.3094 195.22C43.3446 170.59 43.3437 143.588 52.3068 118.957L157.085 157.085L52.3094 195.22Z" />
             </mask>
-            <path (click)="color = '#8A4B15'" class="color-option" d="M52.3094 195.22C43.3446 170.59 43.3437 143.588 52.3068 118.957L157.085 157.085L52.3094 195.22Z"
+            <path (click)="selectColor('#8A4B15')" class="color-option" d="M52.3094 195.22C43.3446 170.59 43.3437 143.588 52.3068 118.957L157.085 157.085L52.3094 195.22Z"
                 fill="#8A4B15" stroke="#1261A0" stroke-width="2" mask="url(#path-6-inside-6_824_18)" />
             <mask id="path-7-inside-7_824_18" fill="white">
                 <path d="M101.334 60.5228C124.034 47.4172 150.625 42.7275 176.438 47.2772L157.084 157.085L101.334 60.5228Z" />
             </mask>
-            <path (click)="color = '#0086FF'" class="color-option" d="M101.334 60.5228C124.034 47.4172 150.625 42.7275 176.438 47.2772L157.084 157.085L101.334 60.5228Z"
+            <path (click)="selectColor('#0086FF')" class="color-option" d="M101.334 60.5228C124.034 47.4172 150.625 42.7275 176.438 47.2772L157.084 157.085L101.334 60.5228Z"
                 fill="#0086FF" stroke="#1261A0" stroke-width="2" mask="url(#path-7-inside-7_824_18)" />
             <mask id="path-8-inside-8_824_18" fill="white">
                 <path d="M176.446 47.279C202.259 51.8305 225.643 65.3304 242.493 85.4082L157.084 157.085L176.446 47.279Z" />
             </mask>
-            <path (click)="color = '#617FE8'" class="color-option" d="M176.446 47.279C202.259 51.8305 225.643 65.3304 242.493 85.4082L157.084 157.085L176.446 47.279Z"
+            <path (click)="selectColor('#617FE8')" class="color-option" d="M176.446 47.279C202.259 51.8305 225.643 65.3304 242.493 85.4082L157.084 157.085L176.446 47.279Z"
                 fill="#617FE8" stroke="#1261A0" stroke-width="2" mask="url(#path-8-inside-8_824_18)" />
             <mask id="path-9-inside-9_824_18" fill="white">
                 <path d="M242.5 85.4141C259.348 105.493 268.584 130.866 268.586 157.077L157.086 157.085L242.5 85.4141Z" />
             </mask>
-            <path (click)="color = '#808080'" class="color-option" d="M242.5 85.4141C259.348 105.493 268.584 130.866 268.586 157.077L157.086 157.085L242.5 85.4141Z"
+            <path (click)="selectColor('#808080')" class="color-option" d="M242.5 85.4141C259.348 105.493 268.584 130.866 268.586 157.077L157.086 157.085L242.5 85.4141Z"
                 fill="#808080" stroke="#1261A0" stroke-width="2" mask="url(#path-9-inside-9_824_18)" />
             <g filter="url(#filter0_d_824_18)">
                 <circle cx="157.584" cy="156.585" r="56" fill="#07A807" />
@@ -90,20 +100,20 @@
                 </filter>
             </defs>
         </svg>
-        <ion-toggle (click)="doubleColor = !doubleColor" mode="ios" labelPlacement="start">Double color</ion-toggle>
+        <ion-toggle (click)="toggleDoubleColor()" mode="ios" labelPlacement="start">Double color</ion-toggle>
     </ion-card>
     <ion-card *ngIf="canvasMode" class="word-editor">
-        <ion-button (click)="stretchMode = !stretchMode">
-            <ion-icon [name]="stretchMode?'expand-outline':'resize-outline'" slot="start"></ion-icon>
-            {{ stretchMode?'Stretch':'Resize' }}
+        <ion-button (click)="toggleStretch()">
+            <ion-icon [name]="getStretch()?'expand-outline':'resize-outline'" slot="start"></ion-icon>
+            {{ getStretch()?'Resize':'Stretch' }}
         </ion-button>
         <ion-label>Font size</ion-label>
-        <ion-range mode="ios" [pin]="true" style="width: 80%;" [ticks]="true" [snaps]="true" [min]="1" [max]="4"></ion-range>
+        <ion-range (ionInput)="setDefaultFontSize($event)" mode="ios" [pin]="true" style="width: 80%;" [ticks]="true" [snaps]="true" [min]="1" [max]="4" [value]="defaultFontSize + 1"></ion-range>
         <ion-button>
             <ion-icon name="pencil-outline" slot="start"></ion-icon>
             Pen
         </ion-button>
-        <ion-button>
+        <ion-button (click)="setAction('erase')">
             <ion-icon name="" slot="start"></ion-icon>
             Eraser
         </ion-button>

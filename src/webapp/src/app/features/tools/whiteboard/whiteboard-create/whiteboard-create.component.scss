@@ -26,8 +26,27 @@ ion-row {
 }
 
 .textBox {
-    height: 20vh;
-	background-color: rgb(150, 206, 255);
+    display:flex;
+	flex-wrap: wrap;
+	padding-left: .75rem;
+	padding: 0;
+	height:20%;
+	background-color: #ffffff;
+	justify-content: flex-start;
+	align-content:flex-start;
+	overflow-y: auto;
+	padding-bottom: 1rem;
+}
+
+.textBoxContentWord {
+	margin:0;
+	font-family: 'Whiteboard';
+}
+
+#canvasBox {
+	.textBoxContentWord:hover {
+		cursor: grab;
+	}
 }
 
 .board {
@@ -69,9 +88,20 @@ ion-range {
 
 .color-option {
 	transition: 300ms all ease-in-out !important;
-	transform-origin: center;
 
 	&:hover {
-		transform: scale(1.1);
+		filter:brightness(1.1);
 	}
+}
+
+textPath {
+	font-family: 'Whiteboard';
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+* {
+	user-select: none;
 }
