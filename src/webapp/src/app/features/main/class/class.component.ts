@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ViewWillEnter, ViewWillLeave } from '@ionic/angular';
+import { MenuController, ViewDidEnter, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
@@ -9,7 +9,7 @@ import { ThemeService } from 'src/app/core/services/theme.service';
   templateUrl: './class.component.html',
   styleUrls: ['./class.component.scss']
 })
-export class ClassComponent implements ViewWillEnter, ViewWillLeave {
+export class ClassComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
   private _routerSubscription!: Subscription;
@@ -29,7 +29,7 @@ export class ClassComponent implements ViewWillEnter, ViewWillLeave {
 
   ];
 
-  constructor (private _route: ActivatedRoute, private _theme: ThemeService) { }
+  constructor (private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) { }
 
   ionViewWillEnter(): void {
     this._route.paramMap.subscribe(params => {
@@ -38,6 +38,10 @@ export class ClassComponent implements ViewWillEnter, ViewWillLeave {
       this.filteredData = mode=='general'?this.data:this.data.filter(el => el.type == mode);
       this._theme.setClassThemeID(params.get('id'));
     });
+  }
+
+  ionViewDidEnter(): void {
+    this._menu.swipeGesture(false);
   }
 
   ionViewWillLeave(): void {

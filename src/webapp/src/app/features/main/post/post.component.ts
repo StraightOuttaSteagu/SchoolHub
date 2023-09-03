@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { ThemeService } from 'src/app/core/services/theme.service';
+import { MenuController, ViewDidEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent {
+export class PostComponent implements ViewDidEnter {
   data = {
     assignment: true,
     classID: "690",
@@ -35,9 +36,13 @@ export class PostComponent {
     uploaded: ['document.txt', 'document foarte extrem de important.txt', 'document.txt', 'document.txt', 'document.txt', 'document.txt']
   }
 
-  constructor (private _theme: ThemeService) { }
+  constructor (private _theme: ThemeService, private _menu: MenuController) { }
 
   ngOnInit(): void {
     this._theme.setClassThemeID(this.data.classID);
+  }
+
+  ionViewDidEnter(): void {
+    this._menu.swipeGesture(false);
   }
 }
