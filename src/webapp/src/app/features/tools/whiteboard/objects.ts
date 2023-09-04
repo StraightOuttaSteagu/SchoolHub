@@ -18,3 +18,11 @@ export type wordObject = {
         clipLine2Y: number
     }
 }
+
+export type pageObject = {
+    words: wordObject[],
+    textBoxWords: string[],
+    glues: string[],
+    activityType: 'Remember & Write' | 'Listen & Write' | 'Right & Wrong',
+    activityData: boolean | string | null
+}

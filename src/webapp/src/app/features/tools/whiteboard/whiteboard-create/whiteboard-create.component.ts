@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { wordObject } from '../objects';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { wordObject, pageObject } from '../objects';
 import { ElementCalculationsService } from '../element-calculations.service';
 import { MathService } from '../math.service';
 
@@ -12,6 +12,14 @@ import { MathService } from '../math.service';
   }
 })
 export class WhiteboardCreateComponent {
+
+  alertButtons = ['Save'];
+  alertInputs = [
+    {
+      placeholder: 'Lesson name',
+    }
+  ];
+
   private _color: string = '#000000';
 
   private _action: 'color' | 'erase' | 'stretch' | 'move' | 'bend' | 'select' | 'groupMove' | 'groupRotate' | 'groupSize' | null = null;
@@ -42,13 +50,25 @@ export class WhiteboardCreateComponent {
 
   selectedWord: number | null = null;
 
-  words: wordObject[] = [];
+  pages: pageObject[] = [
+    {
+      words: [],
+      textBoxWords: [],
+      glues: [],
+      activityType: 'Remember & Write',
+      activityData: null
+    }
+  ];
+
+  selectedPage: number = 0;
+
+  words: wordObject[] = this.pages[0].words;
 
   canvasBoxWords: string[] = [""];
 
-  textBoxWords: string[] = [];
+  textBoxWords: string[] = this.pages[0].textBoxWords;
 
-  glues: string[] = [];
+  glues: string[] = this.pages[0].glues;
 
   getPathLength = this._calculations.getPathLength;
 
@@ -83,16 +103,47 @@ export class WhiteboardCreateComponent {
   }
 
   newPage(): void {
-    
+    this.pages.push(structuredClone(this.pages[this.selectedPage]));
+    this.selectedPage = this.pages.length - 1;
+
+    this.words = this.pages[this.selectedPage].words;
+    this.textBoxWords = this.pages[this.selectedPage].textBoxWords;
+    this.glues = this.pages[this.selectedPage].glues;
+
+    this.pages[this.pages.length - 1].activityData = null;
+    this.pages[this.pages.length - 1].activityType = 'Remember & Write';
+
+    for (let word of this.words) {
+      this._calculations.updateClipPath(word);
+    }
+
+    this._ref.detectChanges();
   }
 
   deletePage(): void {
-    
+    if (this.pages.length > 1) {
+      this.pages.splice(this.selectedPage, 1);
+      if (this.selectedPage == this.pages.length) {
+        this.selectedPage--;
+      }
+    }
   }
 
   clearPage(): void {
     this.words = [];
     this.textBoxWords = [];
+  }
+
+  changePage(modifier: number): void {
+    if (this.selectedPage + modifier >= 0 && this.selectedPage + modifier < this.pages.length) {
+      this.selectedPage += modifier;
+
+      this.words = this.pages[this.selectedPage].words;
+      this.textBoxWords = this.pages[this.selectedPage].textBoxWords;
+      this.glues = this.pages[this.selectedPage].glues;
+
+      this._ref.detectChanges();
+    }
   }
 
   saveLesson(): void {
@@ -418,5 +469,26 @@ export class WhiteboardCreateComponent {
 
   setDefaultFontSize(e: any): void {
     this.defaultFontSize = (e.detail.value - 1 as 0 | 1 | 2 | 3 );
+  }
+
+  typeSelectChanged(e: any): void {
+    this.pages[this.selectedPage].activityType = e.detail.value;
+    switch (this.pages[this.selectedPage].activityType) {
+      case 'Listen & Write':
+        this.pages[this.selectedPage].activityData = "";
+        break;
+
+      case 'Remember & Write':
+        this.pages[this.selectedPage].activityData = null;
+        break;
+
+      case 'Right & Wrong':
+        this.pages[this.selectedPage].activityData = true;
+    }
+  }
+
+  setLinkValue(e: any): void {
+    this.pages[this.selectedPage].activityData = e.detail.value;
+    console.log(444)
   }
 }

@@ -144,24 +144,27 @@
         </ion-button>
     </ion-card>
     <ion-card *ngIf="!canvasMode" class="type-editor">
-        <ion-select #typeSelect placeholder="Type" value="remember&write">
-            <ion-select-option value="remember&write">Remember & Write</ion-select-option>
-            <ion-select-option value="listen&write">Listen & Write</ion-select-option>
-            <ion-select-option value="right&wrong">Right & Wrong</ion-select-option>
+        <ion-select (ionChange)="typeSelectChanged($event)" #typeSelect placeholder="Type" [value]="pages[selectedPage].activityType">
+            <ion-select-option value="Remember & Write">Remember & Write</ion-select-option>
+            <ion-select-option value="Listen & Write">Listen & Write</ion-select-option>
+            <ion-select-option value="Right & Wrong">Right & Wrong</ion-select-option>
         </ion-select>
         <div [ngSwitch]="typeSelect.value">
-            <div *ngSwitchCase="'remember&write'">
-                a
+            <div *ngSwitchCase="'Listen & Write'">
+                <ion-input [value]="pages[selectedPage].activityData" type="text" (ionInput)="setLinkValue($event)" placeholder="link"></ion-input>
             </div>
-            <div *ngSwitchCase="'listen&write'">
-                b
-            </div>
-            <div *ngSwitchCase="'right&wrong'">
-                c
+            <div *ngSwitchCase="'Right & Wrong'">
+                <ion-button (click)="pages[selectedPage].activityData=true" [ngStyle]="{ '--background': pages[selectedPage].activityData?'red':'blue' }">Right</ion-button>
+                <ion-button (click)="pages[selectedPage].activityData=false" [ngStyle]="{ '--background': pages[selectedPage].activityData?'blue':'red' }">Wrong</ion-button>
             </div>
         </div>
     </ion-card>
     <ion-card class="page-editor">
+        <div *ngIf="!canvasMode">
+            <ion-button (click)="changePage(-1)">-</ion-button>
+            <label>{{ selectedPage + 1 }}</label>
+            <ion-button (click)="changePage(1)">+</ion-button>
+        </div>
         <ion-button (click)="newPage()" *ngIf="!canvasMode">
             <ion-icon name="text-outline" slot="start"></ion-icon>
             new
@@ -174,7 +177,7 @@
             <ion-icon name="text-outline" slot="start"></ion-icon>
             mode
         </ion-button>
-        <ion-button (click)="saveLesson()">
+        <ion-button id="save" (click)="saveLesson()">
             <ion-icon name="text-outline" slot="start"></ion-icon>
             save
         </ion-button>
@@ -184,3 +187,4 @@
         </ion-button>
     </ion-card>
 </ion-col>
+<ion-alert trigger="save" header="Please enter your info" [buttons]="alertButtons" [inputs]="alertInputs"></ion-alert>
