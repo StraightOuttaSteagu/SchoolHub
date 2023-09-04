@@ -79,12 +79,12 @@ export class WhiteboardCreateComponent {
   }
 
   addPunctuation(char: string): void {
-    let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+    let target = this.selectedWord ===null?this.textBoxWords.length-1:this.selectedWord;
     this.textBoxWords[target] += char;
   }
 
   glue(): void {
-    let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+    let target = this.selectedWord ===null?this.textBoxWords.length-1:this.selectedWord;
     if (target) {
       let relation = this.textBoxWords[target - 1] + ' ' + this.textBoxWords[target];
       if (this.glues.includes(relation)){
@@ -97,8 +97,8 @@ export class WhiteboardCreateComponent {
   }
 
   capitalise(): void {
-    let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
-    this.textBoxWords[target] = (this.textBoxWords[target][0].toUpperCase()==this.textBoxWords[target][0]?this.textBoxWords[target][0].toLowerCase():this.textBoxWords[target][0].toUpperCase()) + this.textBoxWords[target].slice(1);
+    let target = this.selectedWord ===null?this.textBoxWords.length-1:this.selectedWord;
+    this.textBoxWords[target] = (this.textBoxWords[target][0].toUpperCase() ===this.textBoxWords[target][0]?this.textBoxWords[target][0].toLowerCase():this.textBoxWords[target][0].toUpperCase()) + this.textBoxWords[target].slice(1);
     this.selectedWord = null;
   }
 
@@ -123,7 +123,7 @@ export class WhiteboardCreateComponent {
   deletePage(): void {
     if (this.pages.length > 1) {
       this.pages.splice(this.selectedPage, 1);
-      if (this.selectedPage == this.pages.length) {
+      if (this.selectedPage  === this.pages.length) {
         this.selectedPage--;
       }
     }
@@ -156,7 +156,7 @@ export class WhiteboardCreateComponent {
   }
 
   canvasMouseDown(e: any): void {
-    if (e.target.id == 'canvas') {
+    if (e.target.id  === 'canvas') {
       this.updatePt(e);
 
       this._action = 'select';
@@ -168,7 +168,7 @@ export class WhiteboardCreateComponent {
   }
 
   canvasMouseUp(): void {
-    if (this._action == 'select') {
+    if (this._action  === 'select') {
       let selectedWords = this.words.filter(word => 
         this._math.contained(word.startX, word.startY, this.selectBox.x, this.selectBox.y, this.selectBox.width, this.selectBox.height) ||
         this._math.contained(word.focusX + word.startX, word.focusY + word.startY, this.selectBox.x, this.selectBox.y, this.selectBox.width, this.selectBox.height) ||
@@ -240,14 +240,14 @@ export class WhiteboardCreateComponent {
   }
 
   canvasBoxMouseUp(): void {
-    if (this._action == 'move') {
+    if (this._action  === 'move') {
       this.canvasBoxWords.push(this.words[this._actionDetails.target].content);
       this.words.splice(this._actionDetails.target, 1);
       this._action = null;
       this._ref.detectChanges();
-    } else if (this._action == 'groupMove') {
+    } else if (this._action  === 'groupMove') {
       this._action = null;
-      if (this.canvasBoxWords.at(-1) == ""){
+      if (this.canvasBoxWords.at(-1)  === ""){
         this.canvasBoxWords.pop();
       }
       for (let word of <wordObject[]>this._actionDetails.targets) {
@@ -259,13 +259,13 @@ export class WhiteboardCreateComponent {
   }
 
   makerBoxMouseDown(e: any): void {
-    if (e.target.id == 'makerBox') {
+    if (e.target.id  === 'makerBox') {
       this.selectedWord = null;
     }
   }
 
   canvasKeydown(e: any): void {
-    if (e.key == 'Backspace') { 
+    if (e.key  === 'Backspace') { 
       if (this.canvasBoxWords.length) {
         if (this.canvasBoxWords.at(-1)?.length) {
           this.canvasBoxWords[this.canvasBoxWords.length - 1] = this.canvasBoxWords[this.canvasBoxWords.length - 1].slice(0, -1);
@@ -273,18 +273,18 @@ export class WhiteboardCreateComponent {
           this.canvasBoxWords.pop();
         }
       }
-    } else if (e.key == ' ') {
+    } else if (e.key  === ' ') {
       if (this.canvasBoxWords.at(-1)?.length) {
         this.canvasBoxWords.push('');
       }
-    } else if (e.key.length == 1) {
+    } else if (e.key.length  === 1) {
       this.canvasBoxWords[this.canvasBoxWords.length - 1] += e.key;
     }
   }
 
   textKeydown(e: any): void {
-    if (e.key == 'Backspace' && this.textBoxWords.length) {
-      let target = this.selectedWord===null?this.textBoxWords.length-1:this.selectedWord;
+    if (e.key  === 'Backspace' && this.textBoxWords.length) {
+      let target = this.selectedWord ===null?this.textBoxWords.length-1:this.selectedWord;
       this.textBoxWords.splice(target, 1);
       this.selectedWord = null;
     }
@@ -351,38 +351,37 @@ export class WhiteboardCreateComponent {
   }
 
   canvasWordMouseDown(e: any): void {
-    let index: number = +e.target.getAttribute('index');
+    const index: number = +e.target.getAttribute('index');
 
-    if (this._action == 'erase'){
+    if (this._action  === 'erase'){
       this.words.splice(index, 1);
 
       return;
     }
 
-    if (this._action == 'color'){
+    if (this._action  === 'color'){
       if (this._doubleColor) {
         this.words[index].bottomColor = this.words[index].topColor;
         this.words[index].topColor = this._color;
-      } else {
-        this.words[index].topColor = this.words[index].bottomColor = this._color;
+        return;
       }
-
+      this.words[index].topColor = this.words[index].bottomColor = this._color;
       return;
     }
 
     this.updatePt(e);
-    let pos = e.target.getCharNumAtPosition(this._pt);
+    const pos = e.target.getCharNumAtPosition(this._pt);
 
-    let eventX = Math.floor(this._pt.x), eventY = Math.floor(this._pt.y);
+    const eventX = Math.floor(this._pt.x), eventY = Math.floor(this._pt.y);
 
-    if (pos == 0) {
+    if (pos  === 0) {
       this._action = 'move';
       this._actionDetails = {
         x: eventX,
         y: eventY,
         target: index
       };
-    } else if (pos == this.words[index].content.length-1){
+    } else if (pos  === this.words[index].content.length-1){
       this._action = 'stretch';
       this._actionDetails = {
         length: this._calculations.stretchLength(this.words[index]),
@@ -398,12 +397,12 @@ export class WhiteboardCreateComponent {
   }
 
   textWordMouseDown(e: any): void {
-    let index: number = +e.target.getAttribute('index');
+    const index: number = +e.target.getAttribute('index');
     this.textBoxWords.push(this.words[index].content);
   }
 
   canvasTextBoxMouseDown(e: any, index: number): void {
-    let size = this._calculations.getSize(this.canvasBoxWords[index], [52.5, 76.125, 105, 210][this.defaultFontSize])/2;
+    const size = this._calculations.getSize(this.canvasBoxWords[index], [52.5, 76.125, 105, 210][this.defaultFontSize])/2;
 
     this.updatePt(e);
     
@@ -489,6 +488,5 @@ export class WhiteboardCreateComponent {
 
   setLinkValue(e: any): void {
     this.pages[this.selectedPage].activityData = e.detail.value;
-    console.log(444)
   }
 }

@@ -1,1 +1,9 @@
-<p>chat works!</p>
+<ion-content class="account-list">
+    <ion-card class="account" *ngFor="let user of users">
+        <ion-img class="user-icon" src="../../../../assets/account.png"></ion-img>
+        <ion-col>
+            <p>{{ user.name }}</p>
+            <p>{{ user.lastMessage }}</p>
+        </ion-col>
+    </ion-card>
+</ion-content>

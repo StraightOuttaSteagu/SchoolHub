@@ -11,7 +11,8 @@ import { ChatComponent } from './chat.component';
     CommonModule,
     IonicModule,
     RouterModule.forChild([
-      { path: ':user', component: ChatComponent }
+      { path: ':user', component: ChatComponent },
+      { path: '', component: ChatComponent }
     ])
   ]
 })

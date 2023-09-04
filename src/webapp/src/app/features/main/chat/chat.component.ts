@@ -12,4 +12,107 @@ export class ChatComponent implements ViewDidEnter {
   ionViewDidEnter(): void {
     this._menu.swipeGesture(false);
   }
+
+  users = [
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+    {
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet'
+    },
+  ]
 }

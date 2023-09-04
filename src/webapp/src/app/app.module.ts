@@ -15,7 +15,7 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     IonicModule.forRoot(),
