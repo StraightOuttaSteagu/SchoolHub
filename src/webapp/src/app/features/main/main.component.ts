@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -49,7 +50,18 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService) { }
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _http: HttpClient) { }
+
+  ngOnInit() {
+    this._http.get('http://localhost:8080/api/account').subscribe({
+      next: (val: any) => {
+        console.log(val)
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    });
+  }
 
   logOut(): void {
     this._auth.logOut();

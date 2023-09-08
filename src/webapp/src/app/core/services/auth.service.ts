@@ -8,14 +8,14 @@ import { SnackBarService } from 'src/app/core/services/SnackBar.service';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private router: Router, private _snackBar: SnackBarService) {}
+  constructor(private _http: HttpClient, private _router: Router, private _snackBar: SnackBarService) { }
 
   login(form: object): void {
-    this.http.post('http://localhost:8080/api/authenticate', form).subscribe({
+    this._http.post('http://localhost:8080/api/authenticate', form).subscribe({
       next: (val: any) => {
         localStorage.setItem('token', val.id_token);
         this._snackBar.displayMessage("Login succesful");
-        this.router.navigate(['announcements']);
+        this._router.navigate(['announcements']);
       },
       error: err => {
         if (err.statusText == "Unauthorized"){
@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   register(form: {login: string, password: string, firstName: string, lastName: string, email: string}): void {
-    this.http.post('http://localhost:8080/api/register', form).subscribe({
+    this._http.post('http://localhost:8080/api/register', form).subscribe({
       next: () => {
         this._snackBar.displayMessage("Account created successfully");
         this.login({
