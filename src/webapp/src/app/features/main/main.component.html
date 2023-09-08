@@ -48,7 +48,7 @@
                 <ion-item class='profile' lines='none' id='profile-trigger' detail='true'>
                     <ion-img src='assets/account.png'></ion-img>
                     <ion-label>
-                        <h2>Guest</h2>
+                        <h2>{{(account$ | async).login}}</h2>
                         <p>Student</p>
                     </ion-label>
                 </ion-item>

@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { Select, Store } from '@ngxs/store';
+import { GetAccount } from 'src/app/core/state-management/account/account.actions';
+import { AccountState } from 'src/app/core/state-management/account/account.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+
+  @Select(AccountState.selectAccount) account$!: Observable<any>;
 
   pageAnimation = pageAnimation;
   public alertButtons = ['Add class'];
@@ -50,17 +55,10 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _http: HttpClient) { }
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _store: Store) { }
 
   ngOnInit() {
-    this._http.get('http://localhost:8080/api/account').subscribe({
-      next: (val: any) => {
-        console.log(val)
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    });
+    this._store.dispatch(new GetAccount);
   }
 
   logOut(): void {

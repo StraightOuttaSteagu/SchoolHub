@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { NgxsModule } from '@ngxs/store';
+import { AccountState } from './core/state-management/account/account.state';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxsModule.forRoot([AccountState])
   ],
   providers: [
     {
