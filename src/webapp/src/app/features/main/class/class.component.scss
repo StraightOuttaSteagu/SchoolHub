@@ -129,6 +129,10 @@ ion-card {
   color: rgba(var(--ion-color-text-rgb), 0.8);
 }
 
+div.input-wrapper {
+  flex-direction: column !important;
+}
+
 .account {
   display: flex;
   width: 100%;

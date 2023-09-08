@@ -15,8 +15,23 @@ export class ClassComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnte
   private _routerSubscription!: Subscription;
 
   data: any[] = [
-    { title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ', attachments_num: 3, comments_num: 1, date: '16.09.2023, 12:09', type: 'announcements'},
-    { title: 'Lorem ipsum dolor sit amet', content: 'Lorem Ipsum', attachments_num: 3, comments_num: 1, date: '16.09.2023, 21:30', due_date: '17.09.2023, 21:20', type: 'assignments'},
+    {
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor ',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ',
+      attachments_num: 3,
+      comments_num: 1,
+      date: '16.09.2023, 12:09',
+      type: 'announcements'
+    },
+    {
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor ',
+      content: 'Lorem Ipsum',
+      attachments_num: 3,
+      comments_num: 1,
+      date: '16.09.2023, 21:30',
+      due_date: '17.09.2023, 21:20',
+      type: 'assignments'
+    },
     { grade: '10', date: '6.09.2023', type: 'grades'},
     { date: '6.09.2023', excused: false, type: 'attendance'},
     { title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ', attachments_num: 3, comments_num: 1, date: '16.09.2023, 12:09', type: 'announcements'},
