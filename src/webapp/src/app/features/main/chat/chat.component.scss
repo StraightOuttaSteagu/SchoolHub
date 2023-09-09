@@ -1,3 +1,8 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
 .user-icon {
     width: 2.4rem;
 }
@@ -7,5 +12,52 @@
 }
 
 .account-list {
-    width: 400px;
+    max-width: 400px;
+    min-width: 300px;
+    overflow: auto;
+}
+
+.chat {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.message {
+    max-width: 60%;
+    display: flex;
+
+    ion-img {
+        height: 3rem;
+    }
+}
+
+.sender {
+    align-self: flex-start;
+}
+
+.receiver {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-card {
+    display: flex;
+}
+
+.message-time {
+    display: flex;
+    align-items: flex-end;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.timecard {
+    max-width: 20%;
+    align-self: center;
 }

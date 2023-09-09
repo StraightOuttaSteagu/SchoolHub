@@ -4,9 +4,13 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ChatComponent } from './chat.component';
+import { DateFormatPipe } from './chat.pipe';
 
 @NgModule({
-  declarations: [ChatComponent],
+  declarations: [
+    ChatComponent,
+    DateFormatPipe
+  ],
   imports: [
     CommonModule,
     IonicModule,

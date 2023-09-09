@@ -19,7 +19,7 @@
         <ion-card>
             <ion-button (click)="submit()" class="save-button" color="primary" shape="round">{{ editable ? "Save" : "Edit" }}</ion-button>
             <form  [formGroup]="accountForm" class='profile-details-form'>
-                <ion-input [disabled]="true" style="--border-radius: 2rem;" size="64" fill="outline" label="@" type='text' name='username' id='username' value='{{(account$ | async).login}}'><label>Username</label></ion-input>
+                <ion-input formControlName="login" style="--border-radius: 2rem;" size="64" fill="outline" label="@" type='text' name='username' id='username' value='{{(account$ | async).login}}'><label>Username</label></ion-input>
                 <ion-input formControlName="firstName" style="--border-radius: 2rem;" fill="outline" label="" type='text' name='name' id='name' value='{{(account$ | async).firstName}}'><label>Name</label></ion-input>
                 <ion-input formControlName="lastName" style="--border-radius: 2rem;" fill="outline" label="" type='text' name='surname' id='surname' value='{{(account$ | async).lastName}}'><label>Surname</label></ion-input>
                 <ion-input formControlName="email" style="--border-radius: 2rem;" fill="outline" label="" type='email' name='email' id='email' value='{{(account$ | async).email}}'><label>Email</label></ion-input>

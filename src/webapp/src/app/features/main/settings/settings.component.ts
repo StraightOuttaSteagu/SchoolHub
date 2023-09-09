@@ -18,6 +18,7 @@ export class SettingsComponent implements ViewDidEnter {
   editable: boolean = false;
 
   accountForm: FormGroup = this._fb.group({
+    login: [{value: '', disabled: true}, [Validators.required]],
     firstName: [{value: '', disabled: true}, [Validators.required]],
     lastName: [{value: '', disabled: true}, [Validators.required]],
     email: [{value: '', disabled: true}, [Validators.required]]
@@ -29,6 +30,7 @@ export class SettingsComponent implements ViewDidEnter {
     this.account$.subscribe({
       next: (account) => {
         this.accountForm.setValue({
+          login: account.login,
           firstName: account.firstName,
           lastName: account.lastName,
           email: account.email
