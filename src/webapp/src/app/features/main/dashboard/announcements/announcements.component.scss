@@ -55,6 +55,7 @@ ion-card {
   border-radius: 1.25rem;
   --background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.7rem 1.5rem;
 }
 
@@ -131,5 +132,9 @@ ion-card-title {
 
   .date {
     font-weight: 400;
+  }
+
+  ion-card {
+    --background: rgba(var(--ion-color-back-secondary-rgb), 0.5);
   }
 }

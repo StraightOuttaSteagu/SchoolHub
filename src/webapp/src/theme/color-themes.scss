@@ -1,0 +1,121 @@
+:root {
+  .green {
+    --ion-color-primary: #A5DD7A;
+    --ion-color-primary-rgb: 165, 221, 122;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0, 0, 0;
+    --ion-color-primary-shade: #91c26b;
+    --ion-color-primary-tint: #aee087;
+
+    --ion-color-secondary: #00B490;
+    --ion-color-secondary-rgb: 0, 180, 144;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #009e7f;
+    --ion-color-secondary-tint: #1abc9b;
+
+    --ion-color-tertiary: #175200;
+    --ion-color-tertiary-rgb: 23, 82, 0;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+    --ion-color-tertiary-shade: #144800;
+    --ion-color-tertiary-tint: #2e631a;
+
+    --ion-color-text: #41563D;
+    --ion-color-text-rgb: 65, 86, 61;
+    --ion-color-text-contrast: #ffffff;
+    --ion-color-text-contrast-rgb: 255, 255, 255;
+    --ion-color-text-shade: #394c36;
+    --ion-color-text-tint: #4a674e;
+
+    --ion-color-highlight-gradient: linear-gradient(90deg, rgba(93, 216, 127, 0.70) 0%, rgba(0, 180, 144, 0.70) 100%);
+
+    --ion-color-back-gradient: linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(90deg, #5DD87F 0%, #00B490 99%);
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #F4FCED 0%, #5DD87F 55.06%, #00B490 99.48%);
+  }
+
+  .light-blue {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #76DEFF 55.06%, #74E3DC 99.48%);
+  }
+
+  .red {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #FF8484 55.06%, #CC6F47 99.48%);
+  }
+
+  .orange {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #FFB884 55.06%, #CC9747 99.48%);
+  }
+
+  .yellow {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #FFF384 55.06%, #ECEF53 99.48%);
+  }
+
+  .pink {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #FD97FF 50%, #F51EE0 100%);
+  }
+
+  .purple {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #BE97FF 50%, #7D1EF5 100%);
+  }
+}
+
+.dark {
+  .green {
+    --ion-color-primary: #175200;
+    --ion-color-primary-rgb: 23,82,0;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #144800;
+    --ion-color-primary-tint: #2e631a;
+
+    --ion-color-tertiary: #A5DD7A;
+    --ion-color-tertiary-rgb: 165, 221, 122;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+    --ion-color-tertiary-shade: #91c26b;
+    --ion-color-tertiary-tint: #aee087;
+
+    --ion-color-selected: #A5DD7A;
+    --ion-color-selected-rgb: 165,221,122;
+    --ion-color-selected-contrast: #000000;
+    --ion-color-selected-contrast-rgb: 0,0,0;
+    --ion-color-selected-shade: #91c26b;
+    --ion-color-selected-tint: #aee087;
+
+    --ion-color-text: #F3FFF1;
+    --ion-color-text-rgb: 243, 255, 241;
+    --ion-color-text-contrast: #000000;
+    --ion-color-text-contrast-rgb: 0, 0, 0;
+    --ion-color-text-shade: #d6e0d4;
+    --ion-color-text-tint: #e3fce1;
+
+    --ion-color-back-gradient: linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(48deg, #2C7740 0%, #008167 94.79%);
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #2C7740 0%, #008167 94.79%);
+
+    --ion-color-custom: rgba(255, 0, 0);
+  }
+
+  .light-blue {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #006176 0%, #37967F 100%);
+  }
+
+  .red {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #330303 0%, #AC2D2D 94.79%);
+  }
+
+  .orange {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #794900 0%, #B74931 94.79%);
+  }
+
+  .yellow {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #382C01 0%, #AE8D16 94.79%);
+  }
+
+  .pink {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #76288A 0%, #99127B 94.79%);
+  }
+
+  .purple {
+    --ion-color-back-gradient-desktop: linear-gradient(48deg, #2F135B 0%, #6204AC 94.79%);
+  }
+}

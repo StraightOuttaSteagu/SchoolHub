@@ -11,13 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { DashboardComponent } from './features/main/dashboard/dashboard.component';
+import { NgxsModule } from '@ngxs/store';
+import { AccountState } from './core/state-management/account/account.state';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    DashboardComponent
   ],
   imports: [
     IonicModule.forRoot(),
@@ -25,7 +25,8 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxsModule.forRoot([AccountState])
   ],
   providers: [
     {
@@ -36,5 +37,4 @@ import { DashboardComponent } from './features/main/dashboard/dashboard.componen
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

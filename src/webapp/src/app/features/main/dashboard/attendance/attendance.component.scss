@@ -28,7 +28,7 @@ ion-card {
   --background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 1.6rem;
-  border: 1px solid rgba(var(--ion-color-text-rgb), 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 ion-list {
@@ -101,7 +101,7 @@ ion-accordion-group {
     display: none;
   }
   ion-accordion-group {
-    background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
+    background: rgba(var(--ion-color-back-secondary-rgb), 0.5);
     display: block;
     margin: 1.7rem 1rem 1rem 1rem;
     border-radius: 1.25rem;

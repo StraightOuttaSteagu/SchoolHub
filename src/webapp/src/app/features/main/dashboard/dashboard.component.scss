@@ -21,6 +21,7 @@ ion-chip {
   margin-bottom: 0.5rem;
   flex-shrink: 0;
   min-width: max-content;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .active {
@@ -69,6 +70,7 @@ ion-item {
   ion-chip {
     height: 2.2rem;
     font-size: 0.75rem;
+    --background: rgba(var(--ion-color-back-secondary-rgb), 0.45);
   }
   ion-img {
     display: block;
