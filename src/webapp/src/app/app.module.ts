@@ -15,11 +15,13 @@ import { NgxsModule } from '@ngxs/store';
 import { AccountState } from './core/state-management/account/account.state';
 import { OrganizationState } from './core/state-management/organization/organization.state';
 import { ClassState } from './core/state-management/class/class.state';
+import { ZygoteBodyComponent } from './features/tools/zygothe-body/zygote-body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    ZygoteBodyComponent,
   ],
   imports: [
     IonicModule.forRoot(),
