@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
+import {User, UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'app-main',
@@ -41,7 +42,17 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService) {
+  currentUser: User | null = null;
+
+  constructor(
+    private _theme: ThemeService,
+    private _auth: AuthService,
+    private userService: UserService
+  ) {
+    userService.getCurrentUser().subscribe((resp) => {
+      console.log(resp);
+      this.currentUser = resp;
+    });
   }
 
   logOut(): void {
