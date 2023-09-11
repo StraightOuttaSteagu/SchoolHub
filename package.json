@@ -57,5 +57,8 @@
   },
   "cacheDirectories": [
     "node_modules"
-  ]
+  ],
+  "dependencies": {
+    "ng-openapi-gen": "^0.50.2"
+  }
 }

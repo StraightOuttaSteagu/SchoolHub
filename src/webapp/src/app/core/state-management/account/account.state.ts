@@ -1,12 +1,11 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { AccountService } from "./account.service";
 import { GetAccount, UpdateAccount } from "./account.actions";
-import { tap } from "rxjs/operators";
 import { Injectable } from "@angular/core";
-import { accountModel } from "../models";
+import { AccountModel } from "../models";
+import { AccountController } from "../../controllers/account.controller";
 
 export interface AccountStateModel {
-    account: accountModel
+    account: AccountModel
 }
 
 @State<AccountStateModel>({
@@ -23,7 +22,7 @@ export interface AccountStateModel {
 @Injectable()
 export class AccountState {
     
-    constructor (private _accountService: AccountService) { }
+    constructor (private _accountController: AccountController) { }
 
     @Selector()
     static selectAccount(state: AccountStateModel) {
@@ -32,20 +31,31 @@ export class AccountState {
 
     @Action(GetAccount)
     getAccount(ctx: StateContext<AccountStateModel>) {
-        return this._accountService.getAccount().pipe(tap((account: accountModel) => {
-            const state = ctx.getState();
+        return this._accountController.getAccount().subscribe({
+            next: (account: AccountModel) => {
 
-            ctx.setState({
-                ...state,
-                account: account
-            });
-        }));
+                ctx.setState({
+                    account
+                });
+            },
+
+            error: (err) => {
+                console.log(err);
+            }
+        });
     }
 
     @Action(UpdateAccount)
-    updateAccount(ctx: StateContext<AccountStateModel>, { payload }: UpdateAccount) {
-        return this._accountService.updateAccount(payload).pipe(tap((x) => {
-            console.log(x)
-        }));
+    updateAccount(ctx: StateContext<AccountStateModel>, action: UpdateAccount) {
+        return this._accountController.updateAccount(action.payload).subscribe({
+            next: (val) => {
+                ctx.setState({
+                    account: action.payload
+                });
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
     }
 }

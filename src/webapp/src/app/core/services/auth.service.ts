@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('token') !=undefined;
+    return localStorage.getItem('token') != undefined;
   }
 
   logOut(): void {

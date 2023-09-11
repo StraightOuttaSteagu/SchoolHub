@@ -20,104 +20,63 @@ export class ChatComponent implements ViewDidEnter {
   users = [
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet dddddddddddd d d dd',
+      id: "eifjwefj"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "vdssvd"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "gfbgfbf"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "drgrdg"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "ewfwef"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "sdsdfds"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "gwgweg"
+    },{
+      name: 'Oteleanu lia',
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "etbtrbr"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "rthrra"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "adrbtar"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "etuesmsyt"
     },
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
-    {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet'
-    },
+      lastMessage: 'Lorem Ipsum dolor sit amet',
+      id: "eifjwefj"
+    }
   ]
 
   messages = [
@@ -221,6 +180,7 @@ export class ChatComponent implements ViewDidEnter {
 
   ngOnInit() {
     const chatID = this._route.snapshot.paramMap.get('user');
+    console.log(chatID)
   }
 
 

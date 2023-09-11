@@ -6,6 +6,7 @@ import { Select, Store } from '@ngxs/store';
 import { GetAccount } from 'src/app/core/state-management/account/account.actions';
 import { AccountState } from 'src/app/core/state-management/account/account.state';
 import { Observable } from 'rxjs';
+import { AccountService } from 'src/app/core/state-management/account/account.service';
 
 @Component({
   selector: 'app-main',
@@ -55,10 +56,10 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _store: Store) { }
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService) { }
 
   ngOnInit() {
-    this._store.dispatch(new GetAccount);
+    this._accountService.getAccount();
   }
 
   logOut(): void {

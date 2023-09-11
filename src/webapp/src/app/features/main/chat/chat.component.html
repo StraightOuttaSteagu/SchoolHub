@@ -1,11 +1,11 @@
 <div class="account-list">
-    <ion-card class="account" *ngFor="let user of users">
+    <div class="account" *ngFor="let user of users">
         <ion-img class="user-icon" src="../../../../assets/account.png"></ion-img>
-        <ion-col>
-            <p>{{ user.name }}</p>
-            <p>{{ user.lastMessage }}</p>
+        <ion-col style="max-width: 250px;">
+            <p class="user-name">{{ user.name }}</p>
+            <p class="user-last-message">{{ user.lastMessage }}</p>
         </ion-col>
-    </ion-card>
+    </div>
 </div>
 <div style="display: flex; justify-content: flex-end; flex-direction: column; flex-grow: 1;">
     <div class="chat">
@@ -25,12 +25,9 @@
         </div>
     </div>
     <div class='chat-input' style='display: flex'>
-        <ion-img src='assets/account.png'></ion-img>
-        <form>
-            <input placeholder='Write a comment...'>
-            <button type='submit'>
-                <ion-icon name='send'></ion-icon>
-            </button>
-        </form>
+        <input class="message-input" placeholder='Message'>
+        <button class="send">
+            <ion-icon size="large" name='send'></ion-icon>
+        </button>
     </div>
 </div>
