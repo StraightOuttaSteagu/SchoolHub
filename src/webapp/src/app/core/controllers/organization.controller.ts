@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { OrganizationModel } from "../state-management/models";
+import { baseURL } from "../baseURL";
 
 @Injectable({
     providedIn: 'root'
@@ -10,22 +11,23 @@ export class OrganizationController {
     constructor (private _http: HttpClient) { }
 
     getOrganization(id: string): Observable<any> {
-        //return this._http.get<AccountModel>('http://localhost:8080/api/account');
+        return this._http.get<string[]>(`${baseURL}organization/${id}`);
     }
 
     getOrganizations(): Observable<any> {
-        //return this._http.post('http://localhost:8080/api/account', payload);
+        console.log(`${baseURL}organization`)
+        return this._http.get<string[]>(`${baseURL}organization`);
     }
 
     createOrganization(payload: OrganizationModel): Observable<any> {
-
+        return this._http.post(`${baseURL}organization`, payload);
     }
 
-    updateOrganization(payload: OrganizationModel): Observable<any> {
-
+    updateOrganization(payload: OrganizationModel, id: string): Observable<any> {
+        return this._http.put(`${baseURL}organization/${id}`, payload)
     }
 
-    deleteOrganization(id: string): Observable<any> {
+    // deleteOrganization(id: string): Observable<any> {
         
-    }
+    // }
 }

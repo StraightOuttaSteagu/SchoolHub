@@ -7,7 +7,9 @@ export interface AccountModel {
 }
 
 export interface OrganizationModel {
-    
+    id?: string,
+    name: string,
+    description: string
 }
 
 export interface ClassModel {

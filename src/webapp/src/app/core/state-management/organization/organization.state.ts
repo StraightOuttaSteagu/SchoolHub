@@ -10,16 +10,17 @@ export interface OrganizationStateModel {
 }
 
 @State<OrganizationStateModel>({
-    name: 'accountstate',
+    name: 'organizationstate',
     defaults: {
         activeOrganization: {
-
+            name: '',
+            description: ''
         },
         organizations: []
     }
 })
 @Injectable()
-export class AccountState {
+export class OrganizationState {
     
     constructor (private _organizationController: OrganizationController) { }
 
@@ -38,6 +39,8 @@ export class AccountState {
         return this._organizationController.getOrganizations().subscribe({
             next: (organizations: string[]) => {
                 const state = ctx.getState();
+
+                console.log(organizations)
 
                 ctx.setState({
                     ...state,
@@ -84,20 +87,7 @@ export class AccountState {
 
     @Action(UpdateOrganization)
     updateOrganization(ctx: StateContext<OrganizationStateModel>, action: UpdateOrganization) {
-        return this._organizationController.updateOrganization(action.payload).subscribe({
-            next: (/**??? */) => {
-                
-            },
-
-            error: (err) => {
-                console.log(err);
-            }
-        });
-    }
-
-    @Action(DeleteOrganization)
-    DeleteOrganization(ctx: StateContext<OrganizationStateModel>, action: DeleteOrganization) {
-        return this._organizationController.deleteOrganization(action.id).subscribe({
+        return this._organizationController.updateOrganization(action.payload, action.id).subscribe({
             next: (/**??? */) => {
                 
             },

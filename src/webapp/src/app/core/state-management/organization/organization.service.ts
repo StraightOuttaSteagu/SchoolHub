@@ -6,7 +6,7 @@ import { GetOrganizations, UpdateOrganization, CreateOrganization, GetOrganizati
 @Injectable({
     providedIn: 'root'
 })
-export class AccountService {
+export class OrganizationService {
 
     constructor (private _store: Store) { }
 
@@ -18,8 +18,8 @@ export class AccountService {
         this._store.dispatch(new GetOrganization(id));
     }
 
-    updateOrganization(payload: AccountModel): void {
-        this._store.dispatch(new UpdateOrganization(payload));
+    updateOrganization(payload: OrganizationModel, id: string): void {
+        this._store.dispatch(new UpdateOrganization(payload, id));
     }
 
     createOrganization(payload: OrganizationModel): void {

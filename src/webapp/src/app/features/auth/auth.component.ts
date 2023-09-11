@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CollapseAnimationFade } from 'src/app/shared/animations';
-import { SnackBarService } from 'src/app/core/services/SnackBar.service';
+import { SnackBarService } from 'src/app/core/services/snackBar.service';
 
 @Component({
   selector: 'app-auth',

@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
-import {User, UserService} from "../../core/services/user.service";
+import { Select } from '@ngxs/store';
+import { AccountState } from 'src/app/core/state-management/account/account.state';
+import { Observable } from 'rxjs';
+import { AccountService } from 'src/app/core/state-management/account/account.service';
+import { OrganizationService } from 'src/app/core/state-management/organization/organization.service';
 
 @Component({
   selector: 'app-main',
@@ -52,10 +56,12 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService) { }
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService) { }
 
   ngOnInit() {
     this._accountService.getAccount();
+    this._organizationService.getOrganizations();
+    console.log(333)
   }
 
   logOut(): void {

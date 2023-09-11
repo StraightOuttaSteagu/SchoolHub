@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { NgxsModule } from '@ngxs/store';
 import { AccountState } from './core/state-management/account/account.state';
+import { OrganizationState } from './core/state-management/organization/organization.state';
+import { ClassState } from './core/state-management/class/class.state';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { AccountState } from './core/state-management/account/account.state';
     HttpClientModule,
     AppRoutingModule,
     MatSnackBarModule,
-    NgxsModule.forRoot([AccountState])
+    NgxsModule.forRoot([AccountState, OrganizationState, ClassState])
   ],
   providers: [
     {

@@ -12,7 +12,7 @@ export class GetOrganizations {
 
 export class UpdateOrganization {
     static readonly type = '[Organization] Update';
-    constructor (public payload: OrganizationModel) { }
+    constructor (public payload: OrganizationModel, public id: string) { }
 }
 
 export class CreateOrganization {
