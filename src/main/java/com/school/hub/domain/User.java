@@ -89,6 +89,9 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
+    private Set<OrganizationUser> organizations;
+
     public Long getId() {
         return id;
     }
@@ -192,6 +195,14 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public Set<OrganizationUser> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(Set<OrganizationUser> organizations) {
+        this.organizations = organizations;
     }
 
     @Override

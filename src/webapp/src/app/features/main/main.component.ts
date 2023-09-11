@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { pageAnimation } from 'src/app/shared/animations';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Select, Store } from '@ngxs/store';
-import { GetAccount } from 'src/app/core/state-management/account/account.actions';
-import { AccountState } from 'src/app/core/state-management/account/account.state';
-import { Observable } from 'rxjs';
-import { AccountService } from 'src/app/core/state-management/account/account.service';
+import {User, UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'app-main',

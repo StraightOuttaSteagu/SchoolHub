@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
     this._router.navigate(['auth/signup']);
     this._authMode = 'signup';
   }
-  
+
   getMode(): 'login' | 'signup'{
     return this._authMode;
   }
@@ -56,7 +56,7 @@ export class AuthComponent implements OnInit {
       return;
     }
 
-    if (this.getMode()){
+    if (this.getMode() === "signup"){
       if (!this.authForm.get('name')?.valid){
         this._snackBar.displayMessage("Invalid name");
         return;
