@@ -21,6 +21,7 @@
     min-width: 300px;
     overflow: auto;
     padding: 1rem;
+    background: rgba(var(--ion-color-tertiary-contrast-rgb), .5);
 }
 
 .chat {
@@ -102,11 +103,14 @@
 
 .message-card {
     display: flex;
+    overflow-wrap: anywhere;
 }
 
 .message-time {
     display: flex;
     align-items: flex-end;
+    margin-left: .5rem;
+    overflow-wrap: normal;
 }
 
 .message-container {
@@ -122,6 +126,10 @@
     padding: .8rem 1.6rem;
     color: var(--ion-color-text);
     box-shadow: none;
+}
+
+.title {
+    color: var(--ion-color-text);
 }
 
 @media (max-width: 992px) {

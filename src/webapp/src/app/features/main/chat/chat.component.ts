@@ -187,4 +187,15 @@ export class ChatComponent implements ViewDidEnter {
   hasTimeCard(index: number) {
     return index == this.messages.length - 1 || this.messages[index].timestamp.toDateString() != this.messages[index + 1].timestamp.toDateString();
   }
+
+  addMessage(message: HTMLInputElement) {
+    this.messages.unshift({
+      sender: false,
+      timestamp: new Date(),
+      body: message.value,
+      seen: true
+    });
+
+    message.value = '';
+  }
 }

@@ -1,4 +1,10 @@
 <div class="account-list">
+    <div style="display: flex;">
+        <ion-back-button defaultHref='/' icon='chevron-back-outline'
+                                 color='text'></ion-back-button>
+        <h1 class="title">Chats</h1>
+        <span>+</span>
+    </div>
     <div class="account" *ngFor="let user of users">
         <ion-img class="user-icon" src="../../../../assets/account.png"></ion-img>
         <ion-col style="max-width: 250px;">
@@ -24,9 +30,9 @@
             </div>
         </div>
     </div>
-    <div class='chat-input' style='display: flex'>
-        <input class="message-input" placeholder='Message'>
-        <button class="send">
+    <div (keydown)="$event.key=='Enter'&&message.value!=''?addMessage(message):null" class='chat-input' style='display: flex'>
+        <input #message class="message-input" placeholder='Message'>
+        <button (click)="addMessage(message);" class="send">
             <ion-icon size="large" name='send'></ion-icon>
         </button>
     </div>
