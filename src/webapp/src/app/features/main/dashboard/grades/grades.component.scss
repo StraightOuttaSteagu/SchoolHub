@@ -122,4 +122,8 @@ ion-accordion-group {
   .grade-item:last-child {
     --border-color: transparent;
   }
+  ion-item {
+    --background-hover-opacity: 0;
+    --background-activated: transparent;
+  }
 }

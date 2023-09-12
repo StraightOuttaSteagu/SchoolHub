@@ -107,5 +107,6 @@ export class MainComponent {
   selectOrganization(organization: OrganizationModel): void {
     this._organizationService.setOrganization(organization);
   }
+  protected readonly window = window;
 }
 

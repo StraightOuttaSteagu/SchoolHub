@@ -61,6 +61,11 @@
                                     <ion-icon name='log-out'></ion-icon>
                                     <ion-label>Logout</ion-label>
                                 </ion-item>
+                            </ion-menu-toggle><ion-menu-toggle auto-hide='false'>
+                                <ion-item [routerLink]='["chat"]' detail='false'>
+                                    <ion-icon name='log-out'></ion-icon>
+                                    <ion-label>Chat</ion-label>
+                                </ion-item>
                             </ion-menu-toggle>
                             <ion-menu-toggle auto-hide='false'>
                                 <ion-item [routerLink]='["settings"]' detail='false'>
@@ -106,7 +111,7 @@
                 </ion-popover>
             </ion-footer>
         </ion-menu>
-        <ion-router-outlet id='main-content'></ion-router-outlet>
+        <ion-router-outlet [animated]='window.innerWidth < 992' id='main-content'></ion-router-outlet>
     </ion-split-pane>
     <div class='back'></div>
 </div>

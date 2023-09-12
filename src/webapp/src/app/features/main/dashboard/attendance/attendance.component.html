@@ -16,13 +16,13 @@
 </div>
 
 <ion-content>
-    <ion-accordion-group>
+    <ion-accordion-group mode='ios'>
         <ion-accordion *ngFor='let item of data'>
             <ion-item class='header' slot='header'>
                 <ion-label style='display: flex;'>
                     <p style='max-width: 80%; margin: 0;'>{{item.title}}</p>
                 </ion-label>
-                <ion-icon class='ion-accordion-toggle-icon' name='caret-down' slot='end'></ion-icon>
+                <ion-icon class='ion-accordion-toggle-icon' name='chevron-down' slot='end'></ion-icon>
             </ion-item>
             <ion-list slot='content'>
                 <ion-item style='margin-left: 1rem' *ngFor='let date of item?.attendance' class='date-item'>
