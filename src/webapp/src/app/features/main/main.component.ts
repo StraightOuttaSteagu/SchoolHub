@@ -84,5 +84,7 @@ export class MainComponent {
   getSecondaryThemeID(): string | null {
     return this._theme.getClassThemeID();
   }
+
+  protected readonly window = window;
 }
 
