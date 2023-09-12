@@ -6,7 +6,7 @@
             </ion-header>
             <ion-item class='org' lines='none' id='org-trigger'>
                 <ion-label class='ion-text-wrap text-overflow'>
-                    <p class='text-overflow'>Colegiul National de informatica 'Grigore moisil' asadsddh</p>
+                    <p class='text-overflow'>{{ (organization$ | async).name }}</p>
                 </ion-label>
                 <ion-icon name='chevron-down'></ion-icon>
             </ion-item>
@@ -14,8 +14,8 @@
                          keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
                 <ng-template>
                     <ion-list class='popover-options'>
-                        <ion-item *ngFor='let item of organizations'>
-                            <ion-label>{{ item.name }}</ion-label>
+                        <ion-item *ngFor='let organization of (organizations$ | async)'>
+                            <ion-label (click)="selectOrganization(organization)">{{ organization.name }}</ion-label>
                         </ion-item>
                         <ion-item id='present-alert' [button]='true' lines='none'>
                             <ion-alert

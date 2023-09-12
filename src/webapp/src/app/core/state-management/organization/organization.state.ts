@@ -2,11 +2,11 @@ import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { OrganizationModel } from "../models";
 import { OrganizationController } from "../../controllers/organization.controller";
-import { GetOrganizations, GetOrganization, CreateOrganization, UpdateOrganization, DeleteOrganization } from "./organization.actions";
+import { GetOrganizations, GetOrganization, CreateOrganization, UpdateOrganization, DeleteOrganization, SetOrganization } from "./organization.actions";
 
 export interface OrganizationStateModel {
     activeOrganization: OrganizationModel,
-    organizations: string[]
+    organizations: OrganizationModel[]
 }
 
 @State<OrganizationStateModel>({
@@ -37,13 +37,23 @@ export class OrganizationState {
     @Action(GetOrganizations)
     getOrganizations(ctx: StateContext<OrganizationStateModel>) {
         return this._organizationController.getOrganizations().subscribe({
-            next: (organizations: string[]) => {
+            next: (organizations: OrganizationModel[]) => {
                 const state = ctx.getState();
 
-                console.log(organizations)
+                let activeOrganization: any = localStorage.getItem('activeOrganization');
+
+                console.log(organizations.map(el => el.id))
+
+                if (activeOrganization === null || !organizations.map(el => String(el.id)).includes(activeOrganization)) {
+                    localStorage.setItem('activeOrganization', organizations[0].id ?? '-1');
+
+                    activeOrganization = organizations[0];
+                } else {
+                    activeOrganization = organizations.filter(el => el.id == activeOrganization)[0];
+                }
 
                 ctx.setState({
-                    ...state,
+                    activeOrganization,
                     organizations: organizations
                 });
             },
@@ -75,8 +85,14 @@ export class OrganizationState {
     @Action(CreateOrganization)
     createOrganization(ctx: StateContext<OrganizationStateModel>, action: CreateOrganization) {
         return this._organizationController.createOrganization(action.payload).subscribe({
-            next: (/**??? */) => {
-                
+            next: (val) => {
+                const state = ctx.getState();
+
+                state.organizations.push(action.payload);
+
+                ctx.setState({
+                    ...state
+                })
             },
 
             error: (err) => {
@@ -96,5 +112,15 @@ export class OrganizationState {
                 console.log(err);
             }
         });
+    }
+
+    @Action(SetOrganization)
+    setOrganization(ctx: StateContext<OrganizationStateModel>, action: SetOrganization) {
+        const state = ctx.getState();
+
+        ctx.setState({
+            ...state,
+            activeOrganization: action.organization
+        })
     }
 }

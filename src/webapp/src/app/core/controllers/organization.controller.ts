@@ -10,7 +10,7 @@ import { baseURL } from "../baseURL";
 export class OrganizationController {
     constructor (private _http: HttpClient) { }
 
-    getOrganization(id: string): Observable<any> {
+    getOrganization(id: number): Observable<any> {
         return this._http.get<string[]>(`${baseURL}organization/${id}`);
     }
 
@@ -23,11 +23,11 @@ export class OrganizationController {
         return this._http.post(`${baseURL}organization`, payload);
     }
 
-    updateOrganization(payload: OrganizationModel, id: string): Observable<any> {
+    updateOrganization(payload: OrganizationModel, id: number): Observable<any> {
         return this._http.put(`${baseURL}organization/${id}`, payload)
     }
 
-    // deleteOrganization(id: string): Observable<any> {
+    // deleteOrganization(id: number): Observable<any> {
         
     // }
 }

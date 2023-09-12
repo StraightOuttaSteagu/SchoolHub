@@ -7,6 +7,8 @@ import { AccountState } from 'src/app/core/state-management/account/account.stat
 import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/core/state-management/account/account.service';
 import { OrganizationService } from 'src/app/core/state-management/organization/organization.service';
+import { OrganizationState } from 'src/app/core/state-management/organization/organization.state';
+import { OrganizationModel } from 'src/app/core/state-management/models';
 
 @Component({
   selector: 'app-main',
@@ -17,17 +19,35 @@ export class MainComponent {
 
   @Select(AccountState.selectAccount) account$!: Observable<any>;
 
+  @Select(OrganizationState.selectOrganizations) organizations$!: Observable<any>;
+
+  @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
+
   pageAnimation = pageAnimation;
-  public alertButtons = ['Add class'];
+  public alertButtons = [
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        
+      },
+    },
+    {
+      text: 'Add organization',
+      role: 'confirm',
+      handler: (alertData: any) => {
+        this._organizationService.createOrganization({
+          name: alertData.name,
+          description: ''
+        });
+      },
+    },
+  ];
   public alertInputs = [
     {
-      placeholder: 'Enter organization ID',
+      placeholder: 'Enter organization name',
+      name: 'name'
     }
-  ];
-  organizations: any = [
-    {name: 'Colegiul National de Informatica "Girgore Moisil"'},
-    {name: 'Colegiul National "Andrei Saguna"'},
-    {name: 'Colegiul National "Dr. Ioan Mesota'}
   ];
   classes: any[] = [
     {subject: 'Limba si literatura romana', teacher: 'Oteleanu lia', id: '1', theme: 'red'},
@@ -61,7 +81,6 @@ export class MainComponent {
   ngOnInit() {
     this._accountService.getAccount();
     this._organizationService.getOrganizations();
-    console.log(333)
   }
 
   logOut(): void {
@@ -83,6 +102,10 @@ export class MainComponent {
 
   getSecondaryThemeID(): string | null {
     return this._theme.getClassThemeID();
+  }
+  
+  selectOrganization(organization: OrganizationModel): void {
+    this._organizationService.setOrganization(organization);
   }
 }
 
