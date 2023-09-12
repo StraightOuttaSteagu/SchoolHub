@@ -176,41 +176,45 @@
             Capitalise
         </ion-button>
     </ion-card>
-    <ion-card *ngIf='!canvasMode' class='type-editor' style='height: 60%'>
-        <ion-select (ionChange)='typeSelectChanged($event)' #typeSelect placeholder='Type'
+    <ion-card *ngIf='!canvasMode' class='type-editor' style='height: 60%' [ngSwitch]='typeSelect.value'>
+        <ion-select style='background: white; width: 80%; border-radius: 20px; padding: 0 0.8rem' (ionChange)='typeSelectChanged($event)' #typeSelect placeholder='Type'
                     [value]='pages[selectedPage].activityType'>
             <ion-select-option value='Remember & Write'>Remember & Write</ion-select-option>
             <ion-select-option value='Listen & Write'>Listen & Write</ion-select-option>
             <ion-select-option value='Right & Wrong'>Right & Wrong</ion-select-option>
         </ion-select>
-        <div [ngSwitch]='typeSelect.value' style='width: 100%; display: flex; flex-direction: column; align-items: center'>
-            <div *ngSwitchCase="'Listen & Write'">
-                <ion-input [value]='pages[selectedPage].activityData' type='text' (ionInput)='setLinkValue($event)'
-                           placeholder='link'></ion-input>
-            </div>
-            <div *ngSwitchCase="'Right & Wrong'" style='width: 100% !important; display: flex; flex-direction: column; align-items: center; gap: 1rem'>
-                <ion-button style='width: 80%' (click)='pages[selectedPage].activityData=true'
-                            [ngStyle]="{ '--background': pages[selectedPage].activityData?'#004b88':'white', '--box-shadow': pages[selectedPage].activityData?'inherit':'none', '--color': pages[selectedPage].activityData?'white':'black'}"><ion-icon name='checkmark'></ion-icon>
-                        Right
+        <ion-input mode='ios' style='background: white; width: 80%; border-radius: 20px; --padding-start: 0.8rem; --border-width: 0' *ngSwitchCase="'Listen & Write'" [value]='pages[selectedPage].activityData' type='text'
+                   (ionInput)='setLinkValue($event)'
+                   placeholder='link'></ion-input>
+        <ion-button *ngSwitchCase="'Right & Wrong'" style='width: 80%; height: 4rem'
+                    (click)='pages[selectedPage].activityData=true'
+                    [ngStyle]="{ '--background': pages[selectedPage].activityData?'#004b88':'white', '--box-shadow': pages[selectedPage].activityData?'inherit':'none', '--color': pages[selectedPage].activityData?'white':'black', '--border-color': !pages[selectedPage].activityData?'rgba(0, 0, 0, 0.1)':'transparent', '--border-style': !pages[selectedPage].activityData?'solid':'none', '--border-width': !pages[selectedPage].activityData?'1px':'0'}">
+            <ion-icon name='checkmark'></ion-icon>
+            Right
 
-                </ion-button>
-                <ion-button style='width: 80%' (click)='pages[selectedPage].activityData=false'
-                            [ngStyle]="{ '--background': pages[selectedPage].activityData?'white':'#004b88' }">Wrong
-                </ion-button>
-            </div>
-        </div>
+        </ion-button>
+        <ion-button *ngSwitchCase="'Right & Wrong'" style='width: 80%; height: 4rem'
+                    (click)='pages[selectedPage].activityData=false'
+                    [ngStyle]="{ '--background': pages[selectedPage].activityData?'white':'#004b88', '--box-shadow': !pages[selectedPage].activityData?'inherit':'none', '--color': !pages[selectedPage].activityData?'white':'black', '--border-color': pages[selectedPage].activityData?'rgba(0, 0, 0, 0.1)':'transparent', '--border-style': pages[selectedPage].activityData?'solid':'none', '--border-width': pages[selectedPage].activityData?'1px':'0'}">
+            <ion-icon name='close-outline'></ion-icon>
+            Wrong
+        </ion-button>
     </ion-card>
     <ion-card class='page-editor' [ngStyle]='{"height": canvasMode ? "70%" : "100%"}' style='justify-content: center'>
         <div *ngIf='!canvasMode' style='display: flex; gap: 1rem; align-items: center'>
-            <ion-button style='height: 0.8rem; --background: transparent; --box-shadow: none; --color: black' (click)='changePage(-1)'>-</ion-button>
-            <label style='color: black'>{{ selectedPage + 1 }}</label>
-            <ion-button style='height: 0.8rem; --background: transparent; --box-shadow: none; --color: black' (click)='changePage(1)'>+</ion-button>
+            <ion-button [disabled]='selectedPage === 0' style='height: 0.8rem; --background: transparent; --box-shadow: none; --color: black; font-size: 1rem'
+                        (click)='changePage(-1)'>-
+            </ion-button>
+            <label style='color: black; font-size: 1rem'>{{ selectedPage + 1 }}</label>
+            <ion-button [disabled]='selectedPage === pages.length - 1' style='height: 0.8rem; --background: transparent; --box-shadow: none; --color: black; font-size: 1rem'
+                        (click)='changePage(1)'>+
+            </ion-button>
         </div>
         <ion-button (click)='newPage()' *ngIf='!canvasMode'>
-            <ion-icon name='text-outline' slot='start'></ion-icon>
+            <ion-icon name='add' slot='start'></ion-icon>
             New page
         </ion-button>
-        <ion-button (click)='deletePage()' *ngIf='!canvasMode'>
+        <ion-button style='--color: var(--ion-color-danger)' (click)='deletePage()' *ngIf='!canvasMode'>
             <ion-icon name='trash' slot='start'></ion-icon>
             Delete page
         </ion-button>

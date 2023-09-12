@@ -14,10 +14,10 @@
                          keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
                 <ng-template>
                     <ion-list class='popover-options'>
-                        <ion-item *ngFor='let organization of (organizations$ | async)'>
+                        <ion-item class='dropdown-item' *ngFor='let organization of (organizations$ | async)'>
                             <ion-label (click)="selectOrganization(organization)">{{ organization.name }}</ion-label>
                         </ion-item>
-                        <ion-item id='present-alert' [button]='true' lines='none'>
+                        <ion-item class='dropdown-item' id='present-alert' [button]='true' lines='none'>
                             <ion-alert
                                     trigger='present-alert'
                                     header='Add Organization'
@@ -57,24 +57,24 @@
                     <ng-template>
                         <ion-list class='popover-options'>
                             <ion-menu-toggle auto-hide='false'>
-                                <ion-item [routerLink]='["auth"]' (click)='logOut()' detail='false'>
-                                    <ion-icon name='log-out'></ion-icon>
+                                <ion-item class='dropdown-item' [routerLink]='["auth"]' (click)='logOut()' detail='false'>
+                                    <ion-icon name='log-out-outline'></ion-icon>
                                     <ion-label>Logout</ion-label>
                                 </ion-item>
                             </ion-menu-toggle><ion-menu-toggle auto-hide='false'>
-                                <ion-item [routerLink]='["chat"]' detail='false'>
-                                    <ion-icon name='log-out'></ion-icon>
+                                <ion-item class='dropdown-item' [routerLink]='["chat"]' detail='false'>
+                                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                                     <ion-label>Chat</ion-label>
                                 </ion-item>
                             </ion-menu-toggle>
                             <ion-menu-toggle auto-hide='false'>
-                                <ion-item [routerLink]='["settings"]' detail='false'>
-                                    <ion-icon name='settings'></ion-icon>
+                                <ion-item class='dropdown-item' [routerLink]='["settings"]' detail='false'>
+                                    <ion-icon name='settings-outline'></ion-icon>
                                     <ion-label>Settings</ion-label>
                                 </ion-item>
                             </ion-menu-toggle>
-                            <ion-item button='true' lines='none' detail='false' id='theme-trigger'>
-                                <ion-icon name='color-palette'></ion-icon>
+                            <ion-item class='dropdown-item' button='true' lines='none' detail='false' id='theme-trigger'>
+                                <ion-icon name='color-palette-outline'></ion-icon>
                                 <ion-label>Theme</ion-label>
                             </ion-item>
                             <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right'
@@ -83,21 +83,21 @@
                                 <ng-template>
                                     <ion-list class='popover-options'>
                                         <ion-radio-group [value]='getTheme()'>
-                                            <ion-item [button]='true' [detail]='false' (click)='setTheme("light")'>
-                                                <ion-icon name='sunny'></ion-icon>
+                                            <ion-item class='dropdown-item' [button]='true' [detail]='false' (click)='setTheme("light")'>
+                                                <ion-icon name='sunny-outline'></ion-icon>
                                                 <ion-radio value='light'>
                                                     <ion-label>Light</ion-label>
                                                 </ion-radio>
                                             </ion-item>
-                                            <ion-item [button]='true' [detail]='false' (click)='setTheme("dark")'>
-                                                <ion-icon name='moon'></ion-icon>
+                                            <ion-item class='dropdown-item' [button]='true' [detail]='false' (click)='setTheme("dark")'>
+                                                <ion-icon name='moon-outline'></ion-icon>
                                                 <ion-radio value='dark'>
                                                     <ion-label>Dark</ion-label>
                                                 </ion-radio>
                                             </ion-item>
-                                            <ion-item [button]='true' [detail]='false' (click)='setTheme("system")'
+                                            <ion-item class='dropdown-item' [button]='true' [detail]='false' (click)='setTheme("system")'
                                                       lines='none'>
-                                                <ion-icon name='contrast'></ion-icon>
+                                                <ion-icon name='contrast-outline'></ion-icon>
                                                 <ion-radio value='system'>
                                                     <ion-label>System</ion-label>
                                                 </ion-radio>
