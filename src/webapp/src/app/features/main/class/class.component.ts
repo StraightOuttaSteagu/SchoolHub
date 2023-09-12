@@ -15,12 +15,45 @@ export class ClassComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnte
   private _routerSubscription!: Subscription;
 
   data: any[] = [
-    { title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ', attachments_num: 3, comments_num: 1, date: '16.09.2023, 12:09', type: 'announcements'},
-    { title: 'Lorem ipsum dolor sit amet', content: 'Lorem Ipsum', attachments_num: 3, comments_num: 1, date: '16.09.2023, 21:30', due_date: '17.09.2023, 21:20', type: 'assignments'},
+    {
+    title: "CARIOTIPUL UMAN PATOLOGIC",
+    content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
+    Sa aveti spor!`,
+    subject: "Biologie",
+    date: "10.10.2023",
+    icon: 'leaf',
+    due_date: "11.04.2023",
+    type: "assignments",
+    attachments_num: 3, 
+    comments_num: 1
+  },
+  {
+    title: "Realizare compoziție",
+    content: "Realizați o compoziție plastică în care să redați atmosfera sărbătorilor de iarnă, și în care să aveți ca element principal un felinar.",
+    subject: "Educație plastică",
+    date: "01.10.2023",
+    icon: 'pencils',
+    due_date: "6.10.2023",
+    type: "assignments",
+    attachments_num: 2
+  },
+  {
+    title: "CARIOTIPUL UMAN PATOLOGIC",
+    content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
+    Sa aveti spor!`,
+    subject: "Biologie",
+    date: "10.10.2023",
+    icon: 'leaf',
+    due_date: "11.04.2023",
+    type: "announcements",
+    attachments_num: 3, 
+    comments_num: 1
+  },
+  { date: '6.09.2023', excused: false, type: 'attendance'},
     { grade: '10', date: '6.09.2023', type: 'grades'},
     { date: '6.09.2023', excused: false, type: 'attendance'},
-    { title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies scelerisque nisi vitae dignissim. Maecenas auctor quam nec convallis consequat. Pellentesque pellentesque efficitur volutpat. In neque tellus, convallis sit amet leo sit amet, mattis fringilla mi. Suspendisse vel pharetra erat, non condimentum diam. ', attachments_num: 3, comments_num: 1, date: '16.09.2023, 12:09', type: 'announcements'},
-    { title: 'Lorem ipsum dolor sit amet', content: 'Lorem Ipsum', attachments_num: 3, comments_num: 1, date: '16.09.2023, 21:30', due_date: '17.09.2023, 21:20', type: 'assignments'},
   ]
 
   filteredData: any = [];

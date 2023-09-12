@@ -4,7 +4,7 @@
             <div style='display: flex; align-items: center'>
                 <ion-back-button defaultHref='/' icon='chevron-back-outline'
                                  color='text'></ion-back-button>
-                <ion-img class='class-icon' src='assets/leaf.png'></ion-img>
+                <ion-img class='class-icon' src='assets/icons/leaf.png'></ion-img>
                 Biologie
             </div>
         </ion-title>
@@ -112,7 +112,7 @@
                     {{item?.attachments_num}} {{item?.attachments_num === 1 ? 'attachment' : 'attachments'}}</ion-chip>
             </ion-row>
         </ion-card>
-        <ion-card class='mobile' *ngSwitchCase="'announcements'">
+        <ion-card routerLink="../../../posts/apoeafje2soi2" class='mobile' *ngSwitchCase="'announcements'">
             <div style='display: flex; align-items: center'>
                 <div class='post-icon'>
                     <ion-icon name='document-text-outline'></ion-icon>
@@ -124,7 +124,7 @@
             </div>
             <ion-card-content style='margin-top: 0.5rem;'>{{item?.content}}</ion-card-content>
         </ion-card>
-        <ion-card class='desktop' *ngSwitchCase="'assignments'">
+        <ion-card  routerLink="../../../post/apoeafje2soi2" class='desktop' *ngSwitchCase="'assignments'">
             <ion-row>
                 <ion-col size='9'>
                     <div class='post-icon'>

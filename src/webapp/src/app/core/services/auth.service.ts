@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SnackBarService } from 'src/app/core/services/snackBar.service';
+import { SnackBarService } from './snackBar.service';
 
 @Injectable({
   providedIn: 'root'

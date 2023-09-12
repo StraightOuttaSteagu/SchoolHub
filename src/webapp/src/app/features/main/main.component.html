@@ -35,7 +35,7 @@
                 <ion-list lines='none' class='side-classes'>
                     <ion-menu-toggle auto-hide='false'>
                         <ion-item [attr.theme]="item.theme" [routerLink]="'class/' + item.id + '/general'" [ngClass]='item.id==getSecondaryThemeID()?"side-class-focus":"side-class"' *ngFor='let item of classes'>
-                            <ion-img src='assets/leaf.png'></ion-img>
+                            <ion-img [src]='"assets/icons/"+icons[item.icon]'></ion-img>
                             <ion-label>
                                 <h2>{{ item.subject }}</h2>
                                 <p>{{ item.teacher }}</p>
