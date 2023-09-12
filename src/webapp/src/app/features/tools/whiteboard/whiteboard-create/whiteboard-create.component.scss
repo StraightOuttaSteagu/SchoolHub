@@ -75,6 +75,7 @@ ion-card {
   height: 100%;
   border-radius: 20px;
   box-shadow: none;
+  background: rgba(255, 255, 255, 0.75);
 }
 
 ion-range {
@@ -144,7 +145,8 @@ ion-range::part(tick) {
 }
 
 .punctuation-button {
-  width: 27%;
+  width: 3vw;
+  height: 3vw;
   aspect-ratio: 1/1;
   --border-radius: 100px;
   font-size: 1.5rem;

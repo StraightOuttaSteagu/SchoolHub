@@ -58,6 +58,9 @@
         </ion-col>
     </ion-row>
     <ion-buttons class='chips'>
+        <ion-button style='--border-radius: 200px' class='close-button' *ngIf='!getHref().includes("general")' [routerLink]='"../../" + getClassThemeID() + "/general"'>
+            <ion-icon name='close-outline'></ion-icon>
+        </ion-button>
         <ion-chip [routerLink]='["../../" + getClassThemeID() + "/announcements"]'
                   [class.active]='getHref().includes("announcements")'>
             Announcements

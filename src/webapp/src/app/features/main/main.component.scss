@@ -222,6 +222,10 @@ ion-icon {
   color: var(--ion-color-text);
 }
 
+.dropdown-item {
+  --min-height: 2.7rem;
+}
+
 @media (max-width: 992px) {
   ion-split-pane {
     margin: 0;
