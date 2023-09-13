@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
-  selector: 'app-class',
-  templateUrl: './class.component.html',
-  styleUrls: ['./class.component.scss']
+  selector: 'app-class-student',
+  templateUrl: './class-student.component.html',
+  styleUrls: ['./class-student.component.scss']
 })
-export class ClassComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
+export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
   private _routerSubscription!: Subscription;

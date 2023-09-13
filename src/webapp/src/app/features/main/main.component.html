@@ -2,7 +2,8 @@
     <ion-split-pane contentId='main-content' when='lg'>
         <ion-menu contentId='main-content' type='push' maxEdgeStart='350'>
             <ion-header>
-                <ion-img src='assets/line-logo.svg'></ion-img>
+                <img class="logo" src='assets/logo.png'>
+                <h1 class="logo-title"><span style="font-weight: 300;">School</span>Hub</h1>
             </ion-header>
             <ion-item class='org' lines='none' id='org-trigger'>
                 <ion-label class='ion-text-wrap text-overflow'>
@@ -34,7 +35,7 @@
             <ion-content class='side-classes'>
                 <ion-list lines='none' class='side-classes'>
                     <ion-menu-toggle auto-hide='false'>
-                        <ion-item [attr.theme]="item.theme" [routerLink]="'class/' + item.id + '/general'" [ngClass]='item.id==getSecondaryThemeID()?"side-class-focus":"side-class"' *ngFor='let item of classes'>
+                        <ion-item [attr.theme]="item.theme" [routerLink]="'class-student/' + item.id + '/general'" [ngClass]='item.id==getSecondaryThemeID()?"side-class-focus":"side-class"' *ngFor='let item of classes'>
                             <ion-img [src]='"assets/icons/"+icons[item.icon]'></ion-img>
                             <ion-label>
                                 <h2>{{ item.subject }}</h2>

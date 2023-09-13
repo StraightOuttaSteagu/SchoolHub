@@ -79,103 +79,26 @@ export class ChatComponent implements ViewDidEnter {
     }
   ]
 
-  messages = [
+  messages: any = [
+    // {
+    //   sender: true,
+    //   timestamp: new Date("Fri Sep 12 2023 22:30:48 GMT+0300"),
+    //   body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
+    //   seen: true
+    // }
     {
       sender: true,
-      timestamp: new Date("Fri Sep 09 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
+      timestamp: new Date("Fri Sep 12 2023 22:30:48 GMT+0300"),
+      body: `Sure                              
+      Just a second`,
       seen: true
     },
     {
       sender: false,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
+      timestamp: new Date("Fri Sep 12 2023 22:30:48 GMT+0300"),
+      body: ` Hello! I don't understand exercise 1 from page 88. Could you give me some help? `,
       seen: true
     },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 06 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 09 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: false,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 06 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 09 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: false,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 06 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 09 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: false,
-      timestamp: new Date("Fri Sep 08 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    },
-    {
-      sender: true,
-      timestamp: new Date("Fri Sep 06 2023 22:30:48 GMT+0300"),
-      body: "Lorem ipsum dolor sit amet consectetur. Ultrices sagittis ac potenti enim senectus diam nulla. Ac orci netus convallis.",
-      seen: true
-    }
   ];
 
   ngOnInit() {
@@ -195,7 +118,7 @@ export class ChatComponent implements ViewDidEnter {
       body: message.value,
       seen: true
     });
-
+    
     message.value = '';
   }
 }
