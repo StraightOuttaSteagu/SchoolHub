@@ -217,6 +217,10 @@ ion-content {
   }
 }
 
+ion-card::part(native) {
+  background: transparent;
+}
+
 @media (max-width: 992px) {
   ion-header {
     ion-title {
