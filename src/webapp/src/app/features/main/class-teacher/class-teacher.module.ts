@@ -12,18 +12,20 @@ import { StreamComponent } from './stream/stream.component';
   declarations: [
     ClassTeacherComponent,
     StudentsComponent,
-    StreamComponent
+    StreamComponent,
   ],
   imports: [
     CommonModule,
     IonicModule,
     RouterModule.forChild([
-        { path: ':id', component: ClassTeacherComponent, children: [
-            { path: 'stream', component: StreamComponent },
-            { path: 'students', component: StudentsComponent }
-          ]
-        }
+      {
+        path: ':id', component: ClassTeacherComponent, children: [
+          {path: 'stream', component: StreamComponent},
+          {path: 'students', component: StudentsComponent}
+        ]
+      }
     ])
   ]
 })
-export class ClassTeacherModule { }
+export class ClassTeacherModule {
+}

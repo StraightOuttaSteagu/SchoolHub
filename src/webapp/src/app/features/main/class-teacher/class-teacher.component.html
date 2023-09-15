@@ -1,2 +1,105 @@
-<p>class-teacher works!</p>
-<ion-router-outlet></ion-router-outlet>
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent; max-width: 65.5rem'>
+        <ion-title>
+            <div style='display: flex; align-items: center'>
+                <ion-back-button defaultHref='/' icon='chevron-back-outline'
+                                 color='text'></ion-back-button>
+                <ion-img class='class-icon' src='assets/icons/leaf.png'></ion-img>
+                Biologie
+                <ion-buttons style='margin-left: auto' slot='end'>
+                    <ion-button id='settings-modal'>
+                        <ion-icon name='settings' style='width: 1.8rem; height: 1.8rem'></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+                <ion-modal trigger='settings-modal'>
+
+                </ion-modal>
+            </div>
+        </ion-title>
+        <ion-row class='stats stats-desktop'>
+            <ion-col>
+                <div class='post-icon'>
+                    <ion-icon name='document-attach-outline'></ion-icon>
+                </div>
+                <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>2</span> assignments to
+                    be
+                    done</p>
+            </ion-col>
+            <ion-col>
+                <div class='post-icon'>
+                    <ion-icon name='calendar-outline'></ion-icon>
+                </div>
+                <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>3</span> unexcused
+                    absences
+                </p>
+            </ion-col>
+            <ion-col>
+                <div class='post-icon'>
+                    <ion-icon name='trending-up-outline'></ion-icon>
+                </div>
+                <p style='font-size: 0.9rem'>Overall average: <span
+                        style='font-weight: 600; font-size: 1.1rem'>10</span>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row class='stats-mobile stats'>
+            <ion-col size='4'>
+                <div class='stat-mobile'>
+                    <p style='font-weight: 700; font-size: 1.3rem'>2</p>
+                    <p style='font-size: 0.75rem; text-align: center'>assignments</p>
+                </div>
+            </ion-col>
+            <ion-col size='4'>
+                <div class='stat-mobile'>
+                    <p style='font-weight: 700; font-size: 1.3rem'>3</p>
+                    <p style='font-size: 0.75rem'>unexcused absences</p>
+                </div>
+            </ion-col>
+            <ion-col size='4'>
+                <div class='stat-mobile'>
+                    <p style='font-weight: 700; font-size: 1.3rem'>10</p>
+                    <p style='font-size: 0.75rem'>overall average</p>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-buttons class='chips'>
+            <ion-chip [routerLink]='["/class-teacher/" + getClassThemeID() + "/stream"]'
+                      [class.active]='getHref().includes("stream")'>
+                Stream
+            </ion-chip>
+            <ion-chip [routerLink]='["/class-teacher/" + getClassThemeID() + "/students"]'
+                      [class.active]='getHref().includes("students")'>
+                Students
+            </ion-chip>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content style='--background: transparent; margin-left: 3rem; --overflow: hidden'>
+    <ion-router-outlet [animated]='false'></ion-router-outlet>
+</ion-content>
+
+<!--<ion-header style='&#45;&#45;background: transparent' mode='md'>-->
+<!--    <ion-toolbar style='&#45;&#45;background: transparent'>-->
+<!--        <ion-title>-->
+<!--            <div style='display: flex; align-items: center'>-->
+<!--                <ion-menu-toggle style='width: 2.2rem; margin-right: 0.5rem'>-->
+<!--                    <ion-img src='assets/account.png'></ion-img>-->
+<!--                </ion-menu-toggle>-->
+<!--                Overall average: 8.25-->
+<!--            </div>-->
+<!--        </ion-title>-->
+<!--        <ion-buttons class='chips'>-->
+<!--            <ion-chip [routerLink]='["/announcements"]' [class.active]='getHref().includes("announcements")'>-->
+<!--                Announcements-->
+<!--            </ion-chip>-->
+<!--            <ion-chip [routerLink]='["/grades"]' [class.active]='getHref().includes("grades")'>Grades</ion-chip>-->
+<!--            <ion-chip [routerLink]='["/assignments"]' [class.active]='getHref().includes("assignments")'>Assignments-->
+<!--            </ion-chip>-->
+<!--            <ion-chip [routerLink]='["/attendance"]' [class.active]='getHref().includes("attendance")'>Attendance-->
+<!--            </ion-chip>-->
+<!--        </ion-buttons>-->
+<!--    </ion-toolbar>-->
+<!--</ion-header>-->
+<!--<ion-content style='&#45;&#45;background: transparent; margin-left: 3rem; &#45;&#45;overflow: hidden;'>-->
+<!--    <ion-router-outlet [animated]='false'></ion-router-outlet>-->
+<!--</ion-content>-->
