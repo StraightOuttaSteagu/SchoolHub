@@ -47,7 +47,37 @@
   }
 
   .yellow {
-    --ion-color-back-gradient-desktop: linear-gradient(48deg, #EEEFEF 0%, #FFF384 55.06%, #ECEF53 99.48%);
+    --ion-color-back-gradient-desktop: linear-gradient(75deg, #FAFC98 7.64%, #FF9567 69.64%, #F081C9 100.63%);
+    --ion-color-back-gradient: linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(0deg, #ffffff 0%, #00000000 99%), linear-gradient(90deg, #FAFC98 0%, #F98D8F 99%);
+    --ion-color-highlight-gradient: linear-gradient(90deg, #FF9567 0%, #F081C9 100%);
+
+    --ion-color-primary: #FAFC98;
+    --ion-color-primary-rgb: 250,252,152;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0,0,0;
+    --ion-color-primary-shade: #dcde86;
+    --ion-color-primary-tint: #fbfca2;
+
+    --ion-color-secondary: #FF9567;
+    --ion-color-secondary-rgb: 255,149,103;
+    --ion-color-secondary-contrast: #000000;
+    --ion-color-secondary-contrast-rgb: 0,0,0;
+    --ion-color-secondary-shade: #e0835b;
+    --ion-color-secondary-tint: #ffa076;
+
+    --ion-color-tertiary: #5F0045;
+    --ion-color-tertiary-rgb: 95,0,69;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-tertiary-contrast-rgb: 255,255,255;
+    --ion-color-tertiary-shade: #54003d;
+    --ion-color-tertiary-tint: #6f1a58;
+
+    --ion-color-text: #53424C;
+    --ion-color-text-rgb: 83,66,76;
+    --ion-color-text-contrast: #ffffff;
+    --ion-color-text-contrast-rgb: 255,255,255;
+    --ion-color-text-shade: #493a43;
+    --ion-color-text-tint: #64555e;
   }
 
   .pink {
@@ -108,7 +138,36 @@
   }
 
   .yellow {
-    --ion-color-back-gradient-desktop: linear-gradient(48deg, #382C01 0%, #AE8D16 94.79%);
+    --ion-color-back-gradient-desktop: linear-gradient(74deg, #A08130 7.73%, #B23A50 99.83%);
+    --ion-color-back-gradient: linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(0deg, #000000 0%, #00000000 99%), linear-gradient(48deg, #A08130 50%, #B23A50 94.79%);
+
+    --ion-color-primary: #5F0045;
+    --ion-color-primary-rgb: 95,0,69;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #54003d;
+    --ion-color-primary-tint: #6f1a58;
+
+    --ion-color-tertiary: #FAFC98;
+    --ion-color-tertiary-rgb: 250,252,152;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0,0,0;
+    --ion-color-tertiary-shade: #dcde86;
+    --ion-color-tertiary-tint: #fbfca2;
+
+    --ion-color-selected: #FAFC98;
+    --ion-color-selected-rgb: 250,252,152;
+    --ion-color-selected-contrast: #000000;
+    --ion-color-selected-contrast-rgb: 0,0,0;
+    --ion-color-selected-shade: #dcde86;
+    --ion-color-selected-tint: #fbfca2;
+
+    --ion-color-text: #FFE7D4;
+    --ion-color-text-rgb: 255,231,212;
+    --ion-color-text-contrast: #000000;
+    --ion-color-text-contrast-rgb: 0,0,0;
+    --ion-color-text-shade: #e0cbbb;
+    --ion-color-text-tint: #ffe9d8;
   }
 
   .pink {

@@ -21,7 +21,6 @@ import { ZygoteBodyComponent } from './features/tools/zygothe-body/zygote-body.c
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ZygoteBodyComponent,
   ],
   imports: [
     IonicModule.forRoot(),
