@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/organization")
 public class OrganizationResource {
 
-    private OrganizationService organizationService;
+    private final OrganizationService organizationService;
 
     public OrganizationResource(OrganizationService organizationService) {
         this.organizationService = organizationService;
