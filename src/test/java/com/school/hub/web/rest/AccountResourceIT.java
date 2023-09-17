@@ -14,7 +14,6 @@ import com.school.hub.security.AuthoritiesConstants;
 import com.school.hub.service.UserService;
 import com.school.hub.service.dto.AdminUserDTO;
 import com.school.hub.service.dto.PasswordChangeDTO;
-import com.school.hub.service.dto.UserDTO;
 import com.school.hub.web.rest.vm.KeyAndPasswordVM;
 import com.school.hub.web.rest.vm.ManagedUserVM;
 import java.time.Instant;

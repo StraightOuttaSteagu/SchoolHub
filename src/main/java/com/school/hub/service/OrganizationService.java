@@ -65,7 +65,7 @@ public class OrganizationService {
             organization,
             userService.getUserWithAuthorities().orElseThrow(() -> new NotFoundException("User could not be found."))
         );
-        if (organizationUser.isEmpty()) {
+        if (organizationUser.isEmpty() || organizationUser.get().getRole() != OrganizationUser.Role.ADMIN) {
             throw new NotFoundException("User is not a member of this organization.");
         }
 

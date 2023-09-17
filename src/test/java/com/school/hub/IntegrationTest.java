@@ -1,6 +1,5 @@
 package com.school.hub;
 
-import com.school.hub.SchoolHubApp;
 import com.school.hub.config.AsyncSyncConfiguration;
 import com.school.hub.config.EmbeddedSQL;
 import java.lang.annotation.ElementType;

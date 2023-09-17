@@ -1,12 +1,11 @@
 package com.school.hub.domain;
 
 import jakarta.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "organization")
-public class Organization {
+@Table(name = "organizations")
+public class Organization extends AbstractAuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +19,9 @@ public class Organization {
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "organization")
     private Set<OrganizationUser> organizationUsers;
+
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "organization")
+    private Set<Class> classes;
 
     public Long getId() {
         return id;
@@ -51,5 +53,13 @@ public class Organization {
 
     public void setOrganizationUsers(Set<OrganizationUser> organizationUsers) {
         this.organizationUsers = organizationUsers;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
     }
 }
