@@ -37,14 +37,14 @@ ion-menu::part(backdrop) {
 ion-split-pane {
   --side-width: 19%;
   border: 1px solid rgba(white, 0.4);
-  background-color: rgba(var(--ion-color-back-rgb), 0.35);
+  background-color: rgba(var(--ion-color-back-rgb), 0.5);
   border-radius: 1.6rem;
   margin: 1rem
 }
 
 .side-classes {
   --ion-background-color: transparent !important;
-  margin: 0 10%;
+  padding: 0 10%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -54,7 +54,9 @@ ion-split-pane {
   margin: 0.6rem 0;
   border-radius: 1.25rem;
   border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
-  padding: 0.3rem 0;
+  //padding: 0.3rem 0;
+  //--ripple-color: transparent;
+  //--background-activated: transparent;
 
   ion-img {
     width: 12%;
@@ -74,9 +76,41 @@ ion-split-pane {
   &:hover {
     ion-img {
       width: 15%;
-      //transform: scale(1.4) translateY(-0.5rem);
-      transition-duration: 0.3s;
+      transition: 300ms all ease-in-out !important;
     }
+    cursor: pointer;
+  }
+}
+
+.side-class-focus {
+  background: var(--ion-color-highlight-gradient);
+  margin: 0.6rem 0;
+  border-radius: 1.25rem;
+  //border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
+  //padding: 0.3rem 0;
+  box-shadow: 0 0 10px var(--ion-color-secondary);
+
+  ion-img {
+    width: 15%;
+    margin-right: 0.3rem;
+    z-index: 100;
+  }
+
+  ion-label {
+    color: var(--ion-color-text);
+
+    p {
+      color: rgba(var(--ion-color-text-rgb), 0.8);
+      font-weight: 300;
+    }
+  }
+
+  &:hover {
+    ion-img {
+      width: 15%;
+      transition: 300ms all ease-in-out !important;
+    }
+    cursor: pointer;
   }
 }
 
@@ -150,7 +184,7 @@ ion-radio {
 }
 
 .back {
-  background: var(--bgImage);
+  background-image: var(--ion-color-back-gradient-desktop);
   z-index: -1;
   width: 100vw;
   height: 100vh;
@@ -178,6 +212,14 @@ ion-content {
   --offset-bottom: hidden !important;
   --overflow: hidden;
   overflow: auto;
+}
+
+ion-alert{
+  --background: var(--ion-color-back-secondary);
+}
+
+ion-icon {
+  color: var(--ion-color-text);
 }
 
 @media (max-width: 992px) {
