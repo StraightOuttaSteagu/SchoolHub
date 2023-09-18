@@ -1,6 +1,6 @@
-package com.school.hub.service.dto;
+package com.school.hub.service.dto.userClass;
 
-import com.school.hub.domain.Class;
+import com.school.hub.domain.UserClass;
 
 public class PublicClassDTO {
 
@@ -11,7 +11,7 @@ public class PublicClassDTO {
 
     public PublicClassDTO() {}
 
-    public PublicClassDTO(Class sclass) {
+    public PublicClassDTO(UserClass sclass) {
         this.id = sclass.getId();
         this.name = sclass.getName();
         this.iconName = sclass.getIconName();

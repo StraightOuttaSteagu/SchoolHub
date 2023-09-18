@@ -73,4 +73,14 @@ public class OrganizationService {
         organization.setDescription(description);
         organizationRepository.save(organization);
     }
+
+    public void deleteOrganization(Long id) {
+        organizationRepository.findById(id)
+            .ifPresent(organization -> {
+                organizationUserRepository.deleteAll(
+                    organizationUserRepository
+                        .findByOrganization(organization));
+                organizationRepository.delete(organization);
+            });
+    }
 }

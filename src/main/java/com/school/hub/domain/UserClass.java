@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "classes")
-public class Class extends AbstractAuditingEntity<Long> {
+public class UserClass extends AbstractAuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,16 +23,16 @@ public class Class extends AbstractAuditingEntity<Long> {
     @ManyToOne
     private User creator;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<User> teachers;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<User> students;
 
     @ManyToOne
     private Organization organization;
 
-    public Class() {}
+    public UserClass() {}
 
     @Override
     public Long getId() {

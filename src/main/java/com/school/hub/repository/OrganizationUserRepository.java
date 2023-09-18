@@ -10,4 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface OrganizationUserRepository extends CrudRepository<OrganizationUser, Long> {
     Optional<OrganizationUser> findByOrganizationAndUser(Organization organization, User user);
     List<OrganizationUser> findByUser(User user);
+    List<OrganizationUser> findByOrganization(Organization organization);
 }

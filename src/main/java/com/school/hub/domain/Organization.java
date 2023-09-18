@@ -17,11 +17,19 @@ public class Organization extends AbstractAuditingEntity<Long> {
     @Column(nullable = false)
     private String description;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "organization")
+    @OneToMany(
+        cascade = CascadeType.REMOVE,
+        mappedBy = "organization",
+        fetch = FetchType.EAGER
+    )
     private Set<OrganizationUser> organizationUsers;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "organization")
-    private Set<Class> classes;
+    @OneToMany(
+        cascade = CascadeType.REMOVE,
+        mappedBy = "organization",
+        fetch = FetchType.EAGER
+    )
+    private Set<UserClass> userClasses;
 
     public Long getId() {
         return id;
@@ -55,11 +63,11 @@ public class Organization extends AbstractAuditingEntity<Long> {
         this.organizationUsers = organizationUsers;
     }
 
-    public Set<Class> getClasses() {
-        return classes;
+    public Set<UserClass> getClasses() {
+        return userClasses;
     }
 
-    public void setClasses(Set<Class> classes) {
-        this.classes = classes;
+    public void setClasses(Set<UserClass> userClasses) {
+        this.userClasses = userClasses;
     }
 }

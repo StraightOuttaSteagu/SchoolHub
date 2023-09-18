@@ -1,10 +1,11 @@
 package com.school.hub.repository;
 
-import com.school.hub.domain.Class;
 import com.school.hub.domain.Organization;
-import java.util.List;
+import com.school.hub.domain.UserClass;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ClassRepository extends CrudRepository<Class, Long> {
-    List<Class> findAllByOrganization(Organization organization);
+import java.util.List;
+
+public interface ClassRepository extends CrudRepository<UserClass, Long> {
+    List<UserClass> findAllByOrganization(Organization organization);
 }

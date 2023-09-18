@@ -541,7 +541,7 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${maven-failsafe-plugin.version}</version>
                     <configuration>
-                        <!-- Due to spring-boot repackage, without adding this property test classes are not found
+                        <!-- Due to spring-boot repackage, without adding this property test userClasses are not found
                              See https://github.com/spring-projects/spring-boot/issues/6254 -->
                         <!-- Force alphabetical order to have a reproducible build -->
                         <classesDirectory>${project.build.outputDirectory}</classesDirectory>
@@ -600,7 +600,7 @@
                                 <goal>copy-resources</goal>
                             </goals>
                             <configuration>
-                                <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                <outputDirectory>${project.build.directory}/userClasses</outputDirectory>
                                 <useDefaultDelimiters>false</useDefaultDelimiters>
                                 <delimiters>
                                     <delimiter>#</delimiter>
@@ -902,7 +902,7 @@
                         <configuration>
                             <filesets>
                                 <fileset>
-                                    <directory>target/classes/static/</directory>
+                                    <directory>target/userClasses/static/</directory>
                                 </fileset>
                             </filesets>
                         </configuration>
