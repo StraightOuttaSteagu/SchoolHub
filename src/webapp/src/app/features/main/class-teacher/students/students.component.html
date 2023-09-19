@@ -1,6 +1,6 @@
 <ion-content>
     <ion-list lines='inset'>
-        <ion-item id='student-modal' (click)='setActiveStudent(item)' button='true' *ngFor='let item of data'>
+        <ion-item id='student-modal' (click)='setActiveStudent(item); studentModal.present()' button='true' *ngFor='let item of data'>
             <ion-grid style='--ion-grid-columns: 24;'>
                 <ion-row style='width: 100%'>
                     <ion-col style='text-align: left' size-xs='24' size-md='12'>
@@ -12,13 +12,13 @@
                 </ion-row>
             </ion-grid>
         </ion-item>
-        <ion-modal [presentingElement]='document.querySelector("ion-router-outlet")' class='modal' #studentModal trigger='student-modal'>
+        <ion-modal id='main-modal' [presentingElement]='document.querySelector("ion-router-outlet")' class='modal' #studentModal trigger='student-modal'>
             <ng-template>
                 <ion-header>
                     <ion-toolbar>
                         <ion-title>Student</ion-title>
                         <ion-buttons slot='secondary'>
-                            <ion-button (click)='studentModal.dismiss()'>Close</ion-button>
+                            <ion-button class='modal-button' (click)='studentModal.dismiss()'>Close</ion-button>
                         </ion-buttons>
                     </ion-toolbar>
                 </ion-header>
@@ -36,16 +36,16 @@
                         </ion-item>
                     </ion-list>
 
-                    <ion-modal #gradeDetailModal class='modal' [presentingElement]='document.querySelector("ion-modal")'>
+                    <ion-modal #gradeDetailModal class='modal' [presentingElement]='document.querySelector("#main-modal")'>
                         <ng-template>
                             <ion-header>
                                 <ion-toolbar>
                                     <ion-title>Edit grade</ion-title>
                                     <ion-buttons slot='secondary'>
-                                        <ion-button (click)='gradeDetailModal.dismiss()'>Cancel</ion-button>
+                                        <ion-button class='modal-button' (click)='gradeDetailModal.dismiss()'>Cancel</ion-button>
                                     </ion-buttons>
                                     <ion-buttons slot='primary'>
-                                        <ion-button (click)='gradeDetailModal.dismiss()'>Save</ion-button>
+                                        <ion-button class='modal-button' (click)='gradeDetailModal.dismiss()'>Save</ion-button>
                                     </ion-buttons>
                                 </ion-toolbar>
                             </ion-header>
@@ -62,16 +62,16 @@
                     </ion-modal>
 
                     <ion-button id='grade-modal' class='ion-margin-top' expand='block'>Add new grade</ion-button>
-                    <ion-modal #gradeModal class='modal' trigger='grade-modal' [presentingElement]='document.querySelector("ion-modal")'>
+                    <ion-modal #gradeModal class='modal' trigger='grade-modal' [presentingElement]='document.querySelector("#main-modal")'>
                         <ng-template>
                             <ion-header>
                                 <ion-toolbar>
                                     <ion-title>New grade</ion-title>
                                     <ion-buttons slot='secondary'>
-                                        <ion-button (click)='gradeModal.dismiss()'>Cancel</ion-button>
+                                        <ion-button class='modal-button' (click)='gradeModal.dismiss()'>Cancel</ion-button>
                                     </ion-buttons>
                                     <ion-buttons slot='primary'>
-                                        <ion-button (click)='gradeModal.dismiss()'>Add</ion-button>
+                                        <ion-button class='modal-button' (click)='gradeModal.dismiss()'>Add</ion-button>
                                     </ion-buttons>
                                 </ion-toolbar>
                             </ion-header>
@@ -93,16 +93,16 @@
                         </ion-item>
                     </ion-list>
 
-                    <ion-modal #absenceDetailModal class='modal' [presentingElement]='document.querySelector("ion-modal")'>
+                    <ion-modal #absenceDetailModal class='modal' [presentingElement]='document.querySelector("#main-modal")'>
                         <ng-template>
                             <ion-header>
                                 <ion-toolbar>
                                     <ion-title>Edit absence</ion-title>
                                     <ion-buttons slot='secondary'>
-                                        <ion-button (click)='absenceDetailModal.dismiss()'>Cancel</ion-button>
+                                        <ion-button class='modal-button' (click)='absenceDetailModal.dismiss()'>Cancel</ion-button>
                                     </ion-buttons>
                                     <ion-buttons slot='primary'>
-                                        <ion-button (click)='absenceDetailModal.dismiss()'>Save</ion-button>
+                                        <ion-button class='modal-button' (click)='absenceDetailModal.dismiss()'>Save</ion-button>
                                     </ion-buttons>
                                 </ion-toolbar>
                             </ion-header>
@@ -116,16 +116,16 @@
                     </ion-modal>
 
                     <ion-button id='absence-modal' class='ion-margin-vertical' expand='block'>Add new absence</ion-button>
-                    <ion-modal #absenceModal class='modal' trigger='absence-modal' [presentingElement]='document.querySelector("ion-modal")'>
+                    <ion-modal #absenceModal class='modal' trigger='absence-modal' [presentingElement]='document.querySelector("#main-modal")'>
                         <ng-template>
                             <ion-header>
                                 <ion-toolbar>
                                     <ion-title>New absence</ion-title>
                                     <ion-buttons slot='secondary'>
-                                        <ion-button (click)='absenceModal.dismiss()'>Cancel</ion-button>
+                                        <ion-button class='modal-button' (click)='absenceModal.dismiss()'>Cancel</ion-button>
                                     </ion-buttons>
                                     <ion-buttons slot='primary'>
-                                        <ion-button (click)='absenceModal.dismiss()'>Add</ion-button>
+                                        <ion-button class='modal-button' (click)='absenceModal.dismiss()'>Add</ion-button>
                                     </ion-buttons>
                                 </ion-toolbar>
                             </ion-header>

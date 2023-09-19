@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ClassTeacherComponent } from './class-teacher.component';
 import { StudentsComponent } from './students/students.component';
 import { StreamComponent } from './stream/stream.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { StreamComponent } from './stream/stream.component';
           {path: 'students', component: StudentsComponent}
         ]
       }
-    ])
+    ]),
   ]
 })
 export class ClassTeacherModule {

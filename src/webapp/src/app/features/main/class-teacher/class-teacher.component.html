@@ -1,6 +1,6 @@
 <ion-header style='--background: transparent' mode='md'>
     <ion-toolbar style='--background: transparent; max-width: 65.5rem'>
-        <ion-title>
+        <ion-title class='title-top'>
             <div style='display: flex; align-items: center'>
                 <ion-back-button defaultHref='/' icon='chevron-back-outline'
                                  color='text'></ion-back-button>
@@ -8,14 +8,68 @@
                 Biologie
                 <ion-buttons style='margin-left: auto' slot='end'>
                     <ion-button id='settings-modal'>
-                        <ion-icon name='settings' style='width: 1.8rem; height: 1.8rem'></ion-icon>
+                        <ion-icon name='settings-outline' style='width: 1.8rem; height: 1.8rem'></ion-icon>
                     </ion-button>
                 </ion-buttons>
-                <ion-modal trigger='settings-modal'>
-
-                </ion-modal>
             </div>
         </ion-title>
+        <ion-modal #settingsModal trigger='settings-modal' class='modal'>
+            <ng-template>
+                <ion-header>
+                    <ion-toolbar>
+                        <ion-title>Class settings</ion-title>
+                        <ion-buttons slot='secondary'>
+                            <ion-button style='--color: var(--ion-color-text)' (click)='settingsModal.dismiss()'>Close</ion-button>
+                        </ion-buttons>
+                        <ion-buttons slot='primary'>
+                            <ion-button style='--color: var(--ion-color-text)' (click)='settingsModal.dismiss()'>Save</ion-button>
+                        </ion-buttons>
+                    </ion-toolbar>
+                </ion-header>
+                <ion-content class='ion-padding'>
+                    <h2 style='font-weight: 500'>Class details</h2>
+                    <ion-item lines='none'>
+                        <ion-label>Class code</ion-label>
+                        <ion-label
+                                style='display: flex; justify-content: flex-end; font-size: 1.2rem; font-weight: 600'>
+                            13jb1j4b
+                        </ion-label>
+                    </ion-item>
+                    <form>
+                        <ion-input class='ion-margin-vertical' helperText='For example: Biology'
+                                   labelPlacement='floating'
+                                   style='--border-radius: 1.55rem; --padding-start: 1.8rem; --background: medium; --color: var(--ion-color-text)'
+                                   size='64' fill='outline' label='Subject' type='text' name='subject'
+                                   value='Biologie'></ion-input>
+                        <ion-input class='ion-margin-vertical' helperText='For example: 10th grade'
+                                   labelPlacement='floating' style='--border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text)'
+                                   size='64' fill='outline' label='Class identifier' type='text' name='id'
+                                   value='10D'></ion-input>
+                    </form>
+                    <h2 style='font-weight: 500'>Theme</h2>
+                    <div style='display: flex; flex-wrap: wrap'>
+                        <div style='width: 5rem; height: 5rem; padding: 1rem; margin: 0.3rem; border-radius: 1000px; border: 1px solid rgba(var(--ion-color-text-rgb), 0.2)'
+                             *ngFor='let icon of Object.entries(icons); let i = index'
+                             [class.selected]='selectedIcon === i' (click)='selectedIcon = i'>
+                            <img style='width: 4rem; aspect-ratio: 1/1;' [src]='"assets/icons/"+icon[1]'>
+                        </div>
+                    </div>
+                    <div style='display: flex; flex-direction: column'>
+                        <div *ngFor='let color of colors; let i = index' [class.selected]='selectedColor === i'
+                             (click)='selectedColor = i' class='{{color}} color-option'></div>
+                    </div>
+                    <ion-button class='ion-margin-vertical' id='delete-alert' expand='block' color='danger'>Delete class</ion-button>
+                    <ion-alert
+                            translucent='true'
+                            style='--background: var(--ion-color-back-secondary)'
+                            trigger='delete-alert'
+                            header='Do you want to delete this class?'
+                            message='This action cannot be reversed'
+                            [buttons]='deleteAlertButtons'
+                    ></ion-alert>
+                </ion-content>
+            </ng-template>
+        </ion-modal>
         <ion-row class='stats stats-desktop'>
             <ion-col>
                 <div class='post-icon'>
@@ -77,29 +131,3 @@
 <ion-content style='--background: transparent; margin-left: 3rem; --overflow: hidden'>
     <ion-router-outlet [animated]='false'></ion-router-outlet>
 </ion-content>
-
-<!--<ion-header style='&#45;&#45;background: transparent' mode='md'>-->
-<!--    <ion-toolbar style='&#45;&#45;background: transparent'>-->
-<!--        <ion-title>-->
-<!--            <div style='display: flex; align-items: center'>-->
-<!--                <ion-menu-toggle style='width: 2.2rem; margin-right: 0.5rem'>-->
-<!--                    <ion-img src='assets/account.png'></ion-img>-->
-<!--                </ion-menu-toggle>-->
-<!--                Overall average: 8.25-->
-<!--            </div>-->
-<!--        </ion-title>-->
-<!--        <ion-buttons class='chips'>-->
-<!--            <ion-chip [routerLink]='["/announcements"]' [class.active]='getHref().includes("announcements")'>-->
-<!--                Announcements-->
-<!--            </ion-chip>-->
-<!--            <ion-chip [routerLink]='["/grades"]' [class.active]='getHref().includes("grades")'>Grades</ion-chip>-->
-<!--            <ion-chip [routerLink]='["/assignments"]' [class.active]='getHref().includes("assignments")'>Assignments-->
-<!--            </ion-chip>-->
-<!--            <ion-chip [routerLink]='["/attendance"]' [class.active]='getHref().includes("attendance")'>Attendance-->
-<!--            </ion-chip>-->
-<!--        </ion-buttons>-->
-<!--    </ion-toolbar>-->
-<!--</ion-header>-->
-<!--<ion-content style='&#45;&#45;background: transparent; margin-left: 3rem; &#45;&#45;overflow: hidden;'>-->
-<!--    <ion-router-outlet [animated]='false'></ion-router-outlet>-->
-<!--</ion-content>-->
