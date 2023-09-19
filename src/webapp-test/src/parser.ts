@@ -99,7 +99,6 @@ export function splitCompound(compound: string): parsedElementModel[] {
 }
 
 function compoundStartsWithCation(element: string): false | string {
-    console.log(element, element.startsWith('(NH4)'))
     if (element.startsWith('NH4') || element.startsWith('(NH4)')) {
         return 'NH4';
     }

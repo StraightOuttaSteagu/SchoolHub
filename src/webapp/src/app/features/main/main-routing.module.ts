@@ -5,8 +5,9 @@ import { MainComponent } from './main.component';
 
 const routes: Routes = [
   {
-    path: '', component: MainComponent, children: [
+    path: '', component: MainComponent, children: [      
       { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'teacher', loadChildren: () => import('./dashboard-teacher/dashboard-teacher.module').then(m => m.DashboardTeacherModule) },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'class-student', loadChildren: () => import('./class-student/class-student.module').then(m => m.ClassStudentModule) },
       { path: 'class-teacher', loadChildren: () => import('./class-teacher/class-teacher.module').then(m => m.ClassTeacherModule) },
