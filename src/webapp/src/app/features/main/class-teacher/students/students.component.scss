@@ -52,7 +52,7 @@ ion-modal {
   }
 
   ion-content {
-    --background: var(--ion-color-back-tertiary);
+    background: var(--ion-color-back-tertiary);
   }
 
   ion-list {
@@ -87,6 +87,10 @@ ion-modal {
     text-transform: none;
     --box-shadow: none;
   }
+}
+
+.modal-button {
+  --color: var(--ion-color-text);
 }
 
 @media (max-width: 992px) {
