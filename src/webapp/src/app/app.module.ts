@@ -15,13 +15,11 @@ import { NgxsModule } from '@ngxs/store';
 import { AccountState } from './core/state-management/account/account.state';
 import { OrganizationState } from './core/state-management/organization/organization.state';
 import { ClassState } from './core/state-management/class/class.state';
-import { ParentComponent } from './features/parent/parent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    ParentComponent,
+    PageNotFoundComponent
   ],
   imports: [
     IonicModule.forRoot(),
