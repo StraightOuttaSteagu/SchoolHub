@@ -16,7 +16,7 @@ export interface compoundModel {
 
 export interface parsedCompoundModel {
   parts: parsedElementModel[],
-  type: 'acid' | 'base' | 'oxide' | 'salt' | 'metal' | 'nonmetal' | 'water' | 'hydrogen peroxide' | 'other' | null,
+  type: 'acid' | 'base' | 'metal oxide' | 'nonmetal oxide' | 'salt' | 'metal' | 'nonmetal' | 'water' | 'hydrogen peroxide' | 'other' | null,
   baseElement: string,
   original: string
 }

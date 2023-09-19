@@ -58,8 +58,7 @@ function combineAcidWithBase(elements: parsedCompoundModel[]): string[] {
 }
 
 function doubleDisplacement(elements: parsedCompoundModel[]): string[] {
-    const
-        v1 = 1
+    return [];
 }
 
 function matchCases(el1: parsedCompoundModel, el2: parsedCompoundModel, case1: string, case2: string): boolean {
@@ -74,18 +73,43 @@ function combine(elements: parsedCompoundModel[]): string[] | null { // null mea
         return ['H2O', 'H2O2'];
     }
 
-    if (elements[0].parts.length === 1 && elements[1].parts.length === 1) {
-        return combineElements(elements);
-    }
+    if (elements[0].parts.length === 1 && elements[1].parts.length === 1) return combineElements(elements);
 
-    if (matchCases(elements[0], elements[1], 'acid', 'base')) {
-        return combineAcidWithBase(elements);
-    }
+    if (matchCases(elements[0], elements[1], 'acid', 'base')) return combineAcidWithBase(elements); // normal neutralisation reaction
 
-    if (matchCases(elements[0], elements[1], 'acid', 'salt') || matchCases(elements[0], elements[1], 'base', 'salt') || matchCases(elements[0], elements[1], 'oxide', 'acid')) {
-        return doubleDisplacement(elements);
-    }
+    if (matchCases(elements[0], elements[1], 'acid', 'salt')) return doubleDisplacement(elements); // always double displacement both ways
 
+    if (matchCases(elements[0], elements[1], 'acid', 'oxide')) return doubleDisplacement(elements); // if cationic oxide, returns salt and water. Otherwise is more complicated
+
+    if (matchCases(elements[0], elements[1], 'base', 'salt')) return doubleDisplacement(elements); // double displacement
+
+    if (matchCases(elements[0], elements[1], 'base', 'oxide')) return doubleDisplacement(elements); // if metalic oxide, can't combine a cation with another cation so reaction can't happen. Otherwise, salt + water
+
+    if (matchCases(elements[0], elements[1], 'oxide', 'salt')) return doubleDisplacement(elements); // if metalic oxide, double displacement. Otherwise can't work
+
+    if (matchCases(elements[0], elements[1], 'salt', 'salt')) return doubleDisplacement(elements); // double displacement
+
+    // Oxygen + nonmetal oxide creates higher oxidation number oxides
+    
+    // Oxygen + metal oxide may react
+
+    // water + base may also react (gives ions)
+
+    if ((elements[0].type === 'metal oxide' && elements[1].baseElement === 'H2O') || (elements[1].type === 'metal oxide' && elements[0].baseElement === 'H2O')) return doubleDisplacement(elements); // returns base
+
+    if ((elements[0].type === 'nonmetal oxide' && elements[1].baseElement === 'H2O') || (elements[1].type === 'nonmetal oxide' && elements[0].baseElement === 'H2O')) return doubleDisplacement(elements); // returns acid
+
+    if ((elements[0].type === 'acid' && elements[1].baseElement === 'metal') || (elements[1].type === 'acid' && elements[0].baseElement === 'metal')) return doubleDisplacement(elements); // returns hydrogen gas and a salt if the metal is reactive enough to get hydrogen out of acid
+
+    // acid + nonmetal => reactivity table
+
+    // metal + salt => reactivity table
+
+    // nonmetal + salt => reactivity table
+
+    // not sure for single displacement in oxides
+
+    //if (matchCases(elements[0], elements[1], 'oxide', 'oxide')) return doubleDisplacement(elements); // Results in something if we have a cationic and anionic oxide, not sure what it results to
     
     return [];
 }

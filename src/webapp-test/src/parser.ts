@@ -202,7 +202,7 @@ export function parseCompound(element: string): parsedCompoundModel {
     }
 
     parsedCompound.baseElement = element;
-    parsedCompound.type = 'oxide';
+    parsedCompound.type = (ion === 'NH4' || (ion.replace(/\d+/g, '').match(/[A-Z]/g)?.length === 1 && tableElements.find(el => el.group != 'Other nonmetals'))) ? 'metal oxide' : 'nonmetal oxide';
 
     return parsedCompound;
 }
