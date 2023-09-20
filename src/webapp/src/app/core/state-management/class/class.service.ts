@@ -7,7 +7,7 @@ import { DeleteOrganization } from '../organization/organization.actions';
 @Injectable({
     providedIn: 'root'
 })
-export class AccountService {
+export class ClassService {
 
     constructor (private _store: Store) { }
 
@@ -19,15 +19,11 @@ export class AccountService {
         this._store.dispatch(new GetClass(id));
     }
 
-    updateOrganization(payload: ClassModel): void {
+    updateClass(payload: ClassModel): void {
         this._store.dispatch(new UpdateClass(payload));
     }
 
-    createOrganization(payload: ClassModel) {
+    createClass(payload: ClassModel) {
         this._store.dispatch(new CreateClass(payload));
-    }
-
-    DeleteOrganization(id: string) {
-        this._store.dispatch(new DeleteOrganization(id));
     }
 }

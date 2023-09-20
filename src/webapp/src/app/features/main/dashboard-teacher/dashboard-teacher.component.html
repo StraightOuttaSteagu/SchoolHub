@@ -1,0 +1,22 @@
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title>
+            <div style='display: flex; align-items: center'>
+                <ion-menu-toggle style='width: 2.2rem; margin-right: 0.5rem'>
+                    <ion-img src='assets/account.png'></ion-img>
+                </ion-menu-toggle>
+                No new announcements
+            </div>
+        </ion-title>
+        <ion-buttons class='chips'>
+            <ion-chip [routerLink]='["/teacher/announcements"]' [class.active]='getHref().includes("announcements")'>
+                Announcements
+            </ion-chip>
+            <ion-chip [routerLink]='["/teacher/assignments"]' [class.active]='getHref().includes("assignments")'>Assignments
+            </ion-chip>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content style='--background: transparent; margin-left: 3rem; --overflow: hidden;'>
+    <ion-router-outlet [animated]='false'></ion-router-outlet>
+</ion-content>

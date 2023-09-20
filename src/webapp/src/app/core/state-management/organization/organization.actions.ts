@@ -2,7 +2,7 @@ import { OrganizationModel } from "../models";
 
 export class GetOrganization {
     static readonly type = '[Organization] Get';
-    constructor (public id: string) { }
+    constructor (public id: number) { }
 }
 
 export class GetOrganizations {
@@ -12,7 +12,7 @@ export class GetOrganizations {
 
 export class UpdateOrganization {
     static readonly type = '[Organization] Update';
-    constructor (public payload: OrganizationModel) { }
+    constructor (public payload: OrganizationModel, public id: number) { }
 }
 
 export class CreateOrganization {
@@ -22,5 +22,10 @@ export class CreateOrganization {
 
 export class DeleteOrganization {
     static readonly type = '[Organization] Delete';
-    constructor (public id: string) { }
+    constructor (public id: number) { }
+}
+
+export class SetOrganization {
+    static readonly type = '[Organization] Set';
+    constructor (public organization: OrganizationModel) { }
 }

@@ -14,24 +14,19 @@ export class PostComponent implements ViewDidEnter {
     postID: "myFirstPost",
     date: '12.12.2023, 11:50',
     dueDate: '14.12.2023, 23:59',
-    title: 'Lorem ipsum dolor sit amet',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla vitae lacus nec malesuada. ' +
-      'Morbi nisl nunc, aliquet sodales justo at, hendrerit ornare nisl. Donec malesuada volutpat enim, in faucibus ' +
-      'felis pulvinar consequat. Sed congue commodo facilisis. Mauris ultricies enim rhoncus dolor aliquam hendrerit.' +
-      'Donec pharetra ex tortor, a aliquet nulla faucibus sed. Proin malesuada ullamcorper ullamcorper. Nunc sit amet ' +
-      'ligula vitae orci ultrices rhoncus a at arcu. Cras porttitor eros a imperdiet congue. Nulla est nisl, eleifend ' +
-      'eget gravida consectetur, iaculis id libero. Duis a cursus arcu. Mauris egestas ex id venenatis tincidunt. Proin' +
-      ' quis interdum nunc.',
+    title: 'CARIOTIPUL UMAN PATOLOGIC',
+    content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
+    Sa aveti spor!`,
     attachments: ['document.docx', 'spr.xlsx'],
     comments: [{
-      author: 'Lia Liana Oteleanu',
+      author: 'Cazacu Matei',
       date: '12:30, 12.12.2023',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla vitae lacus nec malesuada. ' +
-        'Morbi nisl nunc, aliquet sodales justo at, hendrerit ornare nisl. Donec malesuada volutpat enim, in faucibus '
+      content: `Putem să facem un proiect în schimbul exercițiilor?`
     }, {
       author: 'Lia Liana Oteleanu',
-      date: '12:31, 12.12.2023',
-      content: 'idque no euripidis vehicula'
+      date: '12:35, 12.12.2023',
+      content: 'Desigur, poți face un proiect despre plante.'
     }],
     uploaded: ['document.txt', 'document foarte extrem de important.txt', 'document.txt', 'document.txt', 'document.txt', 'document.txt']
   }

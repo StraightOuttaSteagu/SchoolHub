@@ -25,14 +25,14 @@
 </div>
 
 <ion-content>
-    <ion-accordion-group>
+    <ion-accordion-group multiple="true" mode='ios'>
         <ion-accordion *ngFor='let item of data'>
             <ion-item class='header' slot='header'>
                 <ion-label style='display: flex;'>
                     <p style='max-width: 80%; margin: 0;'>{{item.title}}</p>
                     <p *ngIf='item?.grades.length > 1'> - {{calculateAverage(item?.grades).toFixed(2)}}</p>
                 </ion-label>
-                <ion-icon class='ion-accordion-toggle-icon' name='caret-down' slot='end'></ion-icon>
+                <ion-icon class='ion-accordion-toggle-icon' name='chevron-down' slot='end'></ion-icon>
             </ion-item>
             <ion-list slot='content'>
                 <ion-item style='margin-left: 1rem' *ngFor='let grade of item?.grades' class='grade-item'>

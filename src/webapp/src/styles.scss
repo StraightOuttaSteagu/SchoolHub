@@ -39,6 +39,7 @@ body, html {
   padding: 0;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 * {
@@ -158,4 +159,23 @@ div.sc-ion-alert-md {
       color: var(--ion-color-text);
     }
   }
+}
+
+@media (min-width: 768px) {
+  .modal {
+    &::part(content) {
+      border-radius: 1.1rem;
+      --min-height: 42rem;
+    }
+  }
+}
+
+ion-datetime {
+  --background: var(--ion-color-back-secondary);
+  --wheel-highlight-background: var(--ion-color-back-tertiary);
+  --wheel-fade-background-rgb: var(--ion-color-back-secondary-rgb);
+
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 10px 0;
+  color: var(--ion-color-text);
 }

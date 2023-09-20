@@ -1,0 +1,90 @@
+:host {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+}
+
+.spawn {
+	height: 100vh;
+	width: 15vw;
+	border-right-style: solid;
+	border-right-color: rgba(0, 0, 0, .25);
+	border-width: 1px;
+}
+
+.play {
+	height: 100vh;
+	width: 85vw;
+}
+
+.open-table {
+	position: fixed;
+	bottom: 1rem;
+	right: 20rem;
+}
+
+.table {
+	position: fixed;
+	width: 85vw;
+	height: 100vh;
+	right: 0;
+}
+
+.element {
+	position: absolute;
+	width: 4.5vw;
+	height: 4.5vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transform: scale(1);
+}
+
+.element-content {
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	min-width: 4.2vw;
+	min-height: 4.2vw;
+	width: 4.2vw;
+	height: 4.2vw;
+	max-width: 4.2vw;
+	max-height: 4.2vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.Z {
+	margin: 0;
+	font-size: .7vw;
+}
+
+.symbol {
+	margin: 0;
+	font-size: 1.5vw;
+	text-align: center;
+	line-height: 80%;
+}
+
+.name {
+	margin: 0;
+	font-size: .55vw;
+	text-align: center;
+}
+
+.mass {
+	margin: 0;
+	font-size: .7vw;
+	text-align: center;
+}
+
+.inactive {
+	filter: opacity(.25);
+}
+
+.spawn-row {
+	font-size: 2rem;
+	border-bottom: 1px gray solid;
+}

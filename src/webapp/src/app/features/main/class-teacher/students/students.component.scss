@@ -1,0 +1,109 @@
+ion-content {
+  --background: transparent;
+
+  --offset-bottom: hidden !important;
+  --overflow: hidden;
+  overflow: auto;
+}
+
+ion-list {
+  background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 62.5rem;
+  margin: 1rem 1rem 1rem 3rem;
+  padding: 0;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+
+  &::-webkit-scrollbar-track {
+    margin-bottom: 1.4rem;
+  }
+}
+
+ion-item {
+  --background: transparent;
+  color: var(--ion-color-text);
+  --border-color: rgba(var(--ion-color-text-rgb), 0.2);
+  text-align: center;
+  font-size: 1.15rem;
+  --color-hover: var(--ion-color-text);
+
+  ion-row {
+    align-items: center;
+  }
+
+  p.small {
+    font-size: 0.8rem;
+    color: rgba(var(--ion-color-text-rgb), 0.8);
+  }
+
+  &:last-child {
+    --inner-border-width: 0;
+  }
+}
+
+ion-modal {
+  ion-header {
+    box-shadow: none;
+  }
+
+  ion-toolbar {
+    --background: var(--ion-color-back-tertiary);
+  }
+
+  ion-content {
+    background: var(--ion-color-back-tertiary);
+  }
+
+  ion-list {
+    background: rgba(var(--ion-color-back-rgb), 0.3);
+    border-radius: 1.2rem;
+    //border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 62.5rem;
+    padding: 0;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+
+    &::-webkit-scrollbar-track {
+      margin-bottom: 1.4rem;
+    }
+  }
+
+  ion-item {
+    color: var(--ion-color-text);
+    --background: transparent;
+    //--border-width: 0;
+
+    &:last-child {
+      --inner-border-width: 0;
+    }
+  }
+
+  h2, ion-title {
+    color: var(--ion-color-text);
+  }
+
+  ion-button {
+    --border-radius: 0.8rem;
+    text-transform: none;
+    --box-shadow: none;
+  }
+}
+
+.modal-button {
+  --color: var(--ion-color-text);
+}
+
+@media (max-width: 992px) {
+  ion-list {
+    margin-left: 1rem;
+    background: rgba(var(--ion-color-back-secondary-rgb), 0.5);
+  }
+
+  ion-item {
+    font-size: 1.05rem;
+
+    p.small {
+      font-size: 0.8rem;
+    }
+  }
+}

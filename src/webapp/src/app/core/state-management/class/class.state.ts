@@ -10,7 +10,7 @@ export interface ClassStateModel {
 }
 
 @State<ClassStateModel>({
-    name: 'organizationstate',
+    name: 'classstate',
     defaults: {
         activeClass: {
 
@@ -19,7 +19,7 @@ export interface ClassStateModel {
     }
 })
 @Injectable()
-export class AccountState {
+export class ClassState {
     
     constructor (private _classController: ClassController) { }
 
