@@ -1,22 +1,22 @@
-package com.school.hub.service.dto;
+package com.school.hub.service.dto.organization;
 
 import com.school.hub.domain.Organization;
 
-public class OrganizationDTO {
+public class PublicOrganizationDTO {
 
     private Long id;
     private String name;
     private String description;
 
-    public OrganizationDTO() {}
+    public PublicOrganizationDTO() {}
 
-    public OrganizationDTO(Long id, String name, String description) {
+    public PublicOrganizationDTO(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public OrganizationDTO(Organization organization) {
+    public PublicOrganizationDTO(Organization organization) {
         this.id = organization.getId();
         this.name = organization.getName();
         this.description = organization.getDescription();

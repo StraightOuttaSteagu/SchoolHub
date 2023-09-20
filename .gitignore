@@ -55,7 +55,7 @@ local.properties
 *.ipr
 *.ids
 *.orig
-classes/
+userClasses/
 out/
 
 ######################
