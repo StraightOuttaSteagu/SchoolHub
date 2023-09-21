@@ -78,11 +78,11 @@ ion-accordion-group {
 ion-card {
   display: flex;
   justify-content: space-between;
-  padding: .63rem 1.93rem .63rem 1.93rem;
+  padding: .4rem 1.1rem;
   border-radius: 1.63rem;
   box-shadow: none;
   margin: 0 1rem 1rem 1rem;
-  --background: rgba(var(--ion-color-back-tertiary-rgb), 1);
+  --background: rgba(var(--ion-color-back-secondary-rgb), 0.7);
 }
 
 ion-card:first-child {
@@ -91,7 +91,7 @@ ion-card:first-child {
 
 .title {
   color: rgba(var(--ion-color-text-rgb), .9);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0;
 }
 
