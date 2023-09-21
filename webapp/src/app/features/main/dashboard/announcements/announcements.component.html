@@ -1,0 +1,35 @@
+<ion-list class='desktop'>
+    <ion-card *ngFor='let item of announcements'>
+        <ion-row>
+            <ion-col size='9'>
+                <ion-card-title>{{item.title}}</ion-card-title>
+                <ion-card-content class='announcement-description'>{{item.description}}</ion-card-content>
+            </ion-col>
+            <ion-col class='icon' size='3'>
+                <ion-row class='icon-elements'>
+                    <ion-img class='announcement-icon' [src]='"assets/icons/"+icons[item.icon]'></ion-img>
+                    <ion-card-subtitle class='announcement-subject'>{{item.subject}}</ion-card-subtitle>
+                </ion-row>
+                <ion-card-subtitle class='announcement-date'>Posted: {{item.date}}</ion-card-subtitle>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-list>
+
+<ion-list class='mobile'>
+    <ion-card *ngFor='let item of announcements'>
+        <div style='display: flex'>
+            <div style='width: 2rem; display: flex; align-items: center'>
+                <ion-img [src]='"assets/icons/"+icons[item.icon]'></ion-img>
+            </div>
+            <ion-card-header>
+                <ion-card-subtitle class='date'>{{item.date}}</ion-card-subtitle>
+                <ion-card-title>
+                    <ion-label><h2>{{item.title}}</h2></ion-label>
+                </ion-card-title>
+                <ion-card-subtitle>{{item.subject}}</ion-card-subtitle>
+            </ion-card-header>
+        </div>
+        <ion-card-content>{{item.description}}</ion-card-content>
+    </ion-card>
+</ion-list>

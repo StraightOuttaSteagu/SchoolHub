@@ -1,0 +1,181 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$SchoolHub-primary: mat.define-palette(mat.$indigo-palette);
+$SchoolHub-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$SchoolHub-warn: mat.define-palette(mat.$red-palette);
+
+$SchoolHub-theme: mat.define-light-theme((
+        color: (primary: $SchoolHub-primary, accent: $SchoolHub-accent, warn: $SchoolHub-warn)
+));
+
+@include mat.all-component-themes($SchoolHub-theme);
+
+@import "./theme/variables.scss";
+@import "./theme/fonts.scss";
+@import "./theme/text-styling.scss";
+@import "./theme/color-themes.scss";
+
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  //--overflow: hidden;
+  transition: 300ms color ease-in-out !important;
+  transition: 300ms background-color ease-in-out !important;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  object-fit: contain;
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 1.9rem !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--ion-color-medium-rgb), 0.7) !important;
+}
+
+.inner-scroll {
+  scrollbar-width: thin;
+}
+
+.text-overflow {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hover-scrollbar {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c2c2c255;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
+  }
+}
+
+// Adds a bottom line to an element
+.bottom-line {
+  border-bottom-color: var(--lineSeparatorColor);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+// Adds a top line to an element
+.top-line {
+  border-top-color: var(--lineSeparatorColor);
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+// Element styles
+
+// The card for announcements, attendance and grades
+.card {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.25);
+  background: var(--cardColor);
+  border: 1px solid var(--cardBorder);
+  border-radius: 1.6rem;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.scroll-y {
+  overflow: hidden;
+}
+
+div.sc-ion-alert-md {
+  border-radius: 1.25rem !important;
+
+
+  div.alert-input-group {
+    div.alert-input-wrapper {
+      input.alert-input {
+        color: var(--ion-color-text);
+      }
+    }
+  }
+
+  div.alert-button-group {
+    button {
+      background: var(--ion-color-primary);
+      border-radius: .5rem;
+      color: var(--ion-color-text);
+    }
+  }
+
+  div.alert-head {
+    h2.alert-title {
+      color: var(--ion-color-text);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .modal {
+    &::part(content) {
+      border-radius: 1.1rem;
+      --min-height: 42rem;
+    }
+  }
+}
+
+ion-datetime {
+  --background: var(--ion-color-back-secondary);
+  --wheel-highlight-background: var(--ion-color-back-tertiary);
+  --wheel-fade-background-rgb: var(--ion-color-back-secondary-rgb);
+
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 10px 0;
+  color: var(--ion-color-text);
+}

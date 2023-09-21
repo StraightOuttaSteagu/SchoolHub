@@ -1,0 +1,19 @@
+<div class="spawn">
+    <div (mousedown)="spawnElementMouseDown(i)" class="spawn-row" *ngFor="let equation of spawn; let i = index">
+        <span>{{ equation }}</span>
+    </div>
+</div>
+<div class="play">
+    <svg></svg>
+    <ion-button (click)="tableOpen = !tableOpen" class="open-table">saas</ion-button>
+</div>
+<div [@tableAnimation]="tableOpen" class="table">
+    <div class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
+        <div (click)="!element.inactive?addElement(element):null" [class.inactive]="element.inactive" class="element-content">
+            <label class="Z">{{ element.Z }}</label>
+            <label class="symbol">{{ element.symbol }}</label>
+            <label class="name">{{ element.name }}</label>
+            <label class="mass">{{ element.mass }}</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="visual" viewBox="0 0 900 600"
+    width="900" height="600" version="1.1">
+    <filter id="blur" x="0" y="0" width="100%" height="100%">
+        <feGaussianBlur stdDeviation="30" />
+    </filter>
+    <g stroke-width="1" stroke-linejoin="bevel" filter="url(#blur)">
+        <path d="M453 174L606 249L476 0Z" fill="#1a7aae" stroke="#1a7aae" />
+        <path d="M606 249L767 0L476 0Z" fill="#354988" stroke="#354988" />
+        <path d="M476 0L319 0L453 174Z" fill="#1d71a8" stroke="#1d71a8" />
+        <path d="M606 249L900 104L767 0Z" fill="#1a7aae" stroke="#1a7aae" />
+        <path d="M900 104L900 0L767 0Z" fill="#1d71a8" stroke="#1d71a8" />
+        <path d="M351 444L590 478L606 249Z" fill="#2697bd" stroke="#2697bd" />
+        <path d="M606 249L900 351L900 104Z" fill="#2697bd" stroke="#2697bd" />
+        <path d="M351 444L606 249L453 174Z" fill="#305391" stroke="#305391" />
+        <path d="M590 478L900 351L606 249Z" fill="#3a3f7f" stroke="#3a3f7f" />
+        <path d="M137 233L351 444L453 174Z" fill="#3e3474" stroke="#3e3474" />
+        <path d="M319 0L137 233L453 174Z" fill="#305391" stroke="#305391" />
+        <path d="M189 471L397 600L351 444Z" fill="#305391" stroke="#305391" />
+        <path d="M351 444L397 600L590 478Z" fill="#354988" stroke="#354988" />
+        <path d="M590 478L770 600L900 351Z" fill="#2367a1" stroke="#2367a1" />
+        <path d="M397 600L770 600L590 478Z" fill="#354988" stroke="#354988" />
+        <path d="M137 233L189 471L351 444Z" fill="#295d9a" stroke="#295d9a" />
+        <path d="M0 0L0 183L137 233Z" fill="#1e8eb9" stroke="#1e8eb9" />
+        <path d="M137 233L0 399L189 471Z" fill="#1a7aae" stroke="#1a7aae" />
+        <path d="M770 600L900 600L900 351Z" fill="#295d9a" stroke="#295d9a" />
+        <path d="M319 0L0 0L137 233Z" fill="#3a3f7f" stroke="#3a3f7f" />
+        <path d="M0 183L0 399L137 233Z" fill="#3e3474" stroke="#3e3474" />
+        <path d="M189 471L153 600L397 600Z" fill="#3a3f7f" stroke="#3a3f7f" />
+        <path d="M0 600L153 600L189 471Z" fill="#1984b4" stroke="#1984b4" />
+        <path d="M0 399L0 600L189 471Z" fill="#2367a1" stroke="#2367a1" />
+    </g>
+</svg>

@@ -1,0 +1,33 @@
+<ion-header style='--background: transparent' mode='md'>
+  <ion-toolbar style='--background: transparent'>
+      <ion-title>
+          <div style='display: flex; align-items: center; gap: 2rem;'>
+              <ion-back-button defaultHref='/' icon='chevron-back-outline' color='text'></ion-back-button>
+              Profile Settings
+          </div>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="--background: transparent;">
+  <div class="outer">
+      <ion-row class='profile-picture'>
+          <ion-img src='assets/account.png' alt='account'></ion-img>
+          <div style="position: absolute; width: 8rem; justify-content: center; display: flex;">
+              <p style='filter: drop-shadow(0 0 5px rgb(0, 0, 0)); color: white'>Change...</p>
+          </div>
+      </ion-row>
+      <ion-card>
+          <ion-button (click)="submit()" class="save-button" color="primary" shape="round">{{ editable ? "Save" : "Edit" }}</ion-button>
+          <form  [formGroup]="accountForm" class='profile-details-form'>
+              <ion-input formControlName="login" style="--border-radius: 2rem;" size="64" fill="outline" label="@" type='text' name='username' id='username' value='{{(account$ | async).login}}'><label>Username</label></ion-input>
+              <ion-input formControlName="firstName" style="--border-radius: 2rem;" fill="outline" label="" type='text' name='name' id='name' value='{{(account$ | async).firstName}}'><label>Name</label></ion-input>
+              <ion-input formControlName="lastName" style="--border-radius: 2rem;" fill="outline" label="" type='text' name='surname' id='surname' value='{{(account$ | async).lastName}}'><label>Surname</label></ion-input>
+              <ion-input formControlName="email" style="--border-radius: 2rem;" fill="outline" label="" type='email' name='email' id='email' value='{{(account$ | async).email}}'><label>Email</label></ion-input>
+          </form>
+          <div class='reset-pass'>
+              <ion-button class="reset-button" shape="round">Reset password</ion-button>
+              <p>We will send you an email to {{(account$ | async).email}} with instructions on how to reset your password.</p>
+          </div>
+      </ion-card>
+  </div>
+</ion-content>

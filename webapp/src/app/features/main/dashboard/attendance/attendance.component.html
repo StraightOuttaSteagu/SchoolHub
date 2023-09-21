@@ -1,0 +1,34 @@
+<div class='cards-grid'>
+    <ion-card *ngFor='let item of data'>
+        <ion-card-header style='padding: 0.5rem 1rem 0 0'>
+            <ion-card-title title='{{item.title}}'>
+                <ion-item lines='inset'>
+                    <ion-label><h2>{{item.title}}</h2></ion-label>
+                </ion-item>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-list>
+            <ion-item class='date' lines='none' *ngFor='let date of item?.attendance'>
+                <ion-label color='text'><p  [ngStyle]='{"text-decoration-line": date.excused?"line-through": "none"}'>{{date.date}}</p></ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</div>
+
+<ion-content>
+    <ion-accordion-group mode='ios'>
+        <ion-accordion *ngFor='let item of data'>
+            <ion-item class='header' slot='header'>
+                <ion-label style='display: flex;'>
+                    <p style='max-width: 80%; margin: 0;'>{{item.title}}</p>
+                </ion-label>
+                <ion-icon class='ion-accordion-toggle-icon' name='chevron-down' slot='end'></ion-icon>
+            </ion-item>
+            <ion-list slot='content'>
+                <ion-item style='margin-left: 1rem' *ngFor='let date of item?.attendance' class='date-item'>
+                    <ion-label color='text'><p [ngStyle]='{"text-decoration-line": date.excused?"line-through": "none"}'>{{date.date}}</p></ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-accordion>
+    </ion-accordion-group>
+</ion-content>

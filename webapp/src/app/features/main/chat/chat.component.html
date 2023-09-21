@@ -1,0 +1,38 @@
+<div class="account-list">
+    <div style="display: flex;">
+        <ion-back-button class="back" defaultHref='/' icon='chevron-back-outline'
+                                 color='text'></ion-back-button>
+        <h1 class="title">Chats</h1>
+    </div>
+    <div class="account" *ngFor="let user of users">
+        <ion-img class="user-icon" src="../../../../assets/account.png"></ion-img>
+        <ion-col style="max-width: 250px;">
+            <p class="user-name">{{ user.name }}</p>
+            <p class="user-last-message">{{ user.lastMessage }}</p>
+        </ion-col>
+    </div>
+</div>
+<div style="display: flex; justify-content: flex-end; flex-direction: column; flex-grow: 1;">
+    <div class="chat">
+        <div class="message-container" *ngFor="let message of messages; let i = index">
+            <ion-card class="timecard" *ngIf="hasTimeCard(i)">
+                {{ message.timestamp | dateFormat }}
+            </ion-card>
+            <div class="message" [ngClass]="message.sender?'sender':'receiver'">
+                <ion-img src="../../../../assets/account.png"></ion-img>
+                <ion-card class="message-card">
+                    {{ message.body }}
+                    <div class="message-time">
+                        {{ message.timestamp.getHours() }}:{{ message.timestamp.getMinutes() }}
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+    </div>
+    <div (keydown)="$event.key=='Enter'&&message.value!=''?addMessage(message):null" class='chat-input' style='display: flex'>
+        <input #message class="message-input" placeholder='Message'>
+        <button (click)="addMessage(message);" class="send">
+            <ion-icon size="large" name='send'></ion-icon>
+        </button>
+    </div>
+</div>

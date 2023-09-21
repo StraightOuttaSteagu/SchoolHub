@@ -1,0 +1,148 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-icon {
+    min-width: 2rem;
+    width: 2rem;
+}
+
+.account {
+    display: flex;
+}
+
+.account-active {
+    background-color: rgba(var(--ion-color-tertiary-contrast-rgb), .5);
+}
+
+.account-list {
+    max-width: 400px;
+    min-width: 300px;
+    overflow: auto;
+    padding: 1rem;
+    background: rgba(var(--ion-color-tertiary-contrast-rgb), .5);
+}
+
+.chat {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    overflow: auto;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.message-input {
+    flex: 1;
+    outline: none;
+    padding: 1rem;
+    border-radius: 2rem 0 0 2rem;
+    border: none;
+}
+
+.send {
+    border-radius: 0 2rem 2rem 0;
+    padding-right: 1rem;
+}
+
+.chat-input {
+    padding: 1rem;
+}
+
+.user-name {
+    font-weight: 500;
+    color: var(--ion-color-text);
+}
+
+.user-last-message {
+    font-weight: 300;
+    color: var(--ion-color-text);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.message {
+    max-width: 60%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    ion-img {
+        min-width: 3rem;
+        width: 3rem;
+    }
+
+    ion-card {
+        --background: rgba(var(--ion-color-tertiary-rgb), .3);
+        color: var(--ion-color-text);
+        padding: .5rem 1rem;
+        border-radius: 1.5rem;
+        box-shadow: none;
+    }
+}
+
+.sender {
+    align-self: flex-start;
+
+    ion-card {
+        --background: rgba(var(--ion-color-tertiary-rgb), .3);
+    }
+}
+
+.receiver {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    
+    ion-card {
+        --background: rgba(var(--ion-color-tertiary-contrast-rgb), .7);
+    }
+}
+
+.message-card {
+    display: flex;
+    overflow-wrap: anywhere;
+}
+
+.message-time {
+    display: flex;
+    align-items: flex-end;
+    margin-left: .5rem;
+    overflow-wrap: normal;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.timecard {
+    align-self: center;
+    background-color: rgba(var(--ion-color-tertiary-contrast-rgb), .5);
+    border-radius: 1.5rem;
+    padding: .8rem 1.6rem;
+    color: var(--ion-color-text);
+    box-shadow: none;
+}
+
+.title {
+    color: var(--ion-color-text);
+    font-size: 3rem;
+}
+
+.back {
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .account-list {
+        display: none;
+    }
+
+    .message {
+        max-width: 80%;
+    }
+}

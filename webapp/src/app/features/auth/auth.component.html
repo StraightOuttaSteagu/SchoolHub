@@ -1,0 +1,28 @@
+<ion-content>
+  <div class="background"></div>
+  <ion-grid>
+    <ion-row style="justify-content: center; margin-top: 4rem;">
+      <ion-button routerLink="../login" size="large" style="--border-radius: 1rem 0 0 1rem; width: 8rem; height: 4.5rem;" [ngClass]="getMode()=='signup'?'action-button':'action-button-focus'" (click)="setMode('login')">Log in</ion-button>
+      <ion-button routerLink="../signup" size="large" style="--border-radius: 0 1rem 1rem 0; width: 8rem; height: 4.5rem;" [ngClass]="getMode()=='login'?'action-button':'action-button-focus'" (click)="setMode('signup')">Sign up</ion-button>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <ion-card class="form-card">
+        <form  [formGroup]='authForm' (ngSubmit)='onSubmit()'>
+          <div class="top-form">
+            <input [@fadeInOut]="getMode()" style="flex-basis: 0; flex-grow: 1;" placeholder="Name" formControlName='name' class="form-input">
+            <input [@fadeInOut]="getMode()" style="flex-basis: 0; flex-grow: 1;" placeholder="Surname" formControlName='surname' class="form-input">
+          </div>
+          <div class="bottom-form">
+            <input placeholder="Username" formControlName='username' class="form-input">
+            <input [@fadeInOut]="getMode()" placeholder="E-mail" formControlName='email' class="form-input">
+            <input placeholder="Password" formControlName='password' class="form-input">
+            <input [@fadeInOut]="getMode()" placeholder="Repeat password" formControlName='repeatPassword' class="form-input">
+          </div>
+          <ion-row style="justify-content: center;">
+            <ion-button type="submit" class="action-button" size="large" shape="round">{{ getMode()=='login'?"Log in":"Sign up" }}</ion-button>
+          </ion-row>
+        </form>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,153 @@
+:host {
+  flex-direction: row;
+  background: #97c8ff;
+}
+
+.measure {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+  font-family: Font;
+  font-size: 64px; // DO NOT CHANGE TO REM!!!
+}
+
+ion-col {
+  padding: 0;
+}
+
+ion-row {
+  width: 86vw;
+}
+
+#canvas {
+  height: 80vh;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.textBox {
+  display: flex;
+  flex-wrap: wrap;
+  //padding-left: .75rem;
+  //padding: 0;
+  height: 19.25%;
+  background-color: #ffffff;
+  justify-content: flex-start;
+  align-content: flex-start;
+  overflow-y: auto;
+  border-radius: 20px;
+  //padding-bottom: 1rem;
+}
+
+.textBoxContentWord {
+  margin: 0;
+  font-family: 'Whiteboard';
+}
+
+#canvasBox {
+  .textBoxContentWord:hover {
+    cursor: grab;
+  }
+}
+
+.board {
+  width: 86vw;
+  flex: 1;
+  flex-direction: column;
+}
+
+ion-split-pane {
+  --side-width: 14%;
+  justify-content: space-between;
+}
+
+ion-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 1rem 0;
+  width: 100%;
+  margin-left: 0.5rem;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+ion-range {
+  padding: 0;
+}
+
+.punctuation-row {
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.color-option {
+  transition: 300ms all ease-in-out !important;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+textPath {
+  font-family: 'Whiteboard';
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+* {
+  user-select: none;
+}
+
+ion-button {
+  width: 80%;
+  --background: #004b88;
+  --color: white;
+  --border-radius: 15px;
+  height: 4rem;
+  text-transform: none;
+  align-items: start;
+
+  ion-icon {
+    margin-right: 0.5rem;
+  }
+}
+
+ion-range::part(bar) {
+  background: darkgrey;
+}
+
+ion-range::part(bar-active) {
+  background: #004b88;
+}
+
+ion-range::part(tick-active) {
+  background: #004b88;
+}
+
+ion-range::part(tick) {
+  background: darkgrey;
+}
+
+.punctuation-button {
+  width: 3vw;
+  height: 3vw;
+  aspect-ratio: 1/1;
+  --border-radius: 100px;
+  font-size: 1.5rem;
+}

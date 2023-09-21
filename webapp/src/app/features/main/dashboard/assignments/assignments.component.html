@@ -1,0 +1,54 @@
+<div class='outer'>
+    <ion-row>
+        <ion-segment id='segment' (ionChange)='updateMode()' mode='ios'
+                     [value]="getHref().includes('missing')?'missing':getHref().includes('assigned')?'assigned':'done'">
+            <ion-segment-button routerLink='../missing' value='missing'>
+                <ion-label>Missing</ion-label>
+            </ion-segment-button>
+            <ion-segment-button routerLink='../assigned' value='assigned'>
+                <ion-label>Assigned</ion-label>
+            </ion-segment-button>
+            <ion-segment-button routerLink='../done' value='done'>
+                <ion-label>Done</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-row>
+</div>
+<ion-content>
+    <ion-accordion-group multiple='true'>
+        <ion-accordion *ngFor='let category of data[mode]' [value]='category.title'>
+            <ion-item slot='header' color='light'>
+                <ion-label class='category-title'>{{ category.title }}</ion-label>
+                <ion-icon class='ion-accordion-toggle-icon' name='caret-down' slot='end'></ion-icon>
+            </ion-item>
+            <ion-card slot='content' class='assignment ion-padding desktop-card' *ngFor='let item of category.data'>
+                <ion-col>
+                    <h3 class='title light-90'>{{item.title}}</h3>
+                    <p class='light-80'>Due date: {{item.dueDate}}</p>
+                </ion-col>
+                <div>
+                    <ion-row class='class-label'>
+                        <ion-img src='assets/leaf.png' alt='leaf'></ion-img>
+                        <h3 class='regular-90 subject'>{{item.class}}</h3>
+                    </ion-row>
+                    <p class='light-80' style='text-align: end;'>Posted: {{item.createDate}}</p>
+                </div>
+            </ion-card>
+            <ion-card slot='content' class='assignment ion-padding mobile-card' *ngFor='let item of category.data'>
+                <div style='display: flex; justify-content: space-between'>
+                    <div style='display: flex; align-items: center;'>
+                        <ion-img src='assets/leaf.png'></ion-img>
+                        <ion-card-header>
+                            <ion-card-subtitle class='date'>Posted: {{item.createDate}}</ion-card-subtitle>
+                            <ion-card-title>
+                                <ion-label><h2>{{item.title}}</h2></ion-label>
+                            </ion-card-title>
+                            <ion-card-subtitle>{{item.class}}</ion-card-subtitle>
+                        </ion-card-header>
+                    </div>
+                    <p style='color: rgba(var(--ion-color-text-rgb), 0.8)'>Due date: <br>{{item.dueDate}}</p>
+                </div>
+            </ion-card>
+        </ion-accordion>
+    </ion-accordion-group>
+</ion-content>

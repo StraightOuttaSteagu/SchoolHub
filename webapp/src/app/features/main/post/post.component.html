@@ -1,0 +1,93 @@
+<ion-header style='--background: transparent' mode='md' xmlns='http://www.w3.org/1999/html'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title>
+            <div style='display: flex; align-items: center; font-size: 0.5em; white-space: break-spaces;'>
+                <ion-back-button defaultHref='/' icon='chevron-back-outline'
+                                 color='text'></ion-back-button>
+                <h2 style='margin: 0' class='title'>{{data.title}}</h2>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-row class='account'>
+            <ion-img class='account-icon' src='assets/account.png'></ion-img>
+            <p class='account-name'>Lia Liana Oteleanu</p>
+        </ion-row>
+        <ion-row style='margin-top: 0.5rem'>
+            <ion-col class='date' size='12' size-sm='6' style='font-weight: 300'>Posted: {{data.date}}</ion-col>
+            <ion-col class='due-date date' size='12' size-sm='6' style='justify-content: flex-end'
+                     *ngIf='data.assignment'>Due
+                date: {{data.dueDate}}</ion-col>
+        </ion-row>
+        <ion-card-content style='margin-top: 0.5rem'>{{data.content}}</ion-card-content>
+        <ion-row style='margin-top: 0.5rem'>
+            <ion-chip class='card-chip' *ngFor='let attachment of data.attachments'>
+                <ion-icon name='document'></ion-icon>
+                {{attachment}}
+            </ion-chip>
+        </ion-row>
+    </ion-card>
+    <ion-card class='chat'>
+        <div *ngFor='let message of data.comments' style='display: flex; flex-direction: column'>
+            <div style='display: flex; color: rgba(var(--ion-color-text-rgb), 0.8)'>
+                <ion-img src='assets/account.png'></ion-img>
+                <div style='display: flex; flex-direction: column; justify-content: flex-start; padding: .5rem'>
+                    <div style='display: flex; gap: 1rem; line-height: 1rem'>
+                        <p style='font-size: 0.9rem'>{{message.author}}</p>
+                        <p style='font-weight: 300; font-size: 0.9rem'>{{message.date}}</p>
+                    </div>
+                    <p class='message-content'>{{message.content}}</p>
+                </div>
+            </div>
+        </div>
+        <div class='chat-input' style='display: flex'>
+            <ion-img src='assets/account.png'></ion-img>
+            <input placeholder='Write a comment...'>
+            <button type='submit'>
+                <ion-icon name='send'></ion-icon>
+            </button>
+        </div>
+    </ion-card>
+    <ion-card *ngIf='data.assignment'>
+        <ion-card-title class='work-title'>Your work</ion-card-title>
+        <ion-grid style='--ion-grid-columns: 24; padding: 0'>
+            <ion-row>
+                <ion-col class='upload-chips-col' size='24' size-md='9'>
+                    <ion-content class='upload-chips desktop'>
+                        <ion-button class='upload-chip' *ngFor='let attachment of data.uploaded'>
+                            <ion-icon name='document'></ion-icon>
+                            <p>{{attachment}}</p>
+                        </ion-button>
+                    </ion-content>
+                    <ion-list class='upload-chips mobile'>
+                        <ion-button class='upload-chip' *ngFor='let attachment of data.uploaded'>
+                            <ion-icon name='document'></ion-icon>
+                            <p>{{attachment}}</p>
+                        </ion-button>
+                    </ion-list>
+                </ion-col>
+                <ion-col class='assignment-buttons-col' size='24' size-md='9'>
+                    <div class='assignment-buttons'>
+                        <ion-button>
+                            <ion-icon name='add-circle'></ion-icon>
+                            <p>Add attachment...</p>
+                        </ion-button>
+                        <ion-button>
+                            Turn in
+                        </ion-button>
+                    </div>
+                </ion-col>
+                <ion-col size='24' size-md='6'>
+                    <div class='private-chat'>
+                        <p>Go to private chat...</p>
+                        <ion-button routerLink="../../chat/xxx">
+                            <ion-icon name='arrow-forward'></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+</ion-content>

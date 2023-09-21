@@ -1,0 +1,104 @@
+<ion-content>
+    <div *ngFor='let item of data' [ngSwitch]='item.type'>
+        <ion-card class='desktop' *ngSwitchCase="'announcements'">
+            <ion-row>
+                <ion-col size='9'>
+                    <div class='post-icon'>
+                        <ion-icon name='document-text-outline'></ion-icon>
+                    </div>
+                    <ion-card-title>
+                        {{item?.title}}
+                    </ion-card-title>
+                </ion-col>
+                <ion-col size='3'>
+                    <ion-row class='account'>
+                        <ion-img class='account-icon' src='assets/account.png'></ion-img>
+                        <p class='account-name'>Lia Liana Oteleanu</p>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row style='margin-top: 0.3rem'>
+                <ion-col size='9'>
+                    <ion-card-content style='padding: 0'>{{item?.content}}</ion-card-content>
+                </ion-col>
+                <ion-col size='3' style='align-items: flex-start; justify-content: flex-end'>
+                    <p class='date'>Posted: {{item?.date}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row style='margin-top: .8rem'>
+                <ion-chip class='card-chip'
+                          *ngIf='item?.comments_num'>
+                    <ion-icon name='chatbubbles'></ion-icon>
+                    {{item?.comments_num}} {{item?.comments_num === 1 ? 'comment' : 'comments'}}</ion-chip>
+                <ion-chip class='card-chip'
+                          *ngIf='item?.attachments_num'>
+                    <ion-icon name='document'></ion-icon>
+                    {{item?.attachments_num}} {{item?.attachments_num === 1 ? 'attachment' : 'attachments'}}</ion-chip>
+            </ion-row>
+        </ion-card>
+        <ion-card routerLink='../../../post/apoeafje2soi2' class='mobile' *ngSwitchCase="'announcements'">
+            <div style='display: flex; align-items: center'>
+                <div class='post-icon'>
+                    <ion-icon name='document-text-outline'></ion-icon>
+                </div>
+                <div style='width: 90%'>
+                    <ion-card-title>{{item?.title}}</ion-card-title>
+                    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+                </div>
+            </div>
+            <ion-card-content style='margin-top: 0.5rem;'>{{item?.content}}</ion-card-content>
+        </ion-card>
+        <ion-card routerLink='../../../post/apoeafje2soi2' class='desktop' *ngSwitchCase="'assignments'">
+            <ion-row>
+                <ion-col size='9'>
+                    <div class='post-icon'>
+                        <ion-icon name='document-attach-outline'></ion-icon>
+                    </div>
+                    <div style='width: 90%'>
+                        <ion-card-title>
+                            {{item?.title}}
+                        </ion-card-title>
+                    </div>
+                </ion-col>
+                <ion-col size='3'
+                         style='align-items: flex-end; justify-content: center; flex-direction: column; gap: 0.3rem'>
+                    <div class='account'>
+                        <ion-img class='account-icon' src='assets/account.png'></ion-img>
+                        <p class='account-name'>Lia Liana Oteleanu</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row style='margin-top: 0.6rem'>
+                <ion-col>
+                    <div>
+                        <p class='due-date'>Due date: {{item?.due_date}}</p>
+                        <p class='due-date'>Posted: {{item?.date}}</p>
+                    </div>
+                </ion-col>
+                <ion-col style='justify-content: flex-end'>
+                    <div class='assignment-details'>
+                        <p style='border-right: 1px solid rgba(var(--ion-color-text-rgb), 0.2)'>
+                            <span>{{item.handed_in_num}}</span> handed in</p>
+                        <p><span>{{item.assigned_num}}</span> assigned</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+        <ion-card class='mobile' *ngSwitchCase="'assignments'">
+            <div style='display: flex; align-items: center'>
+                <div class='post-icon'>
+                    <ion-icon name='document-attach-outline'></ion-icon>
+                </div>
+                <div style='width: 90%'>
+                    <ion-card-title>{{item?.title}}</ion-card-title>
+                    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+                </div>
+            </div>
+            <div style='margin-top: 0.3rem' class='assignment-details'>
+                <p style='border-right: 1px solid rgba(var(--ion-color-text-rgb), 0.2); padding-left: 0'>
+                    <span>{{item.handed_in_num}}</span> handed in</p>
+                <p><span>{{item.assigned_num}}</span> assigned</p>
+            </div>
+        </ion-card>
+    </div>
+</ion-content>

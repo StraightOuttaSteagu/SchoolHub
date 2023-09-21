@@ -1,0 +1,118 @@
+<div [class]='getSecondaryTheme()'>
+    <ion-split-pane contentId='main-content' when='lg'>
+        <ion-menu contentId='main-content' type='push' maxEdgeStart='350'>
+            <ion-header>
+                <img class="logo" src='assets/logo.png'>
+                <h1 class="logo-title"><span style="font-weight: 300;">School</span>Hub</h1>
+            </ion-header>
+            <ion-item class='org' lines='none' id='org-trigger'>
+                <ion-label class='ion-text-wrap text-overflow'>
+                    <p class='text-overflow'>{{ (organization$ | async).name }}</p>
+                </ion-label>
+                <ion-icon name='chevron-down'></ion-icon>
+            </ion-item>
+            <ion-popover trigger='org-trigger' trigger-action='click' size='cover' show-backdrop='false'
+                         keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
+                <ng-template>
+                    <ion-list class='popover-options'>
+                        <ion-item class='dropdown-item' *ngFor='let organization of (organizations$ | async)'>
+                            <ion-label (click)="selectOrganization(organization)">{{ organization.name }}</ion-label>
+                        </ion-item>
+                        <ion-item class='dropdown-item' id='present-alert' [button]='true' lines='none'>
+                            <ion-alert
+                                    trigger='present-alert'
+                                    header='Add Organization'
+                                    [buttons]='alertButtons'
+                                    [inputs]='alertInputs'
+                                    translucent='true'
+                            ></ion-alert>
+                            <ion-icon name='add-circle-outline'></ion-icon>
+                            <ion-label id=''>Add organization</ion-label>
+                        </ion-item>
+                    </ion-list>
+                </ng-template>
+            </ion-popover>
+            <ion-content class='side-classes'>
+                <ion-list lines='none' class='side-classes'>
+                    <ion-menu-toggle auto-hide='false'>
+                        <ion-item [attr.theme]="item.theme" [routerLink]="'class-student/' + item.id + '/general'" [ngClass]='item.id==getSecondaryThemeID()?"side-class-focus":"side-class"' *ngFor='let item of classes'>
+                            <ion-img [src]='"assets/icons/"+icons[item.icon]'></ion-img>
+                            <ion-label>
+                                <h2>{{ item.subject }}</h2>
+                                <p>{{ item.teacher }}</p>
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+            <ion-footer>
+                <ion-item class='profile' lines='none' id='profile-trigger' detail='true'>
+                    <ion-img src='assets/account.png'></ion-img>
+                    <ion-label>
+                        <h2>{{(account$ | async).login}}</h2>
+                        <p>Student</p>
+                    </ion-label>
+                </ion-item>
+                <ion-popover trigger='profile-trigger' trigger-action='click' size='cover' show-backdrop='false'
+                             keep-contents-mounted='true' dismiss-on-select='true'>
+                    <ng-template>
+                        <ion-list class='popover-options'>
+                            <ion-menu-toggle auto-hide='false'>
+                                <ion-item class='dropdown-item' [routerLink]='["auth"]' (click)='logOut()' detail='false'>
+                                    <ion-icon name='log-out-outline'></ion-icon>
+                                    <ion-label>Logout</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle><ion-menu-toggle auto-hide='false'>
+                                <ion-item class='dropdown-item' [routerLink]='["chat"]' detail='false'>
+                                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                                    <ion-label>Chat</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-menu-toggle auto-hide='false'>
+                                <ion-item class='dropdown-item' [routerLink]='["settings"]' detail='false'>
+                                    <ion-icon name='settings-outline'></ion-icon>
+                                    <ion-label>Settings</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-item class='dropdown-item' button='true' lines='none' detail='false' id='theme-trigger'>
+                                <ion-icon name='color-palette-outline'></ion-icon>
+                                <ion-label>Theme</ion-label>
+                            </ion-item>
+                            <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right'
+                                         alignment='end'
+                                         arrow='false'>
+                                <ng-template>
+                                    <ion-list class='popover-options'>
+                                        <ion-radio-group [value]='getTheme()'>
+                                            <ion-item class='dropdown-item' [button]='true' [detail]='false' (click)='setTheme("light")'>
+                                                <ion-icon name='sunny-outline'></ion-icon>
+                                                <ion-radio value='light'>
+                                                    <ion-label>Light</ion-label>
+                                                </ion-radio>
+                                            </ion-item>
+                                            <ion-item class='dropdown-item' [button]='true' [detail]='false' (click)='setTheme("dark")'>
+                                                <ion-icon name='moon-outline'></ion-icon>
+                                                <ion-radio value='dark'>
+                                                    <ion-label>Dark</ion-label>
+                                                </ion-radio>
+                                            </ion-item>
+                                            <ion-item class='dropdown-item' [button]='true' [detail]='false' (click)='setTheme("system")'
+                                                      lines='none'>
+                                                <ion-icon name='contrast-outline'></ion-icon>
+                                                <ion-radio value='system'>
+                                                    <ion-label>System</ion-label>
+                                                </ion-radio>
+                                            </ion-item>
+                                        </ion-radio-group>
+                                    </ion-list>
+                                </ng-template>
+                            </ion-popover>
+                        </ion-list>
+                    </ng-template>
+                </ion-popover>
+            </ion-footer>
+        </ion-menu>
+        <ion-router-outlet [animated]='window.innerWidth < 992' id='main-content'></ion-router-outlet>
+    </ion-split-pane>
+    <div class='back'></div>
+</div>

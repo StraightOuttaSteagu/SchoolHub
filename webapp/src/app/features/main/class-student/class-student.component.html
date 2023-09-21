@@ -1,0 +1,235 @@
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title>
+            <div style='display: flex; align-items: center'>
+                <ion-back-button defaultHref='/' icon='chevron-back-outline'
+                                 color='text'></ion-back-button>
+                <ion-img class='class-icon' src='assets/icons/leaf.png'></ion-img>
+                Biologie
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row class='stats stats-desktop'>
+        <ion-col>
+            <div class='post-icon'>
+                <ion-icon name='document-attach-outline'></ion-icon>
+            </div>
+            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>2</span> assignments to
+                be
+                done</p>
+        </ion-col>
+        <ion-col>
+            <div class='post-icon'>
+                <ion-icon name='calendar-outline'></ion-icon>
+            </div>
+            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>3</span> unexcused
+                absences
+            </p>
+        </ion-col>
+        <ion-col>
+            <div class='post-icon'>
+                <ion-icon name='trending-up-outline'></ion-icon>
+            </div>
+            <p style='font-size: 0.9rem'>Overall average: <span
+                    style='font-weight: 600; font-size: 1.1rem'>10</span>
+            </p>
+        </ion-col>
+    </ion-row>
+    <ion-row class='stats-mobile stats'>
+        <ion-col size='4'>
+            <div class='stat-mobile'>
+                <p style='font-weight: 700; font-size: 1.3rem'>2</p>
+                <p style='font-size: 0.75rem; text-align: center'>assignments</p>
+            </div>
+        </ion-col>
+        <ion-col size='4'>
+            <div class='stat-mobile'>
+                <p style='font-weight: 700; font-size: 1.3rem'>3</p>
+                <p style='font-size: 0.75rem'>unexcused absences</p>
+            </div>
+        </ion-col>
+        <ion-col size='4'>
+            <div class='stat-mobile'>
+                <p style='font-weight: 700; font-size: 1.3rem'>10</p>
+                <p style='font-size: 0.75rem'>overall average</p>
+            </div>
+        </ion-col>
+    </ion-row>
+    <ion-buttons class='chips'>
+        <ion-button style='--border-radius: 200px' class='close-button' *ngIf='!getHref().includes("general")' [routerLink]='"../../" + getClassThemeID() + "/general"'>
+            <ion-icon name='close-outline'></ion-icon>
+        </ion-button>
+        <ion-chip [routerLink]='["../../" + getClassThemeID() + "/announcements"]'
+                  [class.active]='getHref().includes("announcements")'>
+            Announcements
+        </ion-chip>
+        <ion-chip [routerLink]='["../../" + getClassThemeID() + "/grades"]'
+                  [class.active]='getHref().includes("grades")'>
+            Grades
+        </ion-chip>
+        <ion-chip [routerLink]='["../../" + getClassThemeID() + "/assignments"]'
+                  [class.active]='getHref().includes("assignments")'>
+            Assignments
+        </ion-chip>
+        <ion-chip [routerLink]='["../../" + getClassThemeID() + "/attendance"]'
+                  [class.active]='getHref().includes("attendance")'>
+            Attendance
+        </ion-chip>
+    </ion-buttons>
+    <div *ngFor='let item of filteredData' [ngSwitch]='item.type'>
+        <ion-card class='desktop' *ngSwitchCase="'announcements'">
+            <ion-row>
+                <ion-col size='9'>
+                    <div class='post-icon'>
+                        <ion-icon name='document-text-outline'></ion-icon>
+                    </div>
+                    <ion-card-title>
+                        {{item?.title}}
+                    </ion-card-title>
+                </ion-col>
+                <ion-col size='3'>
+                    <ion-row class='account'>
+                        <ion-img class='account-icon' src='assets/account.png'></ion-img>
+                        <p class='account-name'>Lia Liana Oteleanu</p>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row style='margin-top: 0.3rem'>
+                <ion-col size='9'>
+                    <ion-card-content style='padding: 0'>{{item?.content}}</ion-card-content>
+                </ion-col>
+                <ion-col size='3' style='align-items: flex-start; justify-content: flex-end'>
+                    <p class='date'>Posted: {{item?.date}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row style='margin-top: .8rem'>
+                <ion-chip class='card-chip'
+                          *ngIf='item?.comments_num'>
+                    <ion-icon name='chatbubbles'></ion-icon>
+                    {{item?.comments_num}} {{item?.comments_num === 1 ? 'comment' : 'comments'}}</ion-chip>
+                <ion-chip class='card-chip'
+                          *ngIf='item?.attachments_num'>
+                    <ion-icon name='document'></ion-icon>
+                    {{item?.attachments_num}} {{item?.attachments_num === 1 ? 'attachment' : 'attachments'}}</ion-chip>
+            </ion-row>
+        </ion-card>
+        <ion-card routerLink="../../../post/apoeafje2soi2" class='mobile' *ngSwitchCase="'announcements'">
+            <div style='display: flex; align-items: center'>
+                <div class='post-icon'>
+                    <ion-icon name='document-text-outline'></ion-icon>
+                </div>
+                <div style='width: 90%'>
+                    <ion-card-title>{{item?.title}}</ion-card-title>
+                    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+                </div>
+            </div>
+            <ion-card-content style='margin-top: 0.5rem;'>{{item?.content}}</ion-card-content>
+        </ion-card>
+        <ion-card  routerLink="../../../post/apoeafje2soi2" class='desktop' *ngSwitchCase="'assignments'">
+            <ion-row>
+                <ion-col size='9'>
+                    <div class='post-icon'>
+                        <ion-icon name='document-attach-outline'></ion-icon>
+                    </div>
+                    <div style='width: 90%'>
+                        <ion-card-title>
+                            {{item?.title}}
+                        </ion-card-title>
+                        <p class='due-date'>Due: {{item?.due_date}}</p>
+                    </div>
+                </ion-col>
+                <ion-col size='3'
+                         style='align-items: flex-end; justify-content: center; flex-direction: column; gap: 0.3rem'>
+                    <div class='account'>
+                        <ion-img class='account-icon' src='assets/account.png'></ion-img>
+                        <p class='account-name'>Lia Liana Oteleanu</p>
+                    </div>
+                    <p class='date'>Posted: {{item?.date}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+        <ion-card class='mobile' *ngSwitchCase="'assignments'">
+            <div style='display: flex; align-items: center'>
+                <div class='post-icon'>
+                    <ion-icon name='document-attach-outline'></ion-icon>
+                </div>
+                <div style='width: 90%'>
+                    <ion-card-title>{{item?.title}}</ion-card-title>
+                    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+                </div>
+            </div>
+        </ion-card>
+        <ion-card class='desktop' *ngSwitchCase="'grades'">
+            <ion-row>
+                <ion-col size='9'>
+                    <div class='post-icon'>
+                        <ion-icon name='trending-up-outline'></ion-icon>
+                    </div>
+                    <div>
+                        <ion-card-title>
+                            New grade: {{item?.grade}}
+                        </ion-card-title>
+                        <p class='due-date'>Date: {{item?.date}}</p>
+                    </div>
+                </ion-col>
+                <ion-col size='3'
+                         style='align-items: flex-end; justify-content: center; flex-direction: column; gap: 0.3rem'>
+                    <div class='account'>
+                        <ion-img class='account-icon' src='assets/account.png'></ion-img>
+                        <p class='account-name'>Lia Liana Oteleanu</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+        <ion-card class='mobile' *ngSwitchCase="'grades'">
+            <ion-row style='align-items: center'>
+                <div class='post-icon'>
+                    <ion-icon name='trending-up-outline'></ion-icon>
+                </div>
+                <div>
+                    <ion-card-title>
+                        New grade: {{item?.grade}}
+                    </ion-card-title>
+                    <p class='due-date'>Date: {{item?.date}}</p>
+                </div>
+            </ion-row>
+        </ion-card>
+        <ion-card class='desktop' *ngSwitchCase="'attendance'">
+            <ion-row>
+                <ion-col size='9'>
+                    <div class='post-icon'>
+                        <ion-icon name='calendar-outline'></ion-icon>
+                    </div>
+                    <div>
+                        <ion-card-title>
+                            New absence
+                        </ion-card-title>
+                        <p class='due-date'>Date: {{item?.date}} - {{item?.excused ? 'excused' : 'not excused'}}</p>
+                    </div>
+                </ion-col>
+                <ion-col size='3'
+                         style='align-items: flex-end; justify-content: center; flex-direction: column; gap: 0.3rem'>
+                    <div class='account'>
+                        <ion-img class='account-icon' src='assets/account.png'></ion-img>
+                        <p class='account-name'>Lia Liana Oteleanu</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+        <ion-card class='mobile' *ngSwitchCase="'attendance'">
+            <ion-row style='align-items: center'>
+                <div class='post-icon'>
+                    <ion-icon name='calendar-outline'></ion-icon>
+                </div>
+                <div>
+                    <ion-card-title>
+                        New absence
+                    </ion-card-title>
+                    <p class='due-date'>Date: {{item?.date}} - {{item?.excused ? 'excused' : 'not excused'}}</p>
+                </div>
+            </ion-row>
+        </ion-card>
+    </div>
+</ion-content>
