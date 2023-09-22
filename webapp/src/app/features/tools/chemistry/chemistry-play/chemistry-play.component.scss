@@ -21,7 +21,9 @@
 .open-table {
 	position: fixed;
 	bottom: 1rem;
-	right: 20rem;
+	z-index: 1000;
+	justify-content: center;
+	width: 85vw;
 }
 
 .table {
@@ -87,4 +89,8 @@
 .spawn-row {
 	font-size: 2rem;
 	border-bottom: 1px gray solid;
+}
+
+* {
+	user-select: none;
 }

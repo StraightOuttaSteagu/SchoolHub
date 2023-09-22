@@ -1,11 +1,19 @@
 <div class="spawn">
-    <div (mousedown)="spawnElementMouseDown(i)" class="spawn-row" *ngFor="let equation of spawn; let i = index">
+    <div (mousedown)="spawnElementMouseDown(i, $event)" class="spawn-row" *ngFor="let equation of spawn; let i = index">
         <span>{{ equation }}</span>
     </div>
 </div>
 <div class="play">
-    <svg></svg>
-    <ion-button (click)="tableOpen = !tableOpen" class="open-table">saas</ion-button>
+    <svg [ngStyle]="{'opacity': tableOpen ? '.1' : '1'}" id="play" (mousemove)="playMouseMove($event)" (mouseup)="playMouseUp()" style="width: 100%; height: 100%;">
+        <g id="compoundContainer">
+            <text *ngFor="let compound of compounds; let i = index" (mousedown)="compoundMouseDown($event, i)" [attr.x]="compound.x" [attr.y]="compound.y" text-anchor="middle" font-size="64">
+                <tspan *ngFor="let char of toArray(compound.formula)" [attr.font-size]="isNumber(char) ? '32' : '64'">{{ char }}</tspan>
+            </text>
+        </g>
+    </svg>
+    <ion-row class="open-table">
+        <ion-button (click)="tableOpen = !tableOpen">Toggle table</ion-button>
+    </ion-row>
 </div>
 <div [@tableAnimation]="tableOpen" class="table">
     <div class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
