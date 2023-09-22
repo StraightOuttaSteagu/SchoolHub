@@ -112,7 +112,7 @@
                 </ion-popover>
             </ion-footer>
         </ion-menu>
-        <ion-router-outlet [animated]='window.innerWidth < 992' id='main-content'></ion-router-outlet>
+        <ion-router-outlet [swipeGesture]='false' [animated]='false' id='main-content'></ion-router-outlet>
     </ion-split-pane>
     <div class='back'></div>
 </div>

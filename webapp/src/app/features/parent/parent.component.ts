@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { AuthService } from '../../core/services/auth.service';
-import { ViewDidEnter } from '@ionic/angular';
+import { MenuController, ViewDidEnter } from '@ionic/angular';
 import { icons } from '../../shared/icons';
 
 @Component({
@@ -39,7 +39,7 @@ export class ParentComponent implements ViewDidEnter {
   protected readonly icons = icons;
   protected readonly window = window;
 
-  constructor(private _theme: ThemeService, private _auth: AuthService) {
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _menu: MenuController) {
   }
 
   logOut(): void {

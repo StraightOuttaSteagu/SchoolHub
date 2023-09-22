@@ -11,14 +11,12 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div class='cards-grid'>
-        <app-grades-card *ngFor='let item of data' [item]='item'></app-grades-card>
-    </div>
+<div class='cards-grid'>
+    <app-grades-card *ngFor='let item of data' [item]='item'></app-grades-card>
+</div>
 
-    <ion-content class='mobile'>
-        <ion-accordion-group multiple='true' mode='ios'>
-            <app-grades-accordion *ngFor='let item of data' [item]='item'></app-grades-accordion>
-        </ion-accordion-group>
-    </ion-content>
+<ion-content class='mobile'>
+    <ion-accordion-group multiple='true' mode='ios'>
+        <app-grades-accordion *ngFor='let item of data' [item]='item'></app-grades-accordion>
+    </ion-accordion-group>
 </ion-content>

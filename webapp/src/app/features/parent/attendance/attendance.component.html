@@ -11,14 +11,12 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div class='cards-grid'>
-        <app-absences-card *ngFor='let item of data' [item]='item'></app-absences-card>
-    </div>
+<div class='cards-grid'>
+    <app-absences-card *ngFor='let item of data' [item]='item'></app-absences-card>
+</div>
 
-    <ion-content class='mobile'>
-        <ion-accordion-group mode='ios'>
-            <app-absences-accordion *ngFor='let item of data' [item]='item'></app-absences-accordion>
-        </ion-accordion-group>
-    </ion-content>
+<ion-content class='mobile'>
+    <ion-accordion-group mode='ios'>
+        <app-absences-accordion *ngFor='let item of data' [item]='item'></app-absences-accordion>
+    </ion-accordion-group>
 </ion-content>
