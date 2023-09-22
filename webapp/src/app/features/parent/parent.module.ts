@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { GradesComponent } from './grades/grades.component';
 import { ChatModule } from '../../shared/chat/chat.module';
 import { SettingsModule } from '../../shared/settings/settings.module';
+import { CardsSharedModule } from 'src/app/shared/cards-shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { SettingsModule } from '../../shared/settings/settings.module';
     ParentRoutingModule,
     IonicModule,
     ChatModule,
-    SettingsModule
+    SettingsModule,
+    CardsSharedModule
   ]
 })
 export class ParentModule { }
