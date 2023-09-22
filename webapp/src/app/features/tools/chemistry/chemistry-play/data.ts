@@ -208,4 +208,6 @@ export interface elementModel {
     { symbol: "Ir", reactivity: +1.0 },
     { symbol: "Pt", reactivity: +1.18 },
     { symbol: "Au", reactivity: +1.50 }
-  ];
+];
+
+export const divalentElements = ['O', 'N', 'H', 'Cl', 'F', 'Br'];
