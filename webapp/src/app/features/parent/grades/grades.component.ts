@@ -176,11 +176,7 @@ export class GradesComponent {
     }
   ];
 
-  calculateAverage(item: any): number {
-    let avg = 0;
-    for (let grade of item) {
-      avg += grade.grade;
-    }
-    return avg / item.length;
+  getHref(): string {
+    return window.location.href;
   }
 }

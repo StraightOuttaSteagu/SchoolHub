@@ -109,127 +109,136 @@
             <img class='logo' src='assets/logo.png'>
             <h1 class='logo-title'><span style='font-weight: 300;'>School</span>Hub</h1>
         </ion-header>
-        <ion-content class='side-classes'>
-            <app-grades-card></app-grades-card>
-            <p>Select or add a child</p>
-            <ion-item class='org' lines='none' id='org-trigger'>
-                <ion-label class='ion-text-wrap text-overflow'>
-                    <p class='text-overflow'>child</p>
-                </ion-label>
-                <ion-icon name='chevron-down'></ion-icon>
-            </ion-item>
-            <ion-popover trigger='org-trigger' trigger-action='click' size='cover' show-backdrop='false'
-                         keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
-                <ng-template>
-                    <ion-list class='popover-options'>
-                        <ion-item button='true' class='dropdown-item' *ngFor='let item of data'>
-                            <ion-label>{{ item.name }}</ion-label>
-                        </ion-item>
-                        <ion-item class='dropdown-item' id='present-alert' [button]='true' lines='none'>
-                            <ion-alert
-                                    trigger='present-alert'
-                                    header='Add child'
-                                    [buttons]='alertButtons'
-                                    [inputs]='alertInputs'
-                                    translucent='true'
-                            ></ion-alert>
-                            <ion-icon name='add-circle-outline'></ion-icon>
-                            <ion-label id=''>Add organization</ion-label>
-                        </ion-item>
+        <ion-content>
+            <div style='display: flex; flex-direction: column; justify-content: space-between; height: 100%; overflow: scroll'>
+                <div>
+                    <p style='margin-left: 2rem; color: rgba(var(--ion-color-text-rgb), 0.6); font-size: 0.8rem'>Select
+                        or
+                        add
+                        child</p>
+                    <ion-item class='org' lines='none' id='org-trigger'>
+                        <ion-label class='ion-text-wrap text-overflow'>
+                            <p class='text-overflow'>Otilia Marculescu</p>
+                        </ion-label>
+                        <ion-icon name='chevron-down'></ion-icon>
+                    </ion-item>
+                    <ion-popover trigger='org-trigger' trigger-action='click' size='cover' show-backdrop='false'
+                                 keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
+                        <ng-template>
+                            <ion-list class='popover-options'>
+                                <ion-item button='true' class='dropdown-item' *ngFor='let item of data'>
+                                    <ion-label>{{ item.name }}</ion-label>
+                                </ion-item>
+                                <ion-item class='dropdown-item' id='present-alert' [button]='true' lines='none'>
+                                    <ion-alert
+                                            trigger='present-alert'
+                                            header='Add child'
+                                            [buttons]='alertButtons'
+                                            [inputs]='alertInputs'
+                                            translucent='true'
+                                    ></ion-alert>
+                                    <ion-icon name='add-circle-outline'></ion-icon>
+                                    <ion-label id=''>Add child</ion-label>
+                                </ion-item>
+                            </ion-list>
+                        </ng-template>
+                    </ion-popover>
+                    <ion-list lines='none' class='side-classes'>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item [class.selected]='getHref().includes("grades")' class='side-link' routerLink='./grades'>
+                                <ion-icon name='trending-up-outline'></ion-icon>
+                                <ion-label>
+                                    <h2>Grades</h2>
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item [class.selected]='getHref().includes("attendance")' class='side-link' routerLink='./attendance'>
+                                <ion-icon name='calendar-outline'></ion-icon>
+                                <ion-label>
+                                    <h2>Attendance</h2>
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item [class.selected]='getHref().includes("chat")' class='side-link' routerLink='./chat'>
+                                <ion-icon name='chatbubbles-outline'></ion-icon>
+                                <ion-label>
+                                    <h2>Chat</h2>
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
                     </ion-list>
-                </ng-template>
-            </ion-popover>
-            <ion-list lines='none' class='side-classes'>
-                <ion-menu-toggle auto-hide='false'>
-                    <ion-item routerLink='./grades'>
-                        <ion-icon name='trending-up-outline'></ion-icon>
+                </div>
+                <div>
+                    <ion-item class='profile' lines='none' id='profile-trigger' detail='false'>
+                        <ion-img style='margin-right: 1rem' src='assets/account.png'></ion-img>
                         <ion-label>
-                            <h2>Grades</h2>
+                            <h2>Irena Olteanu</h2>
+                            <p>Teacher</p>
                         </ion-label>
                     </ion-item>
-                </ion-menu-toggle>
-                <ion-menu-toggle auto-hide='false'>
-                    <ion-item routerLink='./grades'>
-                        <ion-icon name='calendar-outline'></ion-icon>
-                        <ion-label>
-                            <h2>Attendance</h2>
-                        </ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
-                <ion-menu-toggle auto-hide='false'>
-                    <ion-item routerLink='./grades'>
-                        <ion-icon name='chatbubbles-outline'></ion-icon>
-                        <ion-label>
-                            <h2>Chat</h2>
-                        </ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
-            </ion-list>
+                    <ion-list style='margin: 1rem 0' class='side-classes'>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item class='side-link' lines='none' routerLink='./settings'>
+                                <ion-icon name='settings-outline'></ion-icon>
+                                <ion-label>
+                                    <h2>Settings</h2>
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                        <ion-item class='side-link' lines='none' id='theme-trigger' button='true'>
+                            <ion-icon name='color-palette-outline'></ion-icon>
+                            <ion-label>
+                                <h2>Theme</h2>
+                            </ion-label>
+                        </ion-item>
+                        <ion-menu-toggle auto-hide='false'>
+                            <ion-item class='side-link' lines='none' routerLink='/auth' (click)='logOut()'>
+                                <ion-icon name='log-out-outline'></ion-icon>
+                                <ion-label>
+                                    <h2>Logout</h2>
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                        <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right'
+                                     alignment='end'
+                                     arrow='false'>
+                            <ng-template>
+                                <ion-list class='popover-options'>
+                                    <ion-radio-group [value]='getTheme()'>
+                                        <ion-item class='dropdown-item' [button]='true' [detail]='false'
+                                                  (click)='setTheme("light")'>
+                                            <ion-icon name='sunny-outline'></ion-icon>
+                                            <ion-radio value='light'>
+                                                <ion-label>Light</ion-label>
+                                            </ion-radio>
+                                        </ion-item>
+                                        <ion-item class='dropdown-item' [button]='true' [detail]='false'
+                                                  (click)='setTheme("dark")'>
+                                            <ion-icon name='moon-outline'></ion-icon>
+                                            <ion-radio value='dark'>
+                                                <ion-label>Dark</ion-label>
+                                            </ion-radio>
+                                        </ion-item>
+                                        <ion-item class='dropdown-item' [button]='true' [detail]='false'
+                                                  (click)='setTheme("system")'
+                                                  lines='none'>
+                                            <ion-icon name='contrast-outline'></ion-icon>
+                                            <ion-radio value='system'>
+                                                <ion-label>System</ion-label>
+                                            </ion-radio>
+                                        </ion-item>
+                                    </ion-radio-group>
+                                </ion-list>
+                            </ng-template>
+                        </ion-popover>
+                    </ion-list>
+                </div>
+            </div>
         </ion-content>
-        <ion-footer>
-            <ion-item class='profile' lines='none' id='profile-trigger' detail='true'>
-                <ion-img src='assets/account.png'></ion-img>
-                <ion-label>
-                    <h2>Irena Olteanu</h2>
-                    <p>Teacher</p>
-                </ion-label>
-            </ion-item>
-            <ion-menu-toggle auto-hide='false'>
-                <ion-item lines='none' routerLink='./settings'>
-                    <ion-icon name='settings-outline'></ion-icon>
-                    <ion-label>
-                        <h2>Settings</h2>
-                    </ion-label>
-                </ion-item>
-            </ion-menu-toggle>
-            <ion-item lines='none' id='theme-trigger' button='true'>
-                <ion-icon name='chatbubbles-outline'></ion-icon>
-                <ion-label>
-                    <h2>Theme</h2>
-                </ion-label>
-            </ion-item>
-            <ion-menu-toggle auto-hide='false'>
-                <ion-item lines='none' routerLink='/auth' (click)='logOut()'>
-                    <ion-icon name='log-out-outline'></ion-icon>
-                    <ion-label>
-                        <h2>Logout</h2>
-                    </ion-label>
-                </ion-item>
-            </ion-menu-toggle>
-            <ion-popover trigger='theme-trigger' keep-contents-mounted='true' side='right'
-                         alignment='end'
-                         arrow='false'>
-                <ng-template>
-                    <ion-list class='popover-options'>
-                        <ion-radio-group [value]='getTheme()'>
-                            <ion-item class='dropdown-item' [button]='true' [detail]='false'
-                                      (click)='setTheme("light")'>
-                                <ion-icon name='sunny-outline'></ion-icon>
-                                <ion-radio value='light'>
-                                    <ion-label>Light</ion-label>
-                                </ion-radio>
-                            </ion-item>
-                            <ion-item class='dropdown-item' [button]='true' [detail]='false'
-                                      (click)='setTheme("dark")'>
-                                <ion-icon name='moon-outline'></ion-icon>
-                                <ion-radio value='dark'>
-                                    <ion-label>Dark</ion-label>
-                                </ion-radio>
-                            </ion-item>
-                            <ion-item class='dropdown-item' [button]='true' [detail]='false'
-                                      (click)='setTheme("system")'
-                                      lines='none'>
-                                <ion-icon name='contrast-outline'></ion-icon>
-                                <ion-radio value='system'>
-                                    <ion-label>System</ion-label>
-                                </ion-radio>
-                            </ion-item>
-                        </ion-radio-group>
-                    </ion-list>
-                </ng-template>
-            </ion-popover>
-        </ion-footer>
     </ion-menu>
+
     <ion-router-outlet [animated]='window.innerWidth < 992' id='main-content'></ion-router-outlet>
 </ion-split-pane>
 <div class='back'></div>

@@ -218,6 +218,10 @@ ion-menu::part(backdrop) {
   }
 }
 
+.selected {
+  --background: var(--ion-color-highlight-gradient);
+}
+
 ion-split-pane {
   --side-width: 19%;
   border: 1px solid rgba(white, 0.4);
@@ -226,7 +230,19 @@ ion-split-pane {
   margin: 1rem
 }
 
+.side-link {
+  margin: 0.6rem 0;
+  border-radius: 1.2rem;
+  color: var(--ion-color-text);
+  --color: var(--ion-color-text);
+
+  ion-icon {
+    margin-right: 1rem;
+  }
+}
+
 .side-classes {
+  margin-top: 2rem;
   --ion-background-color: transparent !important;
   padding: 0 10%;
   overflow: auto;
@@ -235,7 +251,6 @@ ion-split-pane {
 
 .side-class {
   background-color: rgba(var(--ion-color-back-secondary-rgb), 0.7);
-  margin: 0.6rem 0;
   border-radius: 1.25rem;
   border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
   //padding: 0.3rem 0;
@@ -303,9 +318,10 @@ ion-footer {
 }
 
 .profile {
-  margin: 1rem 1.2rem;
-  border: rgba(100, 100, 100, 0.25) solid 1px;
+  margin: 0 1.2rem !important;
   border-radius: 1.6rem;
+  border: none !important;
+  background: transparent !important;
 
   ion-img {
     width: 16%;
@@ -333,13 +349,14 @@ ion-footer {
 }
 
 .org {
+  --min-height: 2.5rem;
   margin: 1rem 1.2rem 0.5rem 1.2rem;
   border: rgba(100, 100, 100, 0.25) solid 1px;
   border-radius: 1.6rem;
 
   ion-label {
     p {
-      color: rgba(var(--ion-color-text-rgb), 0.7);
+      color: rgba(var(--ion-color-text-rgb), 0.9);
     }
   }
 
@@ -352,7 +369,6 @@ ion-footer {
 .profile, .org {
   background: rgba(var(--ion-color-back-secondary-rgb), 0.7);
   border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
-  cursor: pointer;
 
   h2, p {
     color: var(--ion-color-text);
@@ -396,6 +412,10 @@ ion-content {
   --offset-bottom: hidden !important;
   --overflow: hidden;
   overflow: auto;
+}
+
+ion-content::part(scroll) {
+  height: 100%;
 }
 
 ion-alert{
