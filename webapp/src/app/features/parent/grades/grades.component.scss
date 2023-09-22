@@ -1,0 +1,129 @@
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 3rem 1rem 2rem 3rem;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar-track {
+    margin-bottom: 1.4rem !important;
+  }
+}
+
+ion-content {
+  --background: transparent;
+}
+
+ion-card-title, ion-label, h2 {
+  color: var(--ion-color-text);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+ion-card {
+  width: 17.5rem;
+  height: 17.5rem;
+  display: flex;
+  flex-direction: column;
+  --background: rgba(var(--ion-color-back-tertiary-rgb), 0.7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+ion-list {
+  height: 100%;
+  background: transparent;
+
+  --offset-bottom: hidden !important;
+  --overflow: hidden;
+  overflow: auto;
+}
+
+ion-item {
+  --border-color: rgba(var(--ion-color-text-rgb), 0.5);
+  --background: transparent;
+}
+
+.md {
+  ion-item {
+    --border-color: rgba(var(--ion-color-text-rgb), 0.25);
+  }
+}
+
+.card-footer {
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin: 0.8rem 0;
+  }
+}
+
+.footer-border {
+  border-top: 0.5px solid rgba(var(--ion-color-text-rgb), 0.5);
+  margin: 0 1rem;
+}
+
+.grade {
+  font-size: 1.2rem;
+  padding: 0 1.25rem;
+  color: var(--ion-color-text);
+  height: 2.1rem;
+}
+
+.grade-date {
+  font-weight: 300;
+}
+
+.grade-grade {
+  font-size: 1.3rem;
+  width: 2rem;
+  text-align: right;
+}
+
+ion-accordion-group {
+  display: none;
+}
+
+@media(max-width: 992px) {
+  .cards-grid {
+    padding: 3rem 1rem 2rem 1rem;
+  }
+}
+
+@media(max-width: 480px) {
+  * {
+    background: transparent;
+    --background: transparent;
+  }
+  .cards-grid {
+    display: none;
+  }
+  ion-accordion-group {
+    background: rgba(var(--ion-color-back-secondary-rgb), 0.5);
+    display: block;
+    margin: 1.7rem 1rem 1rem 1rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+  }
+  p {
+    color: var(--ion-color-text);
+    font-size: 1rem;
+  }
+  .ion-accordion-toggle-icon {
+    color: var(--ion-color-text);
+  }
+  ion-content {
+    --background: transparent;
+  }
+  .grade-item:last-child {
+    --border-color: transparent;
+  }
+  ion-item {
+    --background-hover-opacity: 0;
+    --background-activated: transparent;
+  }
+}

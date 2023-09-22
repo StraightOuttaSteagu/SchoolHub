@@ -15,11 +15,15 @@ import { NgxsModule } from '@ngxs/store';
 import { AccountState } from './core/state-management/account/account.state';
 import { OrganizationState } from './core/state-management/organization/organization.state';
 import { ClassState } from './core/state-management/class/class.state';
+import { GradesCardComponent } from './shared/grades-card/grades-card.component';
+import { AbsencesCardComponent } from './shared/absences-card/absences-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GradesCardComponent,
+    AbsencesCardComponent
   ],
   imports: [
     IonicModule.forRoot(),

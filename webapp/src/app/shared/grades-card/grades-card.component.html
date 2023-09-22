@@ -1,0 +1,23 @@
+<ion-card>
+    <ion-card-header style='padding: 0.5rem 1rem 0 0'>
+        <ion-card-title title='{{item.title}}'>
+            <ion-item lines='inset'>
+                <ion-label ><h2>{{item.title}}</h2></ion-label>
+            </ion-item>
+        </ion-card-title>
+    </ion-card-header>
+    <ion-list>
+        <ion-item class='grade' lines='none' *ngFor='let grade of item?.grades'>
+            <ion-grid>
+                <ion-row>
+                    <ion-col><p class='grade-grade'>{{grade.grade}}</p></ion-col>
+                    <ion-col><p class='grade-date'>{{grade.date}}</p></ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+    <ion-row [class.footer-border]='item?.grades.length > 1'>
+        <ion-col class='card-footer'>
+            <h2>{{item?.grades.length > 1 ? calculateAverage(item?.grades).toFixed(2) : '' }}</h2></ion-col>
+    </ion-row>
+</ion-card>
