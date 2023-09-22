@@ -6,8 +6,8 @@ import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
   { path: 'body', loadChildren: () => import ('./features/tools/zygothe-body/zygote-body.module').then(m => m.ZygoteBodyModule), canActivate: mapToCanActivate([AuthGuard]) },
-  { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
-  { path: 'parent', loadChildren: () => import('./features/parent/parent.module').then(m => m.ParentModule) },
+  { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule), canActivate: mapToCanActivate([AuthGuard]) },
+  { path: 'parent', loadChildren: () => import('./features/parent/parent.module').then(m => m.ParentModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: 'whiteboard', loadChildren: () => import('./features/tools/whiteboard/whiteboard.module').then(m => m.WhiteboardModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: 'chemistry', loadChildren: () => import('./features/tools/chemistry/chemistry.module').then(m => m.ChemistryModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: '', loadChildren: () => import('./features/main/main.module').then(m => m.MainModule), canActivate: mapToCanActivate([AuthGuard]) },

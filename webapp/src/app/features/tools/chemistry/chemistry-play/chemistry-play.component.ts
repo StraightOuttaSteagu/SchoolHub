@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { elementModel, tableElements } from '../data';
 import { activeCompound } from './models';
 import { ChemistryCalculationsService } from './calculations.service';
-import { executeCommand } from './reactions';
+import { executeCommand, getMass } from './reactions';
 import { PopoverController } from '@ionic/angular';
+import { ChemistryPopoverComponent } from './chemistry-popover/chemistry-popover.component';
 
 @Component({
   selector: 'app-chemistry-play',
@@ -49,7 +50,7 @@ export class ChemistryPlayComponent {
 
   elementSize: number = 4.5;
 
-  constructor (private _calculations: ChemistryCalculationsService) { }
+  constructor (private _calculations: ChemistryCalculationsService, private _popoverController: PopoverController) { }
 
   ngOnInit(): void {
     this._pt = (document.getElementById('play') as unknown as SVGSVGElement).createSVGPoint();
@@ -69,7 +70,8 @@ export class ChemistryPlayComponent {
     this._actionDetails = {
       target: this.compounds.length,
       x: eventX,
-      y: eventY
+      y: eventY,
+      origin: [eventX, eventY]
     }
 
     this.compounds.push({
@@ -88,24 +90,32 @@ export class ChemistryPlayComponent {
       switch(this._action) {
         case 'move':
           this._calculations.updateMove(this.compounds[this._actionDetails.target], eventX, eventY, this._actionDetails);
-
       }
     }
   }
 
-  playMouseUp() {
+  playMouseUp(): void {
     if (this._action === 'move') {
+      this._action = null;
       for (let i = 0; i < this.compounds.length; i++) {
         if (this._actionDetails.target != i && this.overlapBoxes(i, this._actionDetails.target)) {
           const result = executeCommand(this.compounds[i].formula + ' + ' + this.compounds[this._actionDetails.target].formula) ?? [];
 
+          if (!result.length) return;
+
+          for (let j = 0; j < result.length; j++) {
+            this.compounds.push({
+              formula: result[j],
+              x: this.compounds[this._actionDetails.target].x,
+              y: this.compounds[this._actionDetails.target].y + (64 * j)
+            });
+          }
           this.compounds[this._actionDetails.target].formula = result[0];
+          this.compounds.splice(this._actionDetails.target, 1);
           this.compounds.splice(i, 1);
         }
       }
     }
-
-    this._action = null;
   }
 
   overlapBoxes(c1: number, c2: number): boolean {
@@ -133,7 +143,8 @@ export class ChemistryPlayComponent {
     this._actionDetails = {
       target: i,
       x: eventX,
-      y: eventY
+      y: eventY,
+      origin: [eventX, eventY]
     }
   }
 
@@ -148,5 +159,33 @@ export class ChemistryPlayComponent {
 
   toArray(formula: string): string[] {
     return formula.split('');
+  }
+
+  async displayPopover(e: any, i: number): Promise<void> {
+
+    this.updatePt(e);
+
+    let eventX = this._pt.x, eventY = this._pt.y;
+
+    if (this._actionDetails.origin && this.pyth(eventX, eventY, this._actionDetails.origin[0], this._actionDetails.origin[1]) > 10) return;
+    
+    const popover = await this._popoverController.create({
+      component: ChemistryPopoverComponent,
+      event: e,
+      componentProps: {
+        data: {
+          formula: this.compounds[i].formula,
+          mass: Math.round(getMass(this.compounds[i].formula) * 100) / 100,
+          elements: this.compounds[i].formula.replace(')', '').replace('(', '').replace(/\d+/g, '').split(/(?=[A-Z])/)
+        },
+        'show-backdrop': false
+      }
+    });
+
+    await popover.present();
+  }
+
+  pyth(x1: number, y1: number, x2: number, y2: number){
+    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
   }
 }

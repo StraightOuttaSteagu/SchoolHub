@@ -1,5 +1,21 @@
 import { parse } from "./parser";
-import { parsedCompoundModel } from "./data";
+import { parsedCompoundModel, tableElements } from "./data";
+
+function getMass(compound: string): number {
+    if (compound.match(/[A-Z]/g)?.length! === 1) {
+        return tableElements.find(el => el.symbol === compound)?.mass!;
+    }
+
+    let mass = 0;
+
+    const compounds: parsedCompoundModel = parse(compound);
+
+    for (let compound of compounds.parts) {
+        mass += getMass(compound.element) * compound.amount;
+    }
+
+    return mass;
+}
 
 function enclose(element: string, index: number): string {
     return index > 1 && element.match(/[A-Z]/g)?.length! > 1 ? `(${element})` : element;
@@ -144,3 +160,5 @@ export function executeCommand(reaction: string): string[] | null {
 
     return combine(elements);
 }
+
+console.log(getMass('H2SO4'))

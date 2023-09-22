@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { ChemistryPlayComponent } from './chemistry-play/chemistry-play.component';
-import { SubscriptPipe } from './chemistry-play/formula.pipe';
+import { ChemistryPopoverComponent } from './chemistry-play/chemistry-popover/chemistry-popover.component';
+import { ElementPopoverComponent } from './chemistry-play/element-popover/element-popover.component';
 
 @NgModule({
   declarations: [
     ChemistryPlayComponent,
-    SubscriptPipe
+    ChemistryPopoverComponent,
+    ElementPopoverComponent
   ],
   imports: [
     CommonModule,

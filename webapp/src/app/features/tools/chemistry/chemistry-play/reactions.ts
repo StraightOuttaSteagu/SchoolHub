@@ -1,5 +1,22 @@
 import { parse } from "./parser";
 import { parsedCompoundModel } from "./data";
+import { tableElements } from "../data";
+
+export function getMass(compound: string): number {
+    if (compound.match(/[A-Z]/g)?.length! === 1) {
+        return tableElements.find(el => el.symbol === compound)?.mass!;
+    }
+
+    let mass = 0;
+
+    const compounds: parsedCompoundModel = parse(compound);
+
+    for (let compound of compounds.parts) {
+        mass += getMass(compound.element) * compound.amount;
+    }
+
+    return mass;
+}
 
 function enclose(element: string, index: number): string {
     return index > 1 && element.match(/[A-Z]/g)?.length! > 1 ? `(${element})` : element;
@@ -62,7 +79,7 @@ function combineAcidWithOxide(elements: parsedCompoundModel[]): string[] {
         [elements[0], elements[1]] = [elements[1], elements[0]]
     }
 
-    const v1 = Math.abs(elements[0].parts[1].amount), v2 = elements[1].parts[0].amount * 2;
+    const v1 = Math.abs(elements[0].parts[1].amount) * 2, v2 = elements[1].parts[0].amount;
 
     const scm = smallestCommonMultiple(v1, v2);
 
@@ -144,3 +161,5 @@ export function executeCommand(reaction: string): string[] | null {
 
     return combine(elements);
 }
+
+console.log(getMass('H2SO4'))
