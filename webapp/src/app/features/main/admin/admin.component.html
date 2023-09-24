@@ -1,1 +1,56 @@
-<p>admin works!</p>
+<ion-header style='--background: transparent' mode='md'>
+    <ion-toolbar style='--background: transparent'>
+        <ion-title style='text-overflow: unset; white-space: unset'>
+            <div style='display: flex; align-items: center; white-space: break-spaces;'>
+                <ion-menu-toggle style='width: 2.2rem; min-width: 2.2rem; max-width: 2.2rem; margin-right: 0.5rem'>
+                    <ion-img src='assets/account.png'></ion-img>
+                </ion-menu-toggle>
+                <h2>Colegiul National de Informatica "Grigore Moisil"</h2>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content style='--background: transparent; margin-left: 3rem'>
+    <h2 style='margin-left: 3rem'>Organization title</h2>
+    <div style='display: flex; '>
+        <input placeholder='Organization title' value='Colegiul National de Informatica "Grigore Moisil"'>
+        <ion-button>Save title</ion-button>
+    </div>
+
+    <h2 style='margin-left: 3rem'>Teachers</h2>
+    <ion-list>
+            <ion-row style='width: 100%; --min-height: 2rem; --border-color: transparent; font-size: 0.9rem; color: rgba(var(--ion-color-text-rgb), 0.8)'>
+                <ion-col style='padding-left: 1.2rem' size='4'>Name</ion-col>
+                <ion-col>Username</ion-col>
+            </ion-row>
+        <ion-item *ngFor='let item of teacherList'>
+            <ion-row style='width: 100%'>
+                <ion-col style='display: flex; align-items: center' size='4'>{{item.name}}</ion-col>
+                <ion-col style='display: flex; align-items: center'>{{item.username}}</ion-col>
+                <ion-col style='display: flex; justify-content: flex-end' size='2'>
+                    <ion-button (click)='presentPopover($event)' style='--background: transparent; width: 3rem; margin: 0'>
+                        <ion-icon name='ellipsis-horizontal'></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+    <h2 style='margin-left: 3rem'>Students</h2>
+    <ion-list>
+        <ion-row style='width: 100%; --min-height: 2rem; --border-color: transparent; font-size: 0.9rem; color: rgba(var(--ion-color-text-rgb), 0.8)'>
+            <ion-col style='padding-left: 1.2rem' size='4'>Name</ion-col>
+            <ion-col>Username</ion-col>
+        </ion-row>
+        <ion-item *ngFor='let item of studentList'>
+            <ion-row style='width: 100%'>
+                <ion-col style='display: flex; align-items: center' size='4'>{{item.name}}</ion-col>
+                <ion-col style='display: flex; align-items: center'>{{item.username}}</ion-col>
+                <ion-col style='display: flex; justify-content: flex-end' size='2'>
+                    <ion-button (click)='presentPopover($event)' id='clicktrigger' style='--background: transparent; width: 3rem; margin: 0'>
+                        <ion-icon name='ellipsis-horizontal'></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+</ion-content>

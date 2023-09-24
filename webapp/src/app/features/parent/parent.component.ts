@@ -9,7 +9,7 @@ import { icons } from '../../shared/icons';
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.scss']
 })
-export class ParentComponent implements ViewDidEnter {
+export class ParentComponent {
   data = [
     {
       name: 'Otilia Marculescu'
@@ -34,7 +34,6 @@ export class ParentComponent implements ViewDidEnter {
       name: 'name'
     }
   ];
-  headerHeight: number = 0;
   protected readonly document = document;
   protected readonly icons = icons;
   protected readonly window = window;
@@ -56,10 +55,5 @@ export class ParentComponent implements ViewDidEnter {
 
   getHref(): string {
     return window.location.href;
-  }
-
-  ionViewDidEnter() {
-    let headerHeight = document.querySelector('ion-header')!.offsetHeight;
-    this.headerHeight = headerHeight;
   }
 }
