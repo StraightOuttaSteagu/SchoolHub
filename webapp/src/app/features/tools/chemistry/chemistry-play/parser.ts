@@ -199,8 +199,10 @@ export function parseCompound(element: string): parsedCompoundModel {
 
     const noNumberIon = ion.replace(/\d+/g, '');
 
+    console.log(noNumberIon)
+
     parsedCompound.baseElement = element;
-    parsedCompound.type = tableElements.find(el => el.group === noNumberIon)?.group === 'Other nonmetals' ? 'metal oxide' : 'nonmetal oxide';
+    parsedCompound.type = tableElements.find(el => el.group === noNumberIon)?.group !== 'Other nonmetals' ? 'metal oxide' : 'nonmetal oxide';
 
     console.log('ion', ion, parsedCompound.type)
 

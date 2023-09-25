@@ -17,11 +17,11 @@
 </div>
 <div [@tableAnimation]="tableOpen" class="table">
     <div class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
-        <div (click)="!element.inactive?addElement(element):null" [class.inactive]="element.inactive" class="element-content">
-            <label class="Z">{{ element.Z }}</label>
-            <label class="symbol">{{ element.symbol }}</label>
-            <label class="name">{{ element.name }}</label>
-            <label class="mass">{{ element.mass }}</label>
+        <div [ngStyle]="{ 'border-color': themes[element.group] }" (click)="!element.inactive?addElement(element):null" [class.inactive]="element.inactive" class="element-content">
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="Z">{{ element.Z }}</label>
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="symbol">{{ element.symbol }}</label>
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="name">{{ element.name }}</label>
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="mass">{{ element.mass }}</label>
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { parse } from "./parser";
-import { parsedCompoundModel } from "./data";
+import { parsedCompoundModel, parsedElementModel } from "./data";
 import { tableElements } from "../data";
 
 export function getMass(compound: string): number {
@@ -82,7 +82,7 @@ function combineAcidWithBase(elements: parsedCompoundModel[]): string[] {
 
 function combineAcidWithOxide(elements: parsedCompoundModel[]): string[] {
     if (elements[0].type === 'metal oxide') {
-        [elements[0], elements[1]] = [elements[1], elements[0]]
+        [elements[0], elements[1]] = [elements[1], elements[0]];
     }
 
     const v1 = Math.abs(elements[0].parts[1].amount) * 2, v2 = elements[1].parts[0].amount;
@@ -96,7 +96,7 @@ function combineAcidWithOxide(elements: parsedCompoundModel[]): string[] {
 
 function combineBaseWithOxide(elements: parsedCompoundModel[]): string[] {
     if (elements[0].type === 'nonmetal oxide') {
-        [elements[0], elements[1]] = [elements[1], elements[0]]
+        [elements[0], elements[1]] = [elements[1], elements[0]];
     }
 
     const v1 = Math.abs(elements[0].parts[1].amount), v2 = elements[1].parts[0].amount * 2;
@@ -110,6 +110,17 @@ function combineBaseWithOxide(elements: parsedCompoundModel[]): string[] {
 }
 
 function combineAcidWithSalt(elements: parsedCompoundModel[]): string[] {
+    if (elements[0].type === 'salt') {
+        [elements[0], elements[1]] = [elements[1], elements[0]];
+    }
+
+    const v1 = Math.abs(elements[0].parts[1].amount), v2 = elements[1].parts[0].amount;
+
+    
+    return [];
+}
+
+function combineOxideWithWater(elements: parsedCompoundModel[]): string[] {
     return [];
 }
 
@@ -151,7 +162,7 @@ function combine(elements: parsedCompoundModel[]): string[] | null { // null mea
 
     //if ((elements[0].type === 'metal oxide' && elements[1].baseElement === 'H2O') || (elements[1].type === 'metal oxide' && elements[0].baseElement === 'H2O')) return doubleDisplacement(elements); // returns base
 
-    //if ((elements[0].type === 'nonmetal oxide' && elements[1].baseElement === 'H2O') || (elements[1].type === 'nonmetal oxide' && elements[0].baseElement === 'H2O')) return doubleDisplacement(elements); // returns acid
+    if ((elements[0].type === 'nonmetal oxide' && elements[1].baseElement === 'H2O') || (elements[1].type === 'nonmetal oxide' && elements[0].baseElement === 'H2O')) return combineOxideWithWater(elements); // returns acid
 
     //if ((elements[0].type === 'acid' && elements[1].baseElement === 'metal') || (elements[1].type === 'acid' && elements[0].baseElement === 'metal')) return doubleDisplacement(elements); // returns hydrogen gas and a salt if the metal is reactive enough to get hydrogen out of acid
 

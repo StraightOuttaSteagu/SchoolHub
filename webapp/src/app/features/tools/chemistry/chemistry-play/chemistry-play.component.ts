@@ -50,6 +50,18 @@ export class ChemistryPlayComponent {
 
   elementSize: number = 4.5;
 
+  themes: any = {
+    'Alkali metals': '#ecbe59',
+    'Alkaline earth metals': '#dee955',
+    'Lanthanides': '#ec77a3',
+    'Actinides': '#c686cc',
+    'Transition metals': '#fd8572',
+    'Other metals': '#4cddf3',
+    'Other nonmetals': '#52ee61',
+    'Noble gases': '#759fff',
+    'Metalloids': '#3aefb6'
+  };
+
   constructor (private _calculations: ChemistryCalculationsService, private _popoverController: PopoverController) { }
 
   ngOnInit(): void {
@@ -103,14 +115,17 @@ export class ChemistryPlayComponent {
 
           if (!result.length) return;
 
+          console.log(result, 1)
+
           for (let j = 0; j < result.length; j++) {
+            console.log(result[j], j);
             this.compounds.push({
               formula: result[j],
               x: this.compounds[this._actionDetails.target].x,
               y: this.compounds[this._actionDetails.target].y + (64 * j)
             });
           }
-          this.compounds[this._actionDetails.target].formula = result[0];
+
           this.compounds.splice(this._actionDetails.target, 1);
           this.compounds.splice(i, 1);
         }
