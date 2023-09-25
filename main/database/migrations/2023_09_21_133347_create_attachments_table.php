@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post', function (Blueprint $table) {
+        Schema::create('attachments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->string("title");
-            $table->text("content");
-            $table->dateTime("deadline")->nullable();
-            $table->foreignIdFor(\App\Models\SchoolClass::class);
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->string("tag")->nullable();
+            $table->string("path");
+            $table->integer("size");
+            $table->foreignIdFor(\App\Models\Post::class);
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('attachments');
     }
 };
