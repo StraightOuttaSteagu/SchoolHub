@@ -11,6 +11,10 @@ export function getMass(compound: string): number {
 
     const compounds: parsedCompoundModel = parse(compound);
 
+    if (compounds.parts.length === 1 && (compounds.parts[0].element === 'OH' || compounds.parts[0].element === 'NH4')) {
+        return compounds.parts[0].element === 'OH' ? 17 : 18;
+    }
+
     for (let compound of compounds.parts) {
         mass += getMass(compound.element) * compound.amount;
     }
@@ -71,6 +75,8 @@ function combineAcidWithBase(elements: parsedCompoundModel[]): string[] {
 
     const index1 = scm / v2, index2 = scm / v1;
 
+    console.log(elements[1].parts[0].element, elements[0].parts[1].element)
+
     return [`${enclose(elements[1].parts[0].element, index1)}${index1 > 1 ? index1 : ''}${enclose(elements[0].parts[1].element, index2)}${index2 > 1 ? index2 : ''}`, 'H2O'];
 }
 
@@ -103,6 +109,10 @@ function combineBaseWithOxide(elements: parsedCompoundModel[]): string[] {
 
 }
 
+function combineAcidWithSalt(elements: parsedCompoundModel[]): string[] {
+    return [];
+}
+
 function matchCases(el1: parsedCompoundModel, el2: parsedCompoundModel, case1: string, case2: string): boolean {
     return (el1.type === case1 && el2.type === case2) || (el1.type === case2 && el2.type === case1);
 }
@@ -115,17 +125,19 @@ function combine(elements: parsedCompoundModel[]): string[] | null { // null mea
         return ['H2O', 'H2O2'];
     }
 
+    console.log(elements[0], elements[1])
+
     if (elements[0].parts.length === 1 && elements[1].parts.length === 1) return combineElements(elements);
 
     if (matchCases(elements[0], elements[1], 'acid', 'base')) return combineAcidWithBase(elements); // normal neutralisation reaction
 
-    //if (matchCases(elements[0], elements[1], 'acid', 'salt')) return doubleDisplacement(elements); // always double displacement both ways (we see later)
+    if (matchCases(elements[0], elements[1], 'acid', 'salt')) return combineAcidWithSalt(elements); // always double displacement both ways (we see later)
 
     if (matchCases(elements[0], elements[1], 'acid', 'metal oxide')) return combineAcidWithOxide(elements); // if cationic oxide, returns salt and water. Otherwise is more complicated
 
     //if (matchCases(elements[0], elements[1], 'base', 'salt')) return doubleDisplacement(elements); // double displacement
 
-    // if (matchCases(elements[0], elements[1], 'base', 'nonmetal oxide')) return combineBaseWithOxide(elements); // if metalic oxide, can't combine a cation with another cation so reaction can't happen. Otherwise, salt + water
+    if (matchCases(elements[0], elements[1], 'base', 'nonmetal oxide')) return combineBaseWithOxide(elements); // if metalic oxide, can't combine a cation with another cation so reaction can't happen. Otherwise, salt + water
 
     // if (matchCases(elements[0], elements[1], 'metal oxide', 'salt')) return doubleDisplacement(elements); // if metalic oxide, double displacement. Otherwise can't work
 

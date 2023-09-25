@@ -44,7 +44,7 @@ export class ChemistryPlayComponent {
 
   tableOpen: boolean = false;
 
-  spawn: string[] = [];
+  spawn: string[] = ['KOH'];
 
   tableElements: elementModel[] = tableElements;
 

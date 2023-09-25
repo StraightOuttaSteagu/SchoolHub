@@ -197,12 +197,12 @@ export function parseCompound(element: string): parsedCompoundModel {
 
     const ion = element.replace(/\d+$/, '').slice(0, -1);
 
-    if (element[0] != '(' && ion.match(/[A-Z]/g)!.length > 1) {
-        element = element.replace(ion, `(${ion})`);
-    }
+    const noNumberIon = ion.replace(/\d+/g, '');
 
     parsedCompound.baseElement = element;
-    parsedCompound.type = (ion === 'NH4' || (ion.replace(/\d+/g, '').match(/[A-Z]/g)?.length === 1 && tableElements.find(el => el.group != 'Other nonmetals'))) ? 'metal oxide' : 'nonmetal oxide';
+    parsedCompound.type = tableElements.find(el => el.group === noNumberIon)?.group === 'Other nonmetals' ? 'metal oxide' : 'nonmetal oxide';
+
+    console.log('ion', ion, parsedCompound.type)
 
     return parsedCompound;
 }
