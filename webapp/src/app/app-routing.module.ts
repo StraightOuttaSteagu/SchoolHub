@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
 import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
+  { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)},
   { path: 'body', loadChildren: () => import ('./features/tools/zygothe-body/zygote-body.module').then(m => m.ZygoteBodyModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: 'parent', loadChildren: () => import('./features/parent/parent.module').then(m => m.ParentModule), canActivate: mapToCanActivate([AuthGuard]) },
