@@ -34,6 +34,10 @@ import { ChemistryPopoverComponent } from './chemistry-popover/chemistry-popover
 })
 export class ChemistryPlayComponent {
 
+  PI: number = Math.PI;
+
+  velocity: number = 100;
+
   private _pt!: SVGPoint;
 
   private _action: 'move' | null = null;
@@ -44,9 +48,13 @@ export class ChemistryPlayComponent {
 
   tableOpen: boolean = false;
 
-  spawn: string[] = ['KOH'];
+  spawn: string[] = [];
 
   tableElements: elementModel[] = tableElements;
+
+  shells: number[] = [5, 3, 1];
+
+  activeElement: elementModel = tableElements.find(el => el.symbol === 'H')!;
 
   elementSize: number = 4.5;
 
@@ -202,5 +210,29 @@ export class ChemistryPlayComponent {
 
   pyth(x1: number, y1: number, x2: number, y2: number){
     return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+  }
+
+  getRange(length: number): number[] {
+    return Array.from({ length }, (_, i) => i);
+  }
+
+  selectActiveElement(element: elementModel) {
+    this.activeElement = element;
+    this.shells = [];
+
+    const shellValues = [2, 8, 8, 18, 18, 32, 32];
+
+    for (let remaining = this.activeElement.Z, i = 0; remaining; i++) {
+      if (shellValues[i] <= remaining) {
+        this.shells.push(shellValues[i]);
+        remaining -= shellValues[i];
+      } else {
+        if (remaining) {
+          this.shells.push(remaining);
+          break;
+        }
+      }
+    }
+    this.shells.reverse();
   }
 }

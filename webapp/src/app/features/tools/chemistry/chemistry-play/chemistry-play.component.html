@@ -16,12 +16,32 @@
     </ion-row>
 </div>
 <div [@tableAnimation]="tableOpen" class="table">
-    <div class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
+    <div (mouseenter)="selectActiveElement(element)" class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
         <div [ngStyle]="{ 'border-color': themes[element.group] }" (click)="!element.inactive?addElement(element):null" [class.inactive]="element.inactive" class="element-content">
             <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="Z">{{ element.Z }}</label>
             <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="symbol">{{ element.symbol }}</label>
             <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="name">{{ element.name }}</label>
             <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="mass">{{ element.mass }}</label>
+        </div>
+    </div>
+    <div class="last-active-element">
+        <div [ngStyle]="{ 'border-color': 'transparent' }" class="last-active-element-content">
+            <svg class="electrons" viewBox="0 0 500 500">
+                <g *ngFor="let shell of shells; let i = index">
+                    <circle cx="250" cy="250" [attr.r]="220 - 25 * i" stroke-width="4" fill="none" stroke="#404040"></circle>
+                    <g *ngFor="let j of getRange(shell); let k = index">
+                        <circle [attr.cx]="470 - 25 * i" cy="250" r="7" fill="#404040">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" [attr.from]="360 / getRange(shell).length * j + ' 250 250'" [attr.to]="360 / getRange(shell).length * j + 360 + ' 250 250'" repeatCount="indefinite" [attr.dur]="(2 * PI * (220 - 25 * i)) / velocity + 's'" />
+                        </circle>
+                    </g>
+                </g>
+            </svg>
+            <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="Z-active">{{ activeElement.Z }}</label>
+            <div style="display: flex; flex-direction: column;">
+                <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="symbol-active">{{ activeElement.symbol }}</label>
+                <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="name-active">{{ activeElement.name }}</label>
+            </div>
+            <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="mass-active">{{ activeElement.mass }}</label>
         </div>
     </div>
 </div>
