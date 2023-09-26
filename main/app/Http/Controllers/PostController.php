@@ -3,47 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\SchoolClass;
+use App\Models\SchoolClassUser;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(SchoolClass $class)
     {
-        //
+        return Post::where("school_class_id", "=", $class->id)->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, SchoolClass $class)
     {
-        //
+        return Post::create([
+            ...$request->validate([
+                "title" => "required|min:1|max:255",
+                "content" => "required|max:1000",
+                "deadline" => "bail|nullable|date|after:now"
+            ]),
+            "school_class_id" => $class->id,
+            "user_id" => auth()->user()->id
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Post $post)
+    public function show(SchoolClass $class, Post $post)
     {
-        //
+        return $post;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, SchoolClass $class, Post $post)
     {
-        //
+        $post->update([
+            "title" => "required|min:1|max:255",
+            "content" => "required|max:1000",
+            "deadline" => "bail|nullable|date|after:now"
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Post $post)
+    public function destroy(SchoolClass $class, Post $post)
     {
-        //
+        $post->delete();
     }
 }

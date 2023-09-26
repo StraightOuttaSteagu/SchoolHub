@@ -59,4 +59,10 @@ Route::middleware("auth:sanctum")->group(function () {
         "/organizations/{organization}/classes/{class}/user/{user}",
         [SchoolClassController::class, "removeUser"]
     )->name("organizations.classes.removeUser");
+
+    // posts
+    Route::apiResource(
+        "classes.posts",
+        \App\Http\Controllers\PostController::class
+    )->scoped();
 });
