@@ -1,301 +1,322 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ElementTypeEnum, FormatType, NgWhiteboardService, ToolsEnum } from 'ng-whiteboard';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-whiteboard-draw',
   templateUrl: './whiteboard-draw.component.html',
-  styleUrls: ['./whiteboard-draw.component.scss'],
-  providers: [NgWhiteboardService],
-  encapsulation: ViewEncapsulation.ShadowDom,
+  styleUrls: ['./whiteboard-draw.component.scss']
 })
-export class WhiteboardDrawComponent implements AfterViewInit {
-  toolsEnum = ToolsEnum;
-  elementTypeEnum = ElementTypeEnum;
-  selectedTool: ToolsEnum = ToolsEnum.BRUSH;
-  selectedElement!: any;
-  defaultOptions: any = {
-    strokeColor: '#000000',
-    strokeWidth: 5,
-    fill: '#ffffff',
-    backgroundColor: '#ffffff',
-    canvasHeight: 600,
-    canvasWidth: 800,
-  };
-  options: any[] = [this.defaultOptions];
-  formatTypes = FormatType;
-  outerWidth = 1200;
-  outerHeight = 750;
-  zoom = 1;
-  x = 0;
-  y = 0;
-  data: any[] = [[]];
-  currentBoard = 0;
-  boardsNum = 0;
-  protected readonly console = console;
-  protected readonly isSecureContext = isSecureContext;
-  @ViewChild('workarea', {static: false}) private workarea!: ElementRef<HTMLElement>;
+export class WhiteboardDrawComponent {
 
-  constructor(private _whiteboardService: NgWhiteboardService) {
+  paths: any[] = [];
+
+  private _bufferSize: number = 12; // Smoothness
+
+  private _pt!: SVGPoint;
+
+  private _buffer: any[] = [];
+
+  private _strPath: string = "";
+
+  private _drawing: boolean = false;
+
+  private _dragging: boolean = false;
+
+  lines: { x1: number, y1: number, x2: number, y2: number }[] = [];
+
+  line: { x1: number, y1: number, x2: number, y2: number } = { x1: -100, y1: -100, x2: -100, y2: -100 };
+
+  private _initRect: { x: number, y: number } = { x: 0, y: 0 };
+
+  private _initEll: { x: number, y: number } = { x: 0, y: 0 };
+
+  private _initDrag: { x: number, y: number } = { x: 0, y: 0 };
+
+  rect: { x: number, y: number, width: number, height: number } = { x: -100, y: -100, width: 0, height: 0 };
+
+  rects: { x: number, y: number, width: number, height: number }[] = [];
+
+  ell: { x: number, y: number, width: number, height: number } = { x: -100, y: -100, width: 0, height: 0 };
+
+  ells: { x: number, y: number, width: number, height: number }[] = [];
+
+  drawingMode: string = 'pen';
+
+  viewOffset: { x: number, y: number } = { x: 0, y: 0 };
+
+  previousOffset: { x: number, y: number } = { x: 0, y: 0 };
+
+  zoom: number = 1;
+  
+  ngOnInit(): void {
+    this._pt = (document.getElementById('canvas') as unknown as SVGSVGElement).createSVGPoint();
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.calculateSize();
-    }, 0);
+  @HostListener('contextmenu', ['$event'])
+  onRightClick(event: any) {
+    event.preventDefault();
   }
 
-  calculateSize() {
-    const workarea = this.workarea.nativeElement;
-    const dim = {
-      w: this.options[this.currentBoard].canvasWidth,
-      h: this.options[this.currentBoard].canvasHeight,
-    };
-    let w = workarea.clientWidth;
-    let h = workarea.clientHeight;
-    const w_orig = w,
-      h_orig = h;
-    const zoom = this.zoom;
-
-    const multi = 2;
-    w = Math.max(w_orig, dim.w * zoom * multi);
-    h = Math.max(h_orig, dim.h * zoom * multi);
-    const scroll_x = w / 2 - w_orig / 2;
-    const scroll_y = h / 2 - h_orig / 2;
-
-    this.outerWidth = w;
-    this.outerHeight = h;
-    this.updateSize(dim.w, dim.h);
-
-    setTimeout(() => {
-      workarea.scrollLeft = scroll_x;
-      workarea.scrollTop = scroll_y;
-    }, 0);
-  }
-
-  updateSize(w: number, h: number) {
-    this.options[this.currentBoard].canvasWidth = w;
-    this.options[this.currentBoard].canvasHeight = h;
-    const current_zoom = this.zoom;
-    const contentW = this.outerWidth;
-    const contentH = this.outerHeight;
-    const x = contentW / 2 - (w * current_zoom) / 2;
-    const y = contentH / 2 - (h * current_zoom) / 2;
-    setTimeout(() => {
-      this.x = x;
-      this.y = y;
-    }, 0);
-  }
-
-  zoomWheel(e: Event) {
-    const ev = e as WheelEvent;
-
-    if (ev.altKey || ev.ctrlKey) {
-      e.preventDefault();
-      const zoom = this.zoom * 100;
-      this.setZoom(Math.trunc(zoom - (ev.deltaY * 10)));
+  zooming(event: any) {
+    if (this.zoom + .2 * event.deltaY / 100 > 0 && this.zoom + .2 * event.deltaY / 100 < 10) {
+      this.zoom += .2 * event.deltaY / 100;
     }
   }
 
-  setZoom(new_zoom: string | number) {
-    const old_zoom = this.zoom;
-    let zoomlevel = +new_zoom / 100;
-    if (zoomlevel < 0.001) {
-      zoomlevel = 0.1;
-    }
-    const dim = {
-      w: this.options[this.currentBoard].canvasWidth,
-      h: this.options[this.currentBoard].canvasHeight,
-    };
-    let animatedZoom = null;
-    if (animatedZoom != null) {
-      window.cancelAnimationFrame(animatedZoom);
-    }
-    // zoom duration 500ms
-    const start = Date.now();
-    const duration = 500;
-    const diff = zoomlevel - old_zoom;
-    const animateZoom = () => {
-      const progress = Date.now() - start;
-      let tick = progress / duration;
-      tick = Math.pow(tick - 1, 3) + 1;
-      this.zoom = old_zoom + diff * tick;
-      this.updateSize(dim.w, dim.h);
-
-      if (tick < 1 && tick > -0.9) {
-        animatedZoom = requestAnimationFrame(animateZoom);
-      } else {
-        this.zoom = zoomlevel;
-        this.updateSize(dim.w, dim.h);
+  canvasMouseDown(e: any): void {
+    if (e.button === 0) {
+      switch(this.drawingMode) {
+        case 'pen':
+          this.drawPen(e);
+          break;
+  
+        case 'line':
+          this.drawLine(e);
+          break;
+  
+        case 'rect':
+          this.drawRect(e);
+          break;
+  
+        case 'ell':
+          this.drawEll(e);
+          break;
       }
-    };
-    animateZoom();
-  }
+      this._drawing = true;
+    } else if (e.button === 1) {
+      this.updatePt(e);
 
-  setSizeResolution(value: string) {
-    let w = this.options[this.currentBoard].canvasWidth;
-    let h = this.options[this.currentBoard].canvasHeight;
-    console.log(value);
-    const dims: number[] = [];
-    dims[0] = parseInt(value.split('x')[0]);
-    dims[1] = parseInt(value.split('x')[1]);
-    if (value == 'Custom') {
-      return;
-    } else if (value == 'content') {
-      dims[0] = 100;
-      dims[1] = 100;
-    }
-    const diff_w = dims[0] - w;
-    const diff_h = dims[1] - h;
+      let eventX = this._pt.x, eventY = this._pt.y;
 
-    let animatedSize = null;
-    if (animatedSize != null) {
-      window.cancelAnimationFrame(animatedSize);
-    }
-    const start = Date.now();
-    const duration = 500;
+      this._dragging = true;
 
-    const animateCanvasSize = () => {
-      const progress = Date.now() - start;
-      let tick = progress / duration;
-      tick = Math.pow(tick - 1, 3) + 1;
-      w = parseInt((dims[0] - diff_w + tick * diff_w).toFixed(0));
-      h = parseInt((dims[1] - diff_h + tick * diff_h).toFixed(0));
-      this.updateSize(w, h);
-      if (tick < 1 && tick > -0.9) {
-        animatedSize = requestAnimationFrame(animateCanvasSize);
-      } else {
-        this.updateSize(w, h);
-      }
-    };
-    animateCanvasSize();
-  }
+      this.previousOffset = {
+        x: this.viewOffset.x,
+        y: this.viewOffset.y
+      };
 
-  onDragDown(input: HTMLInputElement, selectedElement: { [x: string]: number }, prop: string | number) {
-    const min = input.min ? parseInt(input.min, 10) : null;
-    const max = input.max ? parseInt(input.max, 10) : null;
-    const step = parseInt(input.step, 10);
-    let area = 200;
-    if (min && max) {
-      area = max - min > 0 ? (max - min) / step : 200;
-    }
-    const scale = (area / 70) * step;
-    let lastY = 0;
-    let value = parseInt(input.value, 10);
-
-    const onMouseMove = (e: MouseEvent) => {
-      if (lastY === 0) {
-        lastY = e.pageY;
-      }
-      const deltaY = (e.pageY - lastY) * -1;
-      lastY = e.pageY;
-      let val = deltaY * scale * 1;
-      const fixed = step < 1 ? 1 : 0;
-      val.toFixed(fixed);
-      val = Math.floor(Number(value) + Number(val));
-
-      if (max !== null) val = Math.min(val, max);
-      if (min !== null) val = Math.max(val, min);
-      value = val;
-
-      selectedElement[prop] = value;
-      input.value = value.toString();
-    };
-    const onMouseUp = () => {
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
-    };
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-  }
-
-  setNumberValue(obj: { [x: string]: number }, prop: string, value: number): void {
-    if (!isNaN(value)) {
-      obj[prop] = value;
-    }
-  }
-
-  toggleFontWeight() {
-    if (this.selectedElement.options.fontWeight === 'normal') {
-      this.selectedElement.options.fontWeight = 'bold';
+      this._initDrag = {
+        x: e.clientX * this.zoom,
+        y: e.clientY * this.zoom
+      };
     } else {
-      this.selectedElement.options.fontWeight = 'normal';
+      this.zoom += .2;
     }
   }
 
-  toggleFontStyle() {
-    if (this.selectedElement.options.fontStyle === 'normal') {
-      this.selectedElement.options.fontStyle = 'italic';
-    } else {
-      this.selectedElement.options.fontStyle = 'normal';
+  drawLine(e: any): void {
+    this.updatePt(e);
+
+    let eventX = this._pt.x, eventY = this._pt.y;
+
+    this.line = {
+      x1: eventX,
+      y1: eventY,
+      x2: eventX,
+      y2: eventY
+    };
+  }
+
+  drawPen(e: any): void {
+    this.updatePt(e);
+
+    let eventX = this._pt.x, eventY = this._pt.y;
+
+    this._buffer = [];
+
+    this.appendToBuffer({
+      x: eventX,
+      y: eventY
+    });
+
+    this._strPath = "M" + eventX + " " + eventY;
+
+    this.paths.push(this._strPath);
+  }
+
+  drawRect(e: any): void {
+    this.updatePt(e);
+
+    let eventX = this._pt.x, eventY = this._pt.y;
+
+    this.rect = {
+      x: eventX,
+      y: eventY,
+      width: eventX,
+      height: eventY
+    };
+
+    this._initRect = { x: eventX, y: eventY };
+  }
+
+  drawEll(e: any): void {
+    this.updatePt(e);
+
+    let eventX = this._pt.x, eventY = this._pt.y;
+
+    this.ell = {
+      x: eventX,
+      y: eventY,
+      width: eventX,
+      height: eventY
+    };
+
+    this._initEll = { x: eventX, y: eventY };
+  }
+
+  canvasMouseUp(e: any): void {
+    this._drawing = false;
+    this._dragging = false;
+
+    switch (this.drawingMode) {
+      case 'pen':
+        break;
+
+      case 'line':
+        this.lines.push({
+          x1: this.line.x1,
+          y1: this.line.y1,
+          x2: this.line.x2,
+          y2: this.line.y2
+        });
+
+        this.line = { x1: -100, y1: -100, x2: -100, y2: -100 };
+
+        break;
+
+      case 'rect':
+        this.rects.push({
+          x: this.rect.x,
+          y: this.rect.y,
+          width: this.rect.width,
+          height: this.rect.height
+        });
+
+        this.rect = { x: -100, y: -100, width: 0, height: 0 };
+        this._initRect = { x: -100, y: -100 }
+
+        break;
+
+      case 'ell':
+        this.ells.push({
+          x: this.ell.x,
+          y: this.ell.y,
+          width: this.ell.width,
+          height: this.ell.height
+        });
+
+        this.ell = { x: -100, y: -100, width: 0, height: 0 };
+        this._initEll = { x: -100, y: -100 }
+
+        break;
     }
   }
 
-  newDocument() {
-    this._whiteboardService.erase();
-  }
+  canvasMouseMove(e: any): void {
+    if (this._dragging) {
+      this.updatePt(e);
 
-  saveAs(format: FormatType) {
-    this._whiteboardService.save(format);
-  }
+      let eventX = this._pt.x, eventY = this._pt.y;
+      console.log(eventX)
 
-  addImage(fileInput: EventTarget | null) {
-    if (fileInput) {
-      const files = (fileInput as HTMLInputElement).files;
-      if (files) {
-        const reader = new FileReader();
-        reader.onload = (e: ProgressEvent) => {
-          const image = (e.target as FileReader).result;
-          this._whiteboardService.addImage(image as string);
-        };
-        reader.readAsDataURL(files[0]);
-      }
-    }
-  }
+      this.viewOffset.x -= e.clientX * this.zoom - this._initDrag.x;
+      this.viewOffset.y -= e.clientY * this.zoom - this._initDrag.y;
 
-  undo() {
-    this._whiteboardService.undo();
-  }
-
-  redo() {
-    this._whiteboardService.redo();
-  }
-
-  colorChange(propName: 'fill' | 'strokeColor', color: string) {
-    if (this.selectedElement) {
-      this.selectedElement.options[propName] = color;
-    } else {
-      this.options[this.currentBoard][propName] = color;
-      this.updateOptions();
-    }
-  }
-
-  swapColors() {
-    [this.options[this.currentBoard].fill, this.options[this.currentBoard].strokeColor] = [this.options[this.currentBoard].strokeColor, this.options[this.currentBoard].fill];
-    this.updateOptions();
-  }
-
-  updateOptions() {
-    this.options[this.currentBoard] = Object.assign({}, this.options[this.currentBoard]);
-  }
-
-  goToNextBoard() {
-    if (this.currentBoard === this.boardsNum) {
+      this._initDrag.x = e.clientX * this.zoom, this._initDrag.y = e.clientY * this.zoom;
+      
       return;
     }
-    this.currentBoard++;
-  }
-  goToPrevBoard() {
-    if (this.currentBoard === 0) {
-      return;
+
+    if (this._drawing) {
+      this.updatePt(e);
+
+      let eventX = this._pt.x, eventY = this._pt.y;
+
+      switch (this.drawingMode) {
+        case 'pen':
+          this.appendToBuffer({
+            x: eventX,
+            y: eventY
+          });
+
+          this.updatePath();
+
+          break;
+
+        case 'line':
+          this.line.x2 = eventX, this.line.y2 = eventY;
+
+          break;
+
+        case 'rect':
+          this.rect = {
+            x: Math.min(this._initRect.x, eventX),
+            y: Math.min(this._initRect.y, eventY),
+            width: Math.abs(this._initRect.x - eventX),
+            height: Math.abs(this._initRect.y - eventY)
+          }
+
+          break;
+
+        case 'ell':
+          this.ell = {
+            x: Math.min(this._initEll.x, eventX),
+            y: Math.min(this._initEll.y, eventY),
+            width: Math.abs(this._initEll.x - eventX),
+            height: Math.abs(this._initEll.y - eventY)
+          }
+
+          break;
+      }
     }
-    this.currentBoard--;
   }
 
-  createBoard() {
-    this.options.push(this.defaultOptions);
-    this.data.push([]);
-
-    this.boardsNum++;
-    this.currentBoard = this.boardsNum;
+  appendToBuffer(pt: { x: number, y: number }): void {
+    this._buffer.push(pt);
+    while (this._buffer.length > this._bufferSize) {
+        this._buffer.shift();
+    }
   }
+
+  updatePath(): void {
+    let pt = this.getAveragePoint(0);
+
+    if (pt) {
+      this._strPath += " L" + pt.x + " " + pt.y;
+
+      var tmpPath = "";
+      for (var offset = 2; offset < this._buffer.length; offset += 2) {
+        pt = this.getAveragePoint(offset)!;
+        tmpPath += " L" + pt.x + " " + pt.y;
+      }
+
+      this.paths[this.paths.length - 1] = this._strPath + tmpPath;
+    }
+  }
+
+  getAveragePoint(offset: number): { x: number, y: number } | null {
+    var len = this._buffer.length;
+    if (len % 2 === 1 || len >= this._bufferSize) {
+      var totalX = 0;
+      var totalY = 0;
+      var pt, i;
+      var count = 0;
+      for (i = offset; i < len; i++) {
+        count++;
+        pt = this._buffer[i];
+        totalX += pt.x;
+        totalY += pt.y;
+      }
+      return {
+        x: totalX / count,
+        y: totalY / count
+      }
+    }
+
+    return null;
+  }
+
+  updatePt(e: any): any {
+    this._pt.x = e.clientX; this._pt.y = e.clientY;
+    this._pt = this._pt.matrixTransform((document.getElementById('canvas') as any).getScreenCTM().inverse());  
+	}
 }
