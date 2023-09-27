@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'parent', loadChildren: () => import('./features/parent/parent.module').then(m => m.ParentModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: 'whiteboard', loadChildren: () => import('./features/tools/whiteboard/whiteboard.module').then(m => m.WhiteboardModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: 'chemistry', loadChildren: () => import('./features/tools/chemistry/chemistry.module').then(m => m.ChemistryModule), canActivate: mapToCanActivate([AuthGuard]) },
+  { path: 'whiteboard-draw', loadChildren: () => import('./features/tools/whiteboard-draw/whiteboard-draw.module').then(m => m.WhiteboardDrawModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: '', loadChildren: () => import('./features/main/main.module').then(m => m.MainModule), canActivate: mapToCanActivate([AuthGuard]) },
   { path: '**', component: PageNotFoundComponent}
 ];

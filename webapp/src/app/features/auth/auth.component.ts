@@ -20,7 +20,8 @@ export class AuthComponent implements OnInit {
     username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    repeatPassword: ['']
+    repeatPassword: [''],
+    parent: ['false']
   });
 
   private _authMode!: 'login' | 'signup';
