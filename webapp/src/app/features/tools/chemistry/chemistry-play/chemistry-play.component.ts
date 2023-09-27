@@ -1,9 +1,9 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
-import { elementModel, tableElements } from '../data';
-import { activeCompound } from './models';
+import { divalentElements, tableElements } from './data';
+import { activeCompound, elementModel } from './models';
 import { ChemistryCalculationsService } from './calculations.service';
-import { executeCommand, getMass } from './reactions';
+import { Reaction } from './reactions';
 import { PopoverController } from '@ionic/angular';
 import { ChemistryPopoverComponent } from './chemistry-popover/chemistry-popover.component';
 
@@ -36,7 +36,7 @@ export class ChemistryPlayComponent {
 
   PI: number = Math.PI;
 
-  velocity: number = 100;
+  velocity: number = 200;
 
   private _pt!: SVGPoint;
 
@@ -44,15 +44,17 @@ export class ChemistryPlayComponent {
 
   private _actionDetails: any = null;
 
+  private _reaction: Reaction = new Reaction();
+
   compounds: activeCompound[] = [];
 
   tableOpen: boolean = false;
 
-  spawn: string[] = [];
+  spawn: string[] = ['KOH'];
 
   tableElements: elementModel[] = tableElements;
 
-  shells: number[] = [5, 3, 1];
+  shells: number[] = [1];
 
   activeElement: elementModel = tableElements.find(el => el.symbol === 'H')!;
 
@@ -64,7 +66,7 @@ export class ChemistryPlayComponent {
     'Lanthanides': '#ec77a3',
     'Actinides': '#c686cc',
     'Transition metals': '#fd8572',
-    'Other metals': '#4cddf3',
+    'Post-transition metals': '#4cddf3',
     'Other nonmetals': '#52ee61',
     'Noble gases': '#759fff',
     'Metalloids': '#3aefb6'
@@ -77,7 +79,7 @@ export class ChemistryPlayComponent {
   }
 
   addElement(element: elementModel): void {
-    this.spawn.push(element.symbol);
+    this.spawn.push(divalentElements.includes(element.symbol) ? element.symbol + '2' : element.symbol);
   }
 
   spawnElementMouseDown(index: number, e: any): void {
@@ -119,23 +121,33 @@ export class ChemistryPlayComponent {
       this._action = null;
       for (let i = 0; i < this.compounds.length; i++) {
         if (this._actionDetails.target != i && this.overlapBoxes(i, this._actionDetails.target)) {
-          const result = executeCommand(this.compounds[i].formula + ' + ' + this.compounds[this._actionDetails.target].formula) ?? [];
+          const result = this._reaction.executeCommand(this.compounds[i].formula + ' + ' + this.compounds[this._actionDetails.target].formula)[0] ?? [];
 
           if (!result.length) return;
 
           console.log(result, 1)
 
+          const previousOrigin = [this.compounds[this._actionDetails.target].x, this.compounds[this._actionDetails.target].y];
+
+          if (i > this._actionDetails.target) {
+            this.compounds.splice(this._actionDetails.target, 1);
+            this.compounds.splice(i - 1, 1);
+          } else {
+            this.compounds.splice(this._actionDetails.target, 1);
+            this.compounds.splice(i, 1);
+          }
+          
+
           for (let j = 0; j < result.length; j++) {
             console.log(result[j], j);
             this.compounds.push({
               formula: result[j],
-              x: this.compounds[this._actionDetails.target].x,
-              y: this.compounds[this._actionDetails.target].y + (64 * j)
+              x: previousOrigin[0],
+              y: previousOrigin[1] + (64 * j)
             });
           }
 
-          this.compounds.splice(this._actionDetails.target, 1);
-          this.compounds.splice(i, 1);
+          return;
         }
       }
     }
@@ -198,7 +210,7 @@ export class ChemistryPlayComponent {
       componentProps: {
         data: {
           formula: this.compounds[i].formula,
-          mass: Math.round(getMass(this.compounds[i].formula) * 100) / 100,
+          mass: Math.round(this._reaction.getMass(this.compounds[i].formula) * 100) / 100,
           elements: this.compounds[i].formula.replace(')', '').replace('(', '').replace(/\d+/g, '').split(/(?=[A-Z])/)
         },
         'show-backdrop': false
