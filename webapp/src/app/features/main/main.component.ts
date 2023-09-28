@@ -10,7 +10,6 @@ import { OrganizationService } from 'src/app/core/state-management/organization/
 import { OrganizationState } from 'src/app/core/state-management/organization/organization.state';
 import { OrganizationModel } from 'src/app/core/state-management/models';
 import { icons } from 'src/app/shared/icons';
-import { ClassState } from 'src/app/core/state-management/class/class.state';
 import { ClassService } from 'src/app/core/state-management/class/class.service';
 
 @Component({
@@ -25,8 +24,6 @@ export class MainComponent {
   @Select(OrganizationState.selectOrganizations) organizations$!: Observable<any>;
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
-
-  @Select(ClassState.selectClasses) classes$!: Observable<any>;
 
   icons: any = icons;
 
