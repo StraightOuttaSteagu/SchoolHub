@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { DashboardState } from 'src/app/core/state-management/dashboard/dashboard.state';
+import { PostModel } from 'src/app/core/state-management/models';
 import { icons } from 'src/app/shared/icons';
 
 @Component({
@@ -10,7 +14,13 @@ export class AnnouncementsComponent {
 
   icons: any = icons;
 
-  announcements: any = [{
+  @Select(DashboardState.selectAnnouncements) announcements$!: Observable<PostModel[]>;
+}
+
+
+/**
+
+{
     title: "CARIOTIPUL UMAN PATOLOGIC",
     description: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
     Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
@@ -58,5 +68,5 @@ export class AnnouncementsComponent {
     date: "12.10.2023",
     icon: "books"
   }
-]
-}
+
+ */

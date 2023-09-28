@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AccountModel, OrganizationModel } from '../models';
+import { OrganizationModel } from '../models';
 import { Store } from '@ngxs/store';
-import { GetOrganizations, UpdateOrganization, CreateOrganization, GetOrganization, DeleteOrganization, SetOrganization } from './organization.actions';
+import { GetOrganizations, UpdateOrganization, CreateOrganization, GetOrganization, SetOrganization } from './organization.actions';
 
 @Injectable({
     providedIn: 'root'
@@ -31,10 +31,4 @@ export class OrganizationService {
 
         this._store.dispatch(new SetOrganization(organization));
     }
-
-    //deleteOrganization(id: number): void {
-    //    this._store.dispatch(new DeleteOrganization(id));
-    //}
-
-
 }

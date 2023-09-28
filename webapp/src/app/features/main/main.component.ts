@@ -10,6 +10,8 @@ import { OrganizationService } from 'src/app/core/state-management/organization/
 import { OrganizationState } from 'src/app/core/state-management/organization/organization.state';
 import { OrganizationModel } from 'src/app/core/state-management/models';
 import { icons } from 'src/app/shared/icons';
+import { ClassState } from 'src/app/core/state-management/class/class.state';
+import { ClassService } from 'src/app/core/state-management/class/class.service';
 
 @Component({
   selector: 'app-main',
@@ -23,6 +25,8 @@ export class MainComponent {
   @Select(OrganizationState.selectOrganizations) organizations$!: Observable<any>;
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
+
+  @Select(ClassState.selectClasses) classes$!: Observable<any>;
 
   icons: any = icons;
 
@@ -40,8 +44,7 @@ export class MainComponent {
       role: 'confirm',
       handler: (alertData: any) => {
         this._organizationService.createOrganization({
-          name: alertData.name,
-          description: ''
+          name: alertData.name
         });
       },
     },
@@ -78,11 +81,16 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue', icon: 'books'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService) { }
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService) { }
 
   ngOnInit() {
     this._accountService.getAccount();
     this._organizationService.getOrganizations();
+    this.organization$.subscribe({
+      next: (organization) => {
+        this._classService.getClasses(organization.id!);
+      }
+    })
   }
 
   logOut(): void {

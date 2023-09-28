@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ClassModel } from '../models';
 import { Store } from '@ngxs/store';
 import { CreateClass, GetClass, GetClasses, UpdateClass } from './class.actions';
-import { DeleteOrganization } from '../organization/organization.actions';
 
 @Injectable({
     providedIn: 'root'

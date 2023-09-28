@@ -27,7 +27,19 @@ export class OrganizationController {
         return this._http.put(`${baseURL}organization/${id}`, payload)
     }
 
-    // deleteOrganization(id: number): Observable<any> {
-        
-    // }
+    getAnnouncementsByOrganization(id: number): Observable<any> {
+        return this._http.get(`${baseURL}announcements/${id}`);
+    }
+
+    getAssignmentsByOrganization(id: number): Observable<any> {
+        return this._http.get(`${baseURL}assignments/${id}`);
+    }
+
+    getGradesByOrganization(id: number): Observable<any> {
+        return this._http.get(`${baseURL}grades/${id}`);
+    }
+
+    getAbsencesByOrganization(id: number): Observable<any> {
+        return this._http.get(`${baseURL}absences/${id}`);
+    }
 }
