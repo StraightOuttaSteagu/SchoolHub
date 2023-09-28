@@ -17,14 +17,18 @@ Route::post("/login", function (Request $request) {
     if (!Auth::attempt($credentials))
         return response("", 401);
 
-    return User
+    return ["token" => User
         ::where("email", "=", $credentials["email"])
         ->first()
         ->createToken("API_TOKEN")
-        ->plainTextToken;
+        ->plainTextToken];
 })->name("postman.login");
 
 Route::middleware("auth:sanctum")->group(function () {
+    Route::get("/user", function (Request $request) {
+        return $request->user();
+    })->name("currentUser");
+
     // organizations
     Route::apiResource(
         "organizations",

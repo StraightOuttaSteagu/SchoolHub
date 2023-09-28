@@ -14,11 +14,14 @@ export class AuthService {
   login(form: any): void {
     this._http.get(baseURL + "/sanctum/csrf-cookie").subscribe({
       next: () => {
-        this._http.post(baseURL + "/login", {
+        this._http.post(baseURL + "/api/login", {
           email: form["username"],
           password: form["password"]
         }).subscribe({
-          next: () => this._router.navigate(["announcements"])
+          next: (resp: any) => {
+            localStorage.setItem("token", resp.token!);
+            this._router.navigate(["announcements"])
+          }
         })
       }
     })
@@ -70,12 +73,6 @@ export class AuthService {
   }
 
   logOut(): void {
-    this._http.get(baseURL + "/sanctum/csrf-cookie").subscribe({
-      next: () => {
-        this._http.post(baseURL + "/logout", {}).subscribe({
-          next: () => this._router.navigate([""])
-        })
-      }
-    })
+    localStorage.removeItem("token");
   }
 }

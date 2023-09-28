@@ -10,7 +10,137 @@ import { AbsenceModel } from 'src/app/core/state-management/models';
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent {
-  @Select(DashboardState.selectAnnouncements) attendance$!: Observable<AbsenceModel[]>;
+  attendance: any = [{
+    title: 'Limba si Literatura Romana',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: true,
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: false
+      },
+      {
+        date: '17.05.2023',
+        excused: true,
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: false
+      },
+      {
+        date: '17.05.2023',
+        excused: false
+      },
+      {
+        date: '17.05.2023',
+        excused: true,
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: false
+      },
+      {
+        date: '17.05.2023',
+        excused: false
+      },
+      {
+        date: '17.05.2023',
+        excused: true,
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: true
+      },
+      {
+        date: '17.05.2023',
+        excused: false
+      }
+    ]
+  },
+  {
+    title: 'Biologie',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: true
+      }
+    ]
+  },
+  {
+    title: 'Biologie',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: false
+      }
+    ]
+  },
+  {
+    title: 'Biologie',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: true
+      }
+    ]
+  },
+  {
+    title: 'Biologie',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: false
+      }
+    ]
+  },
+  {
+    title: 'Biologie',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: true
+      }
+    ]
+  },
+  {
+    title: 'Biologie',
+    attendance: [
+      {
+        date: '17.05.2023',
+        excused: false
+      }
+    ]
+  }];
 }
 
 
