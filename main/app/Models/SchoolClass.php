@@ -20,4 +20,12 @@ class SchoolClass extends Model
     public function users() {
         return $this->hasManyThrough(User::class, SchoolClassUser::class);
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
+    public function grades() {
+        return $this->hasMany(Grade::class);
+    }
 }

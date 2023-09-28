@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignmentSubmissionController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\SchoolClassController;
 use App\Models\User;
@@ -65,4 +66,39 @@ Route::middleware("auth:sanctum")->group(function () {
         "classes.posts",
         \App\Http\Controllers\PostController::class
     )->scoped();
+
+    // assignment submissions
+    Route::get(
+        "/posts/{post}/submissions",
+        [AssignmentSubmissionController::class, "index"]
+    )->name("posts.submissions.index");
+    Route::post(
+        "/posts/{post}/submissions",
+        [AssignmentSubmissionController::class, "store"]
+    )->name("posts.submissions.store");
+    Route::put(
+        "/posts/{post}/submissions/{submission}",
+        [AssignmentSubmissionController::class, "changeStatus"]
+    )->name("posts.submissions.changeStatus");
+    Route::post(
+        "/posts/{post}/submissions/{submission}/attachments",
+        [AssignmentSubmissionController::class, "storeAttachment"]
+    )->name("posts.submissions.attachments.store");
+    Route::delete(
+        "/posts/{post}/submissions/{submission}/attachments{attachment}",
+        [AssignmentSubmissionController::class, "deleteAttachment"]
+    )->name("posts.submissions.attachments.delete");
+
+    // grades
+    Route::apiResource(
+        "classes.grades",
+        \App\Http\Controllers\GradeController::class
+    )->scoped();
+
+    // attachments
+    Route::apiResource(
+        "posts.attachments",
+        \App\Http\Controllers\AttachmentController::class
+    )->scoped()->except([ "update", "delete" ]);
+
 });

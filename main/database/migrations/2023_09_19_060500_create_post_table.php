@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
@@ -20,6 +20,10 @@ return new class extends Migration
             $table->dateTime("deadline")->nullable();
             $table->foreignIdFor(\App\Models\SchoolClass::class);
             $table->foreignIdFor(\App\Models\User::class);
+
+            $table
+                ->enum("type", ["announcement", "assignment"])
+                ->default("announcement");
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('posts');
     }
 };

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Class\ClassResource;
-use App\Http\Resources\Class\PublicClassResource;
+use App\Http\Resources\SchoolClass\ClassResource;
+use App\Http\Resources\SchoolClass\PublicClassResource;
 use App\Models\Organization;
 use App\Models\SchoolClass;
 use App\Models\SchoolClassUser;

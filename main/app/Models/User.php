@@ -54,4 +54,12 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(SchoolClass::class, SchoolClassUser::class);
     }
+
+    public function grades() {
+        return $this->belongsTo(Grade::class);
+    }
+
+    public function assignment_submissions() {
+        return $this->hasMany(AssignmentSubmission::class);
+    }
 }

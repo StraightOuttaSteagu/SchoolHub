@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Organization;
 
-use App\Http\Resources\Class\PublicClassResource;
+use App\Http\Resources\SchoolClass\PublicClassResource;
 use App\Models\OrganizationUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

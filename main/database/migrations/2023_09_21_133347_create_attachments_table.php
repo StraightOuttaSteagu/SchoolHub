@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("path");
             $table->integer("size");
             $table->foreignIdFor(\App\Models\Post::class);
+            $table->foreignIdFor(\App\Models\AssignmentSubmission::class)->nullable();
         });
     }
 
