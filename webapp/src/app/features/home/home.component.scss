@@ -1,0 +1,73 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.background {
+  background: url('../../../assets/login-background.svg');
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.5);
+  z-index: -1000;
+}
+
+.logo {
+  width: 3.8rem;
+}
+
+.logo-title {
+  color: rgb(var(--ion-color-text-rgb));
+  font-weight: 600;
+  margin: 0;
+  margin-left: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.85rem;
+}
+
+.logo-container {
+  display: flex;
+}
+
+.private-chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 7rem;
+  background: rgba(white, 0.2);
+  border: 1px solid rgba(white, 0.5);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  margin: 1rem;
+  font-size: 1.2rem;
+
+  ion-button {
+    --box-shadow: none;
+    --border-radius: 1.5rem;
+    --background: #342b66;
+    color: rgba(var(--ion-color-text-rgb), 0.9);
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 2rem;
+  }
+  .logo-title {
+    font-size: 2rem;
+  }
+}

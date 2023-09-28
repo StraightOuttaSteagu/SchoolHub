@@ -1,0 +1,13 @@
+<ion-accordion>
+    <ion-item class='header' slot='header'>
+        <ion-label style='display: flex;'>
+            <p style='max-width: 80%; margin: 0;'>{{item.title}}</p>
+        </ion-label>
+        <ion-icon class='ion-accordion-toggle-icon' name='chevron-down' slot='end'></ion-icon>
+    </ion-item>
+    <ion-list slot='content'>
+        <ion-item style='margin-left: 1rem' *ngFor='let date of item?.attendance' class='date-item'>
+            <ion-label color='text'><p [ngStyle]='{"text-decoration-line": date.excused?"line-through": "none"}'>{{date.date}}</p></ion-label>
+        </ion-item>
+    </ion-list>
+</ion-accordion>

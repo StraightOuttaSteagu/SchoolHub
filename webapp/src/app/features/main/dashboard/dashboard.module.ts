@@ -7,6 +7,7 @@ import { GradesComponent } from './grades/grades.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { DashboardComponent } from './dashboard.component';
+import { CardsSharedModule } from '../../../shared/cards-shared.module';
 
 
 
@@ -21,7 +22,8 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    IonicModule
+    IonicModule,
+    CardsSharedModule
   ]
 })
 export class DashboardModule { }

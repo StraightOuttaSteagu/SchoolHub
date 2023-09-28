@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MenuController, ViewDidEnter, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Select } from '@ngxs/store';
+import { Observable, Subscription } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
+import { ClassState } from 'src/app/core/state-management/class/class.state';
+import { ClassModel } from 'src/app/core/state-management/models';
 
 @Component({
   selector: 'app-class-student',
@@ -12,10 +15,70 @@ import { ThemeService } from 'src/app/core/services/theme.service';
 export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
+  @Select(ClassState.selectClass) class$!: Observable<ClassModel>;
+
   private _routerSubscription!: Subscription;
 
-  data: any[] = [
-    {
+  data: any[] = [];
+
+  filteredData: any = [];
+
+  constructor (private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) { }
+
+  ionViewWillEnter(): void {
+
+    this.class$.subscribe({
+      next: (activeClass) => {
+        for (let announcement of activeClass.announcements) {
+          this.data.push(announcement);
+        }
+
+        for (let assignment of activeClass.assignments) {
+          this.data.push(assignment);
+        }
+
+        for (let grade of activeClass.grades) {
+          this.data.push(grade);
+        }
+
+        for (let absence of activeClass.absences) {
+          this.data.push(absence);
+        }
+      }
+    });
+
+    this._route.paramMap.subscribe(params => {
+      let mode = params.get('mode');
+
+      this.filteredData = mode=='general'?this.data:this.data.filter(el => el.type == mode);
+      this._theme.setClassThemeID(params.get('id'));
+    });
+  }
+
+  ionViewDidEnter(): void {
+    this._menu.swipeGesture(false);
+  }
+
+  ionViewWillLeave(): void {
+    if (this._routerSubscription) {
+      this._routerSubscription.unsubscribe();
+    }
+
+    this._theme.setClassThemeID(null);
+  }
+
+  getHref(): string {
+    return window.location.href;
+  }
+
+  getClassThemeID(): string | null {
+    return this._theme.getClassThemeID();
+  }
+}
+
+
+/*
+{
     title: "CARIOTIPUL UMAN PATOLOGIC",
     content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
     Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
@@ -54,38 +117,4 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
   { date: '6.09.2023', excused: false, type: 'attendance'},
     { grade: '10', date: '6.09.2023', type: 'grades'},
     { date: '6.09.2023', excused: false, type: 'attendance'},
-  ]
-
-  filteredData: any = [];
-
-  constructor (private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) { }
-
-  ionViewWillEnter(): void {
-    this._route.paramMap.subscribe(params => {
-      let mode = params.get('mode');
-
-      this.filteredData = mode=='general'?this.data:this.data.filter(el => el.type == mode);
-      this._theme.setClassThemeID(params.get('id'));
-    });
-  }
-
-  ionViewDidEnter(): void {
-    this._menu.swipeGesture(false);
-  }
-
-  ionViewWillLeave(): void {
-    if (this._routerSubscription) {
-      this._routerSubscription.unsubscribe();
-    }
-
-    this._theme.setClassThemeID(null);
-  }
-
-  getHref(): string {
-    return window.location.href;
-  }
-
-  getClassThemeID(): string | null {
-    return this._theme.getClassThemeID();
-  }
-}
+*/

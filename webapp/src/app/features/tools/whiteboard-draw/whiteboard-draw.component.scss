@@ -1,0 +1,26 @@
+#canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+.side-bar {
+  width: 98vw;
+  height: 3vw;
+  left: 1vw;
+  top: 1vw;
+  background: #97C8FF;
+  border-radius: 1vw;
+  position: fixed;
+}
+
+.top-bar {
+  width: 7.5vw;
+  height: 50vh;
+  left: 1vw;
+  top: 25vh;
+  background: #97C8FF;
+  border-radius: 1vw;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}

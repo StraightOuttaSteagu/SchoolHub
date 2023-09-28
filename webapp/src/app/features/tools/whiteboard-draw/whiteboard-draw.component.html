@@ -1,0 +1,25 @@
+<div (mousewheel)="zooming($event)">
+    <svg [attr.viewBox]="viewOffset.x + ' ' + viewOffset.y + ' ' + 1000 * zoom + ' ' + 1000 * zoom" (mousedown)="canvasMouseDown($event)" (mouseup)="canvasMouseUp($event)" (mousemove)="canvasMouseMove($event)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="canvas" class="canvas">
+        <ellipse [attr.cx]="ell.x + ell.width / 2" [attr.cy]="ell.y + ell.height / 2" [attr.rx]="ell.width / 2" [attr.ry]="ell.height / 2"></ellipse>
+        <rect [attr.x]="rect.x" [attr.y]="rect.y" [attr.width]="rect.width" [attr.height]="rect.height" stroke="black"></rect>
+        <line [attr.x1]="line.x1" [attr.y1]="line.y1" [attr.x2]="line.x2" [attr.y2]="line.y2" stroke="black" />
+        <line *ngFor="let linee of lines" [attr.x1]="linee.x1" [attr.y1]="linee.y1" [attr.x2]="linee.x2" [attr.y2]="linee.y2" stroke="black" />
+        <path *ngFor="let path of paths" [attr.d]="path" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+        <rect *ngFor="let rectt of rects" [attr.x]="rectt.x" [attr.y]="rectt.y" [attr.width]="rectt.width" [attr.height]="rectt.height" stroke="black"></rect>
+        <ellipse *ngFor="let elll of ells" [attr.cx]="elll.x + elll.width / 2" [attr.cy]="elll.y + elll.height / 2" [attr.rx]="elll.width / 2" [attr.ry]="elll.height / 2"></ellipse>
+    </svg>
+    <div class="side-bar">
+    
+    </div>
+    <div class="top-bar">
+        <label>Line color</label>
+        <label>Shape fill</label>
+        <label>Select</label>
+        <label (click)="drawingMode = 'pen'">Pen</label>
+        <label (click)="drawingMode = 'line'">Line</label>
+        <label (click)="drawingMode = 'rect'">Rectangle</label>
+        <label (click)="drawingMode = 'ell'">Ellipse</label>
+        <label>Text</label>
+        <label>Eraser</label>
+    </div>
+</div>

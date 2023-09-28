@@ -1,19 +1,47 @@
 <div class="spawn">
-    <div (mousedown)="spawnElementMouseDown(i)" class="spawn-row" *ngFor="let equation of spawn; let i = index">
+    <div (mousedown)="spawnElementMouseDown(i, $event)" class="spawn-row" *ngFor="let equation of spawn; let i = index">
         <span>{{ equation }}</span>
     </div>
 </div>
 <div class="play">
-    <svg></svg>
-    <ion-button (click)="tableOpen = !tableOpen" class="open-table">saas</ion-button>
+    <svg [ngStyle]="{'opacity': tableOpen ? '.1' : '1'}" id="play" (mousemove)="playMouseMove($event)" (mouseup)="playMouseUp()" style="width: 100%; height: 100%;">
+        <g id="compoundContainer">
+            <text (mouseup)="displayPopover($event, i)" *ngFor="let compound of compounds; let i = index" (mousedown)="compoundMouseDown($event, i)" [attr.x]="compound.x" [attr.y]="compound.y" text-anchor="middle" font-size="64">
+                <tspan *ngFor="let char of toArray(compound.formula)" [attr.font-size]="isNumber(char) ? '32' : '64'">{{ char }}</tspan>
+            </text>
+        </g>
+    </svg>
+    <ion-row class="open-table">
+        <ion-button (click)="tableOpen = !tableOpen">Toggle table</ion-button>
+    </ion-row>
 </div>
 <div [@tableAnimation]="tableOpen" class="table">
-    <div class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
-        <div (click)="!element.inactive?addElement(element):null" [class.inactive]="element.inactive" class="element-content">
-            <label class="Z">{{ element.Z }}</label>
-            <label class="symbol">{{ element.symbol }}</label>
-            <label class="name">{{ element.name }}</label>
-            <label class="mass">{{ element.mass }}</label>
+    <div (mouseenter)="selectActiveElement(element)" class="element" *ngFor="let element of tableElements" [ngStyle]="{'top': (element.y - 1) * elementSize + 'vw', 'left': (element.x - 1) * elementSize + (85 - 18 * elementSize) / 2 + 'vw'}">
+        <div [ngStyle]="{ 'border-color': themes[element.group] }" (click)="!element.inactive?addElement(element):null" [class.inactive]="element.inactive" class="element-content">
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="Z">{{ element.Z }}</label>
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="symbol">{{ element.symbol }}</label>
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="name">{{ element.name }}</label>
+            <label [ngStyle]="{ 'color': themes[element.group], 'text-shadow': '0px 0px 5px ' + themes[element.group] }" class="mass">{{ element.mass }}</label>
+        </div>
+    </div>
+    <div class="last-active-element">
+        <div [ngStyle]="{ 'border-color': 'transparent' }" class="last-active-element-content">
+            <svg class="electrons" viewBox="0 0 500 500">
+                <g *ngFor="let shell of shells; let i = index">
+                    <circle cx="250" cy="250" [attr.r]="220 - 25 * i" stroke-width="4" fill="none" stroke="#828282"></circle>
+                    <g *ngFor="let j of getRange(shell); let k = index">
+                        <circle [attr.cx]="470 - 25 * i" cy="250" r="7" fill="#828282">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" [attr.from]="360 / getRange(shell).length * j + ' 250 250'" [attr.to]="360 / getRange(shell).length * j + 360 + ' 250 250'" repeatCount="indefinite" [attr.dur]="(2 * PI * (220 - 25 * i)) / velocity + 's'" />
+                        </circle>
+                    </g>
+                </g>
+            </svg>
+            <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="Z-active">{{ activeElement.Z }}</label>
+            <div style="display: flex; flex-direction: column;">
+                <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="symbol-active">{{ activeElement.symbol }}</label>
+                <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="name-active">{{ activeElement.name }}</label>
+            </div>
+            <label [ngStyle]="{ 'color': themes[activeElement.group], 'text-shadow': '0px 0px 5px ' + themes[activeElement.group] }" class="mass-active">{{ activeElement.mass }}</label>
         </div>
     </div>
 </div>

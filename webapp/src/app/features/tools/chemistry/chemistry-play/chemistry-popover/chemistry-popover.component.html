@@ -1,0 +1,15 @@
+<ion-list>
+    <ion-item [button]="true" [detail]="false" id="elements">Formula: {{ data.formula }}</ion-item>
+    <ion-item [detail]="false">Mass: {{ data.mass }}</ion-item>
+    <ion-item [detail]="false" [button]="true">Decompose</ion-item>
+    
+    <ion-popover trigger="elements" [dismissOnSelect]="false" side="end" show-backdrop='false'>
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item (click)="displayPopover($event, i)" *ngFor="let element of data.elements; let i = index" [button]="true" [detail]="false">{{ element }}</ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+</ion-list>

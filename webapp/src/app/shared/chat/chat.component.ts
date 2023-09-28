@@ -112,6 +112,7 @@ export class ChatComponent implements ViewDidEnter {
   }
 
   addMessage(message: HTMLInputElement) {
+    if (message.value === '') return; 
     this.messages.unshift({
       sender: false,
       timestamp: new Date(),

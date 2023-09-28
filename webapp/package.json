@@ -23,6 +23,8 @@
     "@ionic/angular": "^7.2.3",
     "@ngxs/store": "^3.8.1",
     "ionicons": "^7.0.0",
+    "ng-whiteboard": "^2.0.20",
+    "ngx-colors": "^3.5.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

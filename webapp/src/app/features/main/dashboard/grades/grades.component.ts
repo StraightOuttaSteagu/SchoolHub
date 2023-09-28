@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { DashboardState } from 'src/app/core/state-management/dashboard/dashboard.state';
+import { GradeModel } from 'src/app/core/state-management/models';
 
 @Component({
   selector: 'app-grades',
@@ -6,8 +10,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./grades.component.scss']
 })
 export class GradesComponent {
-  data: any = [
-    {
+  @Select(DashboardState.selectGrades) grades$!: Observable<GradeModel[]>;
+
+  calculateAverage(item: any): number {
+    let avg = 0;
+    for (let grade of item) {
+      avg += grade.grade;
+    }
+    return avg / item.length;
+  }
+}
+
+/**
+ {
       title: 'Limba și literatura română',
       grades: [
         {
@@ -175,14 +190,4 @@ export class GradesComponent {
         }
       ]
     }
-  ];
-
-  calculateAverage(item: any): number {
-    let avg = 0;
-    for (let grade of item) {
-      avg += grade.grade;
-    }
-    return avg / item.length;
-  }
-}
-
+ */

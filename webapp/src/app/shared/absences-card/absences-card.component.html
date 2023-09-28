@@ -1,0 +1,14 @@
+<ion-card>
+    <ion-card-header style='padding: 0.5rem 1rem 0 0'>
+        <ion-card-title title='{{item.title}}'>
+            <ion-item lines='inset'>
+                <ion-label><h2>{{item.title}}</h2></ion-label>
+            </ion-item>
+        </ion-card-title>
+    </ion-card-header>
+    <ion-list>
+        <ion-item class='date' lines='none' *ngFor='let date of item?.attendance'>
+            <ion-label color='text'><p  [ngStyle]='{"text-decoration-line": date.excused?"line-through": "none"}'>{{date.date}}</p></ion-label>
+        </ion-item>
+    </ion-list>
+</ion-card>

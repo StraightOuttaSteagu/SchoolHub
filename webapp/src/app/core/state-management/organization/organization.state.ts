@@ -13,8 +13,7 @@ export interface OrganizationStateModel {
     name: 'organizationstate',
     defaults: {
         activeOrganization: {
-            name: '',
-            description: ''
+            name: ''
         },
         organizations: []
     }
