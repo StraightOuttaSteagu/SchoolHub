@@ -33,7 +33,7 @@ export class MainComponent {
       text: 'Cancel',
       role: 'cancel',
       handler: () => {
-        
+
       },
     },
     {
@@ -53,23 +53,17 @@ export class MainComponent {
     }
   ];
   classes: any[] = [
-    {subject: 'Chimie', teacher: 'Oteleanu lia', id: '1', theme: 'red', icon: 'flask'},
-    {
-      subject: 'Biologie',
-      teacher: 'Oteleanu lia',
-      id: '2',
-      theme: 'green',
-      icon: 'leaf'
-    },
-    {subject: 'Informatică', teacher: 'Popescu Vlad', id: '690', theme: 'green', icon: 'computer'},
-    {subject: 'Limba și literatura română', teacher: 'Nerariu George', id: 'msg', theme: 'orange', icon: 'books'},
-    {subject: 'Matematică', teacher: 'Fălescu Cătălin', id: 'seg', theme: 'yellow', icon: 'compass'},
+    {subject: 'Chimie', teacher: 'Oteleanu lia', id: '1', theme: 'yellow', icon: 'flask'},
+    {subject: 'Biologie', teacher: 'Oteleanu lia', id: '2', theme: 'green', icon: 'leaf'},
+    {subject: 'Informatică', teacher: 'Popescu Vlad', id: '690', theme: 'blue', icon: 'computer'},
+    {subject: 'Limba și literatura română', teacher: 'Nerariu George', id: 'msg', theme: 'yellow', icon: 'books'},
+    {subject: 'Matematică', teacher: 'Fălescu Cătălin', id: 'seg', theme: 'blue', icon: 'compass'},
     {subject: 'Filozofie', teacher: 'Florea Adela', id: 'dsgd', theme: 'purple', icon: 'hat'},
-    {subject: 'Fizică', teacher: 'Simedrea Alexandru', id: 'dsbh', theme: 'blue', icon: 'microscope'},
+    {subject: 'Fizică', teacher: 'Simedrea Alexandru', id: 'dsbh', theme: 'purple', icon: 'microscope'},
     {subject: 'Limba engleză', teacher: 'Cazacu Matei', id: 'ghmhg', theme: 'blue', icon: 'openBook'},
-    {subject: 'Arte vizuale', teacher: 'Grozea Alexandru', id: 'wtre', theme: 'blue', icon: 'pencils'},
-    {subject: 'Antreprenoriat', teacher: 'Ionescu Andrei', id: 'dfhw', theme: 'blue', icon: 'toDo'},
-    {subject: 'Limba franceză', teacher: 'Olteanu Ionuț', id: 'erhj', theme: 'blue', icon: 'books'},
+    {subject: 'Arte vizuale', teacher: 'Grozea Alexandru', id: 'wtre', theme: 'green', icon: 'pencils'},
+    {subject: 'Antreprenoriat', teacher: 'Ionescu Andrei', id: 'dfhw', theme: 'yellow', icon: 'toDo'},
+    {subject: 'Limba franceză', teacher: 'Olteanu Ionuț', id: 'erhj', theme: 'purple', icon: 'books'},
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'rheje', theme: 'blue', icon: 'books'},
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'werh', theme: 'blue', icon: 'leaf'},
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'erhy', theme: 'blue', icon: 'hat'},
@@ -78,7 +72,8 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue', icon: 'books'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService) { }
+  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService) {
+  }
 
   ngOnInit() {
     this._accountService.getAccount();
@@ -87,7 +82,7 @@ export class MainComponent {
       next: (organization) => {
         this._classService.getClasses(organization.id!);
       }
-    })
+    });
   }
 
   logOut(): void {
@@ -104,16 +99,17 @@ export class MainComponent {
 
   getSecondaryTheme(): string | null {
     let themeClass = this.classes.filter(el => el.id == this.getSecondaryThemeID())[0];
-    return themeClass?themeClass.theme:'default-theme';
+    return themeClass ? themeClass.theme : 'default-theme';
   }
 
   getSecondaryThemeID(): string | null {
     return this._theme.getClassThemeID();
   }
-  
+
   selectOrganization(organization: OrganizationModel): void {
     this._organizationService.setOrganization(organization);
   }
+
   protected readonly window = window;
 }
 
