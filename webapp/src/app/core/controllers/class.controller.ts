@@ -10,22 +10,22 @@ export class ClassController {
     constructor (private _http: HttpClient) { }
 
     getClass(id: string): Observable<any> {
-        return this._http.get('http://localhost:8080/api/account');
+        return this._http.get('http://localhost:8000/api/account');
     }
 
     getClasses(organizationId: string): Observable<any> {
-        return this._http.get('http://localhost:8080/api/account');
+        return this._http.get('http://localhost:8000/api/account');
     }
 
     createClass(payload: ClassModel): Observable<any> {
-        return this._http.get('http://localhost:8080/api/account');
+        return this._http.get('http://localhost:8000/api/account');
     }
 
     updateClass(payload: ClassModel): Observable<any> {
-        return this._http.get('http://localhost:8080/api/account');
+        return this._http.get('http://localhost:8000/api/account');
     }
 
     deleteClass(id: string): Observable<any> {
-        return this._http.get('http://localhost:8080/api/account');
+        return this._http.get('http://localhost:8000/api/account');
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SnackBarService } from './snackBar.service';
+import { SnackBarService } from './SnackBar.service';
 import { baseURL } from '../baseURL';
 
 @Injectable({
@@ -22,24 +22,9 @@ export class AuthService {
             localStorage.setItem("token", resp.token!);
             this._router.navigate(["announcements"])
           }
-        })
+        });
       }
-    })
-
-    // this._http.post('http://localhost:8080/api/authenticate', form).subscribe({
-    //   next: (val: any) => {
-    //     localStorage.setItem('token', val.id_token);
-    //     this._snackBar.displayMessage("Login succesful");
-    //     this._router.navigate(['announcements']);
-    //   },
-    //   error: err => {
-    //     if (err.statusText == "Unauthorized"){
-    //       this._snackBar.displayMessage("Invalid email or password");
-    //     } else {
-    //       this._snackBar.displayMessage(err.statusText);
-    //     }
-    //   }
-    // });
+    });
   }
 
   register(form: {login: string, password: string, firstName: string, lastName: string, email: string}): void {
@@ -49,11 +34,13 @@ export class AuthService {
           name: `${form.firstName} ${form.lastName}`,
           email: form.email,
           password: form.password,
-          "confirm-password": form.password,
+          username: form.login,
+          password_confirmation: form.password,
           parent: false
         }).subscribe({
           next: () => {
             this._snackBar.displayMessage("Account created successfully");
+            console.log("BNNBNBNBNBNBNBNBNBNBNBBBNBNNBBNBN");
             this.login({
               username: form.email,
               password: form.password,
@@ -61,6 +48,7 @@ export class AuthService {
             });
           },
           error: err => {
+            console.log(err, 444)
             this._snackBar.displayMessage(err.statusText);
           }
         });

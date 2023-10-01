@@ -17,4 +17,12 @@ export class AccountService {
     updateAccount(payload: AccountModel): void {
         this._store.dispatch(new UpdateAccount(payload));
     }
+
+    register(): void {
+
+    }
+
+    login(): void {
+        
+    }
 }

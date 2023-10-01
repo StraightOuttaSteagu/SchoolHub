@@ -15,6 +15,6 @@ export class AccountController {
     }
 
     updateAccount(payload: AccountModel): Observable<any> {
-        return this._http.post('http://localhost:8080/api/account', payload);
+        return this._http.post('http://localhost:8000/api/user', payload);
     }
 }
