@@ -9,8 +9,6 @@ export class AuthInterceptor implements HttpInterceptor {
       withCredentials: true
     });
 
-    console.log(request)
-
     return next.handle(request);
   }
 }

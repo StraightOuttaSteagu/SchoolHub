@@ -34,8 +34,6 @@ export class AccountState {
         return this._accountController.getAccount().subscribe({
             next: (account: AccountModel) => {
 
-                console.log(account)
-
                 ctx.setState({
                     account
                 });

@@ -10,6 +10,7 @@ const routes: Routes = [
     { path: 'assignments/:mode', component: AssignmentsComponent },
     { path: 'assignments', redirectTo: 'assignments/to-review' },
     { path: 'announcements', component: AnnouncementsComponent },
+    { path: 'classes', loadChildren: () => import('../class-teacher/class-teacher.module').then(m => m.ClassTeacherModule) },
     { path: '', redirectTo: 'assignments/to-review', pathMatch: 'full' }
   ]}
 ];

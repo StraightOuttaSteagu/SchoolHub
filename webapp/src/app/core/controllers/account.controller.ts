@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AccountModel } from "../state-management/models";
+import { AccountLoginModel, AccountModel, AccountRegisterModel } from "../state-management/models";
 import { baseURL } from "../baseURL";
 
 @Injectable({
@@ -10,11 +10,27 @@ import { baseURL } from "../baseURL";
 export class AccountController {
     constructor (private _http: HttpClient) { }
 
+    cookies(): Observable<any> {
+        return this._http.get(`${baseURL}/sanctum/csrf-cookie`);
+    }
+
+    login(payload: AccountLoginModel): Observable<any> {
+        return this._http.post(`${baseURL}/login`, payload);
+    }
+
+    register(payload: AccountRegisterModel): Observable<any> {
+        return this._http.post(`${baseURL}/register`, payload);
+    }
+
+    logout(): Observable<any> {
+        return this._http.post(`${baseURL}/logout`, {});
+    }
+
     getAccount(): Observable<any> {
-        return this._http.get<AccountModel>(baseURL + '/api/user');
+        return this._http.get<AccountModel>(`${baseURL}/api/user`);
     }
 
     updateAccount(payload: AccountModel): Observable<any> {
-        return this._http.post('http://localhost:8000/api/user', payload);
+        return this._http.post(`${baseURL}/api/user`, payload);
     }
 }

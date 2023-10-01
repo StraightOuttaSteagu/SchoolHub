@@ -11,35 +11,34 @@ export class OrganizationController {
     constructor (private _http: HttpClient) { }
 
     getOrganization(id: number): Observable<any> {
-        return this._http.get<string[]>(`${baseURL}organization/${id}`);
+        return this._http.get<string[]>(`${baseURL}/api/organizations/${id}`);
     }
 
     getOrganizations(): Observable<any> {
-        console.log(`${baseURL}organization`)
-        return this._http.get<string[]>(`${baseURL}organization`);
+        return this._http.get<string[]>(`${baseURL}/api/organizations`);
     }
 
     createOrganization(payload: OrganizationModel): Observable<any> {
-        return this._http.post(`${baseURL}organization`, payload);
+        return this._http.post(`${baseURL}/api/organizations`, payload);
     }
 
     updateOrganization(payload: OrganizationModel, id: number): Observable<any> {
-        return this._http.put(`${baseURL}organization/${id}`, payload)
+        return this._http.put(`${baseURL}/api/organizations/${id}`, payload)
     }
 
     getAnnouncementsByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}announcements/${id}`);
+        return this._http.get(`${baseURL}/api/announcements/${id}`);
     }
 
     getAssignmentsByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}assignments/${id}`);
+        return this._http.get(`${baseURL}/api/assignments/${id}`);
     }
 
     getGradesByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}grades/${id}`);
+        return this._http.get(`${baseURL}/api/grades/${id}`);
     }
 
     getAbsencesByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}absences/${id}`);
+        return this._http.get(`${baseURL}/api/absences/${id}`);
     }
 }

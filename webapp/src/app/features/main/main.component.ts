@@ -80,13 +80,13 @@ export class MainComponent {
     this._organizationService.getOrganizations();
     this.organization$.subscribe({
       next: (organization) => {
-        this._classService.getClasses(organization.id!);
+        //this._classService.getClasses(organization.id!);
       }
     });
   }
 
   logOut(): void {
-    this._auth.logOut();
+    this._auth.logout();
   }
 
   setTheme(theme: string): void {

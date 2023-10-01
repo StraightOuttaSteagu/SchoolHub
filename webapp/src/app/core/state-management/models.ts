@@ -6,6 +6,20 @@ export interface AccountModel {
     login: string
 }
 
+export interface AccountLoginModel {
+    email: string,
+    password: string
+}
+
+export interface AccountRegisterModel {
+    name: string,
+    email: string,
+    password: string,
+    username: string,
+    password_confirmation: string,
+    parent: boolean
+}
+
 export interface OrganizationModel {
     id?: string,
     name: string

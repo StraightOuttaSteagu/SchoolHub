@@ -3,64 +3,71 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SnackBarService } from './SnackBar.service';
 import { baseURL } from '../baseURL';
+import { AccountLoginModel, AccountRegisterModel } from '../state-management/models';
+import { AccountController } from '../controllers/account.controller';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _http: HttpClient, private _router: Router, private _snackBar: SnackBarService) { }
+  constructor(private _http: HttpClient, private _router: Router, private _snackBar: SnackBarService, private _accountController: AccountController) { }
 
-  login(form: any): void {
-    this._http.get(baseURL + "/sanctum/csrf-cookie").subscribe({
+  login(form: AccountLoginModel): void {
+    this._accountController.cookies().subscribe({
       next: () => {
-        this._http.post(baseURL + "/api/login", {
-          email: form["username"],
-          password: form["password"]
-        }).subscribe({
-          next: (resp: any) => {
-            localStorage.setItem("token", resp.token!);
+        this._accountController.login(form).subscribe({
+          next: () => {
             this._router.navigate(["announcements"])
+          },
+          error: (e) => {
+            this._snackBar.displayMessage(e.statusText);
           }
         });
+      },
+      error: () => {
+        this._snackBar.displayMessage('Cookie error');
       }
     });
   }
 
-  register(form: {login: string, password: string, firstName: string, lastName: string, email: string}): void {
-    this._http.get("http://localhost:8000/sanctum/csrf-cookie").subscribe({
+  register(form: AccountRegisterModel): void {
+    this._accountController.cookies().subscribe({
       next: () => {
-        this._http.post('http://localhost:8000/register', {
-          name: `${form.firstName} ${form.lastName}`,
-          email: form.email,
-          password: form.password,
-          username: form.login,
-          password_confirmation: form.password,
-          parent: false
-        }).subscribe({
+        this._accountController.register(form).subscribe({
           next: () => {
-            this._snackBar.displayMessage("Account created successfully");
-            console.log("BNNBNBNBNBNBNBNBNBNBNBBBNBNNBBNBN");
-            this.login({
-              username: form.email,
-              password: form.password,
-              rememberMe: true
-            });
+            this._router.navigate(["announcements"]);
           },
-          error: err => {
-            console.log(err, 444)
-            this._snackBar.displayMessage(err.statusText);
+          error: (e) => {
+            this._snackBar.displayMessage(e.statusText);
           }
         });
+      },
+      error: () => {
+        this._snackBar.displayMessage('Cookie error');
       }
-    })
+    });
   }
 
   isLoggedIn(): boolean {
     return true;
   }
 
-  logOut(): void {
-    localStorage.removeItem("token");
+  logout(): void {
+    this._accountController.cookies().subscribe({
+        next: () => {
+          this._accountController.logout().subscribe({
+            next: () => {
+              this._router.navigate(["auth"]);
+            },
+            error: (e) => {
+              this._snackBar.displayMessage(e.statusText);
+            }
+          });
+        },
+        error: () => {
+          this._snackBar.displayMessage('Cookie error');
+        }
+    });
   }
 }

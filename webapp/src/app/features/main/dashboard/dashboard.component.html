@@ -9,13 +9,13 @@
             </div>
         </ion-title>
         <ion-buttons class='chips'>
-            <ion-chip [routerLink]='["/announcements"]' [class.active]='getHref().includes("announcements")'>
+            <ion-chip [routerLink]='["announcements"]' [class.active]='getHref().includes("announcements")'>
                 Announcements
             </ion-chip>
-            <ion-chip [routerLink]='["/grades"]' [class.active]='getHref().includes("grades")'>Grades</ion-chip>
-            <ion-chip [routerLink]='["/assignments"]' [class.active]='getHref().includes("assignments")'>Assignments
+            <ion-chip [routerLink]='["grades"]' [class.active]='getHref().includes("grades")'>Grades</ion-chip>
+            <ion-chip [routerLink]='["assignments"]' [class.active]='getHref().includes("assignments")'>Assignments
             </ion-chip>
-            <ion-chip [routerLink]='["/attendance"]' [class.active]='getHref().includes("attendance")'>Attendance
+            <ion-chip [routerLink]='["attendance"]' [class.active]='getHref().includes("attendance")'>Attendance
             </ion-chip>
         </ion-buttons>
     </ion-toolbar>
