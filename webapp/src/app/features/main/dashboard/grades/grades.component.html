@@ -1,9 +1,9 @@
 <div class='cards-grid'>
-    <app-grades-card *ngFor='let item of (grades$ | async)' [item]='item'></app-grades-card>
+    <app-grades-card *ngFor='let item of grades' [item]='item'></app-grades-card>
 </div>
 
 <ion-content>
     <ion-accordion-group multiple='true' mode='ios'>
-        <app-grades-accordion *ngFor='let item of (grades$ | async)' [item]='item'></app-grades-accordion>
+        <app-grades-accordion *ngFor='let item of grades' [item]='item'></app-grades-accordion>
     </ion-accordion-group>
 </ion-content>

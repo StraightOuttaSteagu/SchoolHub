@@ -9,17 +9,17 @@
             </div>
         </ion-title>
         <ion-buttons class='chips'>
-            <ion-chip [routerLink]='["/announcements"]' [class.active]='getHref().includes("announcements")'>
+            <ion-chip [routerLink]='["announcements"]' [class.active]='getHref().includes("announcements")'>
                 Announcements
             </ion-chip>
-            <ion-chip [routerLink]='["/grades"]' [class.active]='getHref().includes("grades")'>Grades</ion-chip>
-            <ion-chip [routerLink]='["/assignments"]' [class.active]='getHref().includes("assignments")'>Assignments
+            <ion-chip [routerLink]='["grades"]' [class.active]='getHref().includes("grades")'>Grades</ion-chip>
+            <ion-chip [routerLink]='["assignments"]' [class.active]='getHref().includes("assignments")'>Assignments
             </ion-chip>
-            <ion-chip [routerLink]='["/attendance"]' [class.active]='getHref().includes("attendance")'>Attendance
+            <ion-chip [routerLink]='["attendance"]' [class.active]='getHref().includes("attendance")'>Attendance
             </ion-chip>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content style='--background: transparent; margin-left: 3rem; --overflow: hidden;'>
-    <ion-router-outlet [swipeGesture]='false' [animated]='false'></ion-router-outlet>
+    <ion-router-outlet [swipeGesture]='false'></ion-router-outlet>
 </ion-content>

@@ -36,27 +36,24 @@ export class OrganizationState {
     @Action(GetOrganizations)
     getOrganizations(ctx: StateContext<OrganizationStateModel>) {
         return this._organizationController.getOrganizations().subscribe({
-            next: (organizations: OrganizationModel[]) => {
-                const state = ctx.getState();
-
+            next: (organizations: { data: OrganizationModel[] }) => {
                 let activeOrganization: any = localStorage.getItem('activeOrganization');
 
-                console.log(organizations.map(el => el.id))
+                console.log(organizations)
 
-                if (activeOrganization === null || !organizations.map(el => String(el.id)).includes(activeOrganization)) {
-                    localStorage.setItem('activeOrganization', organizations[0].id ?? '-1');
+                if (activeOrganization === null || !organizations.data.map(el => String(el.id)).includes(activeOrganization)) {
+                    localStorage.setItem('activeOrganization', organizations.data[0].id ?? '-1');
 
-                    activeOrganization = organizations[0];
+                    activeOrganization = organizations.data[0];
                 } else {
-                    activeOrganization = organizations.filter(el => el.id == activeOrganization)[0];
+                    activeOrganization = organizations.data.filter(el => el.id == activeOrganization)[0];
                 }
 
                 ctx.setState({
                     activeOrganization,
-                    organizations: organizations
+                    organizations: organizations.data
                 });
             },
-
             error: (err) => {
                 console.log(err);
             }

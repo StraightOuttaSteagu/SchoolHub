@@ -77,7 +77,7 @@ export class ClassState {
 
     @Action(CreateClass)
     createClass(ctx: StateContext<ClassStateModel>, action: CreateClass) {
-        return this._classController.createClass(action.payload).subscribe({
+        return this._classController.createClass(action.organizationId, action.payload).subscribe({
             next: (/**??? */) => {
                 
             },

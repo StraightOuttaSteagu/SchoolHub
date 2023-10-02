@@ -42,7 +42,7 @@ export class ParentComponent {
   }
 
   logOut(): void {
-    this._auth.logOut();
+    this._auth.logout();
   }
 
   setTheme(theme: string): void {

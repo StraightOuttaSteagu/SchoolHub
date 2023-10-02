@@ -1,11 +1,11 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { GetAccount, UpdateAccount } from "./account.actions";
+import { GetAccount, RemoveAccount, UpdateAccount } from "./account.actions";
 import { Injectable } from "@angular/core";
 import { AccountModel } from "../models";
 import { AccountController } from "../../controllers/account.controller";
 
 export interface AccountStateModel {
-    account: AccountModel
+    account?: AccountModel
 }
 
 @State<AccountStateModel>({
@@ -57,5 +57,10 @@ export class AccountState {
                 console.log(err);
             }
         });
+    }
+
+    @Action(RemoveAccount)
+    removeAccount(ctx: StateContext<AccountStateModel>, action: RemoveAccount) {
+        ctx.setState({});
     }
 }

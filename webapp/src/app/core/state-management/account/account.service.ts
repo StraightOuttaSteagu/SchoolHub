@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AccountModel } from '../models';
 import { Store } from '@ngxs/store';
-import { GetAccount, UpdateAccount } from './account.actions';
+import { GetAccount, RemoveAccount, UpdateAccount } from './account.actions';
 
 @Injectable({
     providedIn: 'root'
@@ -16,5 +16,17 @@ export class AccountService {
 
     updateAccount(payload: AccountModel): void {
         this._store.dispatch(new UpdateAccount(payload));
+    }
+
+    register(): void {
+
+    }
+
+    login(): void {
+        
+    }
+
+    removeAccount(): void {
+        this._store.dispatch(new RemoveAccount());
     }
 }

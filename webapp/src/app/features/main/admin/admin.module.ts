@@ -16,7 +16,7 @@ import { UserPopoverComponent } from './user-popover/user-popover.component';
     CommonModule,
     RouterModule.forChild([
       { path: '', component: AdminComponent, children: [
-        
+        { path: 'classes', loadChildren: () => import('../class-teacher/class-teacher.module').then(m => m.ClassTeacherModule) },
       ]}
     ]),
     IonicModule

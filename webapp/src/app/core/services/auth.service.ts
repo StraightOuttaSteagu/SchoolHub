@@ -1,53 +1,71 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { SnackBarService } from './snackBar.service';
+import { SnackBarService } from './SnackBar.service';
+import { AccountLoginModel, AccountRegisterModel } from '../state-management/models';
+import { AccountController } from '../controllers/account.controller';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _http: HttpClient, private _router: Router, private _snackBar: SnackBarService) { }
+  constructor(private _router: Router, private _snackBar: SnackBarService, private _accountController: AccountController) { }
 
-  login(form: object): void {
-    this._http.post('http://localhost:8080/api/authenticate', form).subscribe({
-      next: (val: any) => {
-        localStorage.setItem('token', val.id_token);
-        this._snackBar.displayMessage("Login succesful");
-        this._router.navigate(['announcements']);
+  login(form: AccountLoginModel): void {
+    this._accountController.cookies().subscribe({
+      next: () => {
+        this._accountController.login(form).subscribe({
+          next: () => {
+            this._router.navigate(["announcements"])
+          },
+          error: (e) => {
+            this._snackBar.displayMessage(e.statusText);
+          }
+        });
       },
-      error: err => {
-        if (err.statusText == "Unauthorized"){
-          this._snackBar.displayMessage("Invalid email or password");
-        } else {
-          this._snackBar.displayMessage(err.statusText);
-        }
+      error: () => {
+        this._snackBar.displayMessage('Cookie error');
       }
     });
   }
 
-  register(form: {login: string, password: string, firstName: string, lastName: string, email: string}): void {
-    this._http.post('http://localhost:8080/api/register', form).subscribe({
+  register(form: AccountRegisterModel): void {
+    this._accountController.cookies().subscribe({
       next: () => {
-        this._snackBar.displayMessage("Account created successfully");
-        this.login({
-          username: form.email,
-          password: form.password,
-          rememberMe: true
+        this._accountController.register(form).subscribe({
+          next: () => {
+            this._router.navigate(["announcements"]);
+          },
+          error: (e) => {
+            this._snackBar.displayMessage(e.statusText);
+          }
         });
       },
-      error: err => {
-        this._snackBar.displayMessage(err.statusText);
+      error: () => {
+        this._snackBar.displayMessage('Cookie error');
       }
     });
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('token') != undefined;
+    return true;
   }
 
-  logOut(): void {
-    localStorage.removeItem('token');
+  logout(): void {
+    this._accountController.cookies().subscribe({
+        next: () => {
+          this._accountController.logout().subscribe({
+            next: () => {
+              this._router.navigate(["auth"]);
+            },
+            error: (e) => {
+              this._snackBar.displayMessage(e.statusText);
+            }
+          });
+        },
+        error: () => {
+          this._snackBar.displayMessage('Cookie error');
+        }
+    });
   }
 }
