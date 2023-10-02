@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { SnackBarService } from './SnackBar.service';
-import { baseURL } from '../baseURL';
 import { AccountLoginModel, AccountRegisterModel } from '../state-management/models';
 import { AccountController } from '../controllers/account.controller';
 
@@ -11,7 +9,7 @@ import { AccountController } from '../controllers/account.controller';
 })
 export class AuthService {
 
-  constructor(private _http: HttpClient, private _router: Router, private _snackBar: SnackBarService, private _accountController: AccountController) { }
+  constructor(private _router: Router, private _snackBar: SnackBarService, private _accountController: AccountController) { }
 
   login(form: AccountLoginModel): void {
     this._accountController.cookies().subscribe({

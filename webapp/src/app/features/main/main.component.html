@@ -29,6 +29,50 @@
                             <ion-icon name='add-circle-outline'></ion-icon>
                             <ion-label id=''>Add organization</ion-label>
                         </ion-item>
+                        <ion-item id="createClassModal" class='dropdown-item' [button]='true' lines='none'>
+                            <ion-modal #classModal trigger='createClassModal' class='modal'>
+                                <ng-template>
+                                    <ion-header>
+                                        <ion-toolbar>
+                                            <ion-title>Class settings</ion-title>
+                                            <ion-buttons slot='secondary'>
+                                                <ion-button style='--color: var(--ion-color-text)' (click)='classModal.dismiss()'>Close</ion-button>
+                                            </ion-buttons>
+                                            <ion-buttons slot='primary'>
+                                                <ion-button style='--color: var(--ion-color-text)' (click)='classModal.dismiss()'>Save</ion-button>
+                                            </ion-buttons>
+                                        </ion-toolbar>
+                                    </ion-header>
+                                    <ion-content class='ion-padding'>
+                                        <form>
+                                            <ion-input class='ion-margin-vertical' helperText='For example: Biology'
+                                                       labelPlacement='floating'
+                                                       style='--border-radius: 1.55rem; --padding-start: 1.8rem; --background: medium; --color: var(--ion-color-text)'
+                                                       size='64' fill='outline' label='Subject' type='text' name='subject'
+                                                       value='Biologie'></ion-input>
+                                            <ion-input class='ion-margin-vertical' helperText='For example: 10th grade'
+                                                       labelPlacement='floating' style='--border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text)'
+                                                       size='64' fill='outline' label='Class identifier' type='text' name='id'
+                                                       value='10D'></ion-input>
+                                        </form>
+                                        <h2 style='font-weight: 500'>Theme</h2>
+                                        <div style='display: flex; flex-wrap: wrap'>
+                                            <div style='width: 5rem; height: 5rem; padding: 1rem; margin: 0.3rem; border-radius: 1000px; border: 1px solid rgba(var(--ion-color-text-rgb), 0.2)'
+                                                 *ngFor='let icon of Object.entries(icons); let i = index'
+                                                 [class.selected]='selectedIcon === i' (click)='selectedIcon = i'>
+                                                <img style='width: 4rem; aspect-ratio: 1/1;' [src]='"assets/icons/"+icon[1]'>
+                                            </div>
+                                        </div>
+                                        <div style='display: flex; flex-direction: column'>
+                                            <div *ngFor='let color of colors; let i = index' [class.selected]='selectedColor === i'
+                                                 (click)='selectedColor = i' class='{{color}} color-option'></div>
+                                        </div>
+                                    </ion-content>
+                                </ng-template>
+                            </ion-modal>
+                            <ion-icon name='add-circle-outline'></ion-icon>
+                            <ion-label id=''>Create class</ion-label>
+                        </ion-item>
                     </ion-list>
                 </ng-template>
             </ion-popover>

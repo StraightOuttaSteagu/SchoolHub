@@ -27,7 +27,7 @@ export interface OrganizationModel {
 
 export interface ClassModel {
     id?: string,
-    title: string,
+    name: string,
     owner: string,
     theme: string,
     icon: string,

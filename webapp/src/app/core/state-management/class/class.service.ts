@@ -22,7 +22,7 @@ export class ClassService {
         this._store.dispatch(new UpdateClass(payload));
     }
 
-    createClass(payload: ClassModel) {
-        this._store.dispatch(new CreateClass(payload));
+    createClass(organizationId: number, payload: ClassModel) {
+        this._store.dispatch(new CreateClass(organizationId, payload));
     }
 }

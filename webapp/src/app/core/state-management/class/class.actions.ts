@@ -17,7 +17,7 @@ export class UpdateClass {
 
 export class CreateClass {
     static readonly type = '[Class] Create';
-    constructor (public payload: ClassModel) { }
+    constructor (public organizationId: number, public payload: ClassModel) { }
 }
 
 export class DeleteClass {

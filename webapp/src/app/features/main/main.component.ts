@@ -11,6 +11,7 @@ import { OrganizationState } from 'src/app/core/state-management/organization/or
 import { OrganizationModel } from 'src/app/core/state-management/models';
 import { icons } from 'src/app/shared/icons';
 import { ClassService } from 'src/app/core/state-management/class/class.service';
+import { colors } from 'src/app/shared/colors';
 
 @Component({
   selector: 'app-main',
@@ -26,6 +27,12 @@ export class MainComponent {
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
 
   icons: any = icons;
+  colors: any = colors;
+
+  selectedColor: number = 0;
+  selectedIcon: number = 0;
+  protected readonly document = document;
+  protected readonly Object = Object;
 
   pageAnimation = pageAnimation;
   public alertButtons = [
@@ -80,7 +87,14 @@ export class MainComponent {
     this._organizationService.getOrganizations();
     this.organization$.subscribe({
       next: (organization) => {
-        //this._classService.getClasses(organization.id!);
+        if (organization.id !== undefined) {
+          console.log(organization.id)
+          this._classService.createClass(organization.id, 
+            ({
+            name: 'aaa'
+          } as any));
+          this._classService.getClasses(organization.id);
+        }
       }
     });
   }
