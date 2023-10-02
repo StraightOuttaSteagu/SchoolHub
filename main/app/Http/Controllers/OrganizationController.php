@@ -83,4 +83,9 @@ class OrganizationController extends Controller
         $this->authorize("removeUser", [$organization, $user]);
         OrganizationUser::fromRelation($organization, $user)->delete();
     }
+
+    public function showRole(Organization $organization) {
+        return OrganizationUser
+            ::fromRelation($organization, auth()->user())->first();
+    }
 }

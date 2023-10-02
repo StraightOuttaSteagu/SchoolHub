@@ -42,6 +42,10 @@ Route::middleware("auth:sanctum")->group(function () {
         "/organizations/{organization}/user/{user}",
         [OrganizationController::class, "removeUser"]
     )->name("organizations.removeUser");
+    Route::get(
+        "/organizations/{organization}/role",
+        [OrganizationController::class, "showRole"]
+    )->name("organizations.showRole");
 
     // classes
     Route::apiResource(
