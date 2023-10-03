@@ -83,11 +83,11 @@
             <ion-content class='side-classes'>
                 <ion-list lines='none' class='side-classes'>
                     <ion-menu-toggle auto-hide='false'>
-                        <ion-item [attr.theme]="item.theme" [routerLink]="'class-student/' + item.id + '/general'" [ngClass]='item.id==getSecondaryThemeID()?"side-class-focus":"side-class"' *ngFor='let item of classes'>
-                            <ion-img [src]='"assets/icons/"+icons[item.icon]'></ion-img>
+                        <ion-item [attr.theme]="class.theme" [routerLink]="'student/classes/' + class?.id + '/general'" [ngClass]='class?.id === (class$ | async)?.id ? "side-class-focus" : "side-class"' *ngFor='let class of (classes$ | async)'>
+                            <ion-img [src]='"assets/icons/"+icons[class.icon]'></ion-img>
                             <ion-label>
-                                <h2>{{ item.subject }}</h2>
-                                <p>{{ item.teacher }}</p>
+                                <h2>{{ class.name }}</h2>
+                                <p>Teacher</p>
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>

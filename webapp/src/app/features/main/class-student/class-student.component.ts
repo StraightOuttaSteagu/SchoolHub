@@ -4,8 +4,9 @@ import { MenuController, ViewDidEnter, ViewWillEnter, ViewWillLeave } from '@ion
 import { Select } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
+import { ClassService } from 'src/app/core/state-management/class/class.service';
 import { ClassState } from 'src/app/core/state-management/class/class.state';
-import { ClassModel } from 'src/app/core/state-management/models';
+import { OrganizationState } from 'src/app/core/state-management/organization/organization.state';
 
 @Component({
   selector: 'app-class-student',
@@ -14,6 +15,10 @@ import { ClassModel } from 'src/app/core/state-management/models';
 })
 export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
+
+  @Select(ClassState.selectClass) class$!: Observable<any>;
+
+  @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
 
   class: any = [];
 
@@ -61,14 +66,26 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
 
   filteredData: any = [];
 
-  constructor (private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) { }
+  constructor (
+    private _route: ActivatedRoute,
+    private _theme: ThemeService,
+    private _menu: MenuController,
+    private _classService: ClassService
+    ) { }
 
   ionViewWillEnter(): void {
 
     this._route.paramMap.subscribe(params => {
       let mode = params.get('mode');
 
-      this.filteredData = mode=='general'?this.data:this.data.filter(el => el.type == mode);
+      this.organization$.subscribe({
+        next: (organization) => {
+          this._classService.getClass(organization.id, +params.get('id')!);
+        }
+      });
+
+      this.filteredData = mode == 'general' ? this.data : this.data.filter(el => el.type == mode);
+      this._classService.setActiveClass(+params.get('id')!);
       this._theme.setClassThemeID(params.get('id'));
     });
   }

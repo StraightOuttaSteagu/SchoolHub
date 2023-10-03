@@ -1,13 +1,18 @@
 import { ClassModel } from "../models";
 
+export class SetActiveClass {
+    static readonly type = '[Class] Set';
+    constructor (public id: number) { }
+}
+
 export class GetClass {
     static readonly type = '[Class] Get';
-    constructor (public id: string) { }
+    constructor (public organizationId: number, public id: number) { }
 }
 
 export class GetClasses {
-    static readonly type = '[Class] Get';
-    constructor (public organizationId: string) { }
+    static readonly type = '[Classes] Get';
+    constructor (public organizationId: number) { }
 }
 
 export class UpdateClass {
@@ -22,5 +27,5 @@ export class CreateClass {
 
 export class DeleteClass {
     static readonly type = '[Class] Delete';
-    constructor (public id: string) { }
+    constructor (public id: number) { }
 }

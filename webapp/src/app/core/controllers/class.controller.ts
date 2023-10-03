@@ -10,11 +10,11 @@ import { baseURL } from "../baseURL";
 export class ClassController {
     constructor (private _http: HttpClient) { }
 
-    getClass(id: string): Observable<any> {
-        return this._http.get('http://localhost:8000/api/account');
+    getClass(organizationId: number, id: number): Observable<any> {
+        return this._http.get(`${baseURL}/api/classes/${id}/posts`);
     }
 
-    getClasses(organizationId: string): Observable<any> {
+    getClasses(organizationId: number): Observable<any> {
         return this._http.get(`${baseURL}/api/organizations/${organizationId}/classes`);
     }
 
@@ -26,7 +26,7 @@ export class ClassController {
         return this._http.get('http://localhost:8000/api/account');
     }
 
-    deleteClass(id: string): Observable<any> {
+    deleteClass(id: number): Observable<any> {
         return this._http.get('http://localhost:8000/api/account');
     }
 }

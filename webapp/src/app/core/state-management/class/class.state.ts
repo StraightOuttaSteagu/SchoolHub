@@ -1,19 +1,19 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { ClassModel } from "../models";
-import { CreateClass, DeleteClass, GetClass, GetClasses, UpdateClass } from "./class.actions";
+import { CreateClass, DeleteClass, GetClass, GetClasses, SetActiveClass, UpdateClass } from "./class.actions";
 import { ClassController } from "../../controllers/class.controller";
 import { ClassObjectsController } from "../../controllers/class-objects.controller";
 
 export interface ClassStateModel {
-    activeClassId: string,
+    activeClassId: number | null,
     classes: ClassModel[]
 }
 
 @State<ClassStateModel>({
     name: 'classstate',
     defaults: {
-        activeClassId: '',
+        activeClassId: null,
         classes: []
     }
 })
@@ -24,7 +24,7 @@ export class ClassState {
 
     @Selector()
     static selectClass(state: ClassStateModel) {
-        return state.classes.find(el => el.id === state.activeClassId);
+        return state.classes.find(el => el.id === state.activeClassId) ?? { name: '' };
     }
 
     @Selector()
@@ -35,12 +35,12 @@ export class ClassState {
     @Action(GetClasses)
     getClasses(ctx: StateContext<ClassStateModel>, action: GetClasses) {
         return this._classController.getClasses(action.organizationId).subscribe({
-            next: (classes: ClassModel[]) => {
+            next: (classes: { data: ClassModel[] }) => {
                 const state = ctx.getState();
 
                 ctx.setState({
                     ...state,
-                    classes: classes
+                    classes: classes.data
                 });
             },
 
@@ -52,21 +52,10 @@ export class ClassState {
 
     @Action(GetClass)
     getClass(ctx: StateContext<ClassStateModel>, action: GetClass) {
-        return this._classController.getClass(action.id).subscribe({
+        return this._classController.getClass(action.id, action.organizationId).subscribe({
             next: (activeClass: ClassModel) => {
-                const state = ctx.getState();
-
-                const modifiedClass = state.classes.find(el => el.id === activeClass.id)!;
-
-                modifiedClass.announcements = activeClass.announcements;
-                modifiedClass.assignments = activeClass.assignments;
-                modifiedClass.absences = activeClass.absences;
-                modifiedClass.grades = activeClass.grades;
-
-                ctx.setState({
-                    ...state,
-                    classes: state.classes
-                });
+                
+                console.log(activeClass)
             },
 
             error: (err) => {
@@ -112,5 +101,16 @@ export class ClassState {
                 console.log(err);
             }
         });
+    }
+
+    @Action(SetActiveClass)
+    setActiveClass(ctx: StateContext<ClassStateModel>, action: SetActiveClass) {
+        const state = ctx.getState();
+
+        ctx.setState({
+            ...state,
+            activeClassId: action.id
+        });
+        return;
     }
 }

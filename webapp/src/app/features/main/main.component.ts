@@ -12,6 +12,8 @@ import { OrganizationModel } from 'src/app/core/state-management/models';
 import { icons } from 'src/app/shared/icons';
 import { ClassService } from 'src/app/core/state-management/class/class.service';
 import { colors } from 'src/app/shared/colors';
+import { ClassState } from 'src/app/core/state-management/class/class.state';
+import { HttpTestService } from 'src/app/core/tests/http-test.service';
 
 @Component({
   selector: 'app-main',
@@ -25,6 +27,10 @@ export class MainComponent {
   @Select(OrganizationState.selectOrganizations) organizations$!: Observable<any>;
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
+
+  @Select(ClassState.selectClasses) classes$!: Observable<any>;
+
+  @Select(ClassState.selectClass) class$!: Observable<any>;
 
   icons: any = icons;
   colors: any = colors;
@@ -79,24 +85,36 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue', icon: 'books'},
   ];
 
-  constructor(private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService) {
+  constructor(private _test: HttpTestService, private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService) {
   }
 
   ngOnInit() {
+    this._test.post('/api/classes/42/grades', {
+      value: 10,
+      student_id: 31
+    }).subscribe({
+      next: (post) => {
+        console.log(post)
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    })
     this._accountService.getAccount();
     this._organizationService.getOrganizations();
     this.organization$.subscribe({
       next: (organization) => {
         if (organization.id !== undefined) {
-          console.log(organization.id)
-          this._classService.createClass(organization.id, 
-            ({
-            name: 'aaa'
-          } as any));
           this._classService.getClasses(organization.id);
         }
       }
     });
+
+    this.classes$.subscribe({
+      next: (x) => {
+        console.log(x)
+      }
+    })
   }
 
   logOut(): void {

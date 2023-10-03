@@ -15,7 +15,6 @@ const routes: Routes = [
     { path: 'announcements', component: AnnouncementsComponent },
     { path: 'attendance', component: AttendanceComponent },
     { path: 'grades', component: GradesComponent },
-    { path: 'classes', loadChildren: () => import('../class-student/class-student.module').then(m => m.ClassStudentModule) },
     { path: '', redirectTo: 'grades', pathMatch: 'full' }
   ]}
 ];

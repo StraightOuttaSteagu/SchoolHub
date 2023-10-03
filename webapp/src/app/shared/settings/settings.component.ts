@@ -20,7 +20,7 @@ export class SettingsComponent implements ViewDidEnter {
   editable: boolean = false;
 
   accountForm: FormGroup = this._fb.group({
-    login: [{value: '', disabled: true}, [Validators.required]],
+    username: [{value: '', disabled: true}, [Validators.required]],
     firstName: [{value: '', disabled: true}, [Validators.required]],
     lastName: [{value: '', disabled: true}, [Validators.required]],
     email: [{value: '', disabled: true}, [Validators.required]]
@@ -31,12 +31,14 @@ export class SettingsComponent implements ViewDidEnter {
   ngOnInit() {
     this.account$.subscribe({
       next: (account) => {
-        this.accountForm.setValue({
-          login: account.login,
-          firstName: account.firstName,
-          lastName: account.lastName,
-          email: account.email
-        });
+        if (account !== undefined) {
+          this.accountForm.setValue({
+            username: account.username ?? '',
+            firstName: account.name.split(' ')[0] ?? '',
+            lastName: account.name.split(' ')[1] ?? '',
+            email: account.email ?? ''
+          });
+        }
       }
     });
   }

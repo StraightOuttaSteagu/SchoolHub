@@ -13,9 +13,9 @@ export interface AccountStateModel {
     defaults: {
         account: {
             email: '',
-            firstName: '',
-            lastName: '',
-            login: ''
+            name: '',
+            username: '',
+            parent: false
         }
     }
 })
