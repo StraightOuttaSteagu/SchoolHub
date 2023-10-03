@@ -16,7 +16,7 @@ export class AuthService {
       next: () => {
         this._accountController.login(form).subscribe({
           next: () => {
-            this._router.navigate(["announcements"])
+            this._router.navigate([""])
           },
           error: (e) => {
             this._snackBar.displayMessage(e.statusText);
@@ -34,7 +34,7 @@ export class AuthService {
       next: () => {
         this._accountController.register(form).subscribe({
           next: () => {
-            this._router.navigate(["announcements"]);
+            this._router.navigate([""]);
           },
           error: (e) => {
             this._snackBar.displayMessage(e.statusText);
