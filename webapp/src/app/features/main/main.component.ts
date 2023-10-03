@@ -14,6 +14,7 @@ import { ClassService } from 'src/app/core/state-management/class/class.service'
 import { colors } from 'src/app/shared/colors';
 import { ClassState } from 'src/app/core/state-management/class/class.state';
 import { HttpTestService } from 'src/app/core/tests/http-test.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -28,9 +29,17 @@ export class MainComponent {
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
 
+  organization: any;
+
   @Select(ClassState.selectClasses) classes$!: Observable<any>;
 
   @Select(ClassState.selectClass) class$!: Observable<any>;
+
+  classForm: FormGroup = this._fb.group({
+    name: [' ', [Validators.required]],
+    identifier: [' ', [Validators.required]],
+    subject: [' ', [Validators.required]]
+  });
 
   icons: any = icons;
   colors: any = colors;
@@ -85,26 +94,26 @@ export class MainComponent {
     {subject: 'Biologie', teacher: 'Oteleanu lia', id: 'hjjhh', theme: 'blue', icon: 'books'},
   ];
 
-  constructor(private _test: HttpTestService, private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService) {
+  constructor(private _test: HttpTestService, private _theme: ThemeService, private _auth: AuthService, private _accountService: AccountService, private _organizationService: OrganizationService, private _classService: ClassService, private _fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this._test.post('/api/classes/42/grades', {
-      value: 10,
-      student_id: 31
-    }).subscribe({
-      next: (post) => {
-        console.log(post)
-      },
-      error: (e) => {
-        console.log(e)
-      }
-    })
+    // this._test.post('/api/organizations/1/classes', {
+    //   name: "test"
+    // }).subscribe({
+    //   next: (post) => {
+    //     console.log(post)
+    //   },
+    //   error: (e) => {
+    //     console.log(e)
+    //   }
+    // })
     this._accountService.getAccount();
     this._organizationService.getOrganizations();
     this.organization$.subscribe({
       next: (organization) => {
         if (organization.id !== undefined) {
+          this.organization = organization;
           this._classService.getClasses(organization.id);
         }
       }
@@ -140,6 +149,18 @@ export class MainComponent {
 
   selectOrganization(organization: OrganizationModel): void {
     this._organizationService.setOrganization(organization);
+  }
+
+  createClass(): void {
+    if (this.classForm.valid) {
+      this._classService.createClass(this.organization.id, {
+        icon: this.Object.keys(icons)[this.selectedIcon],
+        theme: colors[this.selectedColor + 1],
+        name: this.classForm.controls["name"].value,
+        identifier: this.classForm.controls["identifier"].value,
+        subject: this.classForm.controls["subject"].value
+      });
+    }
   }
 
   protected readonly window = window;

@@ -28,13 +28,15 @@ export interface OrganizationModel {
 export interface ClassModel {
     id?: number,
     name: string,
-    owner: string,
+    owner?: string,
     theme: string,
     icon: string,
-    announcements: PostModel[],
-    assignments: PostModel[],
-    absences: AbsenceModel[],
-    grades: GradeModel[]
+    announcements?: PostModel[],
+    assignments?: PostModel[],
+    absences?: AbsenceModel[],
+    grades?: GradeModel[],
+    subject: string,
+    identifier: string
 }
 
 export interface PostModel {

@@ -1,1 +1,6 @@
-export const colors = ['blue', 'green', 'yellow'];
+export const colors = [
+    'default-theme',
+    'green',
+    'yellow',
+    'purple'
+];
