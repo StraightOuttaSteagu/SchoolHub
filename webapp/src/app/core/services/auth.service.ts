@@ -15,7 +15,8 @@ export class AuthService {
     this._accountController.cookies().subscribe({
       next: () => {
         this._accountController.login(form).subscribe({
-          next: () => {
+          next: (resp: any) => {
+            localStorage.setItem("token", resp.token);
             this._router.navigate([""])
           },
           error: (e) => {

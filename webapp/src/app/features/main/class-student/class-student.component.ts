@@ -6,7 +6,9 @@ import { Observable, Subscription } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { ClassService } from 'src/app/core/state-management/class/class.service';
 import { ClassState } from 'src/app/core/state-management/class/class.state';
+import { ClassModel } from 'src/app/core/state-management/models';
 import { OrganizationState } from 'src/app/core/state-management/organization/organization.state';
+import { icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-class-student',
@@ -16,11 +18,13 @@ import { OrganizationState } from 'src/app/core/state-management/organization/or
 export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
-  @Select(ClassState.selectClass) class$!: Observable<any>;
+  @Select(ClassState.selectClass) class$!: Observable<ClassModel>;
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
 
   class: any = [];
+
+  icons = icons;
 
   private _routerSubscription!: Subscription;
 
@@ -100,6 +104,7 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
     }
 
     this._theme.setClassThemeID(null);
+    this._classService.setActiveClass(-1);
   }
 
   getHref(): string {

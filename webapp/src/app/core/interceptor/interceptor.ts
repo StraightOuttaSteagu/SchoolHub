@@ -21,7 +21,12 @@ export class AuthInterceptor implements HttpInterceptor {
         req = req.clone({headers: req.headers.set(this.headerName, token)});
       }
     }
-    return next.handle(req).pipe(
+
+    return next.handle(req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    })).pipe(
       map((event: HttpEvent<any>) => {
           return event;
       }),

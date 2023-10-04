@@ -4,8 +4,8 @@
             <div style='display: flex; align-items: center'>
                 <ion-back-button defaultHref='/' icon='chevron-back-outline'
                                  color='text'></ion-back-button>
-                <ion-img class='class-icon' src='assets/icons/leaf.png'></ion-img>
-                {{ (class$ | async).name }}
+                <ion-img class='class-icon' [src]='"assets/icons/" + (class$ | async)!.icon + ".png"'></ion-img>
+                {{ (class$ | async)!.name }}
             </div>
         </ion-title>
     </ion-toolbar>
