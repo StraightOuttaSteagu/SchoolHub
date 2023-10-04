@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ClassModel } from '../models';
 import { Store } from '@ngxs/store';
-import { CreateClass, GetClass, GetClasses, SetActiveClass, UpdateClass } from './class.actions';
+import { CreateClass, GetAnnouncements, GetAssignments, GetClass, GetClasses, GetGrades, SetActiveClass, UpdateClass } from './class.actions';
 
 @Injectable({
     providedIn: 'root'
@@ -28,5 +28,17 @@ export class ClassService {
 
     setActiveClass(id: number): void {
         this._store.dispatch(new SetActiveClass(id));
+    }
+
+    getAnnouncements(id: number): void {
+        this._store.dispatch(new GetAnnouncements(id));
+    }
+
+    getAssignments(id: number): void {
+        this._store.dispatch(new GetAssignments(id));
+    }
+
+    getGrades(id: number): void {
+        this._store.dispatch(new GetGrades(id));
     }
 }

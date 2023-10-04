@@ -22,51 +22,13 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
 
+  @Select(ClassState.selectClassData) data$!: Observable<any>;
+
   class: any = [];
 
   icons = icons;
 
   private _routerSubscription!: Subscription;
-
-  data: any[] = [{
-    title: "CARIOTIPUL UMAN PATOLOGIC",
-    content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
-    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
-    Sa aveti spor!`,
-    subject: "Biologie",
-    date: "10.10.2023",
-    icon: 'leaf',
-    due_date: "11.04.2023",
-    type: "assignments",
-    attachments_num: 3, 
-    comments_num: 1
-  },
-  {
-    title: "Realizare compoziție",
-    content: "Realizați o compoziție plastică în care să redați atmosfera sărbătorilor de iarnă, și în care să aveți ca element principal un felinar.",
-    subject: "Educație plastică",
-    date: "01.10.2023",
-    icon: 'pencils',
-    due_date: "6.10.2023",
-    type: "assignments",
-    attachments_num: 2
-  },
-  {
-    title: "CARIOTIPUL UMAN PATOLOGIC",
-    content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
-    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
-    Sa aveti spor!`,
-    subject: "Biologie",
-    date: "10.10.2023",
-    icon: 'leaf',
-    due_date: "11.04.2023",
-    type: "announcements",
-    attachments_num: 3, 
-    comments_num: 1
-  },
-  { date: '6.09.2023', excused: false, type: 'attendance'},
-    { grade: '10', date: '6.09.2023', type: 'grades'},
-    { date: '6.09.2023', excused: false, type: 'attendance'}];
 
   filteredData: any = [];
 
@@ -82,13 +44,15 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
     this._route.paramMap.subscribe(params => {
       let mode = params.get('mode');
 
-      this.organization$.subscribe({
-        next: (organization) => {
-          this._classService.getClass(organization.id, +params.get('id')!);
+      this.data$.subscribe({
+        next: (data) => {
+          console.log(data)
+          this.filteredData = mode == 'general' ? data : data.filter((el: any) => typeof el === mode);
+        },
+        error: () => {
+
         }
       });
-
-      this.filteredData = mode == 'general' ? this.data : this.data.filter(el => el.type == mode);
       this._classService.setActiveClass(+params.get('id')!);
       this._theme.setClassThemeID(params.get('id'));
     });
