@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { ClassModel, GradeModel, PostModel } from "../models";
-import { CreateClass, DeleteClass, GetAnnouncements, GetAssignments, GetClass, GetClasses, GetGrades, SetActiveClass, UpdateClass } from "./class.actions";
+import { CreateAnnouncement, CreateAssignment, CreateClass, DeleteClass, GetAnnouncements, GetAssignments, GetClass, GetClasses, GetGrades, SetActiveClass, UpdateClass } from "./class.actions";
 import { ClassController } from "../../controllers/class.controller";
 import { ClassObjectsController } from "../../controllers/class-objects.controller";
 
@@ -30,6 +30,7 @@ export class ClassState {
 
     @Selector()
     static selectClass(state: ClassStateModel) {
+        console.log(state.activeClassId)
         return state.classes.find(el => el.id === state.activeClassId) ?? { name: '' };
     }
 
@@ -104,8 +105,12 @@ export class ClassState {
     @Selector()
     static selectClassData(state: ClassStateModel) {
         const activeClass = state.classes.find(el => el.id === state.activeClassId);
-        console.log(activeClass)
-        return [...activeClass!.absences!, ...activeClass!.announcements!, ...activeClass!.assignments!, ...activeClass!.grades!].sort(el => +el.date);
+        return [
+            ...activeClass!.absences!.map(el => {const newEl: any = el; newEl.filterType = 'attendance'; return newEl}),
+            ...activeClass!.announcements!.map(el => {const newEl: any = el; newEl.filterType = 'announcements'; return newEl}),
+            ...activeClass!.assignments!.map(el => {const newEl: any = el; newEl.filterType = 'assignments'; return newEl}),
+            ...activeClass!.grades!.map(el => {const newEl: any = el; newEl.filterType = 'grades'; return newEl})
+        ].sort(el => +el.date);
     }
 
     @Action(GetClasses)
@@ -116,7 +121,10 @@ export class ClassState {
 
                 ctx.setState({
                     ...state,
-                    classes: classes.data
+                    classes: classes.data.map(el => {
+                        el.absences = [], el.announcements = [], el.assignments = [], el.grades = [];
+                        return el;
+                    })
                 });
             },
 
@@ -206,6 +214,8 @@ export class ClassState {
                 const state = ctx.getState();
                 for (let announcement of announcements.data) {
                     const schoolClass = state.classes.find(el => el.id === action.id);
+                    announcement.createdAt = new Date(announcement.createdAt);
+                    schoolClass?.announcements?.push(announcement);
                     state.announcements.push({
                         attachments: [],
                         comments: [],
@@ -227,6 +237,18 @@ export class ClassState {
         });
     }
 
+    @Action(CreateAnnouncement)
+    createAnnouncement(ctx: StateContext<ClassStateModel>, action: CreateAnnouncement) {
+        this._classObjectsController.createAnnouncement(action.id, action.title, action.content).subscribe({
+            next: (announcement) => {
+
+            },
+            error: (e) => {
+                console.log(e);
+            }
+        });
+    }
+
     @Action(GetAssignments)
     getAssignments(ctx: StateContext<ClassStateModel>, action: GetAssignments) {
         this._classObjectsController.getAssignmentsByClass(action.id).subscribe({
@@ -234,15 +256,18 @@ export class ClassState {
                 const state = ctx.getState();
                 for (let assignment of assignments.data) {
                     const schoolClass = state.classes.find(el => el.id === action.id);
+                    assignment.createdAt = new Date(assignment.createdAt);
+                    assignment.deadline = new Date(assignment.deadline);
+                    schoolClass?.assignments?.push(assignment);
                     state.assignments.push({
                         attachments: [],
                         comments: [],
                         content: assignment.content,
                         title: assignment.title,
-                        date: new Date(assignment.createdAt),
+                        date: assignment.createdAt,
                         icon: (schoolClass?.icon ?? 'leaf'),
                         subject: (schoolClass?.subject ?? '-'),
-                        dueDate: new Date(assignment.deadline)
+                        dueDate: assignment.deadline
                     });
                 }
 
@@ -252,6 +277,18 @@ export class ClassState {
             },
             error: () => {
 
+            }
+        });
+    }
+
+    @Action(CreateAssignment)
+    createAssignment(ctx: StateContext<ClassStateModel>, action: CreateAssignment) {
+        this._classObjectsController.createAssignment(action.id, action.title, action.content, action.deadline).subscribe({
+            next: (assignment) => {
+
+            },
+            error: (e) => {
+                console.log(e);
             }
         });
     }

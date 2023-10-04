@@ -122,11 +122,11 @@
             </ion-col>
         </ion-row>
         <ion-buttons style='max-width: 66.5rem; display: flex' class='chips'>
-            <ion-chip [routerLink]='["/class-teacher/" + getClassThemeID() + "/stream"]'
+            <ion-chip [routerLink]='["/teacher/classes/" + classId + "/stream"]'
                       [class.active]='getHref().includes("stream")'>
                 Stream
             </ion-chip>
-            <ion-chip [routerLink]='["/class-teacher/" + getClassThemeID() + "/students"]'
+            <ion-chip [routerLink]='["/teacher/classes/" + classId + "/students"]'
                       [class.active]='getHref().includes("students")'>
                 Students
             </ion-chip>
@@ -159,7 +159,7 @@
                                 Create a new announcement
                             </ion-title>
                             <ion-buttons slot='primary'>
-                                <ion-button (click)='createAnnouncementModal.dismiss()'
+                                <ion-button (click)='createAnnouncement(); createAnnouncementModal.dismiss()'
                                             style='--color: var(--ion-color-tertiary)'>Create
                                 </ion-button>
                             </ion-buttons>
@@ -171,14 +171,16 @@
                         </ion-toolbar>
                     </ion-header>
                     <ion-content class='ion-padding'>
-                        <ion-input mode='md' fill='outline'
+                        <form [formGroup]="announcementForm">
+                            <ion-input formControlName="title" mode='md' fill='outline'
                                    style='--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text)'
                                    label='Title' labelPlacement='stacked' placeholder='Enter a title...'/>
-                        <ion-textarea mode='md' fill='outline'
+                            <ion-textarea formControlName="content" mode='md' fill='outline'
                                       style='margin-top: 2rem;--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text); height: 10rem'
                                       label='Content'
                                       labelPlacement='stacked'
                                       placeholder='Enter announcement content...'/>
+                        </form>
                     </ion-content>
                 </ng-template>
             </ion-modal>
@@ -190,7 +192,7 @@
                                 Create a new assignment
                             </ion-title>
                             <ion-buttons slot='primary'>
-                                <ion-button (click)='createAssignmentModal.dismiss()'
+                                <ion-button (click)='createAssignment(); createAssignmentModal.dismiss()'
                                             style='--color: var(--ion-color-tertiary)'>Create
                                 </ion-button>
                             </ion-buttons>
@@ -202,16 +204,19 @@
                         </ion-toolbar>
                     </ion-header>
                     <ion-content class='ion-padding'>
-                        <ion-input mode='md' fill='outline'
-                                   style='--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text)'
-                                   label='Title' labelPlacement='stacked' placeholder='Enter a title...'/>
-                        <ion-textarea mode='md' fill='outline'
-                                      style='margin-top: 2rem;--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text); height: 10rem'
-                                      label='Instructions'
-                                      labelPlacement='stacked'
-                                      placeholder='Enter assignment instructions...'/>
-                        <h2 style='color: var(--ion-color-text); margin-top: 2rem'>Due date</h2>
-                        <ion-datetime hourCycle='h23' [min]='toIsoString(today)' style='box-shadow: none; border: 1px solid var(--ion-color-text); margin-top: 1rem' color='primary'></ion-datetime>
+                        <form [formGroup]="assignmentForm">
+                            <ion-input formControlName="title" mode='md' fill='outline'
+                                        style='--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text)'
+                                        label='Title' labelPlacement='stacked' placeholder='Enter a title...'/>
+                            <ion-textarea formControlName="content" mode='md' fill='outline'
+                                        style='margin-top: 2rem;--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text); height: 10rem'
+                                        label='Instructions'
+                                        labelPlacement='stacked'
+                                        placeholder='Enter assignment instructions...'/>
+                            <h2 style='color: var(--ion-color-text); margin-top: 2rem'>Due date</h2>
+                            <ion-datetime formControlName="deadline" hourCycle='h23' [min]='toIsoString(today)' style='box-shadow: none; border: 1px solid var(--ion-color-text); margin-top: 1rem' color='primary'></ion-datetime>
+
+                        </form>
                     </ion-content>
                 </ng-template>
             </ion-modal>

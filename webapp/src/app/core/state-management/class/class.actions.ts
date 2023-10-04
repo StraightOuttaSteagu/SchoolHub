@@ -35,9 +35,19 @@ export class GetAnnouncements {
     constructor (public id: number) { }
 }
 
+export class CreateAnnouncement {
+    static readonly type = '[Announcements] Create';
+    constructor (public id: number, public title: string, public content: string) { }
+}
+
 export class GetAssignments {
     static readonly type = '[Assignments] Get';
     constructor (public id: number) { }
+}
+
+export class CreateAssignment {
+    static readonly type = '[Assignment] Create';
+    constructor (public id: number, public title: string, public content: string, public deadline: Date) { }
 }
 
 export class GetGrades {

@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ClassStudentComponent } from './class-student.component';
+import { PipeModule } from 'src/app/shared/pipes.module';
 
 
 
@@ -16,7 +17,8 @@ import { ClassStudentComponent } from './class-student.component';
     IonicModule,
     RouterModule.forChild([
       { path: ':id/:mode', component: ClassStudentComponent }
-    ])
+    ]),
+    PipeModule
   ]
 })
 export class ClassStudentModule { }

@@ -16,7 +16,7 @@
             <div class='post-icon'>
                 <ion-icon name='document-attach-outline'></ion-icon>
             </div>
-            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>2</span> assignments to
+            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>0</span> assignments to
                 be
                 done</p>
         </ion-col>
@@ -24,7 +24,7 @@
             <div class='post-icon'>
                 <ion-icon name='calendar-outline'></ion-icon>
             </div>
-            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>3</span> unexcused
+            <p style='font-size: 0.9rem'><span style='font-weight: 600; font-size: 1.1rem'>0</span> unexcused
                 absences
             </p>
         </ion-col>
@@ -78,7 +78,7 @@
             Attendance
         </ion-chip>
     </ion-buttons>
-    <div *ngFor='let item of filteredData' [ngSwitch]='item.type'>
+    <div *ngFor='let item of filteredData' [ngSwitch]='item.filterType'>
         <ion-card class='desktop' *ngSwitchCase="'announcements'">
             <ion-row>
                 <ion-col size='9'>
@@ -101,7 +101,7 @@
                     <ion-card-content style='padding: 0'>{{item?.content}}</ion-card-content>
                 </ion-col>
                 <ion-col size='3' style='align-items: flex-start; justify-content: flex-end'>
-                    <p class='date'>Posted: {{item?.date}}</p>
+                    <p class='date'>Posted: {{item?.createdAt | dateFormat}}</p>
                 </ion-col>
             </ion-row>
             <ion-row style='margin-top: .8rem'>
@@ -122,7 +122,7 @@
                 </div>
                 <div style='width: 90%'>
                     <ion-card-title>{{item?.title}}</ion-card-title>
-                    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{item?.createdAt | dateFormat}}</ion-card-subtitle>
                 </div>
             </div>
             <ion-card-content style='margin-top: 0.5rem;'>{{item?.content}}</ion-card-content>
@@ -137,7 +137,7 @@
                         <ion-card-title>
                             {{item?.title}}
                         </ion-card-title>
-                        <p class='due-date'>Due: {{item?.due_date}}</p>
+                        <p class='due-date'>Due: {{item?.deadline | dateFormat}}</p>
                     </div>
                 </ion-col>
                 <ion-col size='3'
@@ -146,7 +146,7 @@
                         <ion-img class='account-icon' src='assets/account.png'></ion-img>
                         <p class='account-name'>Lia Liana Oteleanu</p>
                     </div>
-                    <p class='date'>Posted: {{item?.date}}</p>
+                    <p class='date'>Posted: {{item?.createdAt | dateFormat}}</p>
                 </ion-col>
             </ion-row>
         </ion-card>
@@ -157,7 +157,7 @@
                 </div>
                 <div style='width: 90%'>
                     <ion-card-title>{{item?.title}}</ion-card-title>
-                    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{item?.createdAt | dateFormat}}</ion-card-subtitle>
                 </div>
             </div>
         </ion-card>
@@ -171,7 +171,7 @@
                         <ion-card-title>
                             New grade: {{item?.grade}}
                         </ion-card-title>
-                        <p class='due-date'>Date: {{item?.date}}</p>
+                        <p class='due-date'>Date: {{item?.createdAt | dateFormat}}</p>
                     </div>
                 </ion-col>
                 <ion-col size='3'
@@ -192,7 +192,7 @@
                     <ion-card-title>
                         New grade: {{item?.grade}}
                     </ion-card-title>
-                    <p class='due-date'>Date: {{item?.date}}</p>
+                    <p class='due-date'>Date: {{item?.createdAt | dateFormat}}</p>
                 </div>
             </ion-row>
         </ion-card>
@@ -206,7 +206,7 @@
                         <ion-card-title>
                             New absence
                         </ion-card-title>
-                        <p class='due-date'>Date: {{item?.date}} - {{item?.excused ? 'excused' : 'not excused'}}</p>
+                        <p class='due-date'>Date: {{item?.createdAt | dateFormat}} - {{item?.excused ? 'excused' : 'not excused'}}</p>
                     </div>
                 </ion-col>
                 <ion-col size='3'
@@ -227,7 +227,7 @@
                     <ion-card-title>
                         New absence
                     </ion-card-title>
-                    <p class='due-date'>Date: {{item?.date}} - {{item?.excused ? 'excused' : 'not excused'}}</p>
+                    <p class='due-date'>Date: {{item?.createdAt}} | dateFormat - {{item?.excused ? 'excused' : 'not excused'}}</p>
                 </div>
             </ion-row>
         </ion-card>

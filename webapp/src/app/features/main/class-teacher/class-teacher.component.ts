@@ -2,9 +2,15 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../../core/services/theme.service';
 import { MenuController, ViewDidEnter, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { interval, Subscription } from 'rxjs';
+import { interval, Observable, Subscription } from 'rxjs';
 import { icons } from '../../../shared/icons';
 import { colors } from '../../../shared/colors';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ClassService } from 'src/app/core/state-management/class/class.service';
+import { ClassState } from 'src/app/core/state-management/class/class.state';
+import { OrganizationState } from 'src/app/core/state-management/organization/organization.state';
+import { Select } from '@ngxs/store';
+import { ClassModel } from 'src/app/core/state-management/models';
 
 @Component({
   selector: 'app-class-teacher',
@@ -14,7 +20,29 @@ import { colors } from '../../../shared/colors';
 export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
-  icons: any = icons;
+  announcementForm = this._fb.group({
+    title: ['', Validators.required],
+    content: ['', Validators.required]
+  });
+
+  assignmentForm = this._fb.group({
+    title: ['', Validators.required],
+    content: ['', Validators.required],
+    deadline: [new Date(), Validators.required]
+  });
+
+  classId: any;
+
+  @Select(ClassState.selectClass) class$!: Observable<ClassModel>;
+
+  @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
+
+  @Select(ClassState.selectClassData) data$!: Observable<any>;
+
+  icons = icons;
+
+  private _routerSubscription!: Subscription;
+
   colors: any = colors;
 
   data: any[] = [
@@ -76,9 +104,14 @@ export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, View
   protected readonly Object = Object;
   protected readonly Date = Date;
   private dateSubscription!: Subscription;
-  private _routerSubscription!: Subscription;
 
-  constructor(private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) {
+  constructor(
+    private _route: ActivatedRoute,
+    private _theme: ThemeService,
+    private _menu: MenuController,
+    private _fb: FormBuilder,
+    private _classService: ClassService
+    ) {
     this.dateSubscription = interval(60000).subscribe(() => {
       this.today = new Date();
     })
@@ -104,6 +137,8 @@ export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, View
   ionViewWillEnter(): void {
     this._route.paramMap.subscribe(params => {
       this._theme.setClassThemeID(params.get('id'));
+      this._classService.setActiveClass(+params.get('id')!);
+      this.classId = +params.get('id')!;
     });
   }
 
@@ -118,6 +153,19 @@ export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, View
 
     this._theme.setClassThemeID(null);
     this.dateSubscription.unsubscribe();
+  }
+
+  createAnnouncement(): void {
+    if (this.announcementForm.valid) {
+      this._classService.createAnnouncement(this.classId, this.announcementForm.controls.title.value!, this.announcementForm.controls.content.value!);
+    }
+  }
+
+  createAssignment(): void {
+    if (this.assignmentForm.valid) {
+      this._classService.createAssignment(this.classId, this.assignmentForm.controls.title.value!, this.assignmentForm.controls.content.value!, this.assignmentForm.controls.deadline.value!)
+      this.assignmentForm.getRawValue();
+    }
   }
 
   getHref(): string {

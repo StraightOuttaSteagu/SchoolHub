@@ -87,7 +87,7 @@
             <ion-content class='side-classes'>
                 <ion-list lines='none' class='side-classes'>
                     <ion-menu-toggle auto-hide='false'>
-                        <ion-item [attr.theme]="class.theme" [routerLink]="'student/classes/' + class?.id + '/general'" [ngClass]='class?.id === (class$ | async)?.id ? "side-class-focus" : "side-class"' *ngFor='let class of (classes$ | async)'>
+                        <ion-item [attr.theme]="class.theme" [routerLink]="(getHref().includes('student') ? 'student' : 'teacher') + '/classes/' + class?.id + '/' + (getHref().includes('student') ? 'general' : 'stream')" [ngClass]='class?.id === (class$ | async)?.id ? "side-class-focus" : "side-class"' *ngFor='let class of (classes$ | async)'>
                             <ion-img [src]='"assets/icons/"+icons[class.icon]'></ion-img>
                             <ion-label>
                                 <h2>{{ class.name }}</h2>
@@ -102,7 +102,7 @@
                     <ion-img src='assets/account.png'></ion-img>
                     <ion-label>
                         <h2>{{(account$ | async).name}}</h2>
-                        <p>Student</p>
+                        <p>{{getHref().includes('student') ? 'Student' : 'Teacher'}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-popover trigger='profile-trigger' trigger-action='click' size='cover' show-backdrop='false'

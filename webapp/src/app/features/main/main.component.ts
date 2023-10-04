@@ -131,7 +131,6 @@ export class MainComponent {
 
     this.classes$.subscribe({
       next: (x) => {
-        console.log(x)
         for (let id of x.map((el: any) => el.id)) {
           this._classService.getAnnouncements(id);
           this._classService.getAssignments(id);
@@ -139,6 +138,10 @@ export class MainComponent {
         }
       }
     })
+  }
+
+  getHref(): string {
+    return window.location.href;
   }
 
   logOut(): void {
