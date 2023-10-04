@@ -15,7 +15,7 @@ export class AccountController {
     }
 
     login(payload: AccountLoginModel): Observable<any> {
-        return this._http.post(`${baseURL}/login`, payload);
+        return this._http.post(`${baseURL}/api/login`, payload);
     }
 
     register(payload: AccountRegisterModel): Observable<any> {
@@ -23,6 +23,7 @@ export class AccountController {
     }
 
     logout(): Observable<any> {
+        localStorage.removeItem("token");
         return this._http.post(`${baseURL}/logout`, {});
     }
 

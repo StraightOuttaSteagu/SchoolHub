@@ -39,18 +39,22 @@
                                                 <ion-button style='--color: var(--ion-color-text)' (click)='classModal.dismiss()'>Close</ion-button>
                                             </ion-buttons>
                                             <ion-buttons slot='primary'>
-                                                <ion-button style='--color: var(--ion-color-text)' (click)='classModal.dismiss()'>Save</ion-button>
+                                                <ion-button style='--color: var(--ion-color-text)' (click)='createClass(); classModal.dismiss()'>Create</ion-button>
                                             </ion-buttons>
                                         </ion-toolbar>
                                     </ion-header>
                                     <ion-content class='ion-padding'>
-                                        <form>
-                                            <ion-input class='ion-margin-vertical' helperText='For example: Biology'
+                                        <form [formGroup]="classForm">
+                                            <ion-input class='ion-margin-vertical' formControlName="name"
+                                                       labelPlacement='floating' style='--border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text)'
+                                                       size='64' fill='outline' label='Class name' type='text' name='id'
+                                                       value='My Class'></ion-input>
+                                            <ion-input class='ion-margin-vertical' helperText='For example: Biology' formControlName="subject"
                                                        labelPlacement='floating'
                                                        style='--border-radius: 1.55rem; --padding-start: 1.8rem; --background: medium; --color: var(--ion-color-text)'
                                                        size='64' fill='outline' label='Subject' type='text' name='subject'
                                                        value='Biologie'></ion-input>
-                                            <ion-input class='ion-margin-vertical' helperText='For example: 10th grade'
+                                            <ion-input class='ion-margin-vertical' helperText='For example: 10th grade' formControlName="identifier"
                                                        labelPlacement='floating' style='--border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text)'
                                                        size='64' fill='outline' label='Class identifier' type='text' name='id'
                                                        value='10D'></ion-input>
@@ -87,7 +91,7 @@
                             <ion-img [src]='"assets/icons/"+icons[class.icon]'></ion-img>
                             <ion-label>
                                 <h2>{{ class.name }}</h2>
-                                <p>Teacher</p>
+                                <p>{{ class.creator.name }}</p>
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>

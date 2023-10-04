@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { DashboardState } from 'src/app/core/state-management/dashboard/dashboard.state';
-import { AbsenceModel } from 'src/app/core/state-management/models';
 
 @Component({
   selector: 'app-attendance',

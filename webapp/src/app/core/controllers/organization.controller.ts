@@ -25,20 +25,4 @@ export class OrganizationController {
     updateOrganization(payload: OrganizationModel, id: number): Observable<any> {
         return this._http.put(`${baseURL}/api/organizations/${id}`, payload)
     }
-
-    getAnnouncementsByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}/api/announcements/${id}`);
-    }
-
-    getAssignmentsByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}/api/assignments/${id}`);
-    }
-
-    getGradesByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}/api/grades/${id}`);
-    }
-
-    getAbsencesByOrganization(id: number): Observable<any> {
-        return this._http.get(`${baseURL}/api/absences/${id}`);
-    }
 }

@@ -5,6 +5,7 @@ import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 
 import { IonicModule } from '@ionic/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     CommonModule,
     MainRoutingModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule {

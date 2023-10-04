@@ -67,8 +67,17 @@ export class ClassState {
     @Action(CreateClass)
     createClass(ctx: StateContext<ClassStateModel>, action: CreateClass) {
         return this._classController.createClass(action.organizationId, action.payload).subscribe({
-            next: (/**??? */) => {
-                
+            next: (schoolClass: ClassModel) => {
+                const state = ctx.getState();
+
+                const classes = state.classes;
+
+                classes.push(schoolClass);
+
+                ctx.setState({
+                    ...state,
+                    classes
+                });
             },
 
             error: (err) => {
