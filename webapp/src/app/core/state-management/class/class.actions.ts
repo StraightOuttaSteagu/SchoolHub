@@ -29,3 +29,22 @@ export class DeleteClass {
     static readonly type = '[Class] Delete';
     constructor (public id: number) { }
 }
+
+export class GetAnnouncements {
+    static readonly type = '[Announcements] Get';
+    constructor (public id: number) { }
+}
+
+export class GetAssignments {
+    static readonly type = '[Assignments] Get';
+    constructor (public id: number) { }
+}
+
+export class GetGrades {
+    static readonly type = '[Grades] Get';
+    constructor (public id: number) { }
+}
+
+// export class GetAbsences {
+//     static readonly type = '[Absences] Get';
+// }

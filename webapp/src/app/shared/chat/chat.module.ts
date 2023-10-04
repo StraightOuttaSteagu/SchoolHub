@@ -4,12 +4,11 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ChatComponent } from './chat.component';
-import { DateFormatPipe } from './chat.pipe';
+import { PipeModule } from '../pipes.module';
 
 @NgModule({
   declarations: [
-    ChatComponent,
-    DateFormatPipe
+    ChatComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +16,8 @@ import { DateFormatPipe } from './chat.pipe';
     RouterModule.forChild([
       { path: ':user', component: ChatComponent },
       { path: '', component: ChatComponent }
-    ])
+    ]),
+    PipeModule
   ]
 })
 export class ChatModule { }

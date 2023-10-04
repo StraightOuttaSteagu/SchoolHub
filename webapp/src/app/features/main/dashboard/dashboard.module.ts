@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AttendanceComponent } from './attendance/attendance.component';
@@ -8,6 +8,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { DashboardComponent } from './dashboard.component';
 import { CardsSharedModule } from '../../../shared/cards-shared.module';
+import { PipeModule } from 'src/app/shared/pipes.module';
 
 
 
@@ -23,7 +24,8 @@ import { CardsSharedModule } from '../../../shared/cards-shared.module';
     CommonModule,
     DashboardRoutingModule,
     IonicModule,
-    CardsSharedModule
+    CardsSharedModule,
+    PipeModule
   ]
 })
 export class DashboardModule { }

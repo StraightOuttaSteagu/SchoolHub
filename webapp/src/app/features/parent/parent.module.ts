@@ -4,7 +4,6 @@ import { ParentRoutingModule } from './parent-routing.module';
 import { ParentComponent } from './parent.component';
 import { IonicModule } from '@ionic/angular';
 import { GradesComponent } from './grades/grades.component';
-import { ChatModule } from '../../shared/chat/chat.module';
 import { SettingsModule } from '../../shared/settings/settings.module';
 import { CardsSharedModule } from 'src/app/shared/cards-shared.module';
 import { AttendanceComponent } from './attendance/attendance.component';
@@ -21,7 +20,6 @@ import { AttendanceComponent } from './attendance/attendance.component';
     CommonModule,
     ParentRoutingModule,
     IonicModule,
-    ChatModule,
     SettingsModule,
     CardsSharedModule
   ]

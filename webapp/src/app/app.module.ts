@@ -19,7 +19,7 @@ import { ClassState } from './core/state-management/class/class.state';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     IonicModule.forRoot(),

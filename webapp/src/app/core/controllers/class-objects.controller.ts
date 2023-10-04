@@ -10,15 +10,15 @@ export class ClassObjectsController {
     constructor (private _http: HttpClient) { }
 
     getAnnouncementsByClass(id: number): Observable<any> {
-        return this._http.get(`${baseURL}announcements/${id}`);
+        return this._http.get(`${baseURL}/api/classes/${id}/posts?type=announcement`);
     }
 
     getAssignmentsByClass(id: number): Observable<any> {
-        return this._http.get(`${baseURL}assignments/${id}`);
+        return this._http.get(`${baseURL}/api/classes/${id}/posts?type=assignment`);
     }
 
     getGradesByClass(id: number): Observable<any> {
-        return this._http.get(`${baseURL}grades/${id}`);
+        return this._http.get(`${baseURL}/api/classes/${id}/grades`);
     }
 
     getAbsencesByClass(id: number): Observable<any> {
