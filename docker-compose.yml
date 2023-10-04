@@ -1,4 +1,23 @@
 services:
+    backend:
+          image: docker.io/bitnami/laravel:10
+          ports:
+              - '8000:8000'
+          environment:
+              - DB_CONNECTION=pgsql
+              - DB_HOST=pgsql
+              - DB_PORT=5432
+              - DB_USERNAME=schoolhub
+              - DB_PASSWORD=secret
+              - DB_DATABASE=schoolhub
+              - CACHE_DRIVER=array 
+          volumes:
+              - './main-service:/app'
+          networks:
+              - schoolhub
+          depends_on:
+              - pgsql
+
     pgsql:
         image: 'postgres:15'
         ports:
