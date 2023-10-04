@@ -37,7 +37,8 @@ ion-chip {
 
 .chips {
   --background: transparent;
-  padding: 0.7rem 2rem 0 3rem;
+  padding: 0.7rem 0 0 3rem;
+  margin-right: 1rem;
   overflow-x: auto;
 
   scrollbar-width: none; /* For Firefox */
@@ -57,6 +58,7 @@ ion-chip {
   max-width: 62.5rem;
   margin: 2rem 0 2rem 3rem;
   min-height: 5rem;
+  margin-right: 1rem;
 
   ion-col {
     display: flex;
@@ -283,6 +285,47 @@ ion-modal {
   border: 2px solid rgba(var(--ion-color-text-rgb), 1) !important;
 }
 
+.profile, .org {
+  background: rgba(var(--ion-color-back-secondary-rgb), 0.7);
+  border: 1px solid rgba(var(--ion-color-text-rgb), 0.15);
+  cursor: pointer;
+
+  h2, p {
+    color: var(--ion-color-text);
+  }
+}
+
+.popover-options {
+  margin: 0;
+  background: var(--ion-color-back-secondary);
+
+  ion-icon {
+    color: var(--ion-color-text);
+    margin-right: 4%;
+  }
+
+  ion-label {
+    color: var(--ion-color-text);
+    font-size: 1rem;
+  }
+
+  ion-item {
+    --border-color: rgba(115, 115, 115, 0.3);
+  }
+}
+
+.dropdown-item {
+  --min-height: 2.7rem;
+}
+
+ion-popover::part(content) {
+  border-radius: 1.3rem;
+  border: none;
+}
+
+#create {
+  margin-bottom: 0.5rem;
+}
 
 @media(max-width: 768px) {
   .mobile {
@@ -346,6 +389,11 @@ ion-modal {
     ion-card-subtitle {
       font-weight: 400;
     }
+  }
+
+  #create {
+    height: 2.2rem !important;
+    margin-bottom: 0.5rem;
   }
 }
 

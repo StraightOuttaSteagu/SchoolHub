@@ -1,5 +1,5 @@
 <ion-header style='--background: transparent' mode='md'>
-    <ion-toolbar style='--background: transparent; max-width: 65.5rem'>
+    <ion-toolbar style='--background: transparent; max-width: 66.5rem'>
         <ion-title class='title-top'>
             <div style='display: flex; align-items: center'>
                 <ion-back-button defaultHref='/' icon='chevron-back-outline'
@@ -19,10 +19,12 @@
                     <ion-toolbar>
                         <ion-title>Class settings</ion-title>
                         <ion-buttons slot='secondary'>
-                            <ion-button style='--color: var(--ion-color-text)' (click)='settingsModal.dismiss()'>Close</ion-button>
+                            <ion-button style='--color: var(--ion-color-text)' (click)='settingsModal.dismiss()'>Close
+                            </ion-button>
                         </ion-buttons>
                         <ion-buttons slot='primary'>
-                            <ion-button style='--color: var(--ion-color-text)' (click)='settingsModal.dismiss()'>Save</ion-button>
+                            <ion-button style='--color: var(--ion-color-text)' (click)='settingsModal.dismiss()'>Save
+                            </ion-button>
                         </ion-buttons>
                     </ion-toolbar>
                 </ion-header>
@@ -42,7 +44,8 @@
                                    size='64' fill='outline' label='Subject' type='text' name='subject'
                                    value='Biologie'></ion-input>
                         <ion-input class='ion-margin-vertical' helperText='For example: 10th grade'
-                                   labelPlacement='floating' style='--border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text)'
+                                   labelPlacement='floating'
+                                   style='--border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text)'
                                    size='64' fill='outline' label='Class identifier' type='text' name='id'
                                    value='10D'></ion-input>
                     </form>
@@ -58,7 +61,9 @@
                         <div *ngFor='let color of colors; let i = index' [class.selected]='selectedColor === i'
                              (click)='selectedColor = i' class='{{color}} color-option'></div>
                     </div>
-                    <ion-button class='ion-margin-vertical' id='delete-alert' expand='block' color='danger'>Delete class</ion-button>
+                    <ion-button class='ion-margin-vertical' id='delete-alert' expand='block' color='danger'>Delete
+                        class
+                    </ion-button>
                     <ion-alert
                             translucent='true'
                             style='--background: var(--ion-color-back-secondary)'
@@ -116,7 +121,7 @@
                 </div>
             </ion-col>
         </ion-row>
-        <ion-buttons class='chips'>
+        <ion-buttons style='max-width: 66.5rem; display: flex' class='chips'>
             <ion-chip [routerLink]='["/class-teacher/" + getClassThemeID() + "/stream"]'
                       [class.active]='getHref().includes("stream")'>
                 Stream
@@ -125,6 +130,91 @@
                       [class.active]='getHref().includes("students")'>
                 Students
             </ion-chip>
+            <ion-button slot='end' id='create'
+                        style='margin-left: auto; --background: rgba(var(--ion-color-tertiary-rgb), 0.7); --border-radius: 1rem; height: 2.8rem; --box-shadow: none; text-transform: none; letter-spacing: unset; --color: white'>
+                <ion-icon style='margin: 0 0.3rem' name='add-outline'></ion-icon>
+                <span style='margin-right: 0.3rem'>Create...</span>
+            </ion-button>
+            <ion-popover #createPopover style='--backdrop-opacity: 0' trigger='create' triggerAction='click'>
+                <ng-template>
+                    <ion-list class='popover-options'>
+                        <ion-item detail='false' (click)='createAnnouncementModal.present(); createPopover.dismiss()'
+                                  class='dropdown-item' style='width: 100%' button='true'>
+                            <ion-icon name='document-text-outline'></ion-icon>
+                            <ion-label>Announcement</ion-label>
+                        </ion-item>
+                        <ion-item lines='none' detail='false' (click)='createAssignmentModal.present()' class='dropdown-item'
+                                  button='true'>
+                            <ion-icon name='document-attach-outline'></ion-icon>
+                            <ion-label>Assignment</ion-label>
+                        </ion-item>
+                    </ion-list>
+                </ng-template>
+            </ion-popover>
+            <ion-modal #createAnnouncementModal class='modal'>
+                <ng-template>
+                    <ion-header>
+                        <ion-toolbar>
+                            <ion-title>
+                                Create a new announcement
+                            </ion-title>
+                            <ion-buttons slot='primary'>
+                                <ion-button (click)='createAnnouncementModal.dismiss()'
+                                            style='--color: var(--ion-color-tertiary)'>Create
+                                </ion-button>
+                            </ion-buttons>
+                            <ion-buttons slot='secondary'>
+                                <ion-button (click)='createAnnouncementModal.dismiss()'
+                                            style='--color: var(--ion-color-text)'>Cancel
+                                </ion-button>
+                            </ion-buttons>
+                        </ion-toolbar>
+                    </ion-header>
+                    <ion-content class='ion-padding'>
+                        <ion-input mode='md' fill='outline'
+                                   style='--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text)'
+                                   label='Title' labelPlacement='stacked' placeholder='Enter a title...'/>
+                        <ion-textarea mode='md' fill='outline'
+                                      style='margin-top: 2rem;--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text); height: 10rem'
+                                      label='Content'
+                                      labelPlacement='stacked'
+                                      placeholder='Enter announcement content...'/>
+                    </ion-content>
+                </ng-template>
+            </ion-modal>
+            <ion-modal #createAssignmentModal class='modal'>
+                <ng-template>
+                    <ion-header>
+                        <ion-toolbar>
+                            <ion-title>
+                                Create a new assignment
+                            </ion-title>
+                            <ion-buttons slot='primary'>
+                                <ion-button (click)='createAssignmentModal.dismiss()'
+                                            style='--color: var(--ion-color-tertiary)'>Create
+                                </ion-button>
+                            </ion-buttons>
+                            <ion-buttons slot='secondary'>
+                                <ion-button (click)='createAssignmentModal.dismiss()'
+                                            style='--color: var(--ion-color-text)'>Cancel
+                                </ion-button>
+                            </ion-buttons>
+                        </ion-toolbar>
+                    </ion-header>
+                    <ion-content class='ion-padding'>
+                        <ion-input mode='md' fill='outline'
+                                   style='--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text)'
+                                   label='Title' labelPlacement='stacked' placeholder='Enter a title...'/>
+                        <ion-textarea mode='md' fill='outline'
+                                      style='margin-top: 2rem;--border-color: var(--ion-color-text); --border-radius: 1.55rem; --padding-start: 1.8rem; --color: var(--ion-color-text); --highlight-color-focused: var(--ion-color-text); height: 10rem'
+                                      label='Instructions'
+                                      labelPlacement='stacked'
+                                      placeholder='Enter assignment instructions...'/>
+                        <h2 style='color: var(--ion-color-text); margin-top: 2rem'>Due date</h2>
+                        <ion-datetime hourCycle='h23' [min]='toIsoString(today)' style='box-shadow: none; border: 1px solid var(--ion-color-text); margin-top: 1rem' color='primary'></ion-datetime>
+                    </ion-content>
+                </ng-template>
+            </ion-modal>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>

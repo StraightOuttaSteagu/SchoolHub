@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../../core/services/theme.service';
 import { MenuController, ViewDidEnter, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { icons } from '../../../shared/icons';
 import { colors } from '../../../shared/colors';
 
@@ -55,9 +55,9 @@ export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, View
       attachments_num: 3,
       comments_num: 1,
     },
-    { date: '6.09.2023', excused: false, type: 'attendance' },
-    { grade: '10', date: '6.09.2023', type: 'grades' },
-    { date: '6.09.2023', excused: false, type: 'attendance' },
+    {date: '6.09.2023', excused: false, type: 'attendance'},
+    {grade: '10', date: '6.09.2023', type: 'grades'},
+    {date: '6.09.2023', excused: false, type: 'attendance'},
   ];
   deleteAlertButtons = [
     {
@@ -71,11 +71,35 @@ export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, View
   ];
   selectedColor: number = 0;
   selectedIcon: number = 0;
+  today = new Date();
   protected readonly document = document;
   protected readonly Object = Object;
+  protected readonly Date = Date;
+  private dateSubscription!: Subscription;
   private _routerSubscription!: Subscription;
 
-  constructor(private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) {}
+  constructor(private _route: ActivatedRoute, private _theme: ThemeService, private _menu: MenuController) {
+    this.dateSubscription = interval(60000).subscribe(() => {
+      this.today = new Date();
+    })
+  }
+
+  toIsoString(date: Date) {
+    let tzo = -date.getTimezoneOffset(),
+      dif = tzo >= 0 ? '+' : '-',
+      pad = function(num: number) {
+        return (num < 10 ? '0' : '') + num;
+      };
+
+    return date.getFullYear() +
+      '-' + pad(date.getMonth() + 1) +
+      '-' + pad(date.getDate()) +
+      'T' + pad(date.getHours()) +
+      ':' + pad(date.getMinutes()) +
+      ':' + pad(date.getSeconds()) +
+      dif + pad(Math.floor(Math.abs(tzo) / 60)) +
+      ':' + pad(Math.abs(tzo) % 60);
+  }
 
   ionViewWillEnter(): void {
     this._route.paramMap.subscribe(params => {
@@ -93,6 +117,7 @@ export class ClassTeacherComponent implements ViewWillEnter, ViewWillLeave, View
     }
 
     this._theme.setClassThemeID(null);
+    this.dateSubscription.unsubscribe();
   }
 
   getHref(): string {

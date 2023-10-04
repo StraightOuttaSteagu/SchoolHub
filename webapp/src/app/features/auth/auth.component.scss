@@ -47,6 +47,7 @@
   --background: #342b66;
   --color: #f5f9ff;
   --box-shadow: none;
+  --background-activated: transparent;
 }
 
 .action-button {
@@ -57,8 +58,8 @@
   text-transform: none;
   font-weight: 300;
   -webkit-tap-highlight-color: transparent;
-  --color: #3d4756;
   --box-shadow: none;
+  --background-activated: transparent;
 }
 
 .bottom-form {
@@ -97,4 +98,14 @@
   z-index: 100;
   margin-top: 4rem;
   margin-bottom: 2rem;
+}
+
+@media(max-width: 448px) {
+  .logo {
+    width: 3rem;
+  }
+
+  .logo-title {
+    font-size: 2.7rem;
+  }
 }
