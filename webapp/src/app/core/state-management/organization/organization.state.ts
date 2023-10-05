@@ -39,8 +39,6 @@ export class OrganizationState {
             next: (organizations: { data: OrganizationModel[] }) => {
                 let activeOrganization: any = localStorage.getItem('activeOrganization');
 
-                console.log(organizations)
-
                 if (activeOrganization === null || !organizations.data.map(el => String(el.id)).includes(activeOrganization)) {
                     localStorage.setItem('activeOrganization', organizations.data[0].id ?? '-1');
 

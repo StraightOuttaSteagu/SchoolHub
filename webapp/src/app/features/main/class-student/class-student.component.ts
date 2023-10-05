@@ -46,9 +46,7 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
 
       this.data$.subscribe({
         next: (data) => {
-          console.log(mode)
           this.filteredData = mode == 'general' ? data : data.filter((el: any) => el.filterType === mode);
-          console.log(this.filteredData)
         },
         error: () => {
 

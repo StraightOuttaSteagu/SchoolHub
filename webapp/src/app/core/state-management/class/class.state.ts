@@ -30,7 +30,6 @@ export class ClassState {
 
     @Selector()
     static selectClass(state: ClassStateModel) {
-        console.log(state.activeClassId)
         return state.classes.find(el => el.id === state.activeClassId) ?? { name: '' };
     }
 
@@ -139,7 +138,6 @@ export class ClassState {
         return this._classController.getClass(action.id, action.organizationId).subscribe({
             next: (activeClass: ClassModel) => {
                 
-                console.log(activeClass)
             },
 
             error: (err) => {
@@ -214,10 +212,12 @@ export class ClassState {
                 const state = ctx.getState();
                 for (let announcement of announcements.data) {
                     const schoolClass = state.classes.find(el => el.id === action.id);
+                    const attachments = ['cerinta.docx', 'date.xlsx', 'main.cpp', 'index.html', 'admisi.csv', 'arta_moderna.png', 'arce_bezier.svg', 'casti.jpg'];
+                    announcement.attachments = this.getRandomItems(attachments, Math.floor(Math.random() * 5));
                     announcement.createdAt = new Date(announcement.createdAt);
                     schoolClass?.announcements?.push(announcement);
                     state.announcements.push({
-                        attachments: [],
+                        attachments: ['a', 'b', 'c'],
                         comments: [],
                         content: announcement.content,
                         title: announcement.title,
@@ -258,9 +258,11 @@ export class ClassState {
                     const schoolClass = state.classes.find(el => el.id === action.id);
                     assignment.createdAt = new Date(assignment.createdAt);
                     assignment.deadline = new Date(assignment.deadline);
+                    const attachments = ['cerinta.docx', 'date.xlsx', 'main.cpp', 'index.html', 'admisi.csv', 'arta_moderna.png', 'arce_bezier.svg', 'casti.jpg'];
+                    assignment.attachments = this.getRandomItems(attachments, Math.floor(Math.random() * 5));
                     schoolClass?.assignments?.push(assignment);
                     state.assignments.push({
-                        attachments: [],
+                        attachments: ['a', 'b', 'c'],
                         comments: [],
                         content: assignment.content,
                         title: assignment.title,
@@ -270,6 +272,7 @@ export class ClassState {
                         dueDate: assignment.deadline
                     });
                 }
+
 
                 ctx.setState({
                     ...state
@@ -297,11 +300,16 @@ export class ClassState {
     getGrades(ctx: StateContext<ClassStateModel>, action: GetGrades) {
         this._classObjectsController.getGradesByClass(action.id).subscribe({
             next: (grades) => {
-                console.log(grades)
+
             },
             error: () => {
 
             }
         });
+    }
+
+    getRandomItems(list: any[], n: number) {
+        const shuffled = [...list].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, n);
     }
 }
