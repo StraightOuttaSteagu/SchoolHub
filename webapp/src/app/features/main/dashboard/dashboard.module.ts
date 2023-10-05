@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardComponent } from './dashboard.component';
 import { CardsSharedModule } from '../../../shared/cards-shared.module';
 import { PipeModule } from 'src/app/shared/pipes.module';
+import { titleFormatPipe } from './title.pipe';
 
 
 
@@ -18,7 +19,8 @@ import { PipeModule } from 'src/app/shared/pipes.module';
     AssignmentsComponent,
     AttendanceComponent,
     GradesComponent,
-    DashboardComponent
+    DashboardComponent,
+    titleFormatPipe
   ],
   imports: [
     CommonModule,

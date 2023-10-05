@@ -17,7 +17,16 @@ export interface ClassStateModel {
     name: 'classstate',
     defaults: {
         activeClassId: null,
-        classes: [],
+        classes: [
+            {
+                icon: 'leaf',
+                identifier: '9F',
+                name: 'Biologie',
+                subject: 'Biologie',
+                theme: 'green',
+                owner: 'Mircea'
+            }
+        ],
         announcements: [],
         assignments: [],
         grades: []
