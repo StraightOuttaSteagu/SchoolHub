@@ -21,13 +21,106 @@ export interface ClassStateModel {
             {
                 icon: 'leaf',
                 identifier: '9F',
-                name: 'Biologie',
+                name: 'cascasccsa',
                 subject: 'Biologie',
                 theme: 'green',
-                owner: 'Mircea'
+                owner: 'Mircea',
+                id: 1,
+                absences: [
+                    {
+                        date: String(new Date()),
+                        excused: false
+                    },
+                    {
+                        date: String(new Date()),
+                        excused: true
+                    }
+                ]
+            },
+            {
+                icon: 'leaf',
+                identifier: '9F',
+                name: 'cascasccsa',
+                subject: 'Biologie',
+                theme: 'green',
+                owner: 'Mircea',
+                id: 2
+            },
+            {
+                icon: 'leaf',
+                identifier: '9F',
+                name: 'cascasccsa',
+                subject: 'Biologie',
+                theme: 'green',
+                owner: 'Mircea',
+                id: 3
+            },
+            {
+                icon: 'leaf',
+                identifier: '9F',
+                name: 'cascasccsa',
+                subject: 'Biologie',
+                theme: 'green',
+                owner: 'Mircea',
+                id: 4
+            },
+            {
+                icon: 'leaf',
+                identifier: '9F',
+                name: 'cascasccsa',
+                subject: 'Biologie',
+                theme: 'green',
+                owner: 'Mircea',
+                id: 5
+            },
+            {
+                icon: 'leaf',
+                identifier: '9F',
+                name: 'cascasccsa',
+                subject: 'Biologie',
+                theme: 'green',
+                owner: 'Mircea',
+                id: 6
             }
         ],
-        announcements: [],
+        announcements: [
+            {
+                attachments: [],
+                comments: [],
+                content: 'Lorem ipsum',
+                date: new Date(),
+                icon: 'leaf',
+                subject: 'Biologie',
+                title: 'Lorem ipsum'
+            },
+            {
+                attachments: [],
+                comments: [],
+                content: 'Lorem ipsum',
+                date: new Date(),
+                icon: 'leaf',
+                subject: 'Biologie',
+                title: 'Lorem ipsum'
+            },
+            {
+                attachments: [],
+                comments: [],
+                content: 'Lorem ipsum',
+                date: new Date(),
+                icon: 'leaf',
+                subject: 'Biologie',
+                title: 'Lorem ipsum'
+            },
+            {
+                attachments: [],
+                comments: [],
+                content: 'Lorem ipsum',
+                date: new Date(),
+                icon: 'leaf',
+                subject: 'Biologie',
+                title: 'Lorem ipsum'
+            }
+        ],
         assignments: [],
         grades: []
     }

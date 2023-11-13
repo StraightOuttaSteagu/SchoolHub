@@ -13,9 +13,19 @@ export interface OrganizationStateModel {
     name: 'organizationstate',
     defaults: {
         activeOrganization: {
-            name: ''
+            name: 'Colegiul Național de Informatică „Grigore Moisil” Brașov'
         },
-        organizations: []
+        organizations: [
+            {
+                name: 'Colegiul Național de Informatică „Grigore Moisil” Brașov'
+            },
+            {
+                name: 'Colegiul Național Andrei Șaguna'
+            },
+            {
+                name: 'Colegiul Național Andrei Mureșanu'
+            }
+        ]
     }
 })
 @Injectable()

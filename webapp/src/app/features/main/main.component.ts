@@ -105,39 +105,26 @@ export class MainComponent {
     ) { }
 
   ngOnInit() {
-   //this._test.post('/api/classes/1/posts', {
-   // "title": "fdasfsda",
-   // "content": "fdasfsa",
-   // "type": "assignment",
-   // "deadline": "2024-09-28T05:27:20Z"
-   // }).subscribe({
-   //  next: (post) => {
-   //    console.log(post);
-   //  },
-   //  error: (e) => {
-   //    console.log(e);
-   //  }
-   //});
-    this._accountService.getAccount();
-    this._organizationService.getOrganizations();
-    this.organization$.subscribe({
-      next: (organization) => {
-        if (organization.id !== undefined) {
-          this.organization = organization;
-          this._classService.getClasses(organization.id);
-        }
-      }
-    });
+    // this._accountService.getAccount();
+    // this._organizationService.getOrganizations();
+    // this.organization$.subscribe({
+    //   next: (organization) => {
+    //     if (organization.id !== undefined) {
+    //       this.organization = organization;
+    //       this._classService.getClasses(organization.id);
+    //     }
+    //   }
+    // });
 
-    this.classes$.subscribe({
-      next: (x) => {
-        for (let id of x.map((el: any) => el.id)) {
-          this._classService.getAnnouncements(id);
-          this._classService.getAssignments(id);
-          this._classService.getGrades(id);
-        }
-      }
-    })
+    // this.classes$.subscribe({
+    //   next: (x) => {
+    //     for (let id of x.map((el: any) => el.id)) {
+    //       this._classService.getAnnouncements(id);
+    //       this._classService.getAssignments(id);
+    //       this._classService.getGrades(id);
+    //     }
+    //   }
+    // })
   }
 
   getHref(): string {
