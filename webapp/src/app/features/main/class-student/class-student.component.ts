@@ -18,11 +18,54 @@ import { icons } from 'src/app/shared/icons';
 export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, ViewDidEnter {
   // The HTML for the classes will remain the same and the route will act as a filter that selects only some of the fields
 
-  @Select(ClassState.selectClass) class$!: Observable<ClassModel>;
+  class$ = {
+    name: 'Clasa a 9-a A',
+    subject: 'Biologie',
+    icon: 'leaf',
+    theme: 'green'
+  };
 
   @Select(OrganizationState.selectActiveOrganization) organization$!: Observable<any>;
 
-  @Select(ClassState.selectClassData) data$!: Observable<any>;
+  data$ = [
+    {filterType: 'grades', grade: 10, createdAt: new Date('10.10.2023')},
+    {
+      title: "CARIOTIPUL UMAN PATOLOGIC",
+      content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03.
+    Sa aveti spor!`,
+      subject: "Biologie",
+      date: "10.10.2023",
+      icon: 'leaf',
+      due_date: "11.04.2023",
+      filterType: "assignments",
+      attachments_num: 3,
+      comments_num: 1
+    },
+    {
+      title: "Realizare compoziție",
+      content: "Realizați o compoziție plastică în care să redați atmosfera sărbătorilor de iarnă, și în care să aveți ca element principal un felinar.",
+      subject: "Educație plastică",
+      date: "01.10.2023",
+      icon: 'pencils',
+      due_date: "6.10.2023",
+      type: "assignments",
+      attachments_num: 2
+    },
+    {
+      title: "CARIOTIPUL UMAN PATOLOGIC",
+      content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03.
+    Sa aveti spor!`,
+      subject: "Biologie",
+      date: "10.10.2023",
+      icon: 'leaf',
+      due_date: "11.04.2023",
+      type: "announcements",
+      attachments_num: 3,
+      comments_num: 1
+    }
+  ];
 
   class: any = [];
 
@@ -44,16 +87,14 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
     this._route.paramMap.subscribe(params => {
       let mode = params.get('mode');
 
-      this.data$.subscribe({
-        next: (data) => {
-          this.filteredData = mode == 'general' ? data : data.filter((el: any) => el.filterType === mode);
-        },
-        error: () => {
+      this.filteredData = [];
 
-        }
-      });
+      this.filteredData = mode == 'general' ? this.data$ : this.data$.filter((el: any) => el.filterType === mode);
+      //this.filteredData.push({filterType: 'grades', grade: 10, createdAt: new Date('10.10.2023')});
+      //this.filteredData.push({filterType: 'attendance', excused: true, createdAt: '22.10.2023'});
       this._classService.setActiveClass(+params.get('id')!);
       this._theme.setClassThemeID(params.get('id'));
+      console.log(this.filteredData)
     });
   }
 
@@ -84,14 +125,14 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
 {
     title: "CARIOTIPUL UMAN PATOLOGIC",
     content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
-    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03.
     Sa aveti spor!`,
     subject: "Biologie",
     date: "10.10.2023",
     icon: 'leaf',
     due_date: "11.04.2023",
     type: "assignments",
-    attachments_num: 3, 
+    attachments_num: 3,
     comments_num: 1
   },
   {
@@ -107,14 +148,14 @@ export class ClassStudentComponent implements ViewWillEnter, ViewWillLeave, View
   {
     title: "CARIOTIPUL UMAN PATOLOGIC",
     content: `vă rog să parcurgeti materialul atașat și să rezolvați, pe caiete, exercitiile I, II, si III din primul test.
-    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03. 
+    Atașati poza cu rezolvarea pana la sfarsitul zilei de luni, 27.03.
     Sa aveti spor!`,
     subject: "Biologie",
     date: "10.10.2023",
     icon: 'leaf',
     due_date: "11.04.2023",
     type: "announcements",
-    attachments_num: 3, 
+    attachments_num: 3,
     comments_num: 1
   },
   { date: '6.09.2023', excused: false, type: 'attendance'},

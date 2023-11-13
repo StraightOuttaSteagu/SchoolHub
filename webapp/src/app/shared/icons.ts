@@ -10,5 +10,4 @@ export const icons = {
     "computer": 'computer.png',
     "pencils": 'pencils.png',
     "toDo": 'toDo.png'
-
 }

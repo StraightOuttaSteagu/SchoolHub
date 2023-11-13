@@ -13,7 +13,7 @@ export interface AccountStateModel {
     defaults: {
         account: {
             email: 'DPIT@expoziția.ro',
-            name: 'Ligia',
+            name: 'Ligia Marculescu',
             username: 'DPIT',
             parent: false
         }

@@ -20,12 +20,12 @@ export class ChatComponent implements ViewDidEnter {
   users = [
     {
       name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet dddddddddddd d d dd',
+      lastMessage: 'Sure just a second!',
       id: "eifjwefj"
     },
     {
-      name: 'Oteleanu lia',
-      lastMessage: 'Lorem Ipsum dolor sit amet',
+      name: 'Popescu Ion',
+      lastMessage: 'Thank you!',
       id: "vdssvd"
     },
     {
@@ -112,14 +112,14 @@ export class ChatComponent implements ViewDidEnter {
   }
 
   addMessage(message: HTMLInputElement) {
-    if (message.value === '') return; 
+    if (message.value === '') return;
     this.messages.unshift({
       sender: false,
       timestamp: new Date(),
       body: message.value,
       seen: true
     });
-    
+
     message.value = '';
   }
 }

@@ -50,7 +50,7 @@ export class ChemistryPlayComponent {
 
   tableOpen: boolean = false;
 
-  spawn: string[] = ['KOH'];
+  spawn: string[] = [];
 
   tableElements: elementModel[] = tableElements;
 
@@ -136,7 +136,7 @@ export class ChemistryPlayComponent {
             this.compounds.splice(this._actionDetails.target, 1);
             this.compounds.splice(i, 1);
           }
-          
+
 
           for (let j = 0; j < result.length; j++) {
             console.log(result[j], j);
@@ -166,7 +166,7 @@ export class ChemistryPlayComponent {
         rect1.top > rect2.bottom
     );
   }
- 
+
   compoundMouseDown(e: any, i: number) {
 
     this.updatePt(e);
@@ -174,7 +174,7 @@ export class ChemistryPlayComponent {
     let eventX = this._pt.x, eventY = this._pt.y;
 
     this._action = 'move';
-    
+
     this._actionDetails = {
       target: i,
       x: eventX,
@@ -185,7 +185,7 @@ export class ChemistryPlayComponent {
 
   updatePt(e: any): any {
     this._pt.x = e.clientX; this._pt.y = e.clientY;
-    this._pt = this._pt.matrixTransform((document.getElementById('play') as any).getScreenCTM().inverse());  
+    this._pt = this._pt.matrixTransform((document.getElementById('play') as any).getScreenCTM().inverse());
 	}
 
   isNumber(char: string): boolean {
@@ -203,7 +203,7 @@ export class ChemistryPlayComponent {
     let eventX = this._pt.x, eventY = this._pt.y;
 
     if (this._actionDetails.origin && this.pyth(eventX, eventY, this._actionDetails.origin[0], this._actionDetails.origin[1]) > 10) return;
-    
+
     const popover = await this._popoverController.create({
       component: ChemistryPopoverComponent,
       event: e,

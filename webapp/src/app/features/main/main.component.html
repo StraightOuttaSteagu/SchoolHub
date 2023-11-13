@@ -15,7 +15,7 @@
                          keep-contents-mounted='true' arrow='false' dismiss-on-select='true'>
                 <ng-template>
                     <ion-list class='popover-options'>
-                        <ion-item class='dropdown-item' *ngFor='let organization of (organizations$ | async)'>
+                        <ion-item [button]='true' class='dropdown-item' *ngFor='let organization of (organizations$ | async)'>
                             <ion-label (click)="selectOrganization(organization)">{{ organization.name }}</ion-label>
                         </ion-item>
                         <ion-item class='dropdown-item' id='present-alert' [button]='true' lines='none'>

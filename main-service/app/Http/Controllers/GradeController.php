@@ -19,12 +19,10 @@ class GradeController extends Controller
     {
         $request->validate([
             "student_id" => "required|numeric",
-            "class_id" => "required|numeric",
             "value" => "required|numeric|min:1|max:10"
         ]);
 
         $student = User::findOrFail($request->student_id);
-        $class = SchoolClass::findOrFail($request->class_id);
 
         return new GradeResource(Grade::create([
             "student_id" => $student->id,

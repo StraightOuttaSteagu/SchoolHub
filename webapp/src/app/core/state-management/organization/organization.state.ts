@@ -30,7 +30,7 @@ export interface OrganizationStateModel {
 })
 @Injectable()
 export class OrganizationState {
-    
+
     constructor (private _organizationController: OrganizationController) { }
 
     @Selector()
@@ -109,7 +109,7 @@ export class OrganizationState {
     updateOrganization(ctx: StateContext<OrganizationStateModel>, action: UpdateOrganization) {
         return this._organizationController.updateOrganization(action.payload, action.id).subscribe({
             next: (/**??? */) => {
-                
+
             },
 
             error: (err) => {
